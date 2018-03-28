@@ -8,6 +8,20 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal"
+                                               >
+                <TextBlock Text="Login"/>
+                <TextBox/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin="5">
+                <TextBlock Text="Pasword"/>
+                <PasswordBox/>
+                
+            </StackPanel>
+            <Button Content="Send"/>
+        </StackPanel>
     </Grid>
 </Page>
