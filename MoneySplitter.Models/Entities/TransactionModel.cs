@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace MoneySplitter.Models.Models
+namespace MoneySplitter.Models.Entities
 {
-    public class Transaction
+    public class TransactionModel
     {
         public int Id { get; set; }
-        public User Debtor { get; set; }
-        public User Borrower { get; set; }
+        public UserModel Debtor { get; set; }
+        public UserModel Borrower { get; set; }
         public double AmountOfMoney { get; set; }
         public string NameTransaction { get; set; }
         public DateTime DateTransaction { get; set; }
