@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MoneySplitter.Models.Models
+﻿namespace MoneySplitter.Models.Models
 {
     public class User
     {
