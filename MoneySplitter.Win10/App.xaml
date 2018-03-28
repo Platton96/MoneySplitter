@@ -4,6 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MoneySplitter.Win10"
     xmlns:cm="using:Caliburn.Micro"
-    RequestedTheme="Dark">
+    RequestedTheme="Light">
 
 </cm:CaliburnApplication>

@@ -9,5 +9,6 @@ namespace MoneySplitter.Win10.ViewModels
 {
     public class LoginViewModel:Screen
     {
+
     }
 }
