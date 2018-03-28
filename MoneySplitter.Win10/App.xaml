@@ -1,8 +1,9 @@
-﻿<Application
+﻿<cm:CaliburnApplication
     x:Class="MoneySplitter.Win10.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MoneySplitter.Win10"
-    RequestedTheme="Light">
+    xmlns:cm="using:Caliburn.Micro"
+    RequestedTheme="Dark">
 
-</Application>
+</cm:CaliburnApplication>
