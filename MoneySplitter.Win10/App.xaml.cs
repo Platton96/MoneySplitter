@@ -31,6 +31,8 @@ namespace MoneySplitter.Win10
             _container.RegisterWinRTServices();
 
             _container.PerRequest<LoginViewModel>();
+            _container.PerRequest<ShellViewModel>();
+
              _container.Singleton<INavigationManager, NavigationManager>();
         }
 

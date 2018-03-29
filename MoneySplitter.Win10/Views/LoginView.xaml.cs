@@ -29,5 +29,10 @@ namespace MoneySplitter.Win10.Views
             InitializeComponent();
             DataContextChanged += (s, e) => { ViewModel = DataContext as LoginViewModel; };
         }
+
+        private void OnLoginClick(object sender, RoutedEventArgs e)
+        {
+            ViewModel.SignIn();
+        }
     }
 }

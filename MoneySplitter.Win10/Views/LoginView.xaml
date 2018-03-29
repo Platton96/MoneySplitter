@@ -14,15 +14,18 @@
                                                >
                 <TextBlock Text="Email"
                            />
-                <TextBox PlaceholderText="Enter email"/>
+                <TextBox PlaceholderText="Enter email"
+                         DataContext="{x:Bind ViewModel.Login.Email, Mode=OneWay}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="5">
                 <TextBlock Text="Pasword"/>
-                <PasswordBox PlaceholderText="Enter Password"/>
+                <PasswordBox PlaceholderText="Enter Password"
+                             DataContext="{x:Bind ViewModel.Login.Password, Mode=OneWay}"/>
                 
             </StackPanel>
-            <Button Content="Send"/>
+            <Button Content="Login"
+                    Click="OnLoginClick"/>
         </StackPanel>
     </Grid>
 </Page>
