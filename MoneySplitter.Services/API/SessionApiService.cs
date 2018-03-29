@@ -10,33 +10,31 @@ using System.Net;
 
 namespace MoneySplitter.Services.API
 {
-    public class SessionApiServices
+    public class SessionApiService
     {
-        private readonly string _urlSession;
         private readonly ApiBuilderURL _builderURL;
-        public SessionApiServices()
+        public SessionApiService()
         {
             _builderURL = new ApiBuilderURL();
-            _urlSession = _builderURL.AddController("Session");
         }
         public async Task<UserModel> SignIn(LoginModel loginModel)
         {
-            var signInUri = new Uri(_builderURL.AddMethodOfController(_urlSession, "SignIn"));
+            var signInUri = _builderURL.Authorization();
+
             var result = new UserModel();
 
             using (var httpClient = new HttpClient())
             {
                 var content = new StringContent(JsonConvert.SerializeObject(loginModel), Encoding.UTF8, "application/json");
                 var responce = await httpClient.PostAsync(signInUri, content);
-                if (responce.StatusCode == HttpStatusCode.OK)
+
+                if (responce.StatusCode != HttpStatusCode.OK)
                 {
-                    var jsonLogin = await responce.Content.ReadAsStringAsync();
-                    result = JsonConvert.DeserializeObject<UserModel>(jsonLogin);
+                    return null;
                 }
-                else
-                {
-                    result=null;
-                }
+
+                 var jsonLogin = await responce.Content.ReadAsStringAsync();
+                 result = JsonConvert.DeserializeObject<UserModel>(jsonLogin);
             }
 
             return result;
