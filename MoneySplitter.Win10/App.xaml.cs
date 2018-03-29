@@ -1,4 +1,6 @@
 ﻿using Caliburn.Micro;
+using MoneySplitter.Infrastructure;
+using MoneySplitter.Win10.Common;
 using MoneySplitter.Win10.ViewModels;
 using MoneySplitter.Win10.Views;
 using System;
@@ -29,8 +31,7 @@ namespace MoneySplitter.Win10
             _container.RegisterWinRTServices();
 
             _container.PerRequest<LoginViewModel>();
-
-            // container.Singleton<INavigationManager, NavigationManager>();
+             _container.Singleton<INavigationManager, NavigationManager>();
         }
 
         protected override void PrepareViewFirst(Frame rootFrame)

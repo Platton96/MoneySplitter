@@ -2,7 +2,7 @@
 
 namespace MoneySplitter.Infrastructure
 {
-    public interface INavigateManager
+    public interface INavigationManager
     {
         void NavigateToShellView(UserModel userModel);
     }
