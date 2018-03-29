@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MoneySplitter.Models.Entities
+namespace MoneySplitter.Models
 {
     public class TransactionModel
     {

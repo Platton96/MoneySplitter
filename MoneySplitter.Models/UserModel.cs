@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MoneySplitter.Models.Entities
+namespace MoneySplitter.Models
 {
     public class UserModel
     {
