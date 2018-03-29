@@ -28,9 +28,36 @@ namespace MoneySplitter.Win10.ViewModels
             set
             {
                 _login = value;
-                NotifyOfPropertyChange(nameof(Login));
+                //NotifyOfPropertyChange(nameof(Login));
+                NotifyOfPropertyChange(() => Login);
             }
         }
+
+        private LoginModel _email;
+        public LoginModel Email
+        {
+            get { return _email; }
+            set
+            {
+                _email = value;
+                //NotifyOfPropertyChange(nameof(Login));
+                NotifyOfPropertyChange(() => Email);
+            }
+        }
+
+        private LoginModel _password;
+        public LoginModel Password
+        {
+            get { return _password; }
+            set
+            {
+                _password = value;
+                //NotifyOfPropertyChange(nameof(Login));
+                NotifyOfPropertyChange(() => Password);
+            }
+        }
+
+
 
         public async void SignIn()
         {
