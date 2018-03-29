@@ -28,7 +28,7 @@ namespace MoneySplitter.Win10.ViewModels
             set
             {
                 _login = value;
-                NotifyOfPropertyChange(nameof(LoginModel));
+                NotifyOfPropertyChange(nameof(Login));
             }
         }
 
