@@ -12,13 +12,14 @@
                     HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal"
                                                >
-                <TextBlock Text="Login"/>
-                <TextBox/>
+                <TextBlock Text="Email"
+                           />
+                <TextBox PlaceholderText="Enter email"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="5">
                 <TextBlock Text="Pasword"/>
-                <PasswordBox/>
+                <PasswordBox PlaceholderText="Enter Password"/>
                 
             </StackPanel>
             <Button Content="Send"/>
