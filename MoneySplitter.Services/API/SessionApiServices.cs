@@ -13,7 +13,7 @@ namespace MoneySplitter.Services.API
     public class SessionApiServices
     {
         private readonly string _urlSession;
-        private ApiBuilderURL _builderURL;
+        private readonly ApiBuilderURL _builderURL;
         public SessionApiServices()
         {
             _builderURL = new ApiBuilderURL();
