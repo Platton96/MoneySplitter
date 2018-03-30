@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using MoneySplitter.Models;
-using MoneySplitter.Models.Session;
 using MoneySplitter.Services.API;
 namespace MoneySplitter.Services
 {

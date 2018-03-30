@@ -1,11 +1,6 @@
 ﻿using Caliburn.Micro;
 using MoneySplitter.Infrastructure;
-using MoneySplitter.Models.Session;
 using MoneySplitter.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MoneySplitter.Win10.ViewModels
@@ -43,8 +38,6 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-
-
         public async Task SignInAsync()
         {
             await _membershipService.LoadUserData(Email, Password);
@@ -55,7 +48,5 @@ namespace MoneySplitter.Win10.ViewModels
                 _navigationManager.NavigateToShellView(user);
             }
         }
-
-
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
@@ -12,10 +10,10 @@ namespace MoneySplitter.Services.API
 {
     public class SessionApiService
     {
-        private readonly ApiBuilderURL _builderURL;
+        private readonly ApiUrlBuilder _builderURL;
         public SessionApiService()
         {
-            _builderURL = new ApiBuilderURL();
+            _builderURL = new ApiUrlBuilder();
         }
         public async Task<UserModel> SignIn(string email, string password)
         {
@@ -39,8 +37,8 @@ namespace MoneySplitter.Services.API
                     return null;
                 }
 
-                 var jsonLogin = await responce.Content.ReadAsStringAsync();
-                 result = JsonConvert.DeserializeObject<UserModel>(jsonLogin);
+                 var contentResponce = await responce.Content.ReadAsStringAsync();
+                 result = JsonConvert.DeserializeObject<UserModel>(contentResponce);
             }
 
             return result;

@@ -10,9 +10,6 @@ using Windows.UI.Xaml.Controls;
 
 namespace MoneySplitter.Win10
 {
-    /// <summary>
-    /// Provides application-specific behavior to supplement the default Application class.
-    /// </summary>
 
     public sealed partial class App
     {
@@ -21,7 +18,7 @@ namespace MoneySplitter.Win10
         public App()
         {
             InitializeComponent();
-            this.Suspending += OnSuspending;
+            Suspending += OnSuspending;
         }
 
         protected override void Configure()
