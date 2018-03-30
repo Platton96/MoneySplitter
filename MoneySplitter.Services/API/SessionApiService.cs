@@ -3,8 +3,8 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using MoneySplitter.Models;
-using MoneySplitter.Models.Session;
 using System.Net;
+using MoneySplitter.Services.DataModels;
 
 namespace MoneySplitter.Services.Api
 {

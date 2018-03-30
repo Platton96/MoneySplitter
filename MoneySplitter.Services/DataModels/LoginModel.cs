@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace MoneySplitter.Models.Session
+namespace MoneySplitter.Services.DataModels
 {
     [DataContract]
     public class LoginModel
