@@ -21,9 +21,9 @@ namespace MoneySplitter.Win10.Common
             _navigationService.GoBack();
         }
 
-        public void NavigateToShellView(UserModel user)
+        public void NavigateToShellView()
         {
-            _navigationService.NavigateToViewModel<ShellViewModel>(user);
+            _navigationService.NavigateToViewModel<ShellViewModel>();
         }
     }
 

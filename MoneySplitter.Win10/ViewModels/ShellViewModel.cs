@@ -1,28 +1,34 @@
 ﻿using Caliburn.Micro;
 using MoneySplitter.Models;
+using MoneySplitter.Infrastructure;
 
 namespace MoneySplitter.Win10.ViewModels
 {
     public class ShellViewModel : Screen
     {
-        private UserModel _user;
+        private IMembershipService _membershipService;
 
-        public UserModel User
+        private UserModel _userModel;
+
+        public UserModel UserModel
         {
-            get { return _user; }
+            get { return _userModel; }
             set
             {
-                _user = value;
-                NotifyOfPropertyChange(nameof(User));
+                _userModel = value;
+                NotifyOfPropertyChange(nameof(UserModel));
             }
         }
 
-        public UserModel Parameter { get; set; }
+        public ShellViewModel(IMembershipService membershipService)
+        {
+            _membershipService = membershipService;
+        }
 
         protected override void OnActivate()
         {
             base.OnActivate();
-            User = Parameter;
+            UserModel = _membershipService.CurrentUser;
         }
     }
 }

@@ -47,7 +47,7 @@ namespace MoneySplitter.Win10.ViewModels
 
             if (user != null)
             {
-                _navigationManager.NavigateToShellView(user);
+                _navigationManager.NavigateToShellView();
             }
         }
 
