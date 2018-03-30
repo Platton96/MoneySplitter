@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MoneySplitter.Services.API
+namespace MoneySplitter.Services.Api
 {
     public static class Defines
     {

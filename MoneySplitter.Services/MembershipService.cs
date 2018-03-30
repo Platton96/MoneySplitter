@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using MoneySplitter.Models;
-using MoneySplitter.Services.API;
+using MoneySplitter.Services.Api;
 namespace MoneySplitter.Services
 {
     public class MembershipService

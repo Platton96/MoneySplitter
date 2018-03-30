@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MoneySplitter.Services.API
+namespace MoneySplitter.Services.Api
 {
     public  class ApiUrlBuilder
     {
@@ -14,6 +14,5 @@ namespace MoneySplitter.Services.API
                 Defines.Api.Session.SIGN_IN));
         }
     }
-
 
 }

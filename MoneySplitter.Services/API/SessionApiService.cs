@@ -6,7 +6,7 @@ using MoneySplitter.Models;
 using MoneySplitter.Models.Session;
 using System.Net;
 
-namespace MoneySplitter.Services.API
+namespace MoneySplitter.Services.Api
 {
     public class SessionApiService
     {
