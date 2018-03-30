@@ -10,13 +10,9 @@ namespace MoneySplitter.Win10.ViewModels
         private readonly INavigationManager _navigationManager;
         private MembershipService _membershipService;
 
-        public LoginViewModel( INavigationManager navigationManager)
-        {
-            _navigationManager = navigationManager;
-            _membershipService = new MembershipService();
-        }
-
         private string _email;
+        private string _password;
+
         public string Email
         {
             get { return _email; }
@@ -27,7 +23,6 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        private string _password;
         public string Password
         {
             get { return _password; }
@@ -36,6 +31,13 @@ namespace MoneySplitter.Win10.ViewModels
                 _password = value;
                 NotifyOfPropertyChange(nameof(Password));
             }
+        }
+
+
+        public LoginViewModel( INavigationManager navigationManager)
+        {
+            _navigationManager = navigationManager;
+            _membershipService = new MembershipService();
         }
 
         public async Task SignInAsync()
@@ -48,5 +50,6 @@ namespace MoneySplitter.Win10.ViewModels
                 _navigationManager.NavigateToShellView(user);
             }
         }
+
     }
 }

@@ -6,6 +6,7 @@ namespace MoneySplitter.Win10.ViewModels
     public class ShellViewModel : Screen
     {
         private UserModel _user;
+
         public UserModel User
         {
             get { return _user; }
