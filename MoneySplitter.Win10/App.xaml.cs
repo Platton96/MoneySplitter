@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml.Controls;
+using MoneySplitter.Win10.Dependencies;
 
 namespace MoneySplitter.Win10
 {
@@ -14,6 +15,7 @@ namespace MoneySplitter.Win10
     public sealed partial class App
     {
         private WinRTContainer _container;
+        private WinAppDependenciesModule _winAppDependenciesModule;
 
         public App()
         {
@@ -24,13 +26,12 @@ namespace MoneySplitter.Win10
         protected override void Configure()
         {
             _container = new WinRTContainer();
-
             _container.RegisterWinRTServices();
 
-            _container.PerRequest<LoginViewModel>();
-            _container.PerRequest<ShellViewModel>();
+            _winAppDependenciesModule = new WinAppDependenciesModule(_container);
 
-             _container.Singleton<INavigationManager, NavigationManager>();
+            _winAppDependenciesModule.InitializeViewModel();
+            _winAppDependenciesModule.InitializeServices();
         }
 
         protected override void PrepareViewFirst(Frame rootFrame)

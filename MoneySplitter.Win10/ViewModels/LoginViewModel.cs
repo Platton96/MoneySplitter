@@ -8,7 +8,7 @@ namespace MoneySplitter.Win10.ViewModels
     public class LoginViewModel:Screen
     {
         private readonly INavigationManager _navigationManager;
-        private MembershipService _membershipService;
+        private IMembershipService _membershipService;
 
         private string _email;
         private string _password;
@@ -34,10 +34,10 @@ namespace MoneySplitter.Win10.ViewModels
         }
 
 
-        public LoginViewModel( INavigationManager navigationManager)
+        public LoginViewModel( INavigationManager navigationManager, IMembershipService membershipService)
         {
             _navigationManager = navigationManager;
-            _membershipService = new MembershipService();
+            _membershipService = membershipService;
         }
 
         public async Task SignInAsync()

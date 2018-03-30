@@ -7,13 +7,13 @@ namespace MoneySplitter.Services
 {
     public class MembershipService : IMembershipService
     {
-        private readonly SessionApiService _sessionApiServices;
+        private readonly ISessionApiService _sessionApiServices;
 
         public UserModel CurrentUser { get; private set; }
 
-        public MembershipService()
+        public MembershipService(ISessionApiService sessionApiService)
         {
-            _sessionApiServices = new SessionApiService();
+            _sessionApiServices = sessionApiService;
         }
 
         public async Task LoadUserData(string email, string password)

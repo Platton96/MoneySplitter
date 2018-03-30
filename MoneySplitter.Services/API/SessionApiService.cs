@@ -10,11 +10,11 @@ namespace MoneySplitter.Services.Api
 {
     public class SessionApiService : ISessionApiService
     {
-        private readonly ApiUrlBuilder _builderURL;
+        private readonly IApiUrlBuilder _urlBuilder;
 
-        public SessionApiService()
+        public SessionApiService(IApiUrlBuilder urlBuilder)
         {
-            _builderURL = new ApiUrlBuilder();
+            _urlBuilder = urlBuilder;
         }
 
         public async Task<UserModel> SignInAsync(string email, string password)
@@ -25,7 +25,7 @@ namespace MoneySplitter.Services.Api
                 Password = password
             };
 
-            var signInUri = _builderURL.Authorization();
+            var signInUri = _urlBuilder.Authorization();
 
             var result = new UserModel();
 
