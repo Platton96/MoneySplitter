@@ -15,9 +15,9 @@ namespace MoneySplitter.Services
             _sessionApiServices = new SessionApiService();
         }
 
-        public async Task LoadUserData(LoginModel loginModel)
+        public async Task LoadUserData(string email, string password)
         {
-            CurrentUser = await _sessionApiServices.SignIn(loginModel);
+            CurrentUser = await _sessionApiServices.SignIn(email, password);
         }
     }
 }

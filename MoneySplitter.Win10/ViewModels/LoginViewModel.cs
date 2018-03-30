@@ -21,51 +21,39 @@ namespace MoneySplitter.Win10.ViewModels
             _membershipService = new MembershipService();
         }
 
-        private LoginModel _login;
-        public LoginModel Login
-        {
-            get { return _login; }
-            set
-            {
-                _login = value;
-                //NotifyOfPropertyChange(nameof(Login));
-                NotifyOfPropertyChange(() => Login);
-            }
-        }
-
-        private LoginModel _email;
-        public LoginModel Email
+        private string _email;
+        public string Email
         {
             get { return _email; }
             set
             {
                 _email = value;
-                //NotifyOfPropertyChange(nameof(Login));
-                NotifyOfPropertyChange(() => Email);
+                NotifyOfPropertyChange(nameof(Email));
             }
         }
 
-        private LoginModel _password;
-        public LoginModel Password
+        private string _password;
+        public string Password
         {
             get { return _password; }
             set
             {
                 _password = value;
-                //NotifyOfPropertyChange(nameof(Login));
-                NotifyOfPropertyChange(() => Password);
+                NotifyOfPropertyChange(nameof(Password));
             }
         }
 
 
 
-        public async void SignIn()
+        public async Task SignInAsync()
         {
-            await _membershipService.LoadUserData(Login);
+            await _membershipService.LoadUserData(Email, Password);
             var user = _membershipService.CurrentUser;
 
-            if(user!=null)
+            if (user != null)
+            {
                 _navigationManager.NavigateToShellView(user);
+            }
         }
 
 

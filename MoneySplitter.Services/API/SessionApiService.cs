@@ -17,8 +17,14 @@ namespace MoneySplitter.Services.API
         {
             _builderURL = new ApiBuilderURL();
         }
-        public async Task<UserModel> SignIn(LoginModel loginModel)
+        public async Task<UserModel> SignIn(string email, string password)
         {
+            var loginModel = new LoginModel
+            {
+                Email = email,
+                Password = password
+            };
+
             var signInUri = _builderURL.Authorization();
 
             var result = new UserModel();

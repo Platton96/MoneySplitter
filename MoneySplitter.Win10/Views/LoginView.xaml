@@ -15,14 +15,14 @@
                 <TextBlock Text="Email"
                            />
                 <TextBox PlaceholderText="Enter email"
-                         Text="{x:Bind ViewModel.Email, Mode=OneWay}"
+                         Text="{x:Bind ViewModel.Email, Mode=TwoWay}"
                          />
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="5">
                 <TextBlock Text="Pasword"/>
                 <PasswordBox PlaceholderText="Enter Password"
-                             Password="{x:Bind ViewModel.Password, Mode=OneWay}"/>
+                             Password="{x:Bind ViewModel.Password, Mode=TwoWay}"/>
                 
             </StackPanel>
             <Button Content="Login"
