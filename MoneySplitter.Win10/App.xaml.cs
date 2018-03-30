@@ -41,7 +41,9 @@ namespace MoneySplitter.Win10
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
             if (args.PreviousExecutionState == ApplicationExecutionState.Running)
+            {
                 return;
+            }
 
             DisplayRootView<LoginView>();
         }

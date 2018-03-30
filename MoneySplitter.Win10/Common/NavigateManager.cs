@@ -13,7 +13,7 @@ namespace MoneySplitter.Win10.Common
         public NavigationManager(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested; ;
+            SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested; 
         }
 
         private void OnBackRequested(object sender, BackRequestedEventArgs e)
