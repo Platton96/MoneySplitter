@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using MoneySplitter.Models;
 using System.Net;
 using MoneySplitter.Services.DataModels;
-
+using MoneySplitter.Infrastructure;
 namespace MoneySplitter.Services.Api
 {
-    public class SessionApiService
+    public class SessionApiService : ISessionApiService
     {
         private readonly ApiUrlBuilder _builderURL;
 
@@ -17,7 +17,7 @@ namespace MoneySplitter.Services.Api
             _builderURL = new ApiUrlBuilder();
         }
 
-        public async Task<UserModel> SignIn(string email, string password)
+        public async Task<UserModel> SignInAsync(string email, string password)
         {
             var loginModel = new LoginModel
             {

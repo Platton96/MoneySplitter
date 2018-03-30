@@ -1,8 +1,9 @@
 ﻿using System;
+using MoneySplitter.Infrastructure;
 
 namespace MoneySplitter.Services.Api
 {
-    public  class ApiUrlBuilder
+    public  class ApiUrlBuilder : IApiUrlBuilder
     {
         private const string WebApiUrl = "http://moneytransfer.azurewebsites.net";
 
