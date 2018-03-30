@@ -15,15 +15,5 @@ namespace MoneySplitter.Services.API
         }
     }
 
-    public static class Defines
-    {
-        public static class Api
-        {
-            public static class Session
-            {
-                public const string SIGN_IN = "/signin";
-                public const string SESSION = "/session";
-            }
-        }
-    }
+
 }
