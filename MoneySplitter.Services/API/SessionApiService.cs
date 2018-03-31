@@ -8,7 +8,7 @@ using MoneySplitter.Services.DataModels;
 using MoneySplitter.Infrastructure;
 namespace MoneySplitter.Services.Api
 {
-    public class SessionApiService : ISessionApiService
+    public class SessionApiService : ISessionApiService<DataUser>
     {
         private readonly IApiUrlBuilder _urlBuilder;
 
@@ -17,7 +17,7 @@ namespace MoneySplitter.Services.Api
             _urlBuilder = urlBuilder;
         }
 
-        public async Task<UserModel> SignInAsync(string email, string password)
+        public async Task<DataUser> SignInAsync(string email, string password)
         {
             var loginModel = new LoginModel
             {
@@ -27,7 +27,7 @@ namespace MoneySplitter.Services.Api
 
             var signInUri = _urlBuilder.Authorization();
 
-            var result = new UserModel();
+            var result = new DataUser();
 
             using (var httpClient = new HttpClient())
             {
@@ -40,7 +40,7 @@ namespace MoneySplitter.Services.Api
                 }
 
                  var contentResponce = await responce.Content.ReadAsStringAsync();
-                 result = JsonConvert.DeserializeObject<UserModel>(contentResponce);
+                 result = JsonConvert.DeserializeObject<DataUser>(contentResponce);
             }
 
             return result;

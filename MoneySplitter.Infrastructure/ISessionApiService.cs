@@ -3,8 +3,8 @@ using MoneySplitter.Models;
 
 namespace MoneySplitter.Infrastructure
 {
-    public interface ISessionApiService
+    public interface ISessionApiService<T> where T: class
     {
-        Task<UserModel> SignInAsync(string email, string password);
+        Task<T> SignInAsync(string email, string password);
     }
 }
