@@ -14,6 +14,14 @@ namespace MoneySplitter.Services.Api
                 Defines.Api.Session.SESSION,
                 Defines.Api.Session.SIGN_IN));
         }
+
+        public Uri Registration()
+        {
+            return new Uri(string.Concat(
+                WebApiUrl,
+                Defines.Api.Session.SESSION,
+                Defines.Api.Session.REGISTR));
+        }
     }
 
 }

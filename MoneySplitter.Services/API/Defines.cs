@@ -10,8 +10,9 @@ namespace MoneySplitter.Services.Api
         {
             public static class Session
             {
-                public const string SIGN_IN = "/signin";
                 public const string SESSION = "/session";
+                public const string SIGN_IN = "/signin";
+                public const string REGISTR = "/registr";
             }
         }
     }
