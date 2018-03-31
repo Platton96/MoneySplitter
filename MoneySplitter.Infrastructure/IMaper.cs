@@ -4,10 +4,10 @@ using System.Text;
 
 namespace MoneySplitter.Infrastructure
 {
-    public interface IQueryApiService<TResult, TBodyQuery> 
+    public interface IMaper<TResult,TParametr> 
         where TResult : class
-        where TBodyQuery : class 
+        where TParametr : class
     {
-        
+        TResult ToConvert(TParametr parametr);
     }
 }
