@@ -45,17 +45,7 @@ namespace MoneySplitter.Services.Api
                  dataUser = JsonConvert.DeserializeObject<DataUser>(contentResponce);
             }
 
-            var userModel =new UserModel
-            {
-                Id = dataUser.Id,
-                Name = dataUser.Name,
-                Surname = dataUser.Surname,
-                Email = dataUser.Email,
-                PhoneNumber = dataUser.PhoneNumber,
-                CreditCardNumber = dataUser.CreditCardNumber,
-                Ballance = dataUser.Ballance
-            };
-            return userModel;
+            return new Maper().ToConvertUserModel(dataUser);
         }
 
         //public async Task<DataUser> RegistrAsync(RegistrModel registrModel)

@@ -1,13 +1,14 @@
-﻿using System;
+﻿using MoneySplitter.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace MoneySplitter.Infrastructure
 {
-    public interface IMaper<TResult,TParametr> 
-        where TResult : class
-        where TParametr : class
+    public interface IMaper<TParametr>
     {
-        TResult ToConvert(TParametr parametr);
+        UserModel ToConvertUserModel(TParametr parametr);
+
+            
     }
 }

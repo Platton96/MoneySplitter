@@ -7,11 +7,11 @@ using System.Text;
 
 namespace MoneySplitter.Services
 {
-    public class Maper : IMaper <UserModel, DataUser> 
+    public class Maper : IMaper<DataUser>
     {
-        UserModel ToConvert(DataUser dataUser)
+        public UserModel ToConvertUserModel ( DataUser dataUser)
         {
-            var userModel = new UserModel
+            var userModel = new UserModel()
             {
                 Id = dataUser.Id,
                 Name = dataUser.Name,
@@ -24,6 +24,6 @@ namespace MoneySplitter.Services
             return userModel;
         }
 
-
+      
     }
 }
