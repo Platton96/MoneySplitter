@@ -29,7 +29,7 @@ namespace MoneySplitter.Win10.Dependencies
 
             _container.Singleton<IApiUrlBuilder, ApiUrlBuilder>();
 
-            _container.Singleton<ISessionApiService<DataUser>, SessionApiService>();
+            _container.Singleton<ISessionApiService, SessionApiService>();
             _container.Singleton<IMembershipService, MembershipService>();
         }
 

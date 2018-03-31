@@ -8,29 +8,21 @@ namespace MoneySplitter.Services
 {
     public class MembershipService : IMembershipService
     {
-        private readonly ISessionApiService<DataUser> _sessionApiServices;
+        private readonly ISessionApiService _sessionApiServices;
 
         public UserModel CurrentUser { get; private set; }
 
-        public MembershipService(ISessionApiService<DataUser> sessionApiService)
+        public MembershipService(ISessionApiService sessionApiService)
         {
             _sessionApiServices = sessionApiService;
         }
 
         public async Task LoadUserData(string email, string password)
         {
-            var dataUser = await _sessionApiServices.SignInAsync(email, password);
+            var userModel = await _sessionApiServices.SignInAsync(email, password);
 
-            CurrentUser = new UserModel
-            {
-                Id = dataUser.Id,
-                Name = dataUser.Name,
-                Surname = dataUser.Surname,
-                Email = dataUser.Email,
-                PhoneNumber = dataUser.PhoneNumber,
-                CreditCardNumber = dataUser.CreditCardNumber,
-                Ballance = dataUser.Ballance
-            };
+            CurrentUser = userModel;
+        
 
         }
     }

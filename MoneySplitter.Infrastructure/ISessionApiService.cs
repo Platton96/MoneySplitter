@@ -1,11 +1,12 @@
 ﻿using System.Threading.Tasks;
+using MoneySplitter.Models;
 using MoneySplitter.Models.Session;
 
 namespace MoneySplitter.Infrastructure
 {
-    public interface ISessionApiService<T> where T: class
+    public interface ISessionApiService
     {
-        Task<T> SignInAsync(string email, string password);
-        Task<T> RegistrAsync(RegistrModel registrModel);
+        Task<UserModel> SignInAsync(string email, string password);
+        //Task<T> RegistrAsync(RegistrModel registrModel);
     }
 }
