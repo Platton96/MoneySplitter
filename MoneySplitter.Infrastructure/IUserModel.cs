@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MoneySplitter.Infrastructure
+﻿namespace MoneySplitter.Infrastructure
 {
     public interface IUserModel
     {

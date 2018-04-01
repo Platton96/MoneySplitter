@@ -1,8 +1,6 @@
 ﻿using System.Threading.Tasks;
 using MoneySplitter.Models;
-using MoneySplitter.Services.Api;
 using MoneySplitter.Infrastructure;
-using MoneySplitter.Services.DataModels;
 using MoneySplitter.Models.Session;
 
 namespace MoneySplitter.Services

@@ -4,7 +4,6 @@ using MoneySplitter.Services.Api;
 using MoneySplitter.Infrastructure;
 using MoneySplitter.Win10.ViewModels;
 using MoneySplitter.Win10.Common;
-using MoneySplitter.Services.DataModels;
 using MoneySplitter.Services.API;
 
 namespace MoneySplitter.Win10.Dependencies
@@ -22,6 +21,7 @@ namespace MoneySplitter.Win10.Dependencies
         {
             _container.PerRequest<LoginViewModel>();
             _container.PerRequest<ShellViewModel>();
+            _container.PerRequest<RegistrViewModel>();
         }
 
         public void InitializeServices()

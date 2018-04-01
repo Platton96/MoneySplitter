@@ -1,6 +1,4 @@
-﻿using MoneySplitter.Models;
-
-namespace MoneySplitter.Infrastructure
+﻿namespace MoneySplitter.Infrastructure
 {
     public interface INavigationManager
     {

@@ -1,9 +1,5 @@
 ﻿using MoneySplitter.Infrastructure;
 using MoneySplitter.Models;
-using MoneySplitter.Services.DataModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MoneySplitter.Services
 {
