@@ -35,45 +35,17 @@ namespace MoneySplitter.Services.Api
 
             var dataUser = await _queryApiService.PostQueryAsync<DataUser, LoginModel>(loginModel, signInUri);
 
-            //using (var httpClient = new HttpClient())
-            //{
-            //    var content = new StringContent(JsonConvert.SerializeObject(loginModel), Encoding.UTF8, "application/json");
-            //    var responce = await httpClient.PostAsync(signInUri, content);
-
-            //    if (responce.StatusCode != HttpStatusCode.OK)
-            //    {
-            //        return null;
-            //    }
-
-            //     var contentResponce = await responce.Content.ReadAsStringAsync();
-            //     dataUser = JsonConvert.DeserializeObject<DataUser>(contentResponce);
-            //}
-
             return _maper.ToConvertUserModel(dataUser);
         }
 
-        //public async Task<DataUser> RegistrAsync(RegistrModel registrModel)
-        //{
-        //    var regisrUri = _urlBuilder.Registration();
+        public async Task<UserModel> RegistrAsync(RegistrModel registrModel)
+        {
+            var regisrUri = _urlBuilder.Registration();
 
-        //    var result = new DataUser();
+            var dataUser = await _queryApiService.PostQueryAsync<DataUser, RegistrModel>(registrModel, regisrUri);
 
-        //    using (var httpClient = new HttpClient())
-        //    {
-        //        var content = new StringContent(JsonConvert.SerializeObject(loginModel), Encoding.UTF8, "application/json");
-        //        var responce = await httpClient.PostAsync(signInUri, content);
-
-        //        if (responce.StatusCode != HttpStatusCode.OK)
-        //        {
-        //            return null;
-        //        }
-
-        //        var contentResponce = await responce.Content.ReadAsStringAsync();
-        //        result = JsonConvert.DeserializeObject<DataUser>(contentResponce);
-        //    }
-
-        //    return result;
-        //}
+            return _maper.ToConvertUserModel(dataUser);
+        }
 
     }
 }

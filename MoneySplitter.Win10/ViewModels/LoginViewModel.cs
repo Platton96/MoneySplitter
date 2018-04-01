@@ -42,7 +42,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public async Task SignInAsync()
         {
-            await _membershipService.LoadUserData(Email, Password);
+            await _membershipService.SingInAndLoadUserDataAsync(Email, Password);
             var user = _membershipService.CurrentUser;
 
             if (user != null)

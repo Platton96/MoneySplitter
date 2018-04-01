@@ -7,6 +7,6 @@ namespace MoneySplitter.Infrastructure
     public interface ISessionApiService
     {
         Task<UserModel> SignInAsync(string email, string password);
-        //Task<T> RegistrAsync(RegistrModel registrModel);
+        Task<UserModel> RegistrAsync(RegistrModel registrModel);
     }
 }
