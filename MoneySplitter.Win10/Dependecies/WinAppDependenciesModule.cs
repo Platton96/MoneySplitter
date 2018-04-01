@@ -5,6 +5,7 @@ using MoneySplitter.Infrastructure;
 using MoneySplitter.Win10.ViewModels;
 using MoneySplitter.Win10.Common;
 using MoneySplitter.Services.DataModels;
+using MoneySplitter.Services.API;
 
 namespace MoneySplitter.Win10.Dependencies
 {
@@ -31,6 +32,10 @@ namespace MoneySplitter.Win10.Dependencies
 
             _container.Singleton<ISessionApiService, SessionApiService>();
             _container.Singleton<IMembershipService, MembershipService>();
+
+            _container.Singleton<IQueryApiService, QueryApiService>();
+
+            _container.Singleton<IMaper, Maper>();
         }
 
     }

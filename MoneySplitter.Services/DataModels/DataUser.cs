@@ -1,12 +1,12 @@
-﻿using System;
+﻿using MoneySplitter.Infrastructure;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Text;
+
 
 namespace MoneySplitter.Services.DataModels
 {
     [DataContract]
-    public class DataUser
+    public class DataUser : IUserModel
     {
         [DataMember]
         public int Id { get; set; }

@@ -7,9 +7,10 @@ using System.Text;
 
 namespace MoneySplitter.Services
 {
-    public class Maper : IMaper<DataUser>
+    public class Maper : IMaper
     {
-        public UserModel ToConvertUserModel ( DataUser dataUser)
+        public UserModel ToConvertUserModel<TDataUser> ( TDataUser dataUser)
+            where TDataUser:IUserModel
         {
             var userModel = new UserModel()
             {
