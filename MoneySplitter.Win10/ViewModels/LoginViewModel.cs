@@ -43,12 +43,17 @@ namespace MoneySplitter.Win10.ViewModels
         public async Task SignInAsync()
         {
             await _membershipService.SingInAndLoadUserDataAsync(Email, Password);
-            var user = _membershipService.CurrentUser;
+            var userModel = _membershipService.CurrentUser;
 
-            if (user != null)
+            if (userModel != null)
             {
                 _navigationManager.NavigateToShellView();
             }
+        }
+
+        public void GoToRegistretion()
+        {
+            _navigationManager.NavigateToRegistrViewModel();
         }
 
     }

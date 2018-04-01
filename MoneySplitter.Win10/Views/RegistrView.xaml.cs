@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoneySplitter.Win10.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,17 @@ namespace MoneySplitter.Win10.Views
     /// </summary>
     public sealed partial class RegistrView : Page
     {
+        public RegistrViewModel ViewModel { get; set; }
+
         public RegistrView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+            DataContextChanged += (s, e) => { ViewModel = DataContext as RegistrViewModel; };
+        }
+
+        private async void OnRegistrButtonClick(object sender, RoutedEventArgs e)
+        {
+            await ViewModel.Registred();
         }
     }
 }

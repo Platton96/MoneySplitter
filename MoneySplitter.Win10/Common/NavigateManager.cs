@@ -25,6 +25,10 @@ namespace MoneySplitter.Win10.Common
         {
             _navigationService.NavigateToViewModel<ShellViewModel>();
         }
+        public void NavigateToRegistrViewModel()
+        {
+            _navigationService.NavigateToViewModel<RegistrViewModel>();
+        }
     }
 
 }

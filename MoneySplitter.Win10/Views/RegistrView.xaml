@@ -8,6 +8,44 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Padding="5">
 
+
+            <TextBox PlaceholderText="Enter email"
+                     Text="{x:Bind ViewModel.RegistrModel.Email, Mode=OneWay}"
+                     Header="Email"/>
+
+            <PasswordBox PlaceholderText="Enter Password"
+                         Password="{x:Bind ViewModel.RegistrModel.Password, Mode=OneWay}"
+                         Header="Password"/>
+            
+            <PasswordBox PlaceholderText="Confirm password"
+                         Password="{x:Bind ViewModel.ConfirmPassword, Mode=OneWay}"
+                         Header="Confirm password"/>
+
+            <TextBox PlaceholderText="Enter name"
+                     Text="{x:Bind ViewModel.RegistrModel.Name, Mode=OneWay}"
+                     Header="Name"/>
+
+            <TextBox PlaceholderText="Enter surname"
+                     Text="{x:Bind ViewModel.RegistrModel.Surname, Mode=OneWay}"
+                     Header="Surname"/>
+
+            <TextBox PlaceholderText="Enter credit card number"
+                     Text="{x:Bind ViewModel.RegistrModel.CreditCardNumber, Mode=OneWay}"
+                     Header="Number credit card"/>
+
+            <TextBox PlaceholderText="Enter phone number"
+                     Text="{x:Bind ViewModel.RegistrModel.PhoneNumber, Mode=OneWay}"
+                     Header="Phone number"/>
+
+
+            <Button Content="Registred"
+                    Click="OnRegistrButtonClick"
+                    Margin="5"
+                    HorizontalAlignment="Center"/>
+        </StackPanel>
     </Grid>
 </Page>

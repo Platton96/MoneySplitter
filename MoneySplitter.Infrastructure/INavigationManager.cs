@@ -3,5 +3,6 @@
     public interface INavigationManager
     {
         void NavigateToShellView();
+        void NavigateToRegistrViewModel();
     }
 }

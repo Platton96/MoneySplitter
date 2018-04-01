@@ -27,6 +27,8 @@
             </StackPanel>
             <Button Content="Login"
                     Click="OnLoginClick"/>
+            <HyperlinkButton Content="Registr"
+                             Click="OnRegistredClick"/>
         </StackPanel>
     </Grid>
 </Page>
