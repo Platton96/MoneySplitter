@@ -3,9 +3,9 @@
 namespace MoneySplitter.Models.Session
 {
     [DataContract]
-    public class RegistrModel
+    public class RegisterModel
     {
-        [DataMember]
+       [DataMember (Name ="UserName")]
         public string Name { get; set; }
 
         [DataMember]

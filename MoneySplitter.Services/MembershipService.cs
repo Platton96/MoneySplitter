@@ -24,7 +24,7 @@ namespace MoneySplitter.Services
 
         }
 
-        public async Task ReistrAndLoadUserDataAsync(RegistrModel registrModel)
+        public async Task ReistrAndLoadUserDataAsync(RegisterModel registrModel)
         {
             var userModel = await _sessionApiServices.RegistrAsync(registrModel);
 

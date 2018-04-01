@@ -14,31 +14,31 @@
 
 
             <TextBox PlaceholderText="Enter email"
-                     Text="{x:Bind ViewModel.RegistrModel.Email, Mode=OneWay}"
+                     Text="{x:Bind ViewModel.Email, Mode=TwoWay}"
                      Header="Email"/>
 
             <PasswordBox PlaceholderText="Enter Password"
-                         Password="{x:Bind ViewModel.RegistrModel.Password, Mode=OneWay}"
+                         Password="{x:Bind ViewModel.Password, Mode=TwoWay}"
                          Header="Password"/>
             
             <PasswordBox PlaceholderText="Confirm password"
-                         Password="{x:Bind ViewModel.ConfirmPassword, Mode=OneWay}"
+                         Password="{x:Bind ViewModel.ConfirmPassword, Mode=TwoWay}"
                          Header="Confirm password"/>
 
             <TextBox PlaceholderText="Enter name"
-                     Text="{x:Bind ViewModel.RegistrModel.Name, Mode=OneWay}"
+                     Text="{x:Bind ViewModel.Name, Mode=TwoWay}"
                      Header="Name"/>
 
             <TextBox PlaceholderText="Enter surname"
-                     Text="{x:Bind ViewModel.RegistrModel.Surname, Mode=OneWay}"
+                     Text="{x:Bind ViewModel.Surname, Mode=TwoWay}"
                      Header="Surname"/>
 
             <TextBox PlaceholderText="Enter credit card number"
-                     Text="{x:Bind ViewModel.RegistrModel.CreditCardNumber, Mode=OneWay}"
+                     Text="{x:Bind ViewModel.CreditCardNumber, Mode=TwoWay}"
                      Header="Number credit card"/>
 
             <TextBox PlaceholderText="Enter phone number"
-                     Text="{x:Bind ViewModel.RegistrModel.PhoneNumber, Mode=OneWay}"
+                     Text="{x:Bind ViewModel.PhoneNumber, Mode=TwoWay}"
                      Header="Phone number"/>
 
 
