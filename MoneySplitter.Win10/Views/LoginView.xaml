@@ -10,23 +10,18 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel VerticalAlignment="Center"
                     HorizontalAlignment="Center">
-            <StackPanel Orientation="Horizontal"
-                                               >
-                <TextBlock Text="Email"
-                           />
-                <TextBox PlaceholderText="Enter email"
-                         Text="{x:Bind ViewModel.Email, Mode=TwoWay}"
-                         />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal"
-                        Margin="5">
-                <TextBlock Text="Pasword"/>
-                <PasswordBox PlaceholderText="Enter Password"
-                             Password="{x:Bind ViewModel.Password, Mode=TwoWay}"/>
+            
+            <TextBox PlaceholderText="Enter email"
+                     Text="{x:Bind ViewModel.Email, Mode=TwoWay}"
+                     Header="Email"/>
+
+            <PasswordBox PlaceholderText="Enter Password"
+                             Password="{x:Bind ViewModel.Password, Mode=TwoWay}"
+                             Header="Password"/>
                 
-            </StackPanel>
             <Button Content="Login"
-                    Click="OnLoginClick"/>
+                    Click="OnLoginClick"
+                    Margin="5"/>
             <HyperlinkButton Content="Registr"
                              Click="OnRegistredClick"/>
         </StackPanel>

@@ -14,8 +14,6 @@ namespace MoneySplitter.Win10.ViewModels
         private readonly INavigationManager _navigationManager;
         private readonly IMembershipService _membershipService;
 
-        private RegisterModel _registrModel;
-
         private string _email;
         private string _password;
         private string _confirmPassword;
