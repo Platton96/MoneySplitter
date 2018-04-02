@@ -4,5 +4,6 @@
     {
         void NavigateToShellView();
         void NavigateToRegistrViewModel();
+        //void InitializeShellNavigationService(INavigationService navigationService);
     }
 }

@@ -1,12 +1,14 @@
 ﻿using Caliburn.Micro;
 using MoneySplitter.Models;
 using MoneySplitter.Infrastructure;
+using Windows.UI.Xaml.Controls;
 
 namespace MoneySplitter.Win10.ViewModels
 {
     public class ShellViewModel : Screen
     {
         private IMembershipService _membershipService;
+        private readonly INavigationManager _navigationManager;
 
         private UserModel _userModel;
 
@@ -23,6 +25,11 @@ namespace MoneySplitter.Win10.ViewModels
         public ShellViewModel(IMembershipService membershipService)
         {
             _membershipService = membershipService;
+        }
+
+        public void InitializeShellNavigationService(Frame frame)
+        {
+            
         }
 
         protected override void OnActivate()

@@ -8,26 +8,32 @@ namespace MoneySplitter.Win10.Common
 {
     public class NavigationManager : INavigationManager
     {
-        private readonly INavigationService _navigationService;
+        private readonly INavigationService _windowNavigationService;
+        private INavigationService _shellNavigationService;
 
         public NavigationManager(INavigationService navigationService)
         {
-            _navigationService = navigationService;
+            _windowNavigationService = navigationService;
             SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested; 
         }
 
         private void OnBackRequested(object sender, BackRequestedEventArgs e)
         {
-            _navigationService.GoBack();
+            _windowNavigationService.GoBack();
         }
 
         public void NavigateToShellView()
         {
-            _navigationService.NavigateToViewModel<ShellViewModel>();
+            _windowNavigationService.NavigateToViewModel<ShellViewModel>();
         }
         public void NavigateToRegistrViewModel()
         {
-            _navigationService.NavigateToViewModel<RegistrViewModel>();
+            _windowNavigationService.NavigateToViewModel<RegistrViewModel>();
+        }
+
+        public void InitializeShellNavigationService(INavigationService navigationService)
+        {
+            _shellNavigationService = navigationService;
         }
     }
 

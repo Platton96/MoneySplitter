@@ -9,5 +9,15 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock Text="{x:Bind ViewModel.UserModel.Email, Mode=OneWay}"/>
+        <SplitView>
+            <SplitView.Pane>
+                <StackPanel>
+                    <Button Content="My info"/>
+                    <Button Content="Button 2"/>
+                </StackPanel>
+            </SplitView.Pane>
+            <Frame x:Name="ShellFrame"
+                   Loaded="ShellFrame_Loaded"/>
+        </SplitView>
     </Grid>
 </Page>
