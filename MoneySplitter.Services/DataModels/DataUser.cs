@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace MoneySplitter.Services.DataModels
 {
     [DataContract]
-    public class DataUser : IUserModel
+    public class DataUser 
     {
         [DataMember]
         public int Id { get; set; }
