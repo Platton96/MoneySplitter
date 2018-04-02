@@ -1,0 +1,29 @@
+﻿<Page
+    x:Class="MoneySplitter.Win10.Views.LoginView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MoneySplitter.Win10.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+            
+            <TextBox PlaceholderText="Enter email"
+                     Text="{x:Bind ViewModel.Email, Mode=TwoWay}"
+                     Header="Email"/>
+
+            <PasswordBox PlaceholderText="Enter Password"
+                             Password="{x:Bind ViewModel.Password, Mode=TwoWay}"
+                             Header="Password"/>
+                
+            <Button Content="Login"
+                    Click="OnLoginClick"
+                    Margin="5"/>
+            <HyperlinkButton Content="Registr"
+                             Click="OnRegistredClick"/>
+        </StackPanel>
+    </Grid>
+</Page>
