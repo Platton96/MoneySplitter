@@ -22,14 +22,17 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public ShellViewModel(IMembershipService membershipService)
+        public ShellViewModel(IMembershipService membershipService, INavigationManager navigationManager)
         {
             _membershipService = membershipService;
+            _navigationManager = navigationManager;
         }
 
         public void InitializeShellNavigationService(Frame frame)
         {
-            
+            _navigationManager.InitializeShellNavigationService(new FrameAdapter(frame));
+
+            _navigationManager.NavigateShellViewModel();
         }
 
         protected override void OnActivate()

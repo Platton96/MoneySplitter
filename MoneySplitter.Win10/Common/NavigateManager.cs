@@ -14,7 +14,7 @@ namespace MoneySplitter.Win10.Common
         public NavigationManager(INavigationService navigationService)
         {
             _windowNavigationService = navigationService;
-            SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested; 
+            SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
         }
 
         private void OnBackRequested(object sender, BackRequestedEventArgs e)
@@ -34,6 +34,16 @@ namespace MoneySplitter.Win10.Common
         public void InitializeShellNavigationService(INavigationService navigationService)
         {
             _shellNavigationService = navigationService;
+        }
+
+        public void InitializeShellNavigationService(object navigationService)
+        {
+            _shellNavigationService = (INavigationService)navigationService;
+        }
+
+        public void NavigateShellViewModel()
+        {
+            _shellNavigationService.NavigateToViewModel<LoginViewModel>();
         }
     }
 

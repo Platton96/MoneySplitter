@@ -1,9 +1,12 @@
-﻿namespace MoneySplitter.Infrastructure
+﻿using Caliburn.Micro;
+
+namespace MoneySplitter.Infrastructure
 {
     public interface INavigationManager
     {
         void NavigateToShellView();
         void NavigateToRegistrViewModel();
-        //void InitializeShellNavigationService(INavigationService navigationService);
+        void InitializeShellNavigationService(object navigationService);
+        void NavigateShellViewModel();
     }
 }
