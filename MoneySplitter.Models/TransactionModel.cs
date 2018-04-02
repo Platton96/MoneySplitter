@@ -1,7 +1,8 @@
 ﻿using System;
-
-namespace MoneySplitter.Models.Entities
+using System.Runtime.Serialization;
+namespace MoneySplitter.Models
 {
+    [DataContract]
     public class TransactionModel
     {
         public int Id { get; set; }
