@@ -33,7 +33,6 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-
         public LoginViewModel( INavigationManager navigationManager, IMembershipService membershipService)
         {
             _navigationManager = navigationManager;
@@ -55,6 +54,5 @@ namespace MoneySplitter.Win10.ViewModels
         {
             _navigationManager.NavigateToRegistrViewModel();
         }
-
     }
 }

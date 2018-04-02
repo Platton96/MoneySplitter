@@ -1,12 +1,9 @@
-﻿using System.Text;
-using System.Net.Http;
-using Newtonsoft.Json;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MoneySplitter.Models.Session;
-using System.Net;
 using MoneySplitter.Services.DataModels;
 using MoneySplitter.Infrastructure;
 using MoneySplitter.Models;
+using MoneySplitter.Services.Inerfaces;
 
 namespace MoneySplitter.Services.Api
 {
@@ -35,17 +32,18 @@ namespace MoneySplitter.Services.Api
 
             var dataUser = await _queryApiService.PostQueryAsync<DataUser, LoginModel>(loginModel, signInUri);
 
-            return _maper.ToConvertUserModel(dataUser);
+            return _maper.DataUserToConvertUserModel(dataUser);
         }
 
         public async Task<UserModel> RegistrAsync(RegisterModel registrModel)
         {
             var regisrUri = _urlBuilder.Registration();
 
-            var dataUser = await _queryApiService.PostQueryAsync<DataUser, RegisterModel>(registrModel, regisrUri);
+            var dataRegisterUser = _maper.RegisterModelToConverDataRegisterModel(registrModel);
 
-            return _maper.ToConvertUserModel(dataUser);
+            var dataUser = await _queryApiService.PostQueryAsync<DataUser, DataRegisterUser>(dataRegisterUser, regisrUri);
+
+            return _maper.DataUserToConvertUserModel(dataUser);
         }
-
     }
 }

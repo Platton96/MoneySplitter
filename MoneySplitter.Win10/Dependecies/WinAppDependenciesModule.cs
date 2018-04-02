@@ -5,6 +5,7 @@ using MoneySplitter.Infrastructure;
 using MoneySplitter.Win10.ViewModels;
 using MoneySplitter.Win10.Common;
 using MoneySplitter.Services.API;
+using MoneySplitter.Services.Inerfaces;
 
 namespace MoneySplitter.Win10.Dependencies
 {

@@ -1,15 +1,10 @@
-﻿using MoneySplitter.Infrastructure;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace MoneySplitter.Services.DataModels
 {
     [DataContract]
-    public class DataUser : IUserModel
+    public class DataRegisterUser
     {
-        [DataMember]
-        public int Id { get; set; }
-
         [DataMember(Name = "UserName")]
         public string Name { get; set; }
 
@@ -20,17 +15,13 @@ namespace MoneySplitter.Services.DataModels
         public string Email { get; set; }
 
         [DataMember]
-        public string Password { get; set; }
-
-        [DataMember]
         public int PhoneNumber { get; set; }
 
         [DataMember]
         public int CreditCardNumber { get; set; }
 
         [DataMember]
-        public double Ballance { get; set; }
-
-        public IEnumerable<DataUser> Friends { get; set; }
+        public string Password { get; set; }
     }
+
 }

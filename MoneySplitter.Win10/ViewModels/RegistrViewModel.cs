@@ -10,13 +10,7 @@ namespace MoneySplitter.Win10.ViewModels
         private readonly INavigationManager _navigationManager;
         private readonly IMembershipService _membershipService;
 
-        private string _email;
-        private string _password;
         private string _confirmPassword;
-        private string _name;
-        private string _surname;
-        private int _phoneNumber;
-        private int _creditCardNumber;
         private RegisterModel _registerModel;
 
         public RegisterModel RegisterModel
@@ -26,26 +20,6 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 _registerModel = value;
                 NotifyOfPropertyChange(nameof(RegisterModel));
-            }
-        }
-
-        public string Email
-        {
-            get { return _email; }
-            set
-            {
-                _email = value;
-                NotifyOfPropertyChange(nameof(Email));
-            }
-        }
-
-        public string Password
-        {
-            get { return _password; }
-            set
-            {
-                _password = value;
-                NotifyOfPropertyChange(nameof(Password));
             }
         }
 
@@ -59,46 +33,6 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public string Name
-        {
-            get { return _name; }
-            set
-            {
-                _name = value;
-                NotifyOfPropertyChange(nameof(Name));
-            }
-        }
-
-        public string Surname
-        {
-            get { return _surname; }
-            set
-            {
-                _surname = value;
-                NotifyOfPropertyChange(nameof(Surname));
-            }
-        }
-
-        public int PhoneNumber
-        {
-            get { return _phoneNumber; }
-            set
-            {
-                _phoneNumber = value;
-                NotifyOfPropertyChange(nameof(PhoneNumber));
-            }
-        }
-
-        public int CreditCardNumber
-        {
-            get { return _creditCardNumber; }
-            set
-            {
-                _creditCardNumber = value;
-                NotifyOfPropertyChange(nameof(CreditCardNumber));
-            }
-        }
-
         public RegistrViewModel(INavigationManager navigationManager, IMembershipService membershipService)
         {
             _membershipService = membershipService;
@@ -109,24 +43,14 @@ namespace MoneySplitter.Win10.ViewModels
 
         public async Task Registred()
         {
-            if (Password != ConfirmPassword)
+            if (RegisterModel.Password != ConfirmPassword)
             {
                 //Passwor!=confirmPassword
                 return;
             }
             else
             {
-                var registerModel = new RegisterModel
-                {
-                    Email = this.Email,
-                    Name = this.Name,
-                    Password = this.Password,
-                    Surname = this.Surname,
-                    PhoneNumber = this.PhoneNumber,
-                    CreditCardNumber = this.CreditCardNumber
-
-                };
-                await _membershipService.ReistrAndLoadUserDataAsync(registerModel);
+                await _membershipService.ReistrAndLoadUserDataAsync(RegisterModel);
 
                 var userModel = _membershipService.CurrentUser;
 

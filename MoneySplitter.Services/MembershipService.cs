@@ -21,7 +21,6 @@ namespace MoneySplitter.Services
             var userModel = await _sessionApiServices.SignInAsync(email, password);
 
             CurrentUser = userModel;
-
         }
 
         public async Task ReistrAndLoadUserDataAsync(RegisterModel registrModel)
