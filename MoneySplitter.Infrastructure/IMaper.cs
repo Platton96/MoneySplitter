@@ -1,6 +1,5 @@
 ﻿using MoneySplitter.Models;
 
-
 namespace MoneySplitter.Infrastructure
 {
     public interface IMapper

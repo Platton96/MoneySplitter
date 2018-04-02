@@ -1,10 +1,6 @@
 ﻿using Caliburn.Micro;
 using MoneySplitter.Infrastructure;
 using MoneySplitter.Models.Session;
-using System; 
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MoneySplitter.Win10.ViewModels
@@ -22,14 +18,6 @@ namespace MoneySplitter.Win10.ViewModels
         private int _phoneNumber;
         private int _creditCardNumber;
         private RegisterModel _registerModel;
-
-        public RegistrViewModel(INavigationManager navigationManager, IMembershipService membershipService)
-        {
-            _membershipService = membershipService;
-            _navigationManager = navigationManager;
-
-            RegisterModel = new RegisterModel();
-        }
 
         public RegisterModel RegisterModel
         {
@@ -111,9 +99,13 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
+        public RegistrViewModel(INavigationManager navigationManager, IMembershipService membershipService)
+        {
+            _membershipService = membershipService;
+            _navigationManager = navigationManager;
 
-
-
+            RegisterModel = new RegisterModel();
+        }
 
         public async Task Registred()
         {
