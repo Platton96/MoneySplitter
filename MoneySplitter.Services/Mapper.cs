@@ -3,7 +3,7 @@ using MoneySplitter.Models;
 
 namespace MoneySplitter.Services
 {
-    public class Maper : IMaper
+    public class Mapper : IMapper
     {
         public UserModel ToConvertUserModel<TDataUser> ( TDataUser dataUser)
             where TDataUser:IUserModel

@@ -3,7 +3,7 @@
 
 namespace MoneySplitter.Infrastructure
 {
-    public interface IMaper
+    public interface IMapper
     {
         UserModel ToConvertUserModel<TDataUser> (TDataUser paramtaetr) where TDataUser : IUserModel;
     }

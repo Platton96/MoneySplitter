@@ -35,7 +35,7 @@ namespace MoneySplitter.Win10.Dependencies
 
             _container.Singleton<IQueryApiService, QueryApiService>();
 
-            _container.Singleton<IMaper, Maper>();
+            _container.Singleton<IMapper, Mapper>();
         }
 
     }

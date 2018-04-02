@@ -21,11 +21,24 @@ namespace MoneySplitter.Win10.ViewModels
         private string _surname;
         private int _phoneNumber;
         private int _creditCardNumber;
+        private RegisterModel _registerModel;
 
         public RegistrViewModel(INavigationManager navigationManager, IMembershipService membershipService)
         {
             _membershipService = membershipService;
             _navigationManager = navigationManager;
+
+            RegisterModel = new RegisterModel();
+        }
+
+        public RegisterModel RegisterModel
+        {
+            get { return _registerModel; }
+            set
+            {
+                _registerModel = value;
+                NotifyOfPropertyChange(nameof(RegisterModel));
+            }
         }
 
         public string Email
