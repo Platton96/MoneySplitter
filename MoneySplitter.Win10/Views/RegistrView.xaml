@@ -12,7 +12,6 @@
                     HorizontalAlignment="Center"
                     Padding="5">
 
-
             <TextBox PlaceholderText="Enter email"
                      Text="{x:Bind ViewModel.RegisterModel.Email, Mode=TwoWay}"
                      Header="Email"/>

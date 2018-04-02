@@ -18,7 +18,7 @@ namespace MoneySplitter.Services.Api
             return new Uri(string.Concat(
                 Defines.Api.WEB_API_URL,
                 Defines.Api.Session.SESSION,
-                Defines.Api.Session.REGISTR));
+                Defines.Api.Session.REGISTER));
         }
     }
 
