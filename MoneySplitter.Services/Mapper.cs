@@ -22,7 +22,7 @@ namespace MoneySplitter.Services
             };
             return userModel;
         }
-        public DataRegisterUser ConvertRegisterModelToDataRegisteUser( RegisterModel registerModel)
+        public DataRegisterUser ConvertRegisterModelToDataRegisterUser( RegisterModel registerModel)
         {
             var dataRegisterUser = new DataRegisterUser()
             {

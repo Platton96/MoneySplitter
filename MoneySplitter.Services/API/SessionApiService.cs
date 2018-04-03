@@ -39,7 +39,7 @@ namespace MoneySplitter.Services.Api
         {
             var regisrUri = _urlBuilder.Registration();
 
-            var dataRegisterUser = _maper.ConvertRegisterModelToDataRegisteUser(registrModel);
+            var dataRegisterUser = _maper.ConvertRegisterModelToDataRegisterUser(registrModel);
 
             var dataUser = await _queryApiService.PostQueryAsync<DataUser, DataRegisterUser>(dataRegisterUser, regisrUri);
 
