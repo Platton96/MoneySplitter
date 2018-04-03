@@ -6,12 +6,12 @@ namespace MoneySplitter.Win10.Views
 {
     public sealed partial class RegistrView : Page
     {
-        public RegistrViewModel ViewModel { get; set; }
+        public RegisterViewModel ViewModel { get; set; }
 
         public RegistrView()
         {
             InitializeComponent();
-            DataContextChanged += (s, e) => { ViewModel = DataContext as RegistrViewModel; };
+            DataContextChanged += (s, e) => { ViewModel = DataContext as RegisterViewModel; };
         }
 
         private async void OnRegistrButtonClick(object sender, RoutedEventArgs e)
