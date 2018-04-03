@@ -14,9 +14,14 @@ namespace MoneySplitter.Win10.Views
             DataContextChanged += (s, e) => { ViewModel = DataContext as ShellViewModel; };
         }
 
-        //private void ShellFrame_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        //{
-        //    ViewModel.InitializeShellNavigationService(ShellFrame);
-        //}
+        private void OnMenuItemClick(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        {
+
+        }
+
+        private void ShellFrame_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            ViewModel.InitializeShellNavigationService(ContentFrame);
+        }
     }
 }

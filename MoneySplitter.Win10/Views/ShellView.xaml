@@ -7,7 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <NavigationView x:Name="NavView"
+    <NavigationView x:Name="NavView" 
+                    ItemInvoked="OnMenuItemClick"
+                   
 
                     >
 
@@ -57,7 +59,9 @@
                              Margin="12,0"/>
         </NavigationView.PaneFooter>
 
-        <Frame x:Name="ContentFrame" Margin="24">
+        <Frame x:Name="ContentFrame" Margin="24"
+               Loaded="ShellFrame_Loaded">
+            
             <Frame.ContentTransitions>
                 <TransitionCollection>
                     <NavigationThemeTransition/>

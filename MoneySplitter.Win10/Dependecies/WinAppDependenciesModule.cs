@@ -23,6 +23,7 @@ namespace MoneySplitter.Win10.Dependencies
             _container.PerRequest<LoginViewModel>();
             _container.PerRequest<ShellViewModel>();
             _container.PerRequest<RegistrViewModel>();
+            _container.PerRequest<HelloWorldViewModel>();
         }
 
         public void InitializeServices()
