@@ -1,4 +1,4 @@
-﻿using Caliburn.Micro;
+﻿using System;
 
 namespace MoneySplitter.Infrastructure
 {
@@ -7,6 +7,8 @@ namespace MoneySplitter.Infrastructure
         void NavigateToShellView();
         void NavigateToRegistrViewModel();
         void InitializeShellNavigationService(object navigationService);
-        void NavigateShellViewModel();
+        void NavigateToShellViewModel();
+        void NavigateToFriendsViewModelFrame();
+        void NavigateToShellViewModel(Type viewModelType);
     }
 }

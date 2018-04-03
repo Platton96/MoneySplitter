@@ -2,48 +2,59 @@
 using MoneySplitter.Infrastructure;
 using MoneySplitter.Models;
 using MoneySplitter.Win10.ViewModels;
+using System;
 using Windows.UI.Core;
 
 namespace MoneySplitter.Win10.Common
 {
     public class NavigationManager : INavigationManager
     {
-        private readonly INavigationService _windowNavigationService;
-        private INavigationService _shellNavigationService;
+        public INavigationService WindowNavigationService { get; private set; }
+        public INavigationService ShellNavigationService { get; private set; }
 
         public NavigationManager(INavigationService navigationService)
         {
-            _windowNavigationService = navigationService;
+            WindowNavigationService = navigationService;
             SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
         }
 
         private void OnBackRequested(object sender, BackRequestedEventArgs e)
         {
-            _windowNavigationService.GoBack();
+            WindowNavigationService.GoBack();
         }
 
         public void NavigateToShellView()
         {
-            _windowNavigationService.NavigateToViewModel<ShellViewModel>();
+            WindowNavigationService.NavigateToViewModel<ShellViewModel>();
         }
         public void NavigateToRegistrViewModel()
         {
-            _windowNavigationService.NavigateToViewModel<RegistrViewModel>();
+            WindowNavigationService.NavigateToViewModel<RegistrViewModel>();
         }
 
         public void InitializeShellNavigationService(INavigationService navigationService)
         {
-            _shellNavigationService = navigationService;
+            ShellNavigationService = navigationService;
         }
 
         public void InitializeShellNavigationService(object navigationService)
         {
-            _shellNavigationService = (INavigationService)navigationService;
+            ShellNavigationService = (INavigationService)navigationService;
         }
 
-        public void NavigateShellViewModel()
+        public void NavigateToShellViewModel()
         {
-            _shellNavigationService.NavigateToViewModel<HelloWorldViewModel>();
+            ShellNavigationService.NavigateToViewModel<HelloWorldViewModel>();
+        }
+
+        public void NavigateToFriendsViewModelFrame()
+        {
+            ShellNavigationService.NavigateToViewModel<FriendsViewModel>();
+        }
+
+        public void NavigateToShellViewModel(Type viewModelType)
+        {
+            ShellNavigationService.NavigateToViewModel(viewModelType);
         }
     }
 

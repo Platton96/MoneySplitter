@@ -2,7 +2,7 @@
 
 namespace MoneySplitter.Win10.ViewModels
 {
-    public class HelloWorldViewModel : Screen
+    public class FriendsViewModel : Screen
     {
     }
 }

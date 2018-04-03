@@ -2,9 +2,9 @@
 
 namespace MoneySplitter.Win10.Views
 {
-    public sealed partial class HelloWorldView : Page
+    public sealed partial class FriendsView : Page
     {
-        public HelloWorldView()
+        public FriendsView()
         {
             InitializeComponent();
         }

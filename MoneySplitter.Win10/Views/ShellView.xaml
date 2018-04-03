@@ -8,10 +8,7 @@
     mc:Ignorable="d">
 
     <NavigationView x:Name="NavView" 
-                    ItemInvoked="OnMenuItemClick"
-                   
-
-                    >
+                    ItemInvoked="OnMenuItemClick">
 
         <NavigationView.MenuItems>
             <NavigationViewItem x:Uid="HomeNavItem" Content="Home" Tag="home">
@@ -20,10 +17,9 @@
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
             <NavigationViewItemSeparator/>
-            <NavigationViewItemHeader Content="Main pages"/>
-            <NavigationViewItem x:Uid="AppsNavItem" Icon="AllApps" Content="Apps" Tag="apps"/>
-            <NavigationViewItem x:Uid="GamesNavItem" Icon="Video" Content="Games" Tag="games"/>
-            <NavigationViewItem x:Uid="MusicNavItem" Icon="Audio" Content="Music" Tag="music"/>
+            <NavigationViewItem x:Uid="PeopleNavItem" Icon="People" Content="Friends" Tag="friends"/>
+            <NavigationViewItem x:Uid="Page2NavItem" Icon="Page2" Content="Transactions" Tag="transactions"/>
+
         </NavigationView.MenuItems>
 
         <NavigationView.AutoSuggestBox>
@@ -41,23 +37,10 @@
                            FontSize="28"
                            VerticalAlignment="Center"
                            Text="Welcome"/>
-                    <CommandBar Grid.Column="1"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Top"
-                            DefaultLabelPosition="Right"
-                            Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
-                        <AppBarButton Label="Refresh" Icon="Refresh"/>
-                        <AppBarButton Label="Import" Icon="Import"/>
-                    </CommandBar>
                 </Grid>
             </DataTemplate>
         </NavigationView.HeaderTemplate>
 
-        <NavigationView.PaneFooter>
-            <HyperlinkButton x:Name="MoreInfoBtn"
-                             Content="More info"
-                             Margin="12,0"/>
-        </NavigationView.PaneFooter>
 
         <Frame x:Name="ContentFrame" Margin="24"
                Loaded="ShellFrame_Loaded">
