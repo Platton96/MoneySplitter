@@ -16,7 +16,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         private IDictionary<string, Type> _mainMenuPages = new Dictionary<string, Type>()
         {
-            {"Friends",  typeof(FriendsViewModel)},
+            {"Friends",  typeof(FriendsViewModel)},//пификшу когда c ресурсами буду работать
             {"Home", typeof(HelloWorldViewModel) }
         };
 

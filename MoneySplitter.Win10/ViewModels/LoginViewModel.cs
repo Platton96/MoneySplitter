@@ -9,7 +9,7 @@ namespace MoneySplitter.Win10.ViewModels
         private readonly INavigationManager _navigationManager;
         private IMembershipService _membershipService;
 
-        private string _email="q@mail.ru";
+        private string _email="q@mail.ru"; //для входа, потом убиру
         private string _password="123";
 
         public string Email

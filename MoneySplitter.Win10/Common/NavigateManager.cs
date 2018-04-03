@@ -1,6 +1,5 @@
 ﻿using Caliburn.Micro;
 using MoneySplitter.Infrastructure;
-using MoneySplitter.Models;
 using MoneySplitter.Win10.ViewModels;
 using System;
 using Windows.UI.Core;
