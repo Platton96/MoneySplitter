@@ -11,6 +11,12 @@
                 public const string SIGN_IN = "/signin";
                 public const string REGISTER = "/register";
             }
+            public static class Users
+            {
+                public const string USERS = "/users";
+                public const string SEARCH = "/search";
+                public const string SEARCH_PARAMETR = "?query=";
+            }
         }
     }
 }

@@ -30,7 +30,7 @@ namespace MoneySplitter.Services.Api
 
             var signInUri = _urlBuilder.Authorization();
 
-            var dataUser = await _queryApiService.PostQueryAsync<DataUser, LoginModel>(loginModel, signInUri);
+            var dataUser = await _queryApiService.PostAsync<DataUser, LoginModel>(loginModel, signInUri);
 
             return _maper.ConvertDataUserToUserModel(dataUser);
         }
@@ -41,7 +41,7 @@ namespace MoneySplitter.Services.Api
 
             var dataRegisterUser = _maper.ConvertRegisterModelToDataRegisterUser(registrModel);
 
-            var dataUser = await _queryApiService.PostQueryAsync<DataUser, DataRegisterUser>(dataRegisterUser, regisrUri);
+            var dataUser = await _queryApiService.PostAsync<DataUser, DataRegisterUser>(dataRegisterUser, regisrUri);
 
             return _maper.ConvertDataUserToUserModel(dataUser);
         }
