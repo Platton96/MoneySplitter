@@ -23,7 +23,9 @@
         </NavigationView.MenuItems>
 
         <NavigationView.AutoSuggestBox>
-            <AutoSuggestBox x:Name="ASB" QueryIcon="Find"/>
+            <AutoSuggestBox x:Name="ASB" QueryIcon="Find"
+                            Text="{x:Bind ViewModel.SearchQuery, Mode=TwoWay}"
+                            DoubleTapped="ASB_DoubleTapped"/>
         </NavigationView.AutoSuggestBox>
 
         <NavigationView.HeaderTemplate>

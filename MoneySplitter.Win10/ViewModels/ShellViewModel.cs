@@ -14,9 +14,11 @@ namespace MoneySplitter.Win10.ViewModels
 
         private UserModel _userModel;
 
+        private string _searchQuery;
+
         private IDictionary<string, Type> _mainMenuPages = new Dictionary<string, Type>()
         {
-            {"Friends",  typeof(FriendsViewModel)},//пификшу когда c ресурсами буду работать
+            {"Friends",  typeof(FriendsViewModel)},
             {"Home", typeof(HelloWorldViewModel) }
         };
 
@@ -27,6 +29,16 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 _userModel = value;
                 NotifyOfPropertyChange(nameof(UserModel));
+            }
+        }
+
+        public string SearchQuery
+        {
+            get { return _searchQuery; }
+            set
+            {
+                _searchQuery = value;
+                NotifyOfPropertyChange(nameof(SearchQuery));
             }
         }
 

@@ -10,7 +10,7 @@ namespace MoneySplitter.Win10.ViewModels
         private IMembershipService _membershipService;
 
         private const string DEFAULT_USER_LOGIN = "q@mail.ru";
-        private const string DEFAULT_USER_PASSWORD = "q@mail.ru";
+        private const string DEFAULT_USER_PASSWORD = "123";
 
         private string _email = DEFAULT_USER_LOGIN; 
         private string _password = DEFAULT_USER_PASSWORD;
