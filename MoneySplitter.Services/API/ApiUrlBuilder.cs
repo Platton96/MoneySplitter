@@ -21,7 +21,7 @@ namespace MoneySplitter.Services.Api
                 Defines.Api.Session.REGISTER));
         }
 
-        public Uri SearchUser(string query)
+        public Uri SearchUsers(string query)
         {
             return new Uri(string.Concat(
                 Defines.Api.WEB_API_URL,

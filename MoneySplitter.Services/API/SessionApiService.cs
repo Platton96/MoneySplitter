@@ -4,6 +4,9 @@ using MoneySplitter.Services.DataModels;
 using MoneySplitter.Infrastructure;
 using MoneySplitter.Models;
 using MoneySplitter.Services.Inerfaces;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MoneySplitter.Services.Api
 {
@@ -44,6 +47,16 @@ namespace MoneySplitter.Services.Api
             var dataUser = await _queryApiService.PostAsync<DataUser, DataRegisterUser>(dataRegisterUser, regisrUri);
 
             return _maper.ConvertDataUserToUserModel(dataUser);
+        }
+
+        public async Task<IEnumerable<UserModel>> SearchUsersAsync(string query)
+        {
+            var searchUsersUri = _urlBuilder.SearchUsers(query);
+
+            var dataUsers=await _queryApiService.GetAsync<IEnumerable<DataUser>>(searchUsersUri);
+
+            return dataUsers.Select(x => _maper.ConvertDataUserToUserModel(x));
+
         }
     }
 }
