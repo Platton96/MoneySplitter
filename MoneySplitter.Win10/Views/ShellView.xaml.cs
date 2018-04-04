@@ -1,6 +1,7 @@
 ﻿using MoneySplitter.Win10.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 
 namespace MoneySplitter.Win10.Views
 {
@@ -22,6 +23,11 @@ namespace MoneySplitter.Win10.Views
         private void OnShellFrameLoaded(object sender, RoutedEventArgs e)
         {
             ViewModel.InitializeShellNavigationService(ContentFrame);
+        }
+
+        private void ASB_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+
         }
     }
 }
