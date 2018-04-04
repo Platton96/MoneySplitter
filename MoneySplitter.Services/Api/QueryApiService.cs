@@ -10,7 +10,7 @@ namespace MoneySplitter.Services.API
 {
     public class QueryApiService : IQueryApiService
     {
-        public async Task<TResultQuery> PostQueryAsync<TResultQuery, TBodyQuery>(TBodyQuery bodyQuery, Uri uri)
+        public async Task<TResultQuery> PostAsync<TResultQuery, TBodyQuery>(TBodyQuery bodyQuery, Uri uri)
             where TResultQuery : class
             where TBodyQuery : class
         {
@@ -27,6 +27,19 @@ namespace MoneySplitter.Services.API
 
                 var contentResponce = await responce.Content.ReadAsStringAsync();
                 resultQuery = JsonConvert.DeserializeObject<TResultQuery>(contentResponce);
+            }
+
+            return resultQuery;
+        }
+
+        public async Task<TResultQuery> GetAsync<TResultQuery>(Uri uri)
+            where TResultQuery : class
+        {
+            TResultQuery resultQuery;
+            using (var httpClient = new HttpClient())
+            {
+                var responce = await httpClient.GetStringAsync(uri);
+                resultQuery = JsonConvert.DeserializeObject<TResultQuery>(responce);
             }
 
             return resultQuery;
