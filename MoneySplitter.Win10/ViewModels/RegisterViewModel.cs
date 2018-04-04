@@ -41,7 +41,7 @@ namespace MoneySplitter.Win10.ViewModels
             RegisterModel = new RegisterModel();
         }
 
-        public async Task Registred()
+        public async Task Register()
         {
             if (RegisterModel.Password != ConfirmPassword)
             {

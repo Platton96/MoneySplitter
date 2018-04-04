@@ -19,7 +19,7 @@ namespace MoneySplitter.Win10.Views
             ViewModel.NavigateToClikedItemMenu((string)args.InvokedItem);
         }
 
-        private void ShellFrame_Loaded(object sender, RoutedEventArgs e)
+        private void OnShellFrameLoaded(object sender, RoutedEventArgs e)
         {
             ViewModel.InitializeShellNavigationService(ContentFrame);
         }

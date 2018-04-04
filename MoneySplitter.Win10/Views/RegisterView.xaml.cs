@@ -16,7 +16,7 @@ namespace MoneySplitter.Win10.Views
 
         private async void OnRegistrButtonClick(object sender, RoutedEventArgs e)
         {
-            await ViewModel.Registred();
+            await ViewModel.Register();
         }
     }
 }

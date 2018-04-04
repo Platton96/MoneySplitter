@@ -8,7 +8,7 @@ namespace MoneySplitter.Infrastructure
         void NavigateToRegistrViewModel();
         void InitializeShellNavigationService(object navigationService);
         void NavigateToShellViewModel();
-        void NavigateToFriendsViewModelFrame();
+        void NavigateToFriends();
         void NavigateToShellViewModel(Type viewModelType);
     }
 }

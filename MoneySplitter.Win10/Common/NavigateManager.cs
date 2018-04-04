@@ -46,7 +46,7 @@ namespace MoneySplitter.Win10.Common
             ShellNavigationService.NavigateToViewModel<HelloWorldViewModel>();
         }
 
-        public void NavigateToFriendsViewModelFrame()
+        public void NavigateToFriends()
         {
             ShellNavigationService.NavigateToViewModel<FriendsViewModel>();
         }

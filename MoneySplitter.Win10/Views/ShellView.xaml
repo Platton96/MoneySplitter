@@ -43,7 +43,7 @@
 
 
         <Frame x:Name="ContentFrame" Margin="24"
-               Loaded="ShellFrame_Loaded">
+               Loaded="OnShellFrameLoaded">
             
             <Frame.ContentTransitions>
                 <TransitionCollection>
