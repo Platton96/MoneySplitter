@@ -1,6 +1,5 @@
 ﻿using Caliburn.Micro;
 using MoneySplitter.Infrastructure;
-using MoneySplitter.Services;
 using System.Threading.Tasks;
 
 namespace MoneySplitter.Win10.ViewModels
@@ -10,8 +9,11 @@ namespace MoneySplitter.Win10.ViewModels
         private readonly INavigationManager _navigationManager;
         private IMembershipService _membershipService;
 
-        private string _email;
-        private string _password;
+        private const string DEFAULT_USER_LOGIN = "q@mail.ru";
+        private const string DEFAULT_USER_PASSWORD = "q@mail.ru";
+
+        private string _email = DEFAULT_USER_LOGIN; 
+        private string _password = DEFAULT_USER_PASSWORD;
 
         public string Email
         {

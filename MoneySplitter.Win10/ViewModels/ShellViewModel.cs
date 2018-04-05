@@ -2,6 +2,8 @@
 using MoneySplitter.Models;
 using MoneySplitter.Infrastructure;
 using Windows.UI.Xaml.Controls;
+using System.Collections.Generic;
+using System;
 
 namespace MoneySplitter.Win10.ViewModels
 {
@@ -11,6 +13,12 @@ namespace MoneySplitter.Win10.ViewModels
         private readonly INavigationManager _navigationManager;
 
         private UserModel _userModel;
+
+        private IDictionary<string, Type> _mainMenuPages = new Dictionary<string, Type>()
+        {
+            {"Friends",  typeof(FriendsViewModel)},//пификшу когда c ресурсами буду работать
+            {"Home", typeof(HelloWorldViewModel) }
+        };
 
         public UserModel UserModel
         {
@@ -22,14 +30,22 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public ShellViewModel(IMembershipService membershipService)
+        public ShellViewModel(IMembershipService membershipService, INavigationManager navigationManager)
         {
             _membershipService = membershipService;
+            _navigationManager = navigationManager;
         }
 
         public void InitializeShellNavigationService(Frame frame)
         {
-            
+            _navigationManager.InitializeShellNavigationService(new FrameAdapter(frame));
+
+            _navigationManager.NavigateToShellViewModel();
+        }
+
+        public void NavigateToClikedItemMenu(string value)
+        {
+            _navigationManager.NavigateToShellViewModel(_mainMenuPages[value]);
         }
 
         protected override void OnActivate()
@@ -38,4 +54,5 @@ namespace MoneySplitter.Win10.ViewModels
             UserModel = _membershipService.CurrentUser;
         }
     }
+
 }

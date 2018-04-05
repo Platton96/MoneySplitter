@@ -1,9 +1,14 @@
-﻿namespace MoneySplitter.Infrastructure
+﻿using System;
+
+namespace MoneySplitter.Infrastructure
 {
     public interface INavigationManager
     {
         void NavigateToShellView();
         void NavigateToRegistrViewModel();
-        //void InitializeShellNavigationService(INavigationService navigationService);
+        void InitializeShellNavigationService(object navigationService);
+        void NavigateToShellViewModel();
+        void NavigateToFriends();
+        void NavigateToShellViewModel(Type viewModelType);
     }
 }

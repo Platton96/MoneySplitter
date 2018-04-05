@@ -9,7 +9,7 @@
             {
                 public const string SESSION = "/session";
                 public const string SIGN_IN = "/signin";
-                public const string REGISTR = "/register";
+                public const string REGISTER = "/register";
             }
         }
     }

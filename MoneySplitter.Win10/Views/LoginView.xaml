@@ -12,7 +12,7 @@
                     HorizontalAlignment="Center">
             
             <TextBox PlaceholderText="Enter email"
-                     Text="{x:Bind ViewModel.Email, Mode=TwoWay}"
+                     Text="{x:Bind ViewModel.Email, Mode=TwoWay }"
                      Header="Email"/>
 
             <PasswordBox PlaceholderText="Enter Password"

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MoneySplitter.Win10.ViewModels
 {
-    public  class RegistrViewModel : Screen
+    public  class RegisterViewModel : Screen
     {
         private readonly INavigationManager _navigationManager;
         private readonly IMembershipService _membershipService;
@@ -33,7 +33,7 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public RegistrViewModel(INavigationManager navigationManager, IMembershipService membershipService)
+        public RegisterViewModel(INavigationManager navigationManager, IMembershipService membershipService)
         {
             _membershipService = membershipService;
             _navigationManager = navigationManager;
@@ -41,7 +41,7 @@ namespace MoneySplitter.Win10.ViewModels
             RegisterModel = new RegisterModel();
         }
 
-        public async Task Registred()
+        public async Task Register()
         {
             if (RegisterModel.Password != ConfirmPassword)
             {

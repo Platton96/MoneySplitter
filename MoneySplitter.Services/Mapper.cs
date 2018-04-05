@@ -8,7 +8,7 @@ namespace MoneySplitter.Services
 {
     public class Mapper : IMapper
     {
-        public UserModel DataUserToConvertUserModel(DataUser dataUser)
+        public UserModel ConvertDataUserToUserModel(DataUser dataUser)
         {
             var userModel = new UserModel()
             {
@@ -22,7 +22,7 @@ namespace MoneySplitter.Services
             };
             return userModel;
         }
-        public DataRegisterUser RegisterModelToConverDataRegisterModel( RegisterModel registerModel)
+        public DataRegisterUser ConvertRegisterModelToDataRegisterUser( RegisterModel registerModel)
         {
             var dataRegisterUser = new DataRegisterUser()
             {
