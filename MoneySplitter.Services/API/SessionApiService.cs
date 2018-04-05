@@ -48,15 +48,5 @@ namespace MoneySplitter.Services.Api
 
             return _maper.ConvertDataUserToUserModel(dataUser);
         }
-
-        public async Task<IEnumerable<UserModel>> SearchUsersAsync(string query)
-        {
-            var searchUsersUri = _urlBuilder.SearchUsers(query);
-
-            var dataUsers=await _queryApiService.GetAsync<IEnumerable<DataUser>>(searchUsersUri);
-
-            return dataUsers.Select(x => _maper.ConvertDataUserToUserModel(x));
-
-        }
     }
 }
