@@ -19,13 +19,15 @@
             <NavigationViewItemSeparator/>
             <NavigationViewItem x:Uid="PeopleNavItem" Icon="People" Content="Friends" Tag="friends"/>
             <NavigationViewItem x:Uid="Page2NavItem" Icon="Page2" Content="Transactions" Tag="transactions"/>
+            <NavigationViewItem x:Uid="ZoomhNavItem" Icon="Zoom" Content="Search" Tag="search"/>
 
         </NavigationView.MenuItems>
 
         <NavigationView.AutoSuggestBox>
             <AutoSuggestBox x:Name="ASB" QueryIcon="Find"
                             Text="{x:Bind ViewModel.SearchQuery, Mode=TwoWay}"
-                            DoubleTapped="ASB_DoubleTapped"/>
+                            DoubleTapped="OnSearchBoxTapped"
+                           IsEnabled="False"/>
         </NavigationView.AutoSuggestBox>
 
         <NavigationView.HeaderTemplate>

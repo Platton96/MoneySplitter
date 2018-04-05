@@ -56,9 +56,9 @@ namespace MoneySplitter.Win10.Common
             _shellNavigationService.NavigateToViewModel(viewModelType);
         }
 
-        public void NavigateToFoundUsersViewModel(object parametr)
+        public void NavigateToFoundUsersViewModel()
         {
-            _shellNavigationService.NavigateToViewModel<FoundUsersViewModel>(parametr);
+            _shellNavigationService.NavigateToViewModel<FoundUsersViewModel>();
         }
     }
 

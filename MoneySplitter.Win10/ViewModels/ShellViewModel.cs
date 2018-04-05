@@ -18,8 +18,9 @@ namespace MoneySplitter.Win10.ViewModels
 
         private IDictionary<string, Type> _mainMenuPages = new Dictionary<string, Type>()
         {
-            {"Friends",  typeof(FriendsViewModel)},
-            {"Home", typeof(HelloWorldViewModel) }
+            { "Friends",  typeof(FriendsViewModel) },
+            { "Home", typeof(HelloWorldViewModel) },
+            { "Search",typeof(FoundUsersViewModel) }
         };
 
         public UserModel UserModel
@@ -27,6 +28,7 @@ namespace MoneySplitter.Win10.ViewModels
             get { return _userModel; }
             set
             {
+                
                 _userModel = value;
                 NotifyOfPropertyChange(nameof(UserModel));
             }
@@ -65,6 +67,12 @@ namespace MoneySplitter.Win10.ViewModels
             base.OnActivate();
             UserModel = _membershipService.CurrentUser;
         }
+
+        public void NovigaateToFoundUsers()
+        {
+            _navigationManager.NavigateToFoundUsersViewModel();
+        }
     }
+
 
 }

@@ -9,5 +9,9 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+        <TextBox PlaceholderText="Enter search query" 
+                 Text="{x:Bind ViewModel.Qeury, Mode=TwoWay}"
+                 GotFocus="OnFocusTextBox"/>
+        <TextBlock Text="Friends" FontSize="28" FontStyle="Oblique" VerticalAlignment="Center" HorizontalTextAlignment="Center"/>
     </Grid>
 </Page>

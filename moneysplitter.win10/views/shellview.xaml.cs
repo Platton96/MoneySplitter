@@ -25,9 +25,9 @@ namespace MoneySplitter.Win10.Views
             ViewModel.InitializeShellNavigationService(ContentFrame);
         }
 
-        private void ASB_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        private void OnSearchBoxTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
-
+            ViewModel.NovigaateToFoundUsers();
         }
     }
 }

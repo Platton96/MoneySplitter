@@ -96,6 +96,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\NavigateManager.cs" />
+    <Compile Include="Common\SearchService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\FoundUsersViewModel.cs" />
     <Compile Include="ViewModels\FriendsViewModel.cs" />
