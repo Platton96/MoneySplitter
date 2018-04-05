@@ -35,6 +35,7 @@ namespace MoneySplitter.Win10.Dependencies
 
             _container.Singleton<ISessionApiService, SessionApiService>();
             _container.Singleton<IMembershipService, MembershipService>();
+            _container.Singleton<ISearchApiService, SearchApiService>();
 
             _container.Singleton<IQueryApiService, QueryApiService>();
 
