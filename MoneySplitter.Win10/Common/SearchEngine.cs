@@ -12,9 +12,12 @@ namespace MoneySplitter.Win10.Common
     {
         private readonly DispatcherTimer _timer;
 
-        private readonly ISearchApiService searchApiService;
+        private readonly ISearchApiService _searchApiService;
         private bool _isSearchInProgress;
         private string _previousQuery = string.Empty;
+        private string _query;
+
+        private TimeSpan TIMER_INTERVAL = TimeSpan.FromSeconds(3);
 
         private IList<UserModel> _results;
 
@@ -28,9 +31,15 @@ namespace MoneySplitter.Win10.Common
             }
         }
 
-        public string Query { get; set; }
-
-        private TimeSpan TIMER_INTERVAL = TimeSpan.FromSeconds(3);
+        public string Query
+        {
+            get { return _query; }
+            set
+            {
+                _query = value;
+                NotifyOfPropertyChange(nameof(Query));
+            }
+        }
 
         public SearchEngine()
         {
