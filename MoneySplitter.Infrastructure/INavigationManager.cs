@@ -10,5 +10,7 @@ namespace MoneySplitter.Infrastructure
         void NavigateToShellViewModel();
         void NavigateToFriends();
         void NavigateToShellViewModel(Type viewModelType);
+        void NavigateToFoundUsersViewModel(object parametr);
+
     }
 }
