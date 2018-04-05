@@ -8,7 +8,7 @@ using MoneySplitter.Infrastructure;
 
 namespace MoneySplitter.Win10.Common
 {
-    public class SearchService : PropertyChangedBase
+    public class SearchEngine : PropertyChangedBase
     {
         private readonly DispatcherTimer _timer;
 
@@ -32,7 +32,7 @@ namespace MoneySplitter.Win10.Common
 
         private TimeSpan TIMER_INTERVAL = TimeSpan.FromSeconds(3);
 
-        public SearchService()
+        public SearchEngine()
         {
             _timer = new DispatcherTimer
             {
