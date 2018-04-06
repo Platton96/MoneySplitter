@@ -34,6 +34,11 @@ namespace MoneySplitter.Win10.Common
 
         public async Task PerformUsersSearchAsync(string query)
         {
+            if(string.IsNullOrEmpty(query))
+            {
+                Results?.Clear();
+                return;
+            }
             if (_isSearchInProgress==true)
             {
                 _isSearchInProgress = false;
