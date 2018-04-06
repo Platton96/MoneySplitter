@@ -13,7 +13,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
         <TextBox PlaceholderText="Enter search query" 
-                Text="{x:Bind ViewModel.SearchEngine.Query, Mode=TwoWay}"/>
+                 TextChanged="OnTextBoxTextChenged"/>
         <ListView x:Name="ListFriends"
                   Grid.Row="1"
                   ItemsSource="{x:Bind ViewModel.SearchEngine.Results, Mode=OneWay}"

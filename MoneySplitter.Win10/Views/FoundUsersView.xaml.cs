@@ -13,5 +13,11 @@ namespace MoneySplitter.Win10.Views
             InitializeComponent();
             DataContextChanged += (s, e) => { ViewModel = DataContext as FoundUsersViewModel; };
         }
+
+        private async void OnTextBoxTextChenged(object sender, TextChangedEventArgs e)
+        {
+            var searchBox = sender as TextBox;
+            await ViewModel.PerformSearchUsersAsync(searchBox.Text);
+        }
     }
 }

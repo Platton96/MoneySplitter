@@ -1,29 +1,23 @@
 ﻿using Caliburn.Micro;
 using Windows.UI.Xaml;
 using MoneySplitter.Win10.Common;
+using System.Threading.Tasks;
 
 namespace MoneySplitter.Win10.ViewModels
 {
     public class FoundUsersViewModel : Screen
     {
+
         public SearchEngine SearchEngine { get; set; }
-        
 
         public FoundUsersViewModel(SearchEngine searchEngine)
         {
             SearchEngine = searchEngine;
         }
-
-        protected override void OnActivate()
+        
+        public async Task PerformSearchUsersAsync(string query)
         {
-            SearchEngine.Activate();
-            base.OnActivate();
-        }
-
-        protected override void OnDeactivate(bool close)
-        {
-            SearchEngine.Deactivate();
-            base.OnDeactivate(close);
+           await SearchEngine.PerformUsersSearchAsync(query);
         }
     }
 }
