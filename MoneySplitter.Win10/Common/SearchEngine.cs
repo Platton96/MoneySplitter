@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Caliburn.Micro;
 using MoneySplitter.Infrastructure;
+using System.Linq;
 
 namespace MoneySplitter.Win10.Common
 {
@@ -16,8 +17,9 @@ namespace MoneySplitter.Win10.Common
         private bool _isSearchInProgress;
         private string _previousQuery = string.Empty;
         private string _query;
+        private const int INTERVAL_TIME = 2;
 
-        private TimeSpan TIMER_INTERVAL = TimeSpan.FromSeconds(3);
+        private TimeSpan TIMER_INTERVAL = TimeSpan.FromSeconds(INTERVAL_TIME);
 
         private IList<UserModel> _results;
 
@@ -41,7 +43,7 @@ namespace MoneySplitter.Win10.Common
             }
         }
 
-        public SearchEngine()
+        public SearchEngine(ISearchApiService searchApiService )
         {
             _timer = new DispatcherTimer
             {
@@ -49,6 +51,8 @@ namespace MoneySplitter.Win10.Common
             };
 
             _timer.Tick += OnTimerTick;
+
+            _searchApiService = searchApiService;
         }
 
         private async void OnTimerTick(object sender, object e)
@@ -70,13 +74,16 @@ namespace MoneySplitter.Win10.Common
 
             if (string.IsNullOrEmpty(Query))
             {
-                Results.Clear();
+                Results?.Clear();
                 return;
             }
 
             _isSearchInProgress = true;
 
-           // Results = await _searchApiService.SearchUsers(Query).ToList();
+            var responce = await _searchApiService.SearchUsersAsync(Query);
+
+            _previousQuery = Query;
+            Results = responce.ToList();
 
             _isSearchInProgress = false;
         }

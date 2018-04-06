@@ -1,50 +1,29 @@
 ﻿using Caliburn.Micro;
 using Windows.UI.Xaml;
+using MoneySplitter.Win10.Common;
 
 namespace MoneySplitter.Win10.ViewModels
 {
     public class FoundUsersViewModel : Screen
     {
-        private string _qeury;
-        private bool _isActiveTextBox;
-        private readonly DispatcherTimer _timer;
+        public SearchEngine SearchEngine { get; set; }
+        
 
-        public FoundUsersViewModel()
+        public FoundUsersViewModel(SearchEngine searchEngine)
         {
-            _timer=new DispatcherTimer();
-        }
-
-        public string Qeury
-        {
-            get { return _qeury; }
-            set
-            {
-                _qeury = value;
-                NotifyOfPropertyChange(nameof(Qeury));
-            }
-        }
-
-        public bool IsActiveTextBox
-        {
-            get { return _isActiveTextBox; }
-            set
-            {
-                _isActiveTextBox = value;
-                NotifyOfPropertyChange(nameof(IsActiveTextBox));
-            }
+            SearchEngine = searchEngine;
         }
 
         protected override void OnActivate()
         {
-
+            SearchEngine.Activate();
             base.OnActivate();
         }
 
         protected override void OnDeactivate(bool close)
         {
+            SearchEngine.Deactivate();
             base.OnDeactivate(close);
         }
-
-
     }
 }

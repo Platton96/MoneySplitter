@@ -13,10 +13,5 @@ namespace MoneySplitter.Win10.Views
             InitializeComponent();
             DataContextChanged += (s, e) => { ViewModel = DataContext as FoundUsersViewModel; };
         }
-
-        private void OnFocusTextBox(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

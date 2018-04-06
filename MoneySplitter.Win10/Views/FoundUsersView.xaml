@@ -8,10 +8,32 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <Grid.RowDefinitions>
+                <RowDefinition Height="32"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
         <TextBox PlaceholderText="Enter search query" 
-                 Text="{x:Bind ViewModel.Qeury, Mode=TwoWay}"
-                 GotFocus="OnFocusTextBox"/>
-        <TextBlock Text="Friends" FontSize="28" FontStyle="Oblique" VerticalAlignment="Center" HorizontalTextAlignment="Center"/>
+                Text="{x:Bind ViewModel.SearchEngine.Query, Mode=TwoWay}"/>
+        <ListView x:Name="ListFriends"
+                  Grid.Row="1"
+                  ItemsSource="{x:Bind ViewModel.SearchEngine.Results, Mode=OneWay}"
+                  IsItemClickEnabled="True">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Email}" 
+                               FontSize="20"
+                               Foreground="Black"
+                            />
+                        <TextBlock Text="{Binding Name}" 
+                                FontSize="16"
+                               Foreground="Gray"
+                            />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
     </Grid>
 </Page>
