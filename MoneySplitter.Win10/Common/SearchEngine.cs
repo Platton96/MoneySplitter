@@ -17,7 +17,7 @@ namespace MoneySplitter.Win10.Common
         private bool _isSearchInProgress;
         private string _previousQuery = string.Empty;
         private string _query;
-        private const int INTERVAL_TIME = 2;
+        private const int INTERVAL_TIME = 1;
 
         private TimeSpan TIMER_INTERVAL = TimeSpan.FromSeconds(INTERVAL_TIME);
 
@@ -33,15 +33,6 @@ namespace MoneySplitter.Win10.Common
             }
         }
 
-        public string Query
-        {
-            get { return _query; }
-            set
-            {
-                _query = value;
-                NotifyOfPropertyChange(nameof(Query));
-            }
-        }
 
         public SearchEngine(ISearchApiService searchApiService )
         {
@@ -65,14 +56,19 @@ namespace MoneySplitter.Win10.Common
             _timer.Start();
         }
 
+        public void ChangedQeury(string query)
+        {
+            _query = query;
+            //_timer.Start();
+        }
         public async Task PerformUsersSearchAsync()
         {
-            if (_isSearchInProgress || Query == _previousQuery)
+            if (_isSearchInProgress || _query == _previousQuery)
             {
                 return;
             }
 
-            if (string.IsNullOrEmpty(Query))
+            if (string.IsNullOrEmpty(_query))
             {
                 Results?.Clear();
                 return;
@@ -80,9 +76,9 @@ namespace MoneySplitter.Win10.Common
 
             _isSearchInProgress = true;
 
-            var responce = await _searchApiService.SearchUsersAsync(Query);
+            var responce = await _searchApiService.SearchUsersAsync(_query);
 
-            _previousQuery = Query;
+            _previousQuery = _query;
             Results = responce.ToList();
 
             _isSearchInProgress = false;

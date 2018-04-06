@@ -14,6 +14,16 @@ namespace MoneySplitter.Win10.ViewModels
             SearchEngine = searchEngine;
         }
 
+        public void PerfomSearchUsersOfTimer(string query)
+        {
+           // SearchEngine.Activate(query);
+        }
+
+        public void ChangedQuery(string query)
+        {
+            SearchEngine.ChangedQeury(query);
+        }
+
         protected override void OnActivate()
         {
             SearchEngine.Activate();
