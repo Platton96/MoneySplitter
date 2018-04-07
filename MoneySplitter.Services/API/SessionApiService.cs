@@ -38,7 +38,7 @@ namespace MoneySplitter.Services.Api
             return _maper.ConvertDataUserToUserModel(dataUser);
         }
 
-        public async Task<UserModel> RegistrAsync(RegisterModel registrModel)
+        public async Task<UserModel> RegisterAsync(RegisterModel registrModel)
         {
             var regisrUri = _urlBuilder.Registration();
 
