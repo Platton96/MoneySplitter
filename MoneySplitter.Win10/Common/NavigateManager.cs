@@ -8,7 +8,7 @@ namespace MoneySplitter.Win10.Common
 {
     public class NavigationManager : INavigationManager
     {
-        private INavigationService _windowNavigationService;
+        private readonly INavigationService _windowNavigationService;
         private INavigationService _shellNavigationService;
 
         public NavigationManager(INavigationService navigationService)
@@ -26,6 +26,7 @@ namespace MoneySplitter.Win10.Common
         {
             _windowNavigationService.NavigateToViewModel<ShellViewModel>();
         }
+
         public void NavigateToRegisterViewModel()
         {
             _windowNavigationService.NavigateToViewModel<RegisterViewModel>();
@@ -61,5 +62,4 @@ namespace MoneySplitter.Win10.Common
             _shellNavigationService.NavigateToViewModel<FoundUsersViewModel>();
         }
     }
-
 }

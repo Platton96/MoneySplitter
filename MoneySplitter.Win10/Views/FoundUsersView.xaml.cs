@@ -1,5 +1,4 @@
 ﻿using MoneySplitter.Win10.ViewModels;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace MoneySplitter.Win10.Views
@@ -13,6 +12,7 @@ namespace MoneySplitter.Win10.Views
             InitializeComponent();
             DataContextChanged += (s, e) => { ViewModel = DataContext as FoundUsersViewModel; };
         }
+
         private void OnTextBoxTextChanged(object sender, TextChangedEventArgs e)
         {
             var searchBox = sender as TextBox;

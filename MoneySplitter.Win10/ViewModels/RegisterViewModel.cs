@@ -45,7 +45,6 @@ namespace MoneySplitter.Win10.ViewModels
         {
             if (RegisterModel.Password != ConfirmPassword)
             {
-                //Passwor!=confirmPassword
                 return;
             }
             else

@@ -1,5 +1,4 @@
 ﻿using Caliburn.Micro;
-using Windows.UI.Xaml;
 using MoneySplitter.Win10.Common;
 
 namespace MoneySplitter.Win10.ViewModels
@@ -8,15 +7,9 @@ namespace MoneySplitter.Win10.ViewModels
     {
         public SearchEngine SearchEngine { get; set; }
         
-
         public FoundUsersViewModel(SearchEngine searchEngine)
         {
             SearchEngine = searchEngine;
-        }
-
-        public void PerfomSearchUsersOfTimer(string query)
-        {
-           // SearchEngine.Activate(query);
         }
 
         public void ChangedQuery(string query)

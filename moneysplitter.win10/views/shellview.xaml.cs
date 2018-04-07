@@ -24,10 +24,5 @@ namespace MoneySplitter.Win10.Views
         {
             ViewModel.InitializeShellNavigationService(ContentFrame);
         }
-
-        private void OnSearchBoxTapped(object sender, DoubleTappedRoutedEventArgs e)
-        {
-            ViewModel.NovigaateToFoundUsers();
-        }
     }
 }

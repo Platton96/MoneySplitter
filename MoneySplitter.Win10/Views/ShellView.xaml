@@ -26,7 +26,6 @@
         <NavigationView.AutoSuggestBox>
             <AutoSuggestBox x:Name="ASB" QueryIcon="Find"
                             Text="{x:Bind ViewModel.SearchQuery, Mode=TwoWay}"
-                            DoubleTapped="OnSearchBoxTapped"
                            IsEnabled="False"/>
         </NavigationView.AutoSuggestBox>
 

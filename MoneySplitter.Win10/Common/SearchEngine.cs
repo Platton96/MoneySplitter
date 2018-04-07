@@ -33,7 +33,6 @@ namespace MoneySplitter.Win10.Common
             }
         }
 
-
         public SearchEngine(ISearchApiService searchApiService )
         {
             _timer = new DispatcherTimer
@@ -59,7 +58,6 @@ namespace MoneySplitter.Win10.Common
         public void ChangedQeury(string query)
         {
             _query = query;
-            //_timer.Start();
         }
         public async Task PerformUsersSearchAsync()
         {

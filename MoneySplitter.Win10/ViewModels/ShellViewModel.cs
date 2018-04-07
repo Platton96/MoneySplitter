@@ -28,7 +28,6 @@ namespace MoneySplitter.Win10.ViewModels
             get { return _userModel; }
             set
             {
-                
                 _userModel = value;
                 NotifyOfPropertyChange(nameof(UserModel));
             }
@@ -73,6 +72,4 @@ namespace MoneySplitter.Win10.ViewModels
             _navigationManager.NavigateToFoundUsersViewModel();
         }
     }
-
-
 }

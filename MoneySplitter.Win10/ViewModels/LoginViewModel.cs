@@ -52,7 +52,7 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public void GoToRegistretion()
+        public void NavigateToRegistretion()
         {
             _navigationManager.NavigateToRegisterViewModel();
         }

@@ -21,8 +21,10 @@ namespace MoneySplitter.Win10.Dependencies
         public void InitializeViewModel()
         {
             _container.PerRequest<LoginViewModel>();
-            _container.PerRequest<ShellViewModel>();
             _container.PerRequest<RegisterViewModel>();
+
+            _container.PerRequest<ShellViewModel>();
+
             _container.PerRequest<HelloWorldViewModel>();
             _container.PerRequest<FriendsViewModel>();
             _container.PerRequest<FoundUsersViewModel>();
@@ -33,17 +35,15 @@ namespace MoneySplitter.Win10.Dependencies
             _container.Singleton<INavigationManager, NavigationManager>();
 
             _container.Singleton<IApiUrlBuilder, ApiUrlBuilder>();
+            _container.Singleton<IQueryApiService, QueryApiService>();
 
             _container.Singleton<ISessionApiService, SessionApiService>();
-            _container.Singleton<IMembershipService, MembershipService>();
             _container.Singleton<ISearchApiService, SearchApiService>();
-
-            _container.Singleton<IQueryApiService, QueryApiService>();
+            _container.Singleton<IMembershipService, MembershipService>();
 
             _container.Singleton<IMapper, Mapper>();
 
             _container.Singleton<SearchEngine>();
         }
-
     }
 }
