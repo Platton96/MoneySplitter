@@ -28,7 +28,6 @@ namespace MoneySplitter.Services.API
             var dataUsers = await _queryApiService.GetAsync<IEnumerable<DataUser>>(searchUsersUri);
 
             return dataUsers.Select(x => _maper.ConvertDataUserToUserModel(x));
-
         }
     }
 }
