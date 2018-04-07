@@ -1,5 +1,4 @@
-﻿using MoneySplitter.Infrastructure;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace MoneySplitter.Services.DataModels
