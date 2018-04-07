@@ -50,7 +50,7 @@ namespace MoneySplitter.Win10.ViewModels
             }
             else
             {
-                await _membershipService.ReistrAndLoadUserDataAsync(RegisterModel);
+                await _membershipService.ReisterAndLoadUserDataAsync(RegisterModel);
 
                 var userModel = _membershipService.CurrentUser;
 
