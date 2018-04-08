@@ -17,6 +17,12 @@
                 public const string SEARCH = "/search";
                 public const string SEARCH_PARAMETR = "?query=";
             }
+
+            public static class Friends
+            {
+                public const string FRIENDS = "/friends";
+                public const string ADD_FRIEND = "/add";
+            }
         }
     }
 }
