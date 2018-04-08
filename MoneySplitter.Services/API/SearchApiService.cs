@@ -23,7 +23,7 @@ namespace MoneySplitter.Services.API
 
         public async Task<IEnumerable<UserModel>> SearchUsersAsync(string query)
         {
-            var searchUsersUri = _urlBuilder.SearchUsers(query);
+            var searchUsersUri = _urlBuilder.SearchingUsers(query);
 
             var dataUsers = await _queryApiService.GetAsync<IEnumerable<DataUser>>(searchUsersUri);
 
