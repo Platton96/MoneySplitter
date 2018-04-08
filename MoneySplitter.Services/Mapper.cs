@@ -41,5 +41,17 @@ namespace MoneySplitter.Services
 
             return dataRegisterUser;
         }
+
+        public DataGetUser ConvertUserModelToDataGetUser(UserModel userModel)
+        {
+            var dataGetUser= new DataGetUser()
+            {
+
+                Email = userModel.Email,
+                Token=userModel.Token
+            };
+
+            return dataGetUser;
+        }
     }
 }
