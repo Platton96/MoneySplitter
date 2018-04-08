@@ -21,15 +21,18 @@
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Email}" 
-                               FontSize="20"
-                               Foreground="Black"
-                            />
-                        <TextBlock Text="{Binding Name}" 
-                                FontSize="16"
-                               Foreground="Gray"
-                            />
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Email}" 
+                                       FontSize="20"
+                                       Foreground="Black"/>
+                            <TextBlock Text="{Binding Name}" 
+                                       FontSize="16"
+                                       Foreground="Gray"/>
+                        </StackPanel>
+                        <Button Content="+"
+                                Margin="5,0,0,0"
+                                Click="Button_Click"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

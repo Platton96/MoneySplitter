@@ -18,5 +18,10 @@ namespace MoneySplitter.Win10.Views
             var searchBox = sender as TextBox;
             ViewModel.ChangedQuery(searchBox.Text);
         }
+
+        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+
+        }
     }
 }
