@@ -12,6 +12,8 @@ namespace MoneySplitter.Models
         public int PhoneNumber { get; set; }
         public int CreditCardNumber { get; set; }
         public double Ballance { get; set; }
+        public string Token { get; set; }
+        public string ImageUrl { get; set; }
         public IEnumerable<UserModel> Friends { get; set; }
     }
 }

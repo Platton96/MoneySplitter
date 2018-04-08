@@ -30,6 +30,12 @@ namespace MoneySplitter.Services.DataModels
         [DataMember]
         public double Ballance { get; set; }
 
-        public IEnumerable<DataUser> Friends { get; set; }
+        [DataMember]
+        public string Token { get; set; }
+
+        [DataMember]
+        public string ImageUrl { get; set; }
+        
+        public IEnumerable<int> Friends { get; set; }
     }
 }

@@ -22,6 +22,9 @@ namespace MoneySplitter.Services.DataModels
 
         [DataMember]
         public string Password { get; set; }
+
+        [DataMember]
+        public string ImageUrl { get; set; }
     }
 
 }
