@@ -38,5 +38,13 @@ namespace MoneySplitter.Services.Api
                 Defines.Api.Friends.FRIENDS,
                 Defines.Api.Friends.ADD_FRIEND));
         }
+
+        public Uri GetAllFriends()
+        {
+            return new Uri(string.Concat(
+             Defines.Api.WEB_API_URL,
+             Defines.Api.Friends.FRIENDS,
+             Defines.Api.Friends.ALL_FRIENDS));
+        }
     }
 }

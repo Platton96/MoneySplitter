@@ -8,5 +8,6 @@ namespace MoneySplitter.Infrastructure
         Uri Registration();
         Uri SearchingUsers(string query);
         Uri AdditionFriend();
+        Uri GetAllFriends();
     }
 }
