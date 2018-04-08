@@ -1,7 +1,10 @@
 ﻿using MoneySplitter.Infrastructure;
 using MoneySplitter.Services.DataModels;
 using MoneySplitter.Services.Inerfaces;
+using System.Linq;
 using System.Threading.Tasks;
+using MoneySplitter.Models;
+using System.Collections.Generic;
 
 namespace MoneySplitter.Services.API
 {
@@ -32,6 +35,15 @@ namespace MoneySplitter.Services.API
             var isSuccessResponce = await _queryApiService.PostAsync(dataAddFriend, uriAdditionFriend);
 
             return isSuccessResponce;
+        }
+
+        public async Task<IEnumerable<UserModel>> GetAllFriendsOfUserAsync(DataGetUser dataGetUser )
+        {
+            var uriGetAllFriends = _urlBuilder.GetAllFriends();
+
+            var friendsUser = await _queryApiService.PostAsync<IEnumerable<DataUser>, DataGetUser>(dataGetUser, uriGetAllFriends);
+
+            return friendsUser.Select(x => _maper.ConvertDataUserToUserModel(x));
         }
     }
 }
