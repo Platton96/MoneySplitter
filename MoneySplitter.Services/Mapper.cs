@@ -18,7 +18,9 @@ namespace MoneySplitter.Services
                 Email = dataUser.Email,
                 PhoneNumber = dataUser.PhoneNumber,
                 CreditCardNumber = dataUser.CreditCardNumber,
-                Ballance = dataUser.Ballance
+                Ballance = dataUser.Ballance,
+                Token=dataUser.Token,
+                ImageUrl=dataUser.ImageUrl
             };
 
             return userModel;
@@ -33,7 +35,8 @@ namespace MoneySplitter.Services
                 Email = registerModel.Email,
                 Password =registerModel.Password,
                 PhoneNumber = registerModel.PhoneNumber,
-                CreditCardNumber = registerModel.CreditCardNumber
+                CreditCardNumber = registerModel.CreditCardNumber,
+                ImageUrl=registerModel.ImageUrl
             };
 
             return dataRegisterUser;
