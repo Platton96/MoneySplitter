@@ -39,6 +39,10 @@
             <TextBox PlaceholderText="Enter phone number"
                      Text="{x:Bind ViewModel.RegisterModel.PhoneNumber, Mode=TwoWay}"
                      Header="Phone number"/>
+            
+            <TextBox PlaceholderText="Enter image url"
+                     Text="{x:Bind ViewModel.RegisterModel.ImageUrl, Mode=TwoWay}"
+                     Header="Image"/>
 
 
             <Button Content="Registred"
