@@ -6,6 +6,7 @@ using MoneySplitter.Win10.ViewModels;
 using MoneySplitter.Win10.Common;
 using MoneySplitter.Services.API;
 using MoneySplitter.Services.Inerfaces;
+using MoneySplitter.Managers;
 
 namespace MoneySplitter.Win10.Dependencies
 {
@@ -42,6 +43,7 @@ namespace MoneySplitter.Win10.Dependencies
             _container.Singleton<IFriendsApiService, FriendsApiService>();
 
             _container.Singleton<IMembershipService, MembershipService>();
+            _container.Singleton<IFriendsManager, FriendsManager>();
 
             _container.Singleton<IMapper, Mapper>();
 
