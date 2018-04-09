@@ -17,9 +17,8 @@ namespace MoneySplitter.Win10.Common
         private bool _isSearchInProgress;
         private string _previousQuery = string.Empty;
         private string _query;
-        private const int INTERVAL_TIME = 1;
 
-        private TimeSpan TIMER_INTERVAL = TimeSpan.FromSeconds(INTERVAL_TIME);
+        private TimeSpan TIMER_INTERVAL = TimeSpan.FromSeconds(1);
 
         private ObservableCollection<UserModel> _results;
 

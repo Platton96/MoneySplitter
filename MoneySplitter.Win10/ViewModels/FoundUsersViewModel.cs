@@ -25,8 +25,8 @@ namespace MoneySplitter.Win10.ViewModels
 
         protected override void OnDeactivate(bool close)
         {
-            SearchEngine.Deactivate();
             base.OnDeactivate(close);
+            SearchEngine.Deactivate();
         }
     }
 }
