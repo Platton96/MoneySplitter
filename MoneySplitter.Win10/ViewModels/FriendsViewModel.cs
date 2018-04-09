@@ -2,7 +2,6 @@
 using MoneySplitter.Infrastructure;
 using MoneySplitter.Models;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace MoneySplitter.Win10.ViewModels
 {
