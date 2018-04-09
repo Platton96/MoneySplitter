@@ -7,6 +7,7 @@ namespace MoneySplitter.Win10.Views
     public sealed partial class LoginView : Page
     {
         public LoginViewModel ViewModel { get; set; }
+
         public LoginView()
         {
             InitializeComponent();
@@ -20,7 +21,7 @@ namespace MoneySplitter.Win10.Views
 
         private void OnRegistredClick(object sender, RoutedEventArgs e)
         {
-            ViewModel.GoToRegistretion();
+            ViewModel.NavigateToRegistretion();
         }
     }
 }

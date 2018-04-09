@@ -7,7 +7,7 @@ namespace MoneySplitter.Infrastructure
     public interface IMembershipService
     {
         Task SingInAndLoadUserDataAsync(string email, string password);
-        Task ReistrAndLoadUserDataAsync(RegisterModel registrModel);
+        Task ReisterAndLoadUserDataAsync(RegisterModel registrModel);
         UserModel CurrentUser { get;  }
     }
 }

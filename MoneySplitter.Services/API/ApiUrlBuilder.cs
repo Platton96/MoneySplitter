@@ -20,6 +20,16 @@ namespace MoneySplitter.Services.Api
                 Defines.Api.Session.SESSION,
                 Defines.Api.Session.REGISTER));
         }
+
+        public Uri SearchUsers(string query)
+        {
+            return new Uri(string.Concat(
+                Defines.Api.WEB_API_URL,
+                Defines.Api.Users.USERS,
+                Defines.Api.Users.SEARCH,
+                Defines.Api.Users.SEARCH_PARAMETR,
+                query));
+        }
     }
 
 }

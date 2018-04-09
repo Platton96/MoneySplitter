@@ -6,5 +6,6 @@ namespace MoneySplitter.Infrastructure
     {
         Uri Authorization();
         Uri Registration();
+        Uri SearchUsers(string query);
     }
 }

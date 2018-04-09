@@ -20,8 +20,10 @@ namespace MoneySplitter.Services
                 CreditCardNumber = dataUser.CreditCardNumber,
                 Ballance = dataUser.Ballance
             };
+
             return userModel;
         }
+
         public DataRegisterUser ConvertRegisterModelToDataRegisterUser( RegisterModel registerModel)
         {
             var dataRegisterUser = new DataRegisterUser()
@@ -33,6 +35,7 @@ namespace MoneySplitter.Services
                 PhoneNumber = registerModel.PhoneNumber,
                 CreditCardNumber = registerModel.CreditCardNumber
             };
+
             return dataRegisterUser;
         }
     }

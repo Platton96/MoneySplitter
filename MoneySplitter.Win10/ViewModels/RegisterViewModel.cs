@@ -45,12 +45,11 @@ namespace MoneySplitter.Win10.ViewModels
         {
             if (RegisterModel.Password != ConfirmPassword)
             {
-                //Passwor!=confirmPassword
                 return;
             }
             else
             {
-                await _membershipService.ReistrAndLoadUserDataAsync(RegisterModel);
+                await _membershipService.ReisterAndLoadUserDataAsync(RegisterModel);
 
                 var userModel = _membershipService.CurrentUser;
 
