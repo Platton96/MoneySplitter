@@ -5,6 +5,7 @@
     xmlns:local="using:MoneySplitter.Win10.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:MoneySplitter.Models"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -17,22 +18,24 @@
         <ListView x:Name="ListUsers"
                   Grid.Row="1"
                   ItemsSource="{x:Bind ViewModel.SearchEngine.Results, Mode=OneWay}"
-                  IsItemClickEnabled="True">
+                  IsItemClickEnabled="True"
+                 >
 
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="models:UserModel">
                     <StackPanel Orientation="Horizontal">
                         <StackPanel>
-                            <TextBlock Text="{Binding Email}" 
+                            <TextBlock Text="{x:Bind Email, Mode=OneWay}" 
                                        FontSize="20"
                                        Foreground="Black"/>
-                            <TextBlock Text="{Binding Name}" 
+                            <TextBlock Text="{x:Bind Name, Mode=OneWay}" 
                                        FontSize="16"
                                        Foreground="Gray"/>
                         </StackPanel>
                         <Button Content="+"
                                 Margin="5,0,0,0"
-                                Click="Button_Click"/>
+                                Click="OnAddButtonClick"
+                                />
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
