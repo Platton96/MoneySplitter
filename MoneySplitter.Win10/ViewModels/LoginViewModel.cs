@@ -8,6 +8,7 @@ namespace MoneySplitter.Win10.ViewModels
     {
         private readonly INavigationManager _navigationManager;
         private IMembershipService _membershipService;
+        private IFriendsManager _friendsManager;
 
         private const string DEFAULT_USER_LOGIN = "q@mail.ru";
         private const string DEFAULT_USER_PASSWORD = "123";
@@ -35,15 +36,18 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public LoginViewModel( INavigationManager navigationManager, IMembershipService membershipService)
+        public LoginViewModel( INavigationManager navigationManager, IMembershipService membershipService, IFriendsManager friendsManager)
         {
             _navigationManager = navigationManager;
             _membershipService = membershipService;
+            _friendsManager = friendsManager;
         }
 
         public async Task SignInAsync()
         {
             await _membershipService.SingInAndLoadUserDataAsync(Email, Password);
+            await _friendsManager.LoadFriendsOfCurrentUserAsync();
+
             var userModel = _membershipService.CurrentUser;
 
             if (userModel != null)
