@@ -1,11 +1,11 @@
 ﻿using MoneySplitter.Models;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Caliburn.Micro;
 using MoneySplitter.Infrastructure;
 using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace MoneySplitter.Win10.Common
 {
@@ -21,9 +21,9 @@ namespace MoneySplitter.Win10.Common
 
         private TimeSpan TIMER_INTERVAL = TimeSpan.FromSeconds(INTERVAL_TIME);
 
-        private IList<UserModel> _results;
+        private ObservableCollection<UserModel> _results;
 
-        public IList<UserModel> Results
+        public ObservableCollection<UserModel> Results
         {
             get => _results;
             set
@@ -58,6 +58,8 @@ namespace MoneySplitter.Win10.Common
         public void ChangedQeury(string query)
         {
             _query = query;
+            _timer.Stop();
+            _timer.Start();
         }
         public async Task PerformUsersSearchAsync()
         {
@@ -69,6 +71,7 @@ namespace MoneySplitter.Win10.Common
             if (string.IsNullOrEmpty(_query))
             {
                 Results?.Clear();
+                _previousQuery = _query;
                 return;
             }
 
@@ -77,7 +80,7 @@ namespace MoneySplitter.Win10.Common
             var responce = await _searchApiService.SearchUsersAsync(_query);
 
             _previousQuery = _query;
-            Results = responce.ToList();
+            Results = new ObservableCollection<UserModel>(responce.ToList());
 
             _isSearchInProgress = false;
         }
