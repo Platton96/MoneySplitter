@@ -13,7 +13,7 @@ namespace MoneySplitter.Services.Api
                 Defines.Api.Session.SIGN_IN));
         }
 
-        public Uri Registration()
+        public Uri Register()
         {
             return new Uri(string.Concat(
                 Defines.Api.WEB_API_URL,
@@ -21,7 +21,7 @@ namespace MoneySplitter.Services.Api
                 Defines.Api.Session.REGISTER));
         }
 
-        public Uri SearchingUsers(string query)
+        public Uri SearchUsers(string query)
         {
             return new Uri(string.Concat(
                 Defines.Api.WEB_API_URL,
@@ -31,12 +31,20 @@ namespace MoneySplitter.Services.Api
                 query));
         }
 
-        public Uri AdditionFriend()
+        public Uri AddFriend()
         {
             return new Uri(string.Concat(
                 Defines.Api.WEB_API_URL,
                 Defines.Api.Friends.FRIENDS,
                 Defines.Api.Friends.ADD_FRIEND));
+        }
+
+        public Uri RemoveFriend()
+        {
+            return new Uri(string.Concat(
+                Defines.Api.WEB_API_URL,
+                Defines.Api.Friends.FRIENDS,
+                Defines.Api.Friends.REMOVE_FRIEND));
         }
 
         public Uri GetAllFriends()

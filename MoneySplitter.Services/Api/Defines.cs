@@ -23,6 +23,7 @@
                 public const string FRIENDS = "/friends";
                 public const string ADD_FRIEND = "/add";
                 public const string ALL_FRIENDS= "/all";
+                public const string REMOVE_FRIEND = "/remove";
             }
         }
     }

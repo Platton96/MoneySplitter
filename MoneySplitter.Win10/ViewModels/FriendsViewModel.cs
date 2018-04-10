@@ -1,17 +1,19 @@
 ﻿using Caliburn.Micro;
 using MoneySplitter.Infrastructure;
 using MoneySplitter.Models;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace MoneySplitter.Win10.ViewModels
 {
     public class FriendsViewModel : Screen
     {
-        private IEnumerable<UserModel> _friends;
+        private ObservableCollection<UserModel> _friends;
 
         private IFriendsManager _friendsManager;
 
-        public IEnumerable<UserModel> Friends
+        public ObservableCollection<UserModel> Friends
         {
             get { return _friends; }
             set
@@ -29,8 +31,22 @@ namespace MoneySplitter.Win10.ViewModels
         protected override void OnActivate()
         {
             base.OnActivate();
-            Friends = _friendsManager.FriendsOfCurentUser;
+            Friends = new ObservableCollection<UserModel>(_friendsManager.FriendsOfCurentUser);
+        }
+
+        public async Task RemoveFriendAsync(int idFriend)
+        {
+            var friend = Friends.Where(x => x.Id == idFriend).First();
+            Friends.Remove(friend);
+
+            var isSuccessResponce = await _friendsManager.RemoveFriendAsync(idFriend);
+
+            if (isSuccessResponce)
+            {
+                await _friendsManager.LoadFriendsOfCurrentUserAsync();
+            }
         }
 
     }
 }
+

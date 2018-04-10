@@ -29,9 +29,12 @@ namespace MoneySplitter.Managers
 
         public async Task  LoadFriendsOfCurrentUserAsync()
         {
-            var dataGetUser = _mapper.ConvertUserModelToDataGetUser(_membershipService.CurrentUser);
+            FriendsOfCurentUser = await _friendsApiService.GetAllFriendsOfUserAsync(_membershipService.CurrentUser.Token, _membershipService.CurrentUser.Email);
+        }
 
-            FriendsOfCurentUser = await _friendsApiService.GetAllFriendsOfUserAsync(dataGetUser);
+        public async Task<bool> RemoveFriendAsync(int idFriend)
+        {
+            return await _friendsApiService.RemoveFriendAsync(_membershipService.CurrentUser.Token, _membershipService.CurrentUser.Email, idFriend);
         }
     }
 }
