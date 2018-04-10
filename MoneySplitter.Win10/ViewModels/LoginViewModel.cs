@@ -10,8 +10,8 @@ namespace MoneySplitter.Win10.ViewModels
         private IMembershipService _membershipService;
         private IFriendsManager _friendsManager;
 
-        private const string DEFAULT_USER_LOGIN = "q@mail.ru";
-        private const string DEFAULT_USER_PASSWORD = "123";
+        private const string DEFAULT_USER_LOGIN = "ivan_17@epam.com";
+        private const string DEFAULT_USER_PASSWORD = "1234abcd";
 
         private string _email = DEFAULT_USER_LOGIN; 
         private string _password = DEFAULT_USER_PASSWORD;
@@ -52,7 +52,7 @@ namespace MoneySplitter.Win10.ViewModels
 
             if (userModel != null)
             {
-                _navigationManager.NavigateToShellView();
+                _navigationManager.NavigateToShellViewModel();
             }
         }
 
