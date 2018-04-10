@@ -1,4 +1,4 @@
-﻿namespace MoneySplitter.Services.Api
+﻿namespace MoneySplitter.Services
 {
     public static class Defines
     {
