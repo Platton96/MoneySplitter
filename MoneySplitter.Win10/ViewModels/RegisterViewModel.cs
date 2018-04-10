@@ -53,7 +53,7 @@ namespace MoneySplitter.Win10.ViewModels
 
                 var userModel = _membershipService.CurrentUser;
 
-                _navigationManager.NavigateToShellView();
+                _navigationManager.NavigateToShellViewModel();
             }
         }
     }

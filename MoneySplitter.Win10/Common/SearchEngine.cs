@@ -79,7 +79,7 @@ namespace MoneySplitter.Win10.Common
             var responce = await _searchApiService.SearchUsersAsync(_query);
 
             _previousQuery = _query;
-            Results = new ObservableCollection<UserModel>(responce.ToList());
+            Results = new ObservableCollection<UserModel>(responce);
 
             _isSearchInProgress = false;
         }

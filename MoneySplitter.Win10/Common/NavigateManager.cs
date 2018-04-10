@@ -22,7 +22,7 @@ namespace MoneySplitter.Win10.Common
             _windowNavigationService.GoBack();
         }
 
-        public void NavigateToShellView()
+        public void NavigateToShellViewModel()
         {
             _windowNavigationService.NavigateToViewModel<ShellViewModel>();
         }
@@ -42,7 +42,7 @@ namespace MoneySplitter.Win10.Common
             _shellNavigationService = (INavigationService)navigationService;
         }
 
-        public void NavigateToShellViewModel()
+        public void NavigateToMainPage()
         {
             _shellNavigationService.NavigateToViewModel<HelloWorldViewModel>();
         }
