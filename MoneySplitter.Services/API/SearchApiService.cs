@@ -12,22 +12,22 @@ namespace MoneySplitter.Services.API
     {
         private readonly IApiUrlBuilder _apiUrlBuilder;
         private readonly IQueryApiService _queryApiService;
-        private readonly IMapper _maper;
+        private readonly IMapper _mapper;
 
-        public SearchApiService(IApiUrlBuilder apuUrlBuilder, IQueryApiService queryApiService, IMapper maper)
+        public SearchApiService(IApiUrlBuilder apiUrlBuilder, IQueryApiService queryApiService, IMapper mapper)
         {
-            _apiUrlBuilder = apuUrlBuilder;
+            _apiUrlBuilder = apiUrlBuilder;
             _queryApiService = queryApiService;
-            _maper = maper;
+            _mapper = mapper;
         }
 
         public async Task<IEnumerable<UserModel>> SearchUsersAsync(string query)
         {
-            var searchUsersUri = _apiUrlBuilder.SearchingUsers(query);
+            var apiUrlSearchUsers = _apiUrlBuilder.SearchUsers(query);
 
-            var usersData = await _queryApiService.GetAsync<IEnumerable<DataUser>>(searchUsersUri);
+            var usersData = await _queryApiService.GetAsync<IEnumerable<DataUser>>(apiUrlSearchUsers);
 
-            return usersData.Select(x => _maper.ConvertDataUserToUserModel(x));
+            return usersData.Select(x => _mapper.ConvertDataUserToUserModel(x));
         }
     }
 }
