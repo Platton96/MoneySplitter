@@ -1,13 +1,13 @@
 ﻿using MoneySplitter.Models;
-using MoneySplitter.Services.DataModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MoneySplitter.Services.Inerfaces
+namespace MoneySplitter.Infrastructure
 {
     public interface IFriendsApiService
     {
         Task<bool> AddFriendAsync(string token, string email, int idFriend);
-        Task<IEnumerable<UserModel>> GetAllFriendsOfUserAsync(DataGetUser dataGetUser);
+        Task<IEnumerable<UserModel>> GetAllFriendsOfUserAsync(string token, string emai);
+        Task<bool> RemoveFriendAsync(string token, string email, int idFriend);
     }
 }
