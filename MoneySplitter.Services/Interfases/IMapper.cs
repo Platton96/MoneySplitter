@@ -8,6 +8,5 @@ namespace MoneySplitter.Services.Inerfaces
     {
         UserModel ConvertDataUserToUserModel(DataUser dataUser);
         DataRegisterUser ConvertRegisterModelToDataRegisterUser(RegisterModel registerModel);
-        DataGetUser ConvertUserModelToDataGetUser(UserModel userModel);
     }
 }
