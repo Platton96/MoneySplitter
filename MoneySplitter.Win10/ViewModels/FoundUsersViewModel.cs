@@ -37,7 +37,7 @@ namespace MoneySplitter.Win10.ViewModels
         {
             var isSuccessResponce =await _friendsManager.AddFriendAsync(idFriend);
 
-            if(isSuccessResponce==true)
+            if(isSuccessResponce)
             {
                 await _friendsManager.LoadFriendsOfCurrentUserAsync();
             }
