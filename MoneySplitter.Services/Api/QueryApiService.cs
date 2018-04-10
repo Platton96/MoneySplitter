@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoneySplitter.Services.API
+namespace MoneySplitter.Services.Api
 {
     public class QueryApiService : IQueryApiService
     {

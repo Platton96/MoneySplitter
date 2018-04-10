@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MoneySplitter.Models;
 using System.Collections.Generic;
 
-namespace MoneySplitter.Services.API
+namespace MoneySplitter.Services.Api
 {
     public class FriendsApiService : IFriendsApiService
     {
