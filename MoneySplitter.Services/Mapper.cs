@@ -1,5 +1,4 @@
-﻿using MoneySplitter.Infrastructure;
-using MoneySplitter.Models;
+﻿using MoneySplitter.Models;
 using MoneySplitter.Services.DataModels;
 using MoneySplitter.Services.Inerfaces;
 using MoneySplitter.Models.Session;
@@ -33,25 +32,14 @@ namespace MoneySplitter.Services
                 Name = registerModel.Name,
                 Surname = registerModel.Surname,
                 Email = registerModel.Email,
-                Password =registerModel.Password,
+                Password = registerModel.Password,
                 PhoneNumber = registerModel.PhoneNumber,
                 CreditCardNumber = registerModel.CreditCardNumber,
-                ImageUrl=registerModel.ImageUrl
+                ImageBase64String = registerModel.ImageBase64String,
+                BackgroundImageBase64String=registerModel.BackgroundImageBase64String
             };
 
             return dataRegisterUser;
-        }
-
-        public DataGetUser ConvertUserModelToDataGetUser(UserModel userModel)
-        {
-            var dataGetUser= new DataGetUser()
-            {
-
-                Email = userModel.Email,
-                Token=userModel.Token
-            };
-
-            return dataGetUser;
         }
     }
 }
