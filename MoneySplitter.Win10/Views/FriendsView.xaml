@@ -22,6 +22,10 @@
                             <TextBlock Text="{Binding Name}" 
                                        FontSize="16"
                                        Foreground="Gray"/>
+                            <Button Content="-"
+                                Margin="5,0,0,0"
+                                Click="OnRemoveButtonClick"    
+                                />
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>
