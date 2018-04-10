@@ -6,8 +6,11 @@ namespace MoneySplitter.Infrastructure
 {
     public interface IFriendsManager
     {
-        Task<bool> AddFriendAsync(int idFriend);
-        Task LoadFriendsOfCurrentUserAsync();
         IEnumerable<UserModel> FriendsOfCurentUser { get; }
+
+        Task<bool> AddFriendAsync(int idFriend);
+        Task<bool> RemoveFriendAsync(int idFriend);
+
+        Task LoadFriendsOfCurrentUserAsync();
     }
 }
