@@ -15,13 +15,19 @@ namespace MoneySplitter.Services.DataModels
         public string Email { get; set; }
 
         [DataMember]
-        public int PhoneNumber { get; set; }
+        public long PhoneNumber { get; set; }
 
         [DataMember]
-        public int CreditCardNumber { get; set; }
+        public long CreditCardNumber { get; set; }
 
         [DataMember]
         public string Password { get; set; }
+
+        [DataMember]
+        public string ImageBase64String { get; set; }
+
+        [DataMember]
+        public string BackgroundImageBase64String { get; set; }
     }
 
 }

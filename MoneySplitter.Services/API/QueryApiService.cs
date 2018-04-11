@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoneySplitter.Services.API
+namespace MoneySplitter.Services.Api
 {
     public class QueryApiService : IQueryApiService
     {
@@ -30,6 +30,25 @@ namespace MoneySplitter.Services.API
             }
 
             return resultQuery;
+        }
+
+        public async Task<bool> PostAsync<TBodyQuery>(TBodyQuery bodyQuery, Uri uri)
+            where TBodyQuery : class
+        {
+            using (var httpClient = new HttpClient())
+            {
+                var content = new StringContent(JsonConvert.SerializeObject(bodyQuery), Encoding.UTF8, "application/json");
+                var responce = await httpClient.PostAsync(uri, content);
+
+                if (responce.StatusCode == HttpStatusCode.OK)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
 
         public async Task<TResultQuery> GetAsync<TResultQuery>(Uri uri)

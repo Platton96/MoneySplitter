@@ -1,5 +1,4 @@
-﻿using MoneySplitter.Infrastructure;
-using MoneySplitter.Models;
+﻿using MoneySplitter.Models;
 using MoneySplitter.Services.DataModels;
 using MoneySplitter.Services.Inerfaces;
 using MoneySplitter.Models.Session;
@@ -18,7 +17,9 @@ namespace MoneySplitter.Services
                 Email = dataUser.Email,
                 PhoneNumber = dataUser.PhoneNumber,
                 CreditCardNumber = dataUser.CreditCardNumber,
-                Ballance = dataUser.Ballance
+                Ballance = dataUser.Ballance,
+                Token=dataUser.Token,
+                ImageUrl=dataUser.ImageUrl
             };
 
             return userModel;
@@ -31,9 +32,11 @@ namespace MoneySplitter.Services
                 Name = registerModel.Name,
                 Surname = registerModel.Surname,
                 Email = registerModel.Email,
-                Password =registerModel.Password,
+                Password = registerModel.Password,
                 PhoneNumber = registerModel.PhoneNumber,
-                CreditCardNumber = registerModel.CreditCardNumber
+                CreditCardNumber = registerModel.CreditCardNumber,
+                ImageBase64String = registerModel.ImageBase64String,
+                BackgroundImageBase64String=registerModel.BackgroundImageBase64String
             };
 
             return dataRegisterUser;

@@ -183,6 +183,10 @@
       <Project>{51e118c0-0ebe-4381-b1ab-88c49db00321}</Project>
       <Name>MoneySplitter.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MoneySplitter.Managers\MoneySplitter.Managers.csproj">
+      <Project>{59bd14fc-afa4-4597-a7f9-c9e68c843c20}</Project>
+      <Name>MoneySplitter.Managers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MoneySplitter.Models\MoneySplitter.Models.csproj">
       <Project>{9d4cd27c-a963-4c5b-b2ec-5aebd0e2de6e}</Project>
       <Name>MoneySplitter.Models</Name>

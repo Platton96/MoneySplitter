@@ -21,7 +21,7 @@ namespace MoneySplitter.Win10.Views
 
         private void OnRegistredClick(object sender, RoutedEventArgs e)
         {
-            ViewModel.NavigateToRegistretion();
+            ViewModel.NavigateToRegister();
         }
     }
 }

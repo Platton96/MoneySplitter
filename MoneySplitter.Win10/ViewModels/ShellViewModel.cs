@@ -53,7 +53,7 @@ namespace MoneySplitter.Win10.ViewModels
         {
             _navigationManager.InitializeShellNavigationService(new FrameAdapter(frame));
 
-            _navigationManager.NavigateToShellViewModel();
+            _navigationManager.NavigateToMainPage();
         }
 
         public void NavigateToClikedItemMenu(string value)

@@ -8,6 +8,28 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="Friends" FontSize="28" FontStyle="Oblique" VerticalAlignment="Center" HorizontalTextAlignment="Center"/>
+        <ListView x:Name="ListFriends"
+                  ItemsSource="{x:Bind ViewModel.Friends, Mode=OneWay}"
+                  IsItemClickEnabled="True">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Email}" 
+                                       FontSize="20"
+                                       Foreground="Black"/>
+                            <TextBlock Text="{Binding Name}" 
+                                       FontSize="16"
+                                       Foreground="Gray"/>
+                            <Button Content="-"
+                                Margin="5,0,0,0"
+                                Click="OnRemoveButtonClick"    
+                                />
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

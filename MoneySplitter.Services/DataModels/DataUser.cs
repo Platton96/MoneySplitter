@@ -22,14 +22,23 @@ namespace MoneySplitter.Services.DataModels
         public string Password { get; set; }
 
         [DataMember]
-        public int PhoneNumber { get; set; }
+        public long PhoneNumber { get; set; }
 
         [DataMember]
-        public int CreditCardNumber { get; set; }
+        public long CreditCardNumber { get; set; }
 
         [DataMember]
         public double Ballance { get; set; }
 
-        public IEnumerable<DataUser> Friends { get; set; }
+        [DataMember]
+        public string Token { get; set; }
+
+        [DataMember]
+        public string ImageUrl { get; set; }
+
+        [DataMember]
+        public string BackgroundImageUrl { get; set; }
+
+        public IEnumerable<int> Friends { get; set; }
     }
 }

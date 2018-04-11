@@ -9,15 +9,15 @@ namespace MoneySplitter.Services.Api
 {
     public class SessionApiService : ISessionApiService
     {
-        private readonly IApiUrlBuilder _urlBuilder;
+        private readonly IApiUrlBuilder _apiUrlBuilder;
         private readonly IQueryApiService _queryApiService;
-        private readonly IMapper _maper;
+        private readonly IMapper _mapper;
 
-        public SessionApiService(IApiUrlBuilder urlBuilder, IQueryApiService queryApiService, IMapper maper)
+        public SessionApiService(IApiUrlBuilder apiUrlBuilder, IQueryApiService queryApiService, IMapper mapper)
         {
-            _urlBuilder = urlBuilder;
+            _apiUrlBuilder = apiUrlBuilder;
             _queryApiService = queryApiService;
-            _maper = maper;
+            _mapper = mapper;
         }
 
         public async Task<UserModel> SignInAsync(string email, string password)
@@ -28,22 +28,22 @@ namespace MoneySplitter.Services.Api
                 Password = password
             };
 
-            var signInUri = _urlBuilder.Authorization();
+            var apiUrlSignIn = _apiUrlBuilder.Authorization();
 
-            var dataUser = await _queryApiService.PostAsync<DataUser, LoginModel>(loginModel, signInUri);
+            var dataUser = await _queryApiService.PostAsync<DataUser, LoginModel>(loginModel, apiUrlSignIn);
 
-            return _maper.ConvertDataUserToUserModel(dataUser);
+            return _mapper.ConvertDataUserToUserModel(dataUser);
         }
 
         public async Task<UserModel> RegisterAsync(RegisterModel registerModel)
         {
-            var registerUri = _urlBuilder.Registration();
+            var apiUrlRegister = _apiUrlBuilder.Register();
 
-            var dataRegisterUser = _maper.ConvertRegisterModelToDataRegisterUser(registerModel);
+            var dataRegisterUser = _mapper.ConvertRegisterModelToDataRegisterUser(registerModel);
 
-            var dataUser = await _queryApiService.PostAsync<DataUser, DataRegisterUser>(dataRegisterUser, registerUri);
+            var dataUser = await _queryApiService.PostAsync<DataUser, DataRegisterUser>(dataRegisterUser, apiUrlRegister);
 
-            return _maper.ConvertDataUserToUserModel(dataUser);
+            return _mapper.ConvertDataUserToUserModel(dataUser);
         }
     }
 }

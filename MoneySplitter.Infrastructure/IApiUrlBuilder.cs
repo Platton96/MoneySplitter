@@ -5,7 +5,10 @@ namespace MoneySplitter.Infrastructure
     public interface IApiUrlBuilder
     {
         Uri Authorization();
-        Uri Registration();
+        Uri Register();
         Uri SearchUsers(string query);
+        Uri AddFriend();
+        Uri GetAllFriends();
+        Uri RemoveFriend();
     }
 }

@@ -8,9 +8,10 @@ namespace MoneySplitter.Win10.ViewModels
     {
         private readonly INavigationManager _navigationManager;
         private IMembershipService _membershipService;
+        private IFriendsManager _friendsManager;
 
-        private const string DEFAULT_USER_LOGIN = "q@mail.ru";
-        private const string DEFAULT_USER_PASSWORD = "123";
+        private const string DEFAULT_USER_LOGIN = "ivan_17@epam.com";
+        private const string DEFAULT_USER_PASSWORD = "1234abcd";
 
         private string _email = DEFAULT_USER_LOGIN; 
         private string _password = DEFAULT_USER_PASSWORD;
@@ -35,24 +36,27 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public LoginViewModel( INavigationManager navigationManager, IMembershipService membershipService)
+        public LoginViewModel( INavigationManager navigationManager, IMembershipService membershipService, IFriendsManager friendsManager)
         {
             _navigationManager = navigationManager;
             _membershipService = membershipService;
+            _friendsManager = friendsManager;
         }
 
         public async Task SignInAsync()
         {
             await _membershipService.SingInAndLoadUserDataAsync(Email, Password);
+            await _friendsManager.LoadCurrentFriendsUserAsync();
+
             var userModel = _membershipService.CurrentUser;
 
             if (userModel != null)
             {
-                _navigationManager.NavigateToShellView();
+                _navigationManager.NavigateToShellViewModel();
             }
         }
 
-        public void NavigateToRegistretion()
+        public void NavigateToRegister()
         {
             _navigationManager.NavigateToRegisterViewModel();
         }
