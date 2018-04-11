@@ -7,6 +7,12 @@ using System;
 
 namespace MoneySplitter.Win10.ViewModels
 {
+    public class MenuItemModel
+    {
+        public string Glyph { get; set; }
+        public string Text { get; set; }
+    }
+
     public class ShellViewModel : Screen
     {
         private const string WELCOME = "Welcome";
@@ -14,7 +20,7 @@ namespace MoneySplitter.Win10.ViewModels
         private IMembershipService _membershipService;
         private readonly INavigationManager _navigationManager;
 
-        private string _titleFrameText= WELCOME;
+        private string _titleFrameText = WELCOME;
 
         private UserModel _userModel;
 
@@ -25,6 +31,20 @@ namespace MoneySplitter.Win10.ViewModels
             { "Friends",  typeof(FriendsViewModel) },
             { "Home", typeof(HelloWorldViewModel) },
             { "Search",typeof(FoundUsersViewModel) }
+        };
+
+        public IEnumerable<MenuItemModel> MenuItems => new MenuItemModel[]
+        {
+            new MenuItemModel
+            {
+                Text = "First Element",
+                Glyph ="&#xE10F;"
+            },
+            new MenuItemModel
+            {
+                Text = "Text 2",
+                Glyph = "&#xE10F;"
+            }
         };
 
         public UserModel UserModel
