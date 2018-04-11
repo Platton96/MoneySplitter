@@ -21,7 +21,7 @@ namespace MoneySplitter.Services.Api
             _mapper = mapper;
         }
 
-        public async Task<bool> AddFriendAsync(string token, string email, int idFriend)
+        public async Task<bool> AddFriendAsync(string token, string email, int friendId)
         {
             var apiUrlAddFriend = _apiUrlBuilder.AddFriend();
 
@@ -29,13 +29,13 @@ namespace MoneySplitter.Services.Api
             {
                 Token = token,
                 Email = email,
-                IdFriend = idFriend
+                FriendId = friendId
             };
  
             return await _queryApiService.PostAsync(dataAddFriend, apiUrlAddFriend);
         }
 
-        public async Task<bool> RemoveFriendAsync(string token, string email, int idFriend)
+        public async Task<bool> RemoveFriendAsync(string token, string email, int friendId)
         {
             var apiUrlRemoveFriend = _apiUrlBuilder.RemoveFriend();
 
@@ -43,7 +43,7 @@ namespace MoneySplitter.Services.Api
             {
                 Token = token,
                 Email = email,
-                IdFriend = idFriend
+                FriendId = friendId
             };
 
             return await _queryApiService.PostAsync(dataRemoveFriend, apiUrlRemoveFriend);
@@ -61,7 +61,7 @@ namespace MoneySplitter.Services.Api
 
             var friendsUser = await _queryApiService.PostAsync<IEnumerable<DataUser>, DataGetUser>(dataGetUser, apiUrlGetAllFriends);
 
-            return friendsUser.Select(x => _mapper.ConvertDataUserToUserModel(x));
+            return friendsUser.Select(x => _mapper.ConvertDataUserToUserModel(x)).ToList();
         }
     }
 }

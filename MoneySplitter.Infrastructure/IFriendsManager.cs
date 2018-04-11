@@ -11,6 +11,6 @@ namespace MoneySplitter.Infrastructure
         Task<bool> AddFriendAsync(int idFriend);
         Task<bool> RemoveFriendAsync(int idFriend);
 
-        Task LoadFriendsOfCurrentUserAsync();
+        Task LoadCurrentFriendsUserAsync();
     }
 }

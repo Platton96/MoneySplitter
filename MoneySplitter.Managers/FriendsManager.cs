@@ -27,7 +27,7 @@ namespace MoneySplitter.Managers
             return await _friendsApiService.AddFriendAsync(_membershipService.CurrentUser.Token, _membershipService.CurrentUser.Email, idFriend);
         }
 
-        public async Task  LoadFriendsOfCurrentUserAsync()
+        public async Task LoadCurrentFriendsUserAsync()
         {
             FriendsOfCurentUser = await _friendsApiService.GetAllFriendsOfUserAsync(_membershipService.CurrentUser.Token, _membershipService.CurrentUser.Email);
         }
