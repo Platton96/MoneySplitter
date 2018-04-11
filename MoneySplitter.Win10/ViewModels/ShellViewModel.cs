@@ -9,8 +9,12 @@ namespace MoneySplitter.Win10.ViewModels
 {
     public class ShellViewModel : Screen
     {
+        private const string WELCOME = "Welcome";
+
         private IMembershipService _membershipService;
         private readonly INavigationManager _navigationManager;
+
+        private string _titleFrameText= WELCOME;
 
         private UserModel _userModel;
 
@@ -30,6 +34,16 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 _userModel = value;
                 NotifyOfPropertyChange(nameof(UserModel));
+            }
+        }
+
+        public string TitleFrameText
+        {
+            get { return _titleFrameText; }
+            set
+            {
+                _titleFrameText = value;
+                NotifyOfPropertyChange(nameof(TitleFrameText));
             }
         }
 
@@ -58,6 +72,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public void NavigateToClikedItemMenu(string value)
         {
+            TitleFrameText = value;
             _navigationManager.NavigateToShellViewModel(_mainMenuPages[value]);
         }
 
@@ -65,6 +80,19 @@ namespace MoneySplitter.Win10.ViewModels
         {
             base.OnActivate();
             UserModel = _membershipService.CurrentUser;
+            _navigationManager.OnShellNavigationManagerNavigated += OnNavigated;
+        }
+
+        protected override void OnDeactivate(bool close)
+        {
+            base.OnDeactivate(close);
+
+            _navigationManager.OnShellNavigationManagerNavigated -= OnNavigated;
+        }
+
+        private void OnNavigated(object sender, EventArgs e)
+        {
+            //TODO update main menu button and title
         }
 
         public void NovigaateToFoundUsers()
