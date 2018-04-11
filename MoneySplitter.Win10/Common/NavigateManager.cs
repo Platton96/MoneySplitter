@@ -11,15 +11,12 @@ namespace MoneySplitter.Win10.Common
         private readonly INavigationService _windowNavigationService;
         private INavigationService _shellNavigationService;
 
+        public event EventHandler OnShellNavigationManagerNavigated;
+
         public NavigationManager(INavigationService navigationService)
         {
             _windowNavigationService = navigationService;
-            SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
-        }
 
-        private void OnBackRequested(object sender, BackRequestedEventArgs e)
-        {
-            _windowNavigationService.GoBack();
         }
 
         public void NavigateToShellViewModel()
@@ -32,14 +29,16 @@ namespace MoneySplitter.Win10.Common
             _windowNavigationService.NavigateToViewModel<RegisterViewModel>();
         }
 
-        public void InitializeShellNavigationService(INavigationService navigationService)
+        private void OnShellNavigationServiceNavigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
         {
-            _shellNavigationService = navigationService;
+            SetBackButtonVisibility(_shellNavigationService.CanGoBack);
+            OnShellNavigationManagerNavigated?.Invoke(this, null);
         }
 
         public void InitializeShellNavigationService(object navigationService)
         {
             _shellNavigationService = (INavigationService)navigationService;
+            _shellNavigationService.Navigated += OnShellNavigationServiceNavigated;
         }
 
         public void NavigateToMainPage()
@@ -49,17 +48,33 @@ namespace MoneySplitter.Win10.Common
 
         public void NavigateToFriends()
         {
+            SetBackButtonVisibility(_shellNavigationService.CanGoBack);
             _shellNavigationService.NavigateToViewModel<FriendsViewModel>();
         }
 
         public void NavigateToShellViewModel(Type viewModelType)
         {
+            SetBackButtonVisibility(_shellNavigationService.CanGoBack);
             _shellNavigationService.NavigateToViewModel(viewModelType);
         }
 
         public void NavigateToFoundUsersViewModel()
         {
+            SetBackButtonVisibility(_shellNavigationService.CanGoBack);
             _shellNavigationService.NavigateToViewModel<FoundUsersViewModel>();
+        }
+
+        private void SetBackButtonVisibility(bool value)
+        {
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = value ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+        }
+
+        public void GoBack()
+        {
+            if (_shellNavigationService.CanGoBack)
+            {
+                _shellNavigationService.GoBack();
+            }
         }
     }
 }
