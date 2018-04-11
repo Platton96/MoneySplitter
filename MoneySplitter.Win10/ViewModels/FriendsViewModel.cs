@@ -43,7 +43,7 @@ namespace MoneySplitter.Win10.ViewModels
 
             if (isSuccessResponce)
             {
-                await _friendsManager.LoadFriendsOfCurrentUserAsync();
+                await _friendsManager.LoadCurrentFriendsUserAsync();
             }
         }
 
