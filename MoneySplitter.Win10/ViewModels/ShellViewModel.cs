@@ -4,60 +4,50 @@ using MoneySplitter.Infrastructure;
 using Windows.UI.Xaml.Controls;
 using System.Collections.Generic;
 using System;
-using System.Web;
-
+using System.Linq;
 
 namespace MoneySplitter.Win10.ViewModels
 {
-    public class MenuItemModel
-    {
-        public string Glyph { get; set; }
-        public string Text { get; set; }
-    }
-
     public class ShellViewModel : Screen
     {
+        #region Fields
+        private const string MAIN_MENU_BUTTON_TEMPLATE = "{0} {1}";
         private const string WELCOME = "Welcome";
 
-        private IMembershipService _membershipService;
+        private readonly IMembershipService _membershipService;
         private readonly INavigationManager _navigationManager;
 
         private string _titleFrameText = WELCOME;
-
         private UserModel _userModel;
-
         private string _searchQuery;
+        private string _selectedMenuItem;
+        #endregion
 
+        #region Properties
         private IDictionary<string, Type> _mainMenuPages = new Dictionary<string, Type>()
         {
-            { Defines.Title.FRIENDS,  typeof(FriendsViewModel) },
-            { Defines.Title.HOME, typeof(HomeViewModel) },
-            { Defines.Title.SEARCH,typeof(FoundUsersViewModel) }
+            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.IconButton.HOME, Defines.Title.HOME),  typeof(HomeViewModel) },
+            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.IconButton.FRIENDS, Defines.Title.FRIENDS), typeof(FriendsViewModel) },
+            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.IconButton.SEARCH, Defines.Title.SEARCH),typeof(FoundUsersViewModel) }
         };
 
-        public IEnumerable<MenuItemModel> MenuItems => new MenuItemModel[]
+        public string SelectedMenuItem
         {
-            new MenuItemModel
+            get { return _selectedMenuItem; }
+            set
             {
-                Text = Defines.Title.HOME,
-                Glyph =HttpUtility.HtmlDecode(Defines.IconButton.HOME)
-            },
+                if (value == SelectedMenuItem)
+                {
+                    return;
+                }
 
-            new MenuItemModel
-            {
-                Text = Defines.Title.FRIENDS,
-                Glyph =HttpUtility.HtmlDecode(Defines.IconButton.FRIENDS)
-            },
+                _selectedMenuItem = value;
+                NotifyOfPropertyChange(nameof(SelectedMenuItem));
+                NavigateToClikedItemMenu(value);
+            }
+        }
 
-            new MenuItemModel
-            {
-                Text =Defines.Title.SEARCH,
-                Glyph =HttpUtility.HtmlDecode(Defines.IconButton.SEARCH)
-            },
-
-
-
-        };
+        public IEnumerable<string> MenuItems => _mainMenuPages.Select(w => w.Key);
 
         public UserModel UserModel
         {
@@ -88,26 +78,36 @@ namespace MoneySplitter.Win10.ViewModels
                 NotifyOfPropertyChange(nameof(SearchQuery));
             }
         }
+        #endregion
 
+        #region Constructor
         public ShellViewModel(IMembershipService membershipService, INavigationManager navigationManager)
         {
             _membershipService = membershipService;
             _navigationManager = navigationManager;
         }
+        #endregion
 
+        #region Public methods
         public void InitializeShellNavigationService(Frame frame)
         {
             _navigationManager.InitializeShellNavigationService(new FrameAdapter(frame));
 
-            _navigationManager.NavigateToMainPage();
+            SelectedMenuItem = MenuItems.First();
         }
 
         public void NavigateToClikedItemMenu(string value)
         {
-            TitleFrameText = value;
             _navigationManager.NavigateToShellViewModel(_mainMenuPages[value]);
         }
 
+        public void NovigaateToFoundUsers()
+        {
+            _navigationManager.NavigateToFoundUsersViewModel();
+        }
+        #endregion
+
+        #region Protected methods
         protected override void OnActivate()
         {
             base.OnActivate();
@@ -121,15 +121,15 @@ namespace MoneySplitter.Win10.ViewModels
 
             _navigationManager.OnShellNavigationManagerNavigated -= OnNavigated;
         }
+        #endregion
 
-        private void OnNavigated(object sender, EventArgs e)
+        #region Private methods
+        private void OnNavigated(object sender, Type e)
         {
-            //TODO update main menu button and title
-        }
+            TitleFrameText = _mainMenuPages.FirstOrDefault(w => w.Value == e).Key;
 
-        public void NovigaateToFoundUsers()
-        {
-            _navigationManager.NavigateToFoundUsersViewModel();
+            SelectedMenuItem = MenuItems.FirstOrDefault(w => w == TitleFrameText);
         }
+        #endregion
     }
 }

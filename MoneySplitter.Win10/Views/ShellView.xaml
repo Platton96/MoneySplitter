@@ -5,22 +5,28 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:viewmodels="using:MoneySplitter.Win10.ViewModels"
+      xmlns:viewmodels1="using:MoneySplitter.Models.App"
+      xmlns:converters="using:MoneySplitter.Win10.Converters"
       mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
-            <DataTemplate x:Key="MenuItemTemplate" x:DataType="viewmodels:MenuItemModel"  >
+            <converters:MenuItemTitleConverter x:Key="MenuItemToTitle" />
+
+            <DataTemplate x:Key="MenuItemTemplate" x:DataType="x:String">
                 <StackPanel Orientation="Horizontal">
-                    <FontIcon Glyph="{x:Bind Glyph, Mode=OneWay}" />
-                    <TextBlock Text="{x:Bind Text, Mode=OneWay}" Margin="12,0,0,0"/>
+                    <FontIcon Glyph="{x:Bind Converter={StaticResource MenuItemToTitle}, ConverterParameter='0', Mode=OneWay}" />
+                    <TextBlock Text="{x:Bind Converter={StaticResource MenuItemToTitle}, ConverterParameter='1', Mode=OneWay}" Margin="12,0,0,0"/>
+
                 </StackPanel>
             </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
         <NavigationView x:Name="NavView"
+                        SelectionChanged="NavView_SelectionChanged"
+                        SelectedItem="{x:Bind ViewModel.SelectedMenuItem, Mode=TwoWay}"
                         MenuItemsSource="{x:Bind ViewModel.MenuItems, Mode=OneWay}"
-                        MenuItemTemplate="{StaticResource MenuItemTemplate}"
-                        ItemInvoked="OnMenuItemClick">
+                        MenuItemTemplate="{StaticResource MenuItemTemplate}">
             <!--<NavigationView.AutoSuggestBox>
                 <AutoSuggestBox x:Name="ASB" QueryIcon="Find"
                                 Text="{x:Bind ViewModel.SearchQuery, Mode=TwoWay}"
@@ -36,7 +42,7 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Style="{StaticResource TitleTextBlockStyle}"
                                FontSize="28"
-                               Text="{x:Bind TitleFrameText, Mode=OneWay}"/>
+                               Text="{x:Bind TitleFrameText, Converter={StaticResource MenuItemToTitle}, ConverterParameter='1', Mode=OneWay}"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
