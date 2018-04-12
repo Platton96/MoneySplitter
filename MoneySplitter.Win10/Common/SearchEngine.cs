@@ -87,6 +87,8 @@ namespace MoneySplitter.Win10.Common
         public void Deactivate()
         {
             _timer.Stop();
+
+            Results?.Clear();
         }
     }
 }
