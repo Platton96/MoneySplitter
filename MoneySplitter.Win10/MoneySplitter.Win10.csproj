@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="Common\NavigateManager.cs" />
     <Compile Include="Common\SearchEngine.cs" />
+    <Compile Include="Defines.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\FoundUsersViewModel.cs" />
     <Compile Include="ViewModels\FriendsViewModel.cs" />
