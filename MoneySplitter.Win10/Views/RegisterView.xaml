@@ -45,14 +45,14 @@
                      Header="Image"/>
 
             <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                <TextBlock Text="Browse avatar image"
+                <TextBlock Text="{x:Bind ViewModel.LabelForAvatarImage, Mode=OneWay}"
                            Margin="0,0,5,0"/>
                 <Button Content="browse" 
                         Click="Button_Click_1"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal"  Margin="0,10,0,0">
-                <TextBlock Text="Browse background image"
+                <TextBlock Text="{x:Bind ViewModel.LabelForBackgroundImage, Mode=OneWay}"
                            Margin="0,0,5,0"/>
                 <Button Content="browse" 
                         Click="Button_Click"/>

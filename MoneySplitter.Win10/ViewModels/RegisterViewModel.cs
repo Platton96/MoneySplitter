@@ -87,7 +87,7 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public async Task BrowseImageAsync( string  text)
+        public async Task<string> BrowseImageAsync( )
         {
             var picker = new FileOpenPicker()
             {
@@ -101,7 +101,7 @@ namespace MoneySplitter.Win10.ViewModels
 
             var file = await picker.PickSingleFileAsync();
 
-            text = file != null ? "Picked photo: " + file.Name : "Operation cancelled.";
+            return file != null ? "Picked photo: " + file.Name : "Operation cancelled.";
 
         }
     }
