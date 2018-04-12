@@ -28,12 +28,6 @@ namespace MoneySplitter.Win10.ViewModels
             _friendsManager = friendsManager;
         }
 
-        protected override void OnActivate()
-        {
-            base.OnActivate();
-            Friends = new ObservableCollection<UserModel>(_friendsManager.FriendsOfCurentUser);
-        }
-
         public async Task RemoveFriendAsync(int idFriend)
         {
             var friend = Friends.Where(x => x.Id == idFriend).First();
@@ -45,6 +39,12 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 await _friendsManager.LoadCurrentFriendsUserAsync();
             }
+        }
+
+        protected override void OnActivate()
+        {
+            base.OnActivate();
+            Friends = new ObservableCollection<UserModel>(_friendsManager.FriendsOfCurentUser);
         }
 
     }

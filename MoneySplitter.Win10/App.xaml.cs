@@ -44,7 +44,6 @@ namespace MoneySplitter.Win10
             {
                 return;
             }
-
             SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
 
             DisplayRootView<LoginView>();

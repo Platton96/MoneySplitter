@@ -16,6 +16,16 @@ namespace MoneySplitter.Win10.ViewModels
             _friendsManager = friendsManager;
         }
 
+        public async Task AddFriendAsync(int idFriend)
+        {
+            var isSuccessResponce = await _friendsManager.AddFriendAsync(idFriend);
+
+            if (isSuccessResponce)
+            {
+                await _friendsManager.LoadCurrentFriendsUserAsync();
+            }
+        }
+
         public void ChangedQuery(string query)
         {
             SearchEngine.ChangedQeury(query);
@@ -33,14 +43,5 @@ namespace MoneySplitter.Win10.ViewModels
             SearchEngine.Deactivate();
         }
 
-        public async Task AddFriendAsync(int idFriend)
-        {
-            var isSuccessResponce =await _friendsManager.AddFriendAsync(idFriend);
-
-            if(isSuccessResponce)
-            {
-                await _friendsManager.LoadCurrentFriendsUserAsync();
-            }
-        }
     }
 }

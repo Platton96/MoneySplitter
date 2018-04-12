@@ -7,12 +7,12 @@ namespace MoneySplitter.Infrastructure
         void NavigateToShellViewModel();
         void NavigateToRegisterViewModel();
         void InitializeShellNavigationService(object navigationService);
-        void NavigateToMainPage();
+        void NavigateToHome();
         void NavigateToFriends();
         void NavigateToShellViewModel(Type viewModelType);
         void NavigateToFoundUsersViewModel();
         void GoBack();
 
-        event EventHandler OnShellNavigationManagerNavigated;
+        event EventHandler<Type> OnShellNavigationManagerNavigated;
     }
 }
