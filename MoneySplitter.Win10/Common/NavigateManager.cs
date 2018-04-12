@@ -43,7 +43,7 @@ namespace MoneySplitter.Win10.Common
 
         public void NavigateToMainPage()
         {
-            _shellNavigationService.NavigateToViewModel<HelloWorldViewModel>();
+            _shellNavigationService.NavigateToViewModel<HomeViewModel>();
         }
 
         public void NavigateToFriends()
