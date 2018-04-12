@@ -2,6 +2,8 @@
 using MoneySplitter.Infrastructure;
 using MoneySplitter.Models.Session;
 using System.Threading.Tasks;
+using Windows.Storage.Pickers;
+using System;
 
 namespace MoneySplitter.Win10.ViewModels
 {
@@ -9,6 +11,12 @@ namespace MoneySplitter.Win10.ViewModels
     {
         private readonly INavigationManager _navigationManager;
         private readonly IMembershipService _membershipService;
+
+        private const string DEFEALT_TEXT_LABEL_AVATAR = "Browse avatar image";
+        private const string DEFEALT_TEXT_LABEL_BACKGROUND = "Browse background image";
+
+        private string _laberlForAvatarImage = DEFEALT_TEXT_LABEL_AVATAR;
+        private string _labelForBackgroundIamge = DEFEALT_TEXT_LABEL_BACKGROUND;
 
         private string _confirmPassword;
         private RegisterModel _registerModel;
@@ -33,6 +41,28 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
+        public string LabelForAvatarImage
+        {
+            get { return _laberlForAvatarImage; }
+            set
+            {
+                _laberlForAvatarImage = value;
+                NotifyOfPropertyChange(nameof(LabelForAvatarImage));
+            }
+
+        }
+
+        public string LabelForBackgroundImage
+        {
+            get { return _labelForBackgroundIamge; }
+            set
+            {
+                _labelForBackgroundIamge = value;
+                NotifyOfPropertyChange(nameof(LabelForBackgroundImage));
+            }
+
+        }
+
         public RegisterViewModel(INavigationManager navigationManager, IMembershipService membershipService)
         {
             _membershipService = membershipService;
@@ -40,7 +70,7 @@ namespace MoneySplitter.Win10.ViewModels
 
             RegisterModel = new RegisterModel();
         }
-
+        
         public async Task Register()
         {
             if (RegisterModel.Password != ConfirmPassword)
@@ -55,6 +85,24 @@ namespace MoneySplitter.Win10.ViewModels
 
                 _navigationManager.NavigateToShellViewModel();
             }
+        }
+
+        public async Task BrowseImageAsync( string  text)
+        {
+            var picker = new FileOpenPicker()
+            {
+                ViewMode = PickerViewMode.Thumbnail,
+                SuggestedStartLocation = PickerLocationId.PicturesLibrary
+            };
+
+            picker.FileTypeFilter.Add(Defines.ImageExtension.JPG);
+            picker.FileTypeFilter.Add(Defines.ImageExtension.JPEG);
+            picker.FileTypeFilter.Add(Defines.ImageExtension.PNG);
+
+            var file = await picker.PickSingleFileAsync();
+
+            text = file != null ? "Picked photo: " + file.Name : "Operation cancelled.";
+
         }
     }
 }

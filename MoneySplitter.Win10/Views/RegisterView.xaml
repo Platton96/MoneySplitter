@@ -44,6 +44,20 @@
                      Text="{x:Bind ViewModel.RegisterModel.ImageUrl, Mode=TwoWay}"
                      Header="Image"/>
 
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="Browse avatar image"
+                           Margin="0,0,5,0"/>
+                <Button Content="browse" 
+                        Click="Button_Click_1"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"  Margin="0,10,0,0">
+                <TextBlock Text="Browse background image"
+                           Margin="0,0,5,0"/>
+                <Button Content="browse" 
+                        Click="Button_Click"/>
+            </StackPanel>
+
 
             <Button Content="Registred"
                     Click="OnRegistrButtonClick"
