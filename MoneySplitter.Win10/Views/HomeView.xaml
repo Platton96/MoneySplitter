@@ -16,7 +16,7 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}"
                                FontSize="28"
-                               Text="{x:Bind }"/>
+                               Text="home"/>
             </StackPanel>
         </Grid>
         <TextBlock Text="Hello world" FontSize="28" VerticalAlignment="Center" HorizontalAlignment="Center"/>

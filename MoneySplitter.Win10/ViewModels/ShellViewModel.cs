@@ -4,6 +4,8 @@ using MoneySplitter.Infrastructure;
 using Windows.UI.Xaml.Controls;
 using System.Collections.Generic;
 using System;
+using System.Web;
+
 
 namespace MoneySplitter.Win10.ViewModels
 {
@@ -28,23 +30,33 @@ namespace MoneySplitter.Win10.ViewModels
 
         private IDictionary<string, Type> _mainMenuPages = new Dictionary<string, Type>()
         {
-            { "Friends",  typeof(FriendsViewModel) },
-            { "Home", typeof(HelloWorldViewModel) },
-            { "Search",typeof(FoundUsersViewModel) }
+            { Defines.Title.FRIENDS,  typeof(FriendsViewModel) },
+            { Defines.Title.HOME, typeof(HomeViewModel) },
+            { Defines.Title.SEARCH,typeof(FoundUsersViewModel) }
         };
 
         public IEnumerable<MenuItemModel> MenuItems => new MenuItemModel[]
         {
             new MenuItemModel
             {
-                Text = "First Element",
-                Glyph ="&#xE10F;"
+                Text = Defines.Title.HOME,
+                Glyph =HttpUtility.HtmlDecode(Defines.IconButton.HOME)
             },
+
             new MenuItemModel
             {
-                Text = "Text 2",
-                Glyph = "&#xE10F;"
-            }
+                Text = Defines.Title.FRIENDS,
+                Glyph =HttpUtility.HtmlDecode(Defines.IconButton.FRIENDS)
+            },
+
+            new MenuItemModel
+            {
+                Text =Defines.Title.SEARCH,
+                Glyph =HttpUtility.HtmlDecode(Defines.IconButton.SEARCH)
+            },
+
+
+
         };
 
         public UserModel UserModel
