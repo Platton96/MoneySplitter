@@ -17,7 +17,8 @@ namespace MoneySplitter.Win10.Views
 
         private void OnMenuItemClick(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            ViewModel.NavigateToClikedItemMenu((string)args.InvokedItem);
+            var selectedMenuItem = args.InvokedItem as MenuItemModel;
+            ViewModel.NavigateToClikedItemMenu(selectedMenuItem.Text);
         }
 
         private void OnShellFrameLoaded(object sender, RoutedEventArgs e)
