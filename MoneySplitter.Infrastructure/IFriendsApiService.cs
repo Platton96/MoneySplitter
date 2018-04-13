@@ -6,8 +6,8 @@ namespace MoneySplitter.Infrastructure
 {
     public interface IFriendsApiService
     {
-        Task<bool> AddFriendAsync(string token, string email, int idFriend);
-        Task<IEnumerable<UserModel>> GetAllFriendsOfUserAsync(string token, string emai);
+        Task<bool> AddFriendAsync(string token, string email, int friendId);
+        Task<IEnumerable<UserModel>> GetAllUserFriendsAsync(string token, string email);
         Task<bool> RemoveFriendAsync(string token, string email, int idFriend);
     }
 }

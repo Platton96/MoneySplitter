@@ -44,7 +44,7 @@ namespace MoneySplitter.Win10.ViewModels
         protected override void OnActivate()
         {
             base.OnActivate();
-            Friends = new ObservableCollection<UserModel>(_friendsManager.FriendsOfCurentUser);
+            Friends = new ObservableCollection<UserModel>(_friendsManager.UserFriends);
         }
 
     }
