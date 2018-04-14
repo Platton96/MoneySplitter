@@ -21,6 +21,18 @@ namespace MoneySplitter.Win10.CustomControls
             typeof(MobileUserControl),
             null);
 
+        public string ButtonContent
+        {
+            get { return (string)GetValue(ButtonContentProperty); }
+            set { SetValue(ButtonContentProperty, value); }
+        }
+
+        public static readonly DependencyProperty ButtonContentProperty = DependencyProperty.Register(
+            "ButtonContent",
+            typeof(string),
+            typeof(MobileUserControl),
+            null);
+
         public MobileUserControl()
         {
             InitializeComponent();
