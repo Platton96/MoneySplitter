@@ -99,10 +99,14 @@
     <Compile Include="Common\NavigateManager.cs" />
     <Compile Include="Common\SearchEngine.cs" />
     <Compile Include="Converters\MenuItemTitleConverter.cs" />
+    <Compile Include="CustomControls\DesktopUserContol.xaml.cs">
+      <DependentUpon>DesktopUserContol.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\MobileUserControl.xaml.cs">
       <DependentUpon>MobileUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Defines.cs" />
+    <Compile Include="Extensions\XamlElementExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\FoundUsersViewModel.cs" />
     <Compile Include="ViewModels\FriendsViewModel.cs" />
@@ -151,6 +155,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CustomControls\DesktopUserContol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomControls\MobileUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
