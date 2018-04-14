@@ -21,7 +21,7 @@ namespace MoneySplitter.Win10.Views
             await ViewModel.RemoveFriendAsync(selectUser.Id);
         }
 
-        private async void MobileUserControl_OnRemoveItemClick(object sender, UserModel e)
+        private async void OnRemoveItemClick(object sender, UserModel e)
         {
             await ViewModel.RemoveFriendAsync(e.Id);
         }
