@@ -7,7 +7,7 @@ namespace MoneySplitter.Win10.CustomControls
 {
     public sealed partial class MobileUserControl : UserControl
     {
-        public event EventHandler<UserModel> OnRemoveItemClick;
+        public event EventHandler<UserModel> OnAddOrRemoveItemClick;
 
         public UserModel ViewModel
         {
@@ -26,9 +26,9 @@ namespace MoneySplitter.Win10.CustomControls
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void OnAddOrRemoveButtonClick(object sender, RoutedEventArgs e)
         {
-            OnRemoveItemClick?.Invoke(this, ViewModel);
+            OnAddOrRemoveItemClick?.Invoke(this, ViewModel);
         }
     }
 }

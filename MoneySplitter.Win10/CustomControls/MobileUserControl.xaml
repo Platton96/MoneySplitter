@@ -118,7 +118,7 @@
                 <Run Text=" "/>
                 <Run Text="{x:Bind ViewModel.Surname, Mode=OneWay}"/>
             </TextBlock>
-            <Button Click="Button_Click" Content="-" Style="{StaticResource DefaultButtonStyle}"/>
+            <Button Click="OnAddOrRemoveButtonClick" Content="-" Style="{StaticResource DefaultButtonStyle}"/>
         </StackPanel>
 
     </Grid>

@@ -17,7 +17,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:UserModel">
                     <customControls:MobileUserControl ViewModel="{x:Bind Mode=OneWay}"
-                                                      OnRemoveItemClick="MobileUserControl_OnRemoveItemClick"/>
+                                                      OnAddOrRemoveItemClick="MobileUserControl_OnRemoveItemClick"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
