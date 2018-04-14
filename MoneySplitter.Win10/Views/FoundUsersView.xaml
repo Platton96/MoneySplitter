@@ -5,6 +5,7 @@
     xmlns:local="using:MoneySplitter.Win10.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:customControls="using:MoneySplitter.Win10.CustomControls"
     xmlns:models="using:MoneySplitter.Models"
     mc:Ignorable="d">
 
@@ -15,31 +16,31 @@
             </Grid.RowDefinitions>
         <TextBox PlaceholderText="Enter search query" 
                  TextChanged="OnTextBoxTextChanged"/>
-        <ListView x:Name="ListUsers"
+        <!--<ListView x:Name="ListUsers"
                   Grid.Row="1"
                   ItemsSource="{x:Bind ViewModel.SearchEngine.Results, Mode=OneWay}"
-                  IsItemClickEnabled="True"
-                 >
+                  IsItemClickEnabled="True">
+
 
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:UserModel">
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel>
-                            <TextBlock Text="{x:Bind Email, Mode=OneWay}" 
-                                       FontSize="20"
-                                       Foreground="Black"/>
-                            <TextBlock Text="{x:Bind Name, Mode=OneWay}" 
-                                       FontSize="16"
-                                       Foreground="Gray"/>
-                        </StackPanel>
-                        <Button Content="+"
-                                Margin="5,0,0,0"
-                                Click="OnAddButtonClick"
-                                />
-                    </StackPanel>
+                    <customControls:MobileUserControl ViewModel="{x:Bind Mode=OneWay}"
+                                                      ButtonContent="+"
+                                                      OnAddOrRemoveItemClick="OnMobileUserControlAddUserItemClick"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
+        </ListView>-->
+        <GridView x:Name="GridViewCities"
+                  Grid.Row="1"
+                  ItemsSource="{x:Bind ViewModel.SearchEngine.Results, Mode=OneWay}">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="models:UserModel">
+                    <customControls:DesktopUserContol ViewModel="{x:Bind Mode=OneWay}"
+                                                      ButtonContent="add"
+                                                      OnAddOrRemoveItemClick="OnMobileUserControlAddUserItemClick"/>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
 
     </Grid>
 </Page>
