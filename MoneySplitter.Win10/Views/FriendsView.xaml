@@ -10,7 +10,29 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ListView x:Name="ListFriends"
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
+                <VisualState x:Name="Normal">
+                    <VisualState.Setters>
+                        <Setter Target="FriendsList.Visibility" Value="Collapsed"></Setter>
+                        <Setter Target="FriendsGridView.Visibility" Value="Visible"></Setter>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="700"></AdaptiveTrigger>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="Mobile">
+                    <VisualState.Setters>
+                        <Setter Target="FriendsList.Visibility" Value="Visible"></Setter>
+                        <Setter Target="FriendsGridView.Visibility" Value="Collapsed"></Setter>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"></AdaptiveTrigger>
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <ListView x:Name="FriendsList"
                   ItemsSource="{x:Bind ViewModel.Friends, Mode=OneWay}"
                   IsItemClickEnabled="True">
 
@@ -22,5 +44,17 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <GridView x:Name="FriendsGridView"
+                  ItemsSource="{x:Bind ViewModel.Friends, Mode=OneWay}"
+                  Visibility="Visible">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="models:UserModel">
+                    <customControls:DesktopUserContol ViewModel="{x:Bind Mode=OneWay}"
+                                                      ButtonContent="remove"
+                                                      OnAddOrRemoveItemClick="OnRemoveItemClick"/>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
     </Grid>
 </Page>
