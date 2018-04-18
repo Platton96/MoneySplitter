@@ -15,5 +15,12 @@
             public const string FRIENDS = "&#xE716;";
             public const string SEARCH = "&#xE721;";
         }
+
+        public static class ImageExtension
+        {
+            public const string JPEG = ".jpeg";
+            public const string JPG = ".jpg";
+            public const string PNG = ".png";
+        }
     }
 }

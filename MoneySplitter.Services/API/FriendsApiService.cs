@@ -49,7 +49,7 @@ namespace MoneySplitter.Services.Api
             return await _queryApiService.PostAsync(dataRemoveFriend, apiUrlRemoveFriend);
         }
 
-        public async Task<IEnumerable<UserModel>> GetAllFriendsOfUserAsync(string token, string email )
+        public async Task<IEnumerable<UserModel>> GetAllUserFriendsAsync(string token, string email )
         {
             var apiUrlGetAllFriends = _apiUrlBuilder.GetAllFriends();
 

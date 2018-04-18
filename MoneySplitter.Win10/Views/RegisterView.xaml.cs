@@ -14,9 +14,19 @@ namespace MoneySplitter.Win10.Views
             DataContextChanged += (s, e) => { ViewModel = DataContext as RegisterViewModel; };
         }
 
-        private async void OnRegistrButtonClick(object sender, RoutedEventArgs e)
+        private async void OnRegisterButtonClick(object sender, RoutedEventArgs e)
         {
             await ViewModel.Register();
+        }
+
+        private async void OnBrowseBackgroundImage(object sender, RoutedEventArgs e)
+        {
+            await ViewModel.BrowseBackgroundImageAsync();
+        }
+
+        private async void OnBrowseAvatarImage(object sender, RoutedEventArgs e)
+        {
+            await ViewModel.BrowseAvatarImageAsync();
         }
     }
 }

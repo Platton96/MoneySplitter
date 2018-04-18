@@ -13,7 +13,7 @@ namespace MoneySplitter.Managers
 
         public IMapper _mapper;
 
-        public IEnumerable<UserModel> FriendsOfCurentUser { get; private set; }
+        public IEnumerable<UserModel> UserFriends { get; private set; }
 
         public FriendsManager(IFriendsApiService friendsApiService, IMembershipService membershipService, IMapper mapper)
         {
@@ -29,7 +29,7 @@ namespace MoneySplitter.Managers
 
         public async Task LoadCurrentFriendsUserAsync()
         {
-            FriendsOfCurentUser = await _friendsApiService.GetAllFriendsOfUserAsync(_membershipService.CurrentUser.Token, _membershipService.CurrentUser.Email);
+            UserFriends = await _friendsApiService.GetAllUserFriendsAsync(_membershipService.CurrentUser.Token, _membershipService.CurrentUser.Email);
         }
 
         public async Task<bool> RemoveFriendAsync(int idFriend)

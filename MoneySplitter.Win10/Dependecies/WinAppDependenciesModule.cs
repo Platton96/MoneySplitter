@@ -46,6 +46,7 @@ namespace MoneySplitter.Win10.Dependencies
 
             _container.Singleton<IMapper, Mapper>();
 
+            _container.Singleton<IFilePickerService, FilePickerService>();
             _container.Singleton<SearchEngine>();
         }
     }

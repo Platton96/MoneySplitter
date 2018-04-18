@@ -5,6 +5,8 @@
     xmlns:local="using:MoneySplitter.Win10.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:customControls="using:MoneySplitter.Win10.CustomControls"
+    xmlns:models="using:MoneySplitter.Models"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -13,21 +15,9 @@
                   IsItemClickEnabled="True">
 
             <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel>
-                            <TextBlock Text="{Binding Email}" 
-                                       FontSize="20"
-                                       Foreground="Black"/>
-                            <TextBlock Text="{Binding Name}" 
-                                       FontSize="16"
-                                       Foreground="Gray"/>
-                            <Button Content="-"
-                                Margin="5,0,0,0"
-                                Click="OnRemoveButtonClick"    
-                                />
-                        </StackPanel>
-                    </StackPanel>
+                <DataTemplate x:DataType="models:UserModel">
+                    <customControls:MobileUserControl ViewModel="{x:Bind Mode=OneWay}"
+                                                      OnAddOrRemoveItemClick="MobileUserControl_OnRemoveItemClick"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
