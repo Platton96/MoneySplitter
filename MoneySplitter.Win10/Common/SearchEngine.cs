@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Caliburn.Micro;
 using MoneySplitter.Infrastructure;
-using System.Linq;
 using System.Collections.ObjectModel;
 
 namespace MoneySplitter.Win10.Common
@@ -24,7 +23,7 @@ namespace MoneySplitter.Win10.Common
 
         public ObservableCollection<UserModel> Results
         {
-            get => _results;
+            get { return _results; }
             set
             {
                 _results = value;
@@ -60,6 +59,7 @@ namespace MoneySplitter.Win10.Common
             _timer.Stop();
             _timer.Start();
         }
+
         public async Task PerformUsersSearchAsync()
         {
             if (_isSearchInProgress || _query == _previousQuery)

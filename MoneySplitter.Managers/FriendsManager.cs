@@ -32,9 +32,9 @@ namespace MoneySplitter.Managers
             UserFriends = await _friendsApiService.GetAllUserFriendsAsync(_membershipService.CurrentUser.Token, _membershipService.CurrentUser.Email);
         }
 
-        public async Task<bool> RemoveFriendAsync(int idFriend)
+        public async Task<bool> RemoveFriendAsync(int friendId)
         {
-            return await _friendsApiService.RemoveFriendAsync(_membershipService.CurrentUser.Token, _membershipService.CurrentUser.Email, idFriend);
+            return await _friendsApiService.RemoveFriendAsync(_membershipService.CurrentUser.Token, _membershipService.CurrentUser.Email, friendId);
         }
     }
 }
