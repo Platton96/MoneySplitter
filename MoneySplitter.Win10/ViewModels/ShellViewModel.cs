@@ -12,12 +12,11 @@ namespace MoneySplitter.Win10.ViewModels
     {
         #region Fields
         private const string MAIN_MENU_BUTTON_TEMPLATE = "{0} {1}";
-        private const string WELCOME = "Welcome";
 
         private readonly IMembershipService _membershipService;
         private readonly INavigationManager _navigationManager;
 
-        private string _titleFrameText = WELCOME;
+        private string _titleFrameText;
         private UserModel _userModel;
         private string _searchQuery;
         private string _selectedMenuItem;
@@ -47,7 +46,7 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public IEnumerable<string> MenuItems => _mainMenuPages.Select(w => w.Key);
+        public IEnumerable<string> MenuItems => _mainMenuPages.Select(w => w.Key).ToList();
 
         public UserModel UserModel
         {

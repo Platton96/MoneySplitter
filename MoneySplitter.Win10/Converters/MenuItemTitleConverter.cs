@@ -8,7 +8,11 @@ namespace MoneySplitter.Win10.Converters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            var index = int.Parse(parameter.ToString());
+            if(!int.TryParse(parameter.ToString(), out int index))
+            {
+                throw new Exception();
+            }
+
             var str = value.ToString();
 
             var indexOfFirstSpace = str.IndexOf(' ');

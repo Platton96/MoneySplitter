@@ -1,5 +1,4 @@
-﻿using MoneySplitter.Models.App;
-using MoneySplitter.Win10.ViewModels;
+﻿using MoneySplitter.Win10.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -20,9 +19,5 @@ namespace MoneySplitter.Win10.Views
             ViewModel.InitializeShellNavigationService(ContentFrame);
         }
 
-        private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
-        {
-
-        }
     }
 }

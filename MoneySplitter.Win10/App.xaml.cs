@@ -44,12 +44,12 @@ namespace MoneySplitter.Win10
             {
                 return;
             }
-            SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
+            SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
 
             DisplayRootView<LoginView>();
         }
 
-        private void App_BackRequested(object sender, BackRequestedEventArgs e)
+        private void OnBackRequested(object sender, BackRequestedEventArgs e)
         {
             var navigationManager = _container.GetInstance<INavigationManager>();
             navigationManager.GoBack();
