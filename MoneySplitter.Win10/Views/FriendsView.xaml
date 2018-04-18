@@ -41,6 +41,7 @@
                     <customControls:MobileUserControl ViewModel="{x:Bind Mode=OneWay}"
                                                       ButtonContent="-"
                                                       OnAddOrRemoveItemClick="OnRemoveItemClick"/>
+
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
