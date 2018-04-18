@@ -9,7 +9,8 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel VerticalAlignment="Center"
-                    HorizontalAlignment="Center">
+                    HorizontalAlignment="Center"
+                    Visibility="{x:Bind ViewModel.IsVisableStackPanel, Mode=OneWay}">
             
             <TextBox PlaceholderText="Enter email"
                      Text="{x:Bind ViewModel.Email, Mode=TwoWay }"
@@ -25,5 +26,10 @@
             <HyperlinkButton Content="Register"
                              Click="OnRegistredClick"/>
         </StackPanel>
+        
+        <ProgressRing Width="68"
+                      Height="68"
+                      Foreground="#2C404B"
+                      IsActive="{x:Bind ViewModel.IsActiveLoadingProgressRing, Mode=OneWay}"/>
     </Grid>
 </Page>

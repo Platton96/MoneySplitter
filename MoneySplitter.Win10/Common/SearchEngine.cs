@@ -31,6 +31,16 @@ namespace MoneySplitter.Win10.Common
             }
         }
 
+        public bool IsSearchInProgress
+        { 
+            get { return _isSearchInProgress; }
+            set
+            {
+                _isSearchInProgress = value;
+                NotifyOfPropertyChange(nameof(IsSearchInProgress));
+            }
+        }
+
         public SearchEngine(ISearchApiService searchApiService )
         {
             _timer = new DispatcherTimer
@@ -74,14 +84,15 @@ namespace MoneySplitter.Win10.Common
                 return;
             }
 
-            _isSearchInProgress = true;
+            Results?.Clear();
+            IsSearchInProgress = true;
 
             var responce = await _searchApiService.SearchUsersAsync(_query);
 
             _previousQuery = _query;
             Results = new ObservableCollection<UserModel>(responce);
 
-            _isSearchInProgress = false;
+            IsSearchInProgress = false;
         }
 
         public void Deactivate()
