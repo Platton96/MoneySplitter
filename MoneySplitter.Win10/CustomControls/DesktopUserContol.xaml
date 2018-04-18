@@ -22,7 +22,9 @@
                     <Run Text="{x:Bind ViewModel.Surname, Mode=OneWay}"/>
                 </TextBlock>
             <TextBlock Text="{x:Bind ViewModel.Email, Mode=OneWay}"/>
-            <Button Click="OnAddOrRemoveButtonClick" Content="{x:Bind ButtonContent, Mode=OneWay}" Style="{ThemeResource EllipsisButtonRevealStyle}"/>
+            <Button Click="OnAddOrRemoveButtonClick" Content="{x:Bind ButtonContent, Mode=OneWay}" 
+                    Style="{ThemeResource EllipsisButtonRevealStyle}"
+                    MaxWidth="40"/>
             
         </StackPanel>
     </Grid>
