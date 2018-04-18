@@ -8,7 +8,6 @@ namespace MoneySplitter.Infrastructure
     {
         Task<bool> AddFriendAsync(string token, string email, int friendId);
         Task<IEnumerable<UserModel>> GetAllUserFriendsAsync(string token, string email);
-        Task<bool> RemoveFriendAsync(string token, string email, int idFriend);
         Task<bool> RemoveFriendAsync(string token, string email, int friendId);
     }
 }
