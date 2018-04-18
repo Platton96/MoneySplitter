@@ -32,7 +32,7 @@ namespace MoneySplitter.Win10.CustomControls
             typeof(string),
             typeof(MobileUserControl),
             null);
-
+            
         public MobileUserControl()
         {
             InitializeComponent();
