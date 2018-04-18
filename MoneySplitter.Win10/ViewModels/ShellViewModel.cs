@@ -28,7 +28,7 @@ namespace MoneySplitter.Win10.ViewModels
         {
             { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.IconButton.HOME, Defines.Title.HOME),  typeof(HomeViewModel) },
             { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.IconButton.FRIENDS, Defines.Title.FRIENDS), typeof(FriendsViewModel) },
-            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.IconButton.SEARCH, Defines.Title.SEARCH),typeof(FoundUsersViewModel) }
+            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.IconButton.SEARCH, Defines.Title.SEARCH),typeof(SearchUsersViewModel) }
         };
 
         public string SelectedMenuItem
