@@ -25,7 +25,7 @@ namespace MoneySplitter.Services.Api
         {
             var apiUrlSearchUsers = _apiUrlBuilder.SearchUsers(query);
 
-            var usersData = await _queryApiService.GetAsync<IEnumerable<DataUser>>(apiUrlSearchUsers);
+            var usersData = await _queryApiService.GetAsync<IEnumerable<UserData>>(apiUrlSearchUsers);
 
             return usersData.Select(x => _mapper.ConvertDataUserToUserModel(x)).ToList();
         }

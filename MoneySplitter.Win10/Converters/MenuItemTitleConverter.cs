@@ -8,7 +8,8 @@ namespace MoneySplitter.Win10.Converters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if(!int.TryParse(parameter.ToString(), out int index))
+
+            if (!int.TryParse(parameter.ToString(), out int index))
             {
                 throw new Exception();
             }

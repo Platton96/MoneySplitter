@@ -3,7 +3,7 @@
 namespace MoneySplitter.Services.DataModels
 {
     [DataContract]
-    public class DataRemoveFriend
+    public class RemoveFriendData
     {
         [DataMember]
         public string Email { get; set; }
