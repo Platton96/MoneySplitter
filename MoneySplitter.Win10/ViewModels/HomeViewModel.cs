@@ -2,9 +2,9 @@
 
 namespace MoneySplitter.Win10.ViewModels
 {
-    public class HelloWorldViewModel : Screen
+    public class HomeViewModel : Screen
     {
-        public HelloWorldViewModel()
+        public HomeViewModel()
         {
 
         }

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml.Controls;
 using MoneySplitter.Win10.Dependencies;
+using Windows.UI.Core;
+using MoneySplitter.Infrastructure;
 
 namespace MoneySplitter.Win10
 {
@@ -42,8 +44,16 @@ namespace MoneySplitter.Win10
             {
                 return;
             }
+            SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
 
             DisplayRootView<LoginView>();
+        }
+
+        private void OnBackRequested(object sender, BackRequestedEventArgs e)
+        {
+            var navigationManager = _container.GetInstance<INavigationManager>();
+            navigationManager.GoBack();
+            e.Handled = true;
         }
 
         protected override object GetInstance(Type service, string key)

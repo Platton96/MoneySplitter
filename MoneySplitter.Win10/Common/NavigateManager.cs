@@ -2,29 +2,37 @@
 using MoneySplitter.Infrastructure;
 using MoneySplitter.Win10.ViewModels;
 using System;
+using System.Linq;
 using Windows.UI.Core;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace MoneySplitter.Win10.Common
 {
     public class NavigationManager : INavigationManager
     {
+        #region Fields and constructor
         private readonly INavigationService _windowNavigationService;
         private INavigationService _shellNavigationService;
+
+        public event EventHandler<Type> OnShellNavigationManagerNavigated;
 
         public NavigationManager(INavigationService navigationService)
         {
             _windowNavigationService = navigationService;
-            SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
-        }
 
-        private void OnBackRequested(object sender, BackRequestedEventArgs e)
-        {
-            _windowNavigationService.GoBack();
         }
+        #endregion
 
         public void NavigateToShellViewModel()
         {
             _windowNavigationService.NavigateToViewModel<ShellViewModel>();
+        }
+
+        public void InitializeShellNavigationService(object navigationService)
+        {
+            _shellNavigationService = (INavigationService)navigationService;
+            _shellNavigationService.Navigated += OnShellNavigationServiceNavigated;
         }
 
         public void NavigateToRegisterViewModel()
@@ -32,19 +40,9 @@ namespace MoneySplitter.Win10.Common
             _windowNavigationService.NavigateToViewModel<RegisterViewModel>();
         }
 
-        public void InitializeShellNavigationService(INavigationService navigationService)
+        public void NavigateToHome()
         {
-            _shellNavigationService = navigationService;
-        }
-
-        public void InitializeShellNavigationService(object navigationService)
-        {
-            _shellNavigationService = (INavigationService)navigationService;
-        }
-
-        public void NavigateToMainPage()
-        {
-            _shellNavigationService.NavigateToViewModel<HelloWorldViewModel>();
+            _shellNavigationService.NavigateToViewModel<HomeViewModel>();
         }
 
         public void NavigateToFriends()
@@ -61,5 +59,31 @@ namespace MoneySplitter.Win10.Common
         {
             _shellNavigationService.NavigateToViewModel<FoundUsersViewModel>();
         }
+
+        public void GoBack()
+        {
+            if (_shellNavigationService.CanGoBack)
+            {
+                _shellNavigationService.GoBack();
+            }
+        }
+
+        private void SetBackButtonVisibility(bool value)
+        {
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = value ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+        }
+
+        private void OnShellNavigationServiceNavigated(object sender, NavigationEventArgs e)
+        {
+            var sameViewModel = _shellNavigationService.BackStack.FirstOrDefault(w => w.SourcePageType == e.SourcePageType);
+            if (sameViewModel != null)
+            {
+                _shellNavigationService.BackStack.Remove(sameViewModel);
+            }
+
+            SetBackButtonVisibility(_shellNavigationService.CanGoBack);
+            OnShellNavigationManagerNavigated?.Invoke(this, (e.Content as Page).DataContext.GetType());
+        }
+
     }
 }

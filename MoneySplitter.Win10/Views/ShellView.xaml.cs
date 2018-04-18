@@ -1,7 +1,6 @@
 ﻿using MoneySplitter.Win10.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
 
 namespace MoneySplitter.Win10.Views
 {
@@ -15,14 +14,10 @@ namespace MoneySplitter.Win10.Views
             DataContextChanged += (s, e) => { ViewModel = DataContext as ShellViewModel; };
         }
 
-        private void OnMenuItemClick(NavigationView sender, NavigationViewItemInvokedEventArgs args)
-        {
-            ViewModel.NavigateToClikedItemMenu((string)args.InvokedItem);
-        }
-
         private void OnShellFrameLoaded(object sender, RoutedEventArgs e)
         {
             ViewModel.InitializeShellNavigationService(ContentFrame);
         }
+
     }
 }

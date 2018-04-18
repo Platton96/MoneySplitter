@@ -25,7 +25,7 @@ namespace MoneySplitter.Win10.Dependencies
 
             _container.PerRequest<ShellViewModel>();
 
-            _container.PerRequest<HelloWorldViewModel>();
+            _container.PerRequest<HomeViewModel>();
             _container.PerRequest<FriendsViewModel>();
             _container.PerRequest<FoundUsersViewModel>();
         }

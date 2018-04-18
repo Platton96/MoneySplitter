@@ -28,23 +28,23 @@ namespace MoneySplitter.Win10.ViewModels
             _friendsManager = friendsManager;
         }
 
+        public async Task RemoveFriendAsync(int friendId)
+        {
+            var friend = Friends.Where(x => x.Id == friendId).First();
+            Friends.Remove(friend);
+
+            var isSuccessResponce = await _friendsManager.RemoveFriendAsync(friendId);
+
+            if (isSuccessResponce)
+            {
+                await _friendsManager.LoadUserFriendsAsync();
+            }
+        }
+
         protected override void OnActivate()
         {
             base.OnActivate();
             Friends = new ObservableCollection<UserModel>(_friendsManager.FriendsOfCurentUser);
-        }
-
-        public async Task RemoveFriendAsync(int idFriend)
-        {
-            var friend = Friends.Where(x => x.Id == idFriend).First();
-            Friends.Remove(friend);
-
-            var isSuccessResponce = await _friendsManager.RemoveFriendAsync(idFriend);
-
-            if (isSuccessResponce)
-            {
-                await _friendsManager.LoadCurrentFriendsUserAsync();
-            }
         }
 
     }
