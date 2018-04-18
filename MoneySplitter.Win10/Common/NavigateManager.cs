@@ -40,12 +40,12 @@ namespace MoneySplitter.Win10.Common
             _windowNavigationService.NavigateToViewModel<RegisterViewModel>();
         }
 
-        public void NavigateToHome()
+        public void NavigateToHomeViewModel()
         {
             _shellNavigationService.NavigateToViewModel<HomeViewModel>();
         }
 
-        public void NavigateToFriends()
+        public void NavigateToFriendsViewModel()
         {
             _shellNavigationService.NavigateToViewModel<FriendsViewModel>();
         }
@@ -55,9 +55,9 @@ namespace MoneySplitter.Win10.Common
             _shellNavigationService.NavigateToViewModel(viewModelType);
         }
 
-        public void NavigateToFoundUsersViewModel()
+        public void NavigateToSearchUsersViewModel()
         {
-            _shellNavigationService.NavigateToViewModel<FoundUsersViewModel>();
+            _shellNavigationService.NavigateToViewModel<SearchUsersViewModel>();
         }
 
         public void GoBack()

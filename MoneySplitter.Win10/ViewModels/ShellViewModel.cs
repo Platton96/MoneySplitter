@@ -15,9 +15,9 @@ namespace MoneySplitter.Win10.ViewModels
 
         private readonly IMembershipService _membershipService;
         private readonly INavigationManager _navigationManager;
-        private const string DEFAULT_TITLE = "Home";
+        private const string DEFAULT_TITLE="Home";
 
-        private string _titleFrameText = DEFAULT_TITLE;
+        private string _titleFrameText= DEFAULT_TITLE;
         private UserModel _userModel;
         private string _searchQuery;
         private string _selectedMenuItem;
@@ -28,7 +28,7 @@ namespace MoneySplitter.Win10.ViewModels
         {
             { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.IconButton.HOME, Defines.Title.HOME),  typeof(HomeViewModel) },
             { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.IconButton.FRIENDS, Defines.Title.FRIENDS), typeof(FriendsViewModel) },
-            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.IconButton.SEARCH, Defines.Title.SEARCH),typeof(FoundUsersViewModel) }
+            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.IconButton.SEARCH, Defines.Title.SEARCH),typeof(SearchUsersViewModel) }
         };
 
         public string SelectedMenuItem
@@ -103,7 +103,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public void NovigaateToFoundUsers()
         {
-            _navigationManager.NavigateToFoundUsersViewModel();
+            _navigationManager.NavigateToSearchUsersViewModel();
         }
         #endregion
 

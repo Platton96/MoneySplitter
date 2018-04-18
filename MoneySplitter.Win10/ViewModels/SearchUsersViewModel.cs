@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 
 namespace MoneySplitter.Win10.ViewModels
 {
-    public class FoundUsersViewModel : Screen
+    public class SearchUsersViewModel : Screen
     {
         private IFriendsManager _friendsManager;
+
         public SearchEngine SearchEngine { get; set; }
         
-        public FoundUsersViewModel(SearchEngine searchEngine, IFriendsManager friendsManager)
+        public SearchUsersViewModel(SearchEngine searchEngine, IFriendsManager friendsManager)
         {
             SearchEngine = searchEngine;
             _friendsManager = friendsManager;

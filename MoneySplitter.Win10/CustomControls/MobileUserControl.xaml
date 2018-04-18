@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MoneySplitter.Win10.CustomControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:extensions="using:MoneySplitter.Win10.Extensions" 
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DesignHeight="300"
@@ -106,20 +107,24 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Grid>
+    <Grid Margin="5">
+
         <StackPanel Orientation="Horizontal">
             <Ellipse Width="60" Height="60">
                 <Ellipse.Fill>
                     <ImageBrush ImageSource="{x:Bind ViewModel.ImageUrl, Mode=OneWay}"/>
                 </Ellipse.Fill>
             </Ellipse>
-            <TextBlock >
-                <Run Text="{x:Bind ViewModel.Name, Mode=OneWay}" />
-                <Run Text=" "/>
-                <Run Text="{x:Bind ViewModel.Surname, Mode=OneWay}"/>
-            </TextBlock>
-            <Button Click="OnAddOrRemoveButtonClick" Content="-" Style="{StaticResource DefaultButtonStyle}"/>
+            <StackPanel VerticalAlignment="Center" Margin="7">
+                <TextBlock IsTextSelectionEnabled="True">
+                    <Run Text="{x:Bind ViewModel.Name, Mode=OneWay}" />
+                    <Run Text=" "/>
+                    <Run Text="{x:Bind ViewModel.Surname, Mode=OneWay}"/>
+                </TextBlock>
+                <TextBlock Text="{x:Bind ViewModel.Email, Mode=OneWay}"/>
+                <!--<TextBlock extensions:XamlElementExtensions.Resource="BUTTON_HOME"/>-->
+            </StackPanel>
+            <Button Click="OnAddOrRemoveButtonClick" Content="{x:Bind ButtonContent, Mode=OneWay}" Style="{StaticResource DefaultButtonStyle}"/>
         </StackPanel>
-
     </Grid>
 </UserControl>

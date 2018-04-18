@@ -5,8 +5,9 @@ using Windows.UI.Xaml.Controls;
 
 namespace MoneySplitter.Win10.CustomControls
 {
-    public sealed partial class MobileUserControl : UserControl
+    public sealed partial class DesktopUserContol : UserControl
     {
+
         public event EventHandler<UserModel> OnAddOrRemoveItemClick;
 
         public UserModel ViewModel
@@ -24,16 +25,16 @@ namespace MoneySplitter.Win10.CustomControls
         public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(
             "ViewModel",
             typeof(UserModel),
-            typeof(MobileUserControl),
+            typeof(DesktopUserContol),
             null);
 
         public static readonly DependencyProperty ButtonContentProperty = DependencyProperty.Register(
             "ButtonContent",
             typeof(string),
-            typeof(MobileUserControl),
+            typeof(DesktopUserContol),
             null);
-            
-        public MobileUserControl()
+
+        public DesktopUserContol()
         {
             InitializeComponent();
         }
