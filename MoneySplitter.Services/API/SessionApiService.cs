@@ -30,20 +30,20 @@ namespace MoneySplitter.Services.Api
 
             var apiUrlSignIn = _apiUrlBuilder.Authorization();
 
-            var dataUser = await _queryApiService.PostAsync<DataUser, LoginModel>(loginModel, apiUrlSignIn);
+            var userData = await _queryApiService.PostAsync<UserData, LoginModel>(loginModel, apiUrlSignIn);
 
-            return _mapper.ConvertDataUserToUserModel(dataUser);
+            return _mapper.ConvertDataUserToUserModel(userData);
         }
 
         public async Task<UserModel> RegisterAsync(RegisterModel registerModel)
         {
             var apiUrlRegister = _apiUrlBuilder.Register();
 
-            var dataRegisterUser = _mapper.ConvertRegisterModelToDataRegisterUser(registerModel);
+            var registerUserData = _mapper.ConvertRegisterModelToDataRegisterUser(registerModel);
 
-            var dataUser = await _queryApiService.PostAsync<DataUser, DataRegisterUser>(dataRegisterUser, apiUrlRegister);
+            var userData = await _queryApiService.PostAsync<UserData, RegisterUserData>(registerUserData, apiUrlRegister);
 
-            return _mapper.ConvertDataUserToUserModel(dataUser);
+            return _mapper.ConvertDataUserToUserModel(userData);
         }
     }
 }
