@@ -103,7 +103,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public void NovigaateToFoundUsers()
         {
-            _navigationManager.NavigateToFoundUsersViewModel();
+            _navigationManager.NavigateToSearchUsersViewModel();
         }
         #endregion
 
