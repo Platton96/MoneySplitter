@@ -16,13 +16,13 @@ namespace MoneySplitter.Win10.ViewModels
             _friendsManager = friendsManager;
         }
 
-        public async Task AddFriendAsync(int idFriend)
+        public async Task AddFriendAsync(int friendId)
         {
-            var isSuccessResponce = await _friendsManager.AddFriendAsync(idFriend);
+            var isSuccessResponce = await _friendsManager.AddFriendAsync(friendId);
 
             if (isSuccessResponce)
             {
-                await _friendsManager.LoadCurrentFriendsUserAsync();
+                await _friendsManager.LoadUserFriendsAsync();
             }
         }
 

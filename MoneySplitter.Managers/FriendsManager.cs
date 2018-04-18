@@ -22,9 +22,9 @@ namespace MoneySplitter.Managers
             _mapper = mapper;
         }
 
-        public async Task<bool> AddFriendAsync(int idFriend)
+        public async Task<bool> AddFriendAsync(int friendId)
         {
-            return await _friendsApiService.AddFriendAsync(_membershipService.CurrentUser.Token, _membershipService.CurrentUser.Email, idFriend);
+            return await _friendsApiService.AddFriendAsync(_membershipService.CurrentUser.Token, _membershipService.CurrentUser.Email, friendId);
         }
 
         public async Task LoadCurrentFriendsUserAsync()
