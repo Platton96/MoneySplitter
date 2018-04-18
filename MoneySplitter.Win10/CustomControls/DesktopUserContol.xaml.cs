@@ -16,17 +16,17 @@ namespace MoneySplitter.Win10.CustomControls
             set { SetValue(ViewModelProperty, value); }
         }
 
-        public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(
-            "ViewModel",
-            typeof(UserModel),
-            typeof(DesktopUserContol),
-            null);
-
         public string ButtonContent
         {
             get { return (string)GetValue(ButtonContentProperty); }
             set { SetValue(ButtonContentProperty, value); }
         }
+
+        public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(
+            "ViewModel",
+            typeof(UserModel),
+            typeof(DesktopUserContol),
+            null);
 
         public static readonly DependencyProperty ButtonContentProperty = DependencyProperty.Register(
             "ButtonContent",
