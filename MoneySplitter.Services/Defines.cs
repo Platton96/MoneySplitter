@@ -2,6 +2,10 @@
 {
     public static class Defines
     {
+        public static class Executor
+        {
+            public const int COUNT_TRY = 3;
+        }
         public static class Api
         {
             public const string WEB_API_URL = "http://moneytransfer.azurewebsites.net";
