@@ -1,14 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace MoneySplitter.Services
 {
     public class Executor
     {
-        public bool IsSuccesExecute()
+        public async Task<bool> ExecuteWithRetryAsync(Func<Task> asyncAction)
         {
-            return true;
+            await 
         }
+        public async Task<bool> ExecuteOneTime(Func<Task> asyncAction)
+        {
+            try
+            {
+                await asyncAction();
+                return true;
+            }
+            catch 
+            {
+
+                return false;
+            }
+        }
+
     }
 }
