@@ -4,20 +4,22 @@ using System.Threading.Tasks;
 
 namespace MoneySplitter.Win10.ViewModels
 {
-    public class LoginViewModel:Screen
+    public class LoginViewModel : Screen
     {
         private readonly INavigationManager _navigationManager;
         private IMembershipService _membershipService;
         private IFriendsManager _friendsManager;
+        private IExecutor _executor;
 
         private const string DEFAULT_USER_LOGIN = "ivan_17@epam.com";
         private const string DEFAULT_USER_PASSWORD = "1234abcd";
 
-        private string _email = DEFAULT_USER_LOGIN; 
+        private string _email = DEFAULT_USER_LOGIN;
         private string _password = DEFAULT_USER_PASSWORD;
 
-        private bool _isActiveLoadingProgressRing=false;
+        private bool _isActiveLoadingProgressRing = false;
         private bool _isVisableStackPanel = true;
+        private bool _isIssueVisibility = false;
 
         public string Email
         {
@@ -49,6 +51,16 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
+        public bool IsIssueVisibility
+        {
+            get { return _isIssueVisibility; }
+            set
+            {
+                _isIssueVisibility = value;
+                NotifyOfPropertyChange(nameof(IsIssueVisibility));
+            }
+        }
+
         public bool IsVisableStackPanel
         {
             get { return _isVisableStackPanel; }
@@ -59,18 +71,28 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public LoginViewModel( INavigationManager navigationManager, IMembershipService membershipService, IFriendsManager friendsManager)
+        public LoginViewModel(INavigationManager navigationManager, IMembershipService membershipService, IFriendsManager friendsManager, IExecutor executor)
         {
             _navigationManager = navigationManager;
             _membershipService = membershipService;
             _friendsManager = friendsManager;
+            _executor = executor;
         }
 
         public async Task SignInAsync()
         {
             IsActiveLoadingProgressRing = true;
             IsVisableStackPanel = false;
-            await _membershipService.SingInAndLoadUserDataAsync(Email, Password);
+            var a = await _executor.ExecuteWithRetryAsync(async () =>
+            {
+                await _membershipService.SingInAndLoadUserDataAsync(Email, Password);
+            });
+
+            if(_membershipService.CurrentUser == null()
+                {
+
+            }
+
             IsActiveLoadingProgressRing = false;
 
             await _friendsManager.LoadUserFriendsAsync();

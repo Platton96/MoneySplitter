@@ -8,6 +8,24 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Background="#feefe8"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Stretch"
+                    Visibility="{x:Bind ViewModel.IsIssueVisibility}">
+            <Grid>
+                <TextBlock Text=" Unable to log in."
+                           FontWeight="Bold"/>
+                <TextBlock>
+                    <Run>Please check that you have entered your </Run>
+                    <Run FontWeight="Bold">login </Run>
+                    <Run>and </Run>
+                    <Run FontWeight="Bold">password </Run>
+                    <Run>correctly.</Run>
+                </TextBlock>
+            </Grid>
+
+        </StackPanel>
+
         <StackPanel VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     Visibility="{x:Bind ViewModel.IsVisableStackPanel, Mode=OneWay}">
