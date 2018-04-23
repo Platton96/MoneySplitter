@@ -83,14 +83,14 @@ namespace MoneySplitter.Win10.ViewModels
         {
             IsActiveLoadingProgressRing = true;
             IsVisableStackPanel = false;
-            var a = await _executor.ExecuteWithRetryAsync(async () =>
+            var isSuccessExecutingAction = await _executor.ExecuteWithRetryAsync(async () =>
             {
                 await _membershipService.SingInAndLoadUserDataAsync(Email, Password);
             });
 
-            if(_membershipService.CurrentUser == null()
-                {
-
+            if(!isSuccessExecutingAction)
+            {
+                IsIssueVisibility = true;
             }
 
             IsActiveLoadingProgressRing = false;
