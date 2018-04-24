@@ -83,26 +83,22 @@ namespace MoneySplitter.Win10.ViewModels
         {
             IsActiveLoadingProgressRing = true;
             IsVisableStackPanel = false;
-            var isSuccessExecutingAction = await _executor.ExecuteWithRetryAsync(async () =>
-            {
-                await _membershipService.SingInAndLoadUserDataAsync(Email, Password);
-            });
+            IsIssueVisibility = false;
 
-            if(!isSuccessExecutingAction)
-            {
-                IsIssueVisibility = true;
-            }
-
+            var IsSuccessExecution=await _membershipService.SingInAndLoadUserDataAsync(Email, Password);
             IsActiveLoadingProgressRing = false;
-
-            await _friendsManager.LoadUserFriendsAsync();
-
-            var userModel = _membershipService.CurrentUser;
-
-            if (userModel != null)
+            if (IsSuccessExecution)
             {
+                await _friendsManager.LoadUserFriendsAsync();
+                var userModel = _membershipService.CurrentUser;
                 _navigationManager.NavigateToShellViewModel();
             }
+            else
+            {
+                IsIssueVisibility = true;
+                IsVisableStackPanel = true;
+            }
+
         }
 
         public void NavigateToRegister()

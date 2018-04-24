@@ -16,11 +16,13 @@ namespace MoneySplitter.Services
             _sessionApiServices = sessionApiService;
         }
 
-        public async Task SingInAndLoadUserDataAsync(string email, string password)
+        public async Task<bool> SingInAndLoadUserDataAsync(string email, string password)
         {
-            var userModel = await _sessionApiServices.SignInAsync(email, password);
+            var executionResult = await _sessionApiServices.SignInAsync(email, password);
 
-            CurrentUser = userModel;
+            CurrentUser = executionResult.Result;
+
+            return executionResult.IsSuccess;
         }
 
         public async Task ReisterAndLoadUserDataAsync(RegisterModel registerModel)
