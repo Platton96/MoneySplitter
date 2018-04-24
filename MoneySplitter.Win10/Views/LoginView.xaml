@@ -11,18 +11,17 @@
         <StackPanel Background="#feefe8"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Stretch"
-                    Visibility="{x:Bind ViewModel.IsIssueVisibility}">
-            <Grid>
-                <TextBlock Text=" Unable to log in."
-                           FontWeight="Bold"/>
-                <TextBlock>
-                    <Run>Please check that you have entered your </Run>
-                    <Run FontWeight="Bold">login </Run>
-                    <Run>and </Run>
-                    <Run FontWeight="Bold">password </Run>
-                    <Run>correctly.</Run>
-                </TextBlock>
-            </Grid>
+                    Visibility="{x:Bind ViewModel.IsIssueVisibility, Mode=OneWay}">
+            <TextBlock Text=" Unable to log in."
+                               FontWeight="Bold"/>
+                    <TextBlock>
+                        <Run FontStyle="Italic">Please check that you have entered your </Run>
+                        <Run FontWeight="Bold">login </Run>
+                        <Run>and </Run>
+                        <Run FontWeight="Bold">password </Run>
+                        <Run>correctly.</Run>
+                    </TextBlock>
+
 
         </StackPanel>
 
