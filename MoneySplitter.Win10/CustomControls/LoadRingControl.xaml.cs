@@ -11,11 +11,11 @@ namespace MoneySplitter.Win10.CustomControls
         }
         public bool IsActiveRing
         {
-            get { return (bool)GetValue(IsActiveRingPropery); }
-            set { SetValue(IsActiveRingPropery, value); }
+            get { return (bool)GetValue(IsActiveRingProperty); }
+            set { SetValue(IsActiveRingProperty, value); }
         }
 
-        public static readonly DependencyProperty IsActiveRingPropery = DependencyProperty.Register(
+        public static readonly DependencyProperty IsActiveRingProperty = DependencyProperty.Register(
             "IsActiveRing",
             typeof(bool),
             typeof(LoadRingControl),

@@ -5,29 +5,15 @@
     xmlns:local="using:MoneySplitter.Win10.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:customControls="using:MoneySplitter.Win10.CustomControls"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Background="#feefe8"
-                    VerticalAlignment="Top"
-                    HorizontalAlignment="Stretch"
-                    Visibility="{x:Bind ViewModel.IsIssueVisibility, Mode=OneWay}">
-            <TextBlock Text=" Unable to log in."
-                               FontWeight="Bold"/>
-                    <TextBlock>
-                        <Run FontStyle="Italic">Please check that you have entered your </Run>
-                        <Run FontWeight="Bold">login </Run>
-                        <Run>and </Run>
-                        <Run FontWeight="Bold">password </Run>
-                        <Run>correctly.</Run>
-                    </TextBlock>
 
-
-        </StackPanel>
+        <customControls:IssueControl ViewModel="{x:Bind ViewModel.Issue, Mode=OneWay}"/>
 
         <StackPanel VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Visibility="{x:Bind ViewModel.IsVisableStackPanel, Mode=OneWay}">
+                    HorizontalAlignment="Center">
             
             <TextBox PlaceholderText="Enter email"
                      Text="{x:Bind ViewModel.Email, Mode=TwoWay }"
@@ -43,10 +29,7 @@
             <HyperlinkButton Content="Register"
                              Click="OnRegistredClick"/>
         </StackPanel>
-        
-        <ProgressRing Width="68"
-                      Height="68"
-                      Foreground="#2C404B"
-                      IsActive="{x:Bind ViewModel.IsActiveLoadingProgressRing, Mode=OneWay}"/>
+
+        <customControls:LoadRingControl IsActiveRing="{x:Bind ViewModel.IsActiveLoadingProgressRing, Mode=OneWay}"/>
     </Grid>
 </Page>

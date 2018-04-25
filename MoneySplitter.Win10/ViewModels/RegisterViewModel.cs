@@ -19,6 +19,11 @@ namespace MoneySplitter.Win10.ViewModels
 
         private string _confirmPassword;
         private RegisterModel _registerModel;
+        private bool _isActiveLoadingProgressRing=false;
+
+        private bool _isIssueVisibility = false;
+        private string _issueTitle = Defines.Issue.Login.IssueTitle;
+        private string _issueMessage = Defines.Issue.Login.IssueMessage;
 
         public RegisterModel RegisterModel
         {
@@ -69,6 +74,16 @@ namespace MoneySplitter.Win10.ViewModels
             RegisterModel = new RegisterModel();
         }
 
+        public bool IsActiveLoadingProgressRing
+        {
+            get { return _isActiveLoadingProgressRing; }
+            set
+            {
+                _isActiveLoadingProgressRing = value;
+                NotifyOfPropertyChange(nameof(IsActiveLoadingProgressRing));
+            }
+        }
+
         public async Task Register()
         {
             if (RegisterModel.Password != ConfirmPassword)
@@ -77,7 +92,9 @@ namespace MoneySplitter.Win10.ViewModels
             }
             else
             {
+                IsActiveLoadingProgressRing = true;
                 await _membershipService.ReisterAndLoadUserDataAsync(RegisterModel);
+                IsActiveLoadingProgressRing = false;
 
                 var userModel = _membershipService.CurrentUser;
 

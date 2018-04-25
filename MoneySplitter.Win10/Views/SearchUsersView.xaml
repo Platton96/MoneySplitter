@@ -65,10 +65,8 @@
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
-        <ProgressRing Width="68"
-                      Height="68"
-                      Foreground="#2C404B"
-                      Grid.Row="1"
-                      IsActive="{x:Bind ViewModel.SearchEngine.IsSearchInProgress, Mode=OneWay}"/>
+
+        <customControls:LoadRingControl IsActiveRing="{x:Bind ViewModel.SearchEngine.IsSearchInProgress, Mode=OneWay}"
+                                        Grid.Row="1"/>
     </Grid>
 </Page>

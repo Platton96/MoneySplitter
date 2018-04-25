@@ -84,7 +84,6 @@ namespace MoneySplitter.Win10.Common
                 return;
             }
 
-            Results?.Clear();
             IsSearchInProgress = true;
 
             var responce = await _searchApiService.SearchUsersAsync(_query);

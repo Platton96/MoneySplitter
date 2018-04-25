@@ -5,6 +5,7 @@
     xmlns:local="using:MoneySplitter.Win10.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:customControls="using:MoneySplitter.Win10.CustomControls"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -57,11 +58,11 @@
                         Click="OnBrowseBackgroundImage"/>
             </StackPanel>
 
-
             <Button Content="Registred"
                     Click="OnRegisterButtonClick"
                     Margin="5"
                     HorizontalAlignment="Center"/>
         </StackPanel>
+        <customControls:LoadRingControl />
     </Grid>
 </Page>
