@@ -22,5 +22,20 @@
             public const string JPG = ".jpg";
             public const string PNG = ".png";
         }
+
+        public static class Issue
+        {
+            public static class Login
+            {
+                public const string IssueTitle = "Unable to log in.";
+                public const string IssueMessage = "Please check that you have entered your login and password";
+            }
+            public static class Register
+            {
+                public const string IssueTitle = "Unable to Register";
+                public const string IssueMessage = "You have problem whith register";
+                public const string IssuePassword = "Confirmpassword isn't some password";
+            }
+        }
     }
 }
