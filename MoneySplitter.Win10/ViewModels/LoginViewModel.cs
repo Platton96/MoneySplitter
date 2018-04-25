@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using MoneySplitter.Infrastructure;
+using MoneySplitter.Models.App;
 using System.Threading.Tasks;
 
 namespace MoneySplitter.Win10.ViewModels
@@ -9,7 +10,6 @@ namespace MoneySplitter.Win10.ViewModels
         private readonly INavigationManager _navigationManager;
         private IMembershipService _membershipService;
         private IFriendsManager _friendsManager;
-        private IExecutor _executor;
 
         private const string DEFAULT_USER_LOGIN = "ivan_17@epam.com";
         private const string DEFAULT_USER_PASSWORD = "1234abcd";
@@ -18,8 +18,14 @@ namespace MoneySplitter.Win10.ViewModels
         private string _password = DEFAULT_USER_PASSWORD;
 
         private bool _isActiveLoadingProgressRing = false;
-        private bool _isVisableStackPanel = true;
+
         private bool _isIssueVisibility = false;
+        private string _issueTitle = Defines.Issue.Login.IssueTitle;
+        private string _issueMessage = Defines.Issue.Login.IssueMessage;
+        private IssueModel _issue=new IssueModel()
+        {
+
+        };
 
         public string Email
         {
@@ -61,28 +67,37 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public bool IsVisableStackPanel
+        public string IssueTitle
         {
-            get { return _isVisableStackPanel; }
+            get { return _issueTitle; }
             set
             {
-                _isVisableStackPanel = value;
-                NotifyOfPropertyChange(nameof(IsVisableStackPanel));
+                _issueTitle = value;
+                NotifyOfPropertyChange(nameof(IssueTitle));
             }
         }
 
-        public LoginViewModel(INavigationManager navigationManager, IMembershipService membershipService, IFriendsManager friendsManager, IExecutor executor)
+        public string IssueMessage
+        {
+            get { return _issueMessage; }
+            set
+            {
+                _issueMessage = value;
+                NotifyOfPropertyChange(nameof(IssueMessage));
+            }
+        }
+
+
+        public LoginViewModel(INavigationManager navigationManager, IMembershipService membershipService, IFriendsManager friendsManager)
         {
             _navigationManager = navigationManager;
             _membershipService = membershipService;
             _friendsManager = friendsManager;
-            _executor = executor;
         }
 
         public async Task SignInAsync()
         {
             IsActiveLoadingProgressRing = true;
-            IsVisableStackPanel = false;
             IsIssueVisibility = false;
 
             var IsSuccessExecution=await _membershipService.SingInAndLoadUserDataAsync(Email, Password);
@@ -96,7 +111,6 @@ namespace MoneySplitter.Win10.ViewModels
             else
             {
                 IsIssueVisibility = true;
-                IsVisableStackPanel = true;
             }
 
         }
