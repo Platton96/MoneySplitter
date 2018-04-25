@@ -102,8 +102,8 @@
     <Compile Include="CustomControls\DesktopUserContol.xaml.cs">
       <DependentUpon>DesktopUserContol.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\IssueControlControl.xaml.cs">
-      <DependentUpon>IssueControlControl.xaml</DependentUpon>
+    <Compile Include="CustomControls\IssueControl.xaml.cs">
+      <DependentUpon>IssueControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\LoadRingControl.xaml.cs">
       <DependentUpon>LoadRingControl.xaml</DependentUpon>
@@ -165,7 +165,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CustomControls\IssueControlControl.xaml">
+    <Page Include="CustomControls\IssueControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
