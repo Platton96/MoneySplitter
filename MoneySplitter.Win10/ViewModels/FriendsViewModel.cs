@@ -13,6 +13,8 @@ namespace MoneySplitter.Win10.ViewModels
 
         private IFriendsManager _friendsManager;
 
+        private bool _isNotFriendsTextVisibility = false;
+
         public ObservableCollection<UserModel> Friends
         {
             get { return _friends; }
@@ -20,6 +22,16 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 _friends = value;
                 NotifyOfPropertyChange(nameof(Friends));
+            }
+        }
+
+        public bool IsNotFriendsTextVisibility
+        {
+            get { return _isNotFriendsTextVisibility; }
+            set
+            {
+                _isNotFriendsTextVisibility = value;
+                NotifyOfPropertyChange(nameof(IsNotFriendsTextVisibility));
             }
         }
 
@@ -44,7 +56,16 @@ namespace MoneySplitter.Win10.ViewModels
         protected override void OnActivate()
         {
             base.OnActivate();
-            Friends = new ObservableCollection<UserModel>(_friendsManager.UserFriends);
+            IsNotFriendsTextVisibility = false;
+            if (_friendsManager.UserFriends!=null)
+            {
+                Friends = new ObservableCollection<UserModel>(_friendsManager.UserFriends);
+            }
+            else
+            {
+                IsNotFriendsTextVisibility = true;
+            }
+
         }
 
     }
