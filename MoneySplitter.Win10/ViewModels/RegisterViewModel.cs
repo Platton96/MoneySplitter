@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using MoneySplitter.Infrastructure;
+using MoneySplitter.Models.App;
 using MoneySplitter.Models.Session;
 using System.Threading.Tasks;
 
@@ -22,9 +23,8 @@ namespace MoneySplitter.Win10.ViewModels
         private RegisterModel _registerModel;
         private bool _isActiveLoadingProgressRing=false;
 
-        private bool _isIssueVisibility = false;
-        private string _issueTitle = Defines.Issue.Register.ISSUE_TITLE;
-        private string _issueMessage = Defines.Issue.Register.ISSUE_MESSAGE;
+        private bool _isErrorVisible = false;
+        private ErrorDetailsModel _errorDetailsModel;
         #endregion
 
         #region Properties
@@ -68,33 +68,23 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public bool IsIssueVisibility
+        public bool IsErrorVisible
         {
-            get { return _isIssueVisibility; }
+            get { return _isErrorVisible; }
             set
             {
-                _isIssueVisibility = value;
-                NotifyOfPropertyChange(nameof(IsIssueVisibility));
+                _isErrorVisible = value;
+                NotifyOfPropertyChange(nameof(IsErrorVisible));
             }
         }
 
-        public string IssueTitle
+        public ErrorDetailsModel ErrorDetailsModel
         {
-            get { return _issueTitle; }
+            get { return _errorDetailsModel; }
             set
             {
-                _issueTitle = value;
-                NotifyOfPropertyChange(nameof(IssueTitle));
-            }
-        }
-
-        public string IssueMessage
-        {
-            get { return _issueMessage; }
-            set
-            {
-                _issueMessage = value;
-                NotifyOfPropertyChange(nameof(IssueMessage));
+                _errorDetailsModel = value;
+                NotifyOfPropertyChange(nameof(ErrorDetailsModel));
             }
         }
 
@@ -123,32 +113,34 @@ namespace MoneySplitter.Win10.ViewModels
         #region Public methods
         public async Task Register()
         {
-            IsIssueVisibility = false;
-            if (RegisterModel.Password == ConfirmPassword)
+            IsErrorVisible = false;
+            if (RegisterModel.Password != ConfirmPassword)
             {
-                IsActiveLoadingProgressRing = true;
-
-                var IsSuccessExecution = await _membershipService.ReisterAndLoadUserDataAsync(RegisterModel);
-                IsActiveLoadingProgressRing = false;
-
-                if (IsSuccessExecution)
+                IsErrorVisible = true;
+                ErrorDetailsModel = new ErrorDetailsModel
                 {
-                    var userModel = _membershipService.CurrentUser;
-                    _navigationManager.NavigateToShellViewModel();
-                }
-                else
-                {
-                    IsIssueVisibility = true;
-                    IssueMessage = Defines.Issue.Register.ISSUE_MESSAGE;
-                }
-
-            }
-            else
-            {
-                IsIssueVisibility = true;
-                IssueMessage = Defines.Issue.Register.ISSUE_PASSWORD;
+                    ErrorTitle = Defines.ErrorDetails.Register.ERROR_TITLE,
+                    ErrorDescription = Defines.ErrorDetails.Register.ERROR_PASSWORD
+                };
                 return;
             }
+            IsActiveLoadingProgressRing = true;
+            var IsSuccessExecution = await _membershipService.ReisterAndLoadUserDataAsync(RegisterModel);
+            IsActiveLoadingProgressRing = false;
+
+            if (!IsSuccessExecution)
+            {
+                IsErrorVisible = true;
+                ErrorDetailsModel = new ErrorDetailsModel
+                {
+                    ErrorTitle = Defines.ErrorDetails.Register.ERROR_TITLE,
+                    ErrorDescription = Defines.ErrorDetails.Register.ERROR_DESCRIPTION
+                };
+                return;
+
+            }
+            var userModel = _membershipService.CurrentUser;
+            _navigationManager.NavigateToShellViewModel();
         }
 
         public async Task BrowseAvatarImageAsync()

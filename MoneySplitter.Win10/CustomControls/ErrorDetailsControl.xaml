@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="MoneySplitter.Win10.CustomControls.IssueControl"
+    x:Class="MoneySplitter.Win10.CustomControls.ErrorDetailsControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MoneySplitter.Win10.CustomControls"
@@ -18,12 +18,12 @@
     </UserControl.Resources>
     
     <StackPanel Style="{StaticResource IssueStackPanelStyle}"
-                Visibility="{x:Bind IsIssueVisibility, Mode=OneWay}">
-        <TextBlock Text="{x:Bind IssueTitleText, Mode=OneWay}"
+                Visibility="{x:Bind IsErrorVisable, Mode=OneWay}">
+        <TextBlock Text="{x:Bind ErrorDetails. ErrorTitle, Mode=OneWay}"
                    FontWeight="Bold"/>
 
         <TextBlock FontStyle="Italic"
-                   Text="{x:Bind IssueMessageText, Mode=OneWay}"/>
+                   Text="{x:Bind ErrorDetails.ErrorDescription, Mode=OneWay}"/>
 
     </StackPanel>
 </UserControl>

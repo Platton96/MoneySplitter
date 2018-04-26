@@ -19,7 +19,7 @@ namespace MoneySplitter.Win10.Common
         private string _query;
 
         private string _messageForUser;
-        private bool _ismessageForUserVisibility=true;
+        private bool _ismessageForUserVisable=true;
 
         private TimeSpan TIMER_INTERVAL = TimeSpan.FromSeconds(1);
         #endregion
@@ -57,13 +57,13 @@ namespace MoneySplitter.Win10.Common
             }
         }
 
-        public bool IsMessageForUserVisibility
+        public bool IsMessageForUserVisable
         {
-            get { return _ismessageForUserVisibility; }
+            get { return _ismessageForUserVisable; }
             set
             {
-                _ismessageForUserVisibility = value;
-                NotifyOfPropertyChange(nameof(IsMessageForUserVisibility));
+                _ismessageForUserVisable = value;
+                NotifyOfPropertyChange(nameof(IsMessageForUserVisable));
             }
         }
         #endregion
@@ -106,7 +106,7 @@ namespace MoneySplitter.Win10.Common
             {
                 Results?.Clear();
                 MessageForUser = Defines.Search.TEXTBOX_EMPTY;
-                IsMessageForUserVisibility = true;
+                IsMessageForUserVisable = true;
                 _previousQuery = _query;
                 return;
             }
@@ -120,7 +120,7 @@ namespace MoneySplitter.Win10.Common
             {
                 Results?.Clear();
                 MessageForUser = Defines.Search.PROBLEM_SERVER;
-                IsMessageForUserVisibility = true;
+                IsMessageForUserVisable = true;
                 return;
             }
 
@@ -128,11 +128,11 @@ namespace MoneySplitter.Win10.Common
             if(Results.Count==0)
             {
                 MessageForUser = Defines.Search.NOT_RESULTS;
-                IsMessageForUserVisibility = true;
+                IsMessageForUserVisable = true;
             }
             else
             {
-                IsMessageForUserVisibility = false;
+                IsMessageForUserVisable = false;
             }
             IsSearchInProgress = false;
         }

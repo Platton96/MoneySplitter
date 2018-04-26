@@ -1,4 +1,6 @@
-﻿namespace MoneySplitter.Win10
+﻿using MoneySplitter.Models.App;
+
+namespace MoneySplitter.Win10
 {
     public static class Defines
     {
@@ -23,18 +25,23 @@
             public const string PNG = ".png";
         }
 
-        public static class Issue
+        public static class ErrorDetails
         {
             public static class Login
             {
-                public const string ISSUE_TITLE = "Unable to log in.";
-                public const string ISSUE_MESSAGE = "Please check that you have entered your login and password";
+                //public const ErrorDetailsModel ERROR_LOGIN = new ErrorDetailsModel()
+                //{
+                //    ErrorDescription= "Please check that you have entered your login and password",
+                //    ErrorTitle= "Unable to log in."
+                //};
+                public const string ERROR_TITLE = "Unable to log in.";
+                public const string ERROR_DESCRIPTION = "Please check that you have entered your login and password";
             }
             public static class Register
             {
-                public const string ISSUE_TITLE = "Unable to Register";
-                public const string ISSUE_MESSAGE = "You have problem whith register";
-                public const string ISSUE_PASSWORD = "Confirmpassword isn't some password";
+                public const string ERROR_TITLE = "Unable to Register";
+                public const string ERROR_DESCRIPTION = "You have problem whith register";
+                public const string ERROR_PASSWORD = "Confirmpassword isn't some password";
             }
         }
         public static class Search

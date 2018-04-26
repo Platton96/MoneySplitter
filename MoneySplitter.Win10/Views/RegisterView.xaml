@@ -65,9 +65,8 @@
                     Margin="5"
                     HorizontalAlignment="Center"/>
         </StackPanel>
-        <customControls:IssueControl IsIssueVisibility="{x:Bind ViewModel.IsIssueVisibility, Mode=OneWay}"
-                                     IssueTitleText="{x:Bind ViewModel.IssueTitle, Mode=OneWay}"
-                                     IssueMessageText="{x:Bind ViewModel.IssueMessage, Mode=OneWay}"/>
+        <customControls:ErrorDetailsControl IsErrorVisable="{x:Bind ViewModel.IsErrorVisible, Mode=OneWay}"
+                                            ErrorDetails="{x:Bind ViewModel.ErrorDetailsModel, Mode=OneWay}"/>
 
         <customControls:LoadRingControl IsActiveRing="{x:Bind ViewModel.IsActiveLoadingProgressRing, Mode=OneWay}"/>
     </Grid>

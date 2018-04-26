@@ -20,9 +20,8 @@ namespace MoneySplitter.Win10.ViewModels
 
         private bool _isActiveLoadingProgressRing = false;
 
-        private bool _isIssueVisibility = false;
-        private string _issueTitle = Defines.Issue.Login.ISSUE_TITLE;
-        private string _issueMessage = Defines.Issue.Login.ISSUE_MESSAGE;
+        private bool _isErrorVisible= false;
+        private ErrorDetailsModel _errorDetailsModel;
         #endregion
 
         #region Properties
@@ -56,35 +55,28 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public bool IsIssueVisibility
+        public bool IsErrorVisible
         {
-            get { return _isIssueVisibility; }
+            get { return _isErrorVisible; }
             set
             {
-                _isIssueVisibility = value;
-                NotifyOfPropertyChange(nameof(IsIssueVisibility));
+                _isErrorVisible = value;
+                NotifyOfPropertyChange(nameof(IsErrorVisible));
             }
         }
 
-        public string IssueTitle
+
+
+        public ErrorDetailsModel ErrorDetailsModel
         {
-            get { return _issueTitle; }
+            get { return _errorDetailsModel; }
             set
             {
-                _issueTitle = value;
-                NotifyOfPropertyChange(nameof(IssueTitle));
+                _errorDetailsModel = value;
+                NotifyOfPropertyChange(nameof(ErrorDetailsModel));
             }
         }
 
-        public string IssueMessage
-        {
-            get { return _issueMessage; }
-            set
-            {
-                _issueMessage = value;
-                NotifyOfPropertyChange(nameof(IssueMessage));
-            }
-        }
         #endregion
 
         #region Constructor
@@ -100,20 +92,26 @@ namespace MoneySplitter.Win10.ViewModels
         public async Task SignInAsync()
         {
             IsActiveLoadingProgressRing = true;
-            IsIssueVisibility = false;
+            IsErrorVisible = false;
 
-            var IsSuccessExecution=await _membershipService.SingInAndLoadUserDataAsync(Email, Password);
+            var isSuccessExecution = await _membershipService.SingInAndLoadUserDataAsync(Email, Password)
+                || await _friendsManager.LoadUserFriendsAsync();
+
             IsActiveLoadingProgressRing = false;
-            if (IsSuccessExecution)
+            if (!isSuccessExecution)
             {
-                await _friendsManager.LoadUserFriendsAsync();
-                var userModel = _membershipService.CurrentUser;
-                _navigationManager.NavigateToShellViewModel();
+                ErrorDetailsModel = new ErrorDetailsModel
+                {
+                    ErrorTitle = Defines.ErrorDetails.Login.ERROR_TITLE,
+                    ErrorDescription = Defines.ErrorDetails.Login.ERROR_DESCRIPTION
+                };
+
+                IsErrorVisible = true;
+                return;
             }
-            else
-            {
-                IsIssueVisibility = true;
-            }
+
+            var userModel = _membershipService.CurrentUser;
+            _navigationManager.NavigateToShellViewModel();
 
         }
 
