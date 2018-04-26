@@ -33,7 +33,7 @@ namespace MoneySplitter.Services.Api
             var apiUrlSearchUsers = _apiUrlBuilder.SearchUsers(query);
 
             IEnumerable<UserData> usersData = null;
-            usersData = await _queryApiService.GetAsync<IEnumerable<UserData>>(apiUrlSearchUsers);
+
             await _executor.ExecuteWithRetryAsync(async () =>
             {
                 usersData = await _queryApiService.GetAsync<IEnumerable<UserData>>(apiUrlSearchUsers);
@@ -44,9 +44,12 @@ namespace MoneySplitter.Services.Api
                 return result;
             }
 
-            result.Result= usersData.Select(x => _mapper.ConvertDataUserToUserModel(x)).ToList();
-            result.IsSuccess = true;
-            return result;
+            return new ExecutionResult<IEnumerable<UserModel>>
+            {
+                IsSuccess = true,
+                Result = usersData.Select(x => _mapper.ConvertDataUserToUserModel(x)).ToList()
+            };
+
         }
     }
 }

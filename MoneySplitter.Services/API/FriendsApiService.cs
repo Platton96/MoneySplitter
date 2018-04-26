@@ -13,12 +13,14 @@ namespace MoneySplitter.Services.Api
         private readonly IApiUrlBuilder _apiUrlBuilder;
         private readonly IQueryApiService _queryApiService;
         private readonly IMapper _mapper;
+        private readonly IExecutor _executor;
 
-        public FriendsApiService(IApiUrlBuilder apiUrlBuilder, IQueryApiService queryApiService, IMapper mapper)
+        public FriendsApiService(IApiUrlBuilder apiUrlBuilder, IQueryApiService queryApiService, IMapper mapper, IExecutor executor)
         {
             _apiUrlBuilder = apiUrlBuilder;
             _queryApiService = queryApiService;
             _mapper = mapper;
+            _executor = executor;
         }
 
         public async Task<bool> AddFriendAsync(string token, string email, int friendId)
@@ -49,8 +51,13 @@ namespace MoneySplitter.Services.Api
             return await _queryApiService.PostAsync(removeFriendData, apiUrlRemoveFriend);
         }
 
-        public async Task<IEnumerable<UserModel>> GetAllUserFriendsAsync(string token, string email )
+        public async Task<ExecutionResult<IEnumerable<UserModel>>> GetAllUserFriendsAsync(string token, string email )
         {
+            var result = new ExecutionResult<IEnumerable<UserModel>>
+            {
+                IsSuccess = false
+            };
+
             var apiUrlGetAllFriends = _apiUrlBuilder.GetAllFriends();
 
             var getUserData = new GetUserData
@@ -59,9 +66,21 @@ namespace MoneySplitter.Services.Api
                 Email = email
             };
 
-            var userFriends = await _queryApiService.PostAsync<IEnumerable<UserData>, GetUserData>(getUserData, apiUrlGetAllFriends);
+            IEnumerable<UserData> userFriendsData = null;
 
-            return userFriends.Select(x => _mapper.ConvertDataUserToUserModel(x)).ToList();
+            await _executor.ExecuteWithRetryAsync(async () =>
+            {
+                userFriendsData= await _queryApiService.PostAsync<IEnumerable<UserData>, GetUserData>(getUserData, apiUrlGetAllFriends);
+            });
+
+            if (userFriendsData == null)
+            {
+                return result;
+            }
+
+            result.Result = userFriendsData.Select(x => _mapper.ConvertDataUserToUserModel(x)).ToList();
+            result.IsSuccess = true;
+            return result;
         }
     }
 }
