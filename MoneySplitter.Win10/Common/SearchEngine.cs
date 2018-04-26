@@ -10,6 +10,7 @@ namespace MoneySplitter.Win10.Common
 {
     public class SearchEngine : PropertyChangedBase
     {
+        #region Fields
         private readonly DispatcherTimer _timer;
 
         private readonly ISearchApiService _searchApiService;
@@ -17,8 +18,13 @@ namespace MoneySplitter.Win10.Common
         private string _previousQuery = string.Empty;
         private string _query;
 
-        private TimeSpan TIMER_INTERVAL = TimeSpan.FromSeconds(1);
+        private string _messageForUser;
+        private bool _ismessageForUserVisibility=true;
 
+        private TimeSpan TIMER_INTERVAL = TimeSpan.FromSeconds(1);
+        #endregion
+
+        #region Properties
         private ObservableCollection<UserModel> _results;
 
         public ObservableCollection<UserModel> Results
@@ -28,6 +34,16 @@ namespace MoneySplitter.Win10.Common
             {
                 _results = value;
                 NotifyOfPropertyChange(nameof(Results));
+            }
+        }
+
+        public string MessageForUser
+        {
+            get { return _messageForUser; }
+            set
+            {
+                _messageForUser = value;
+                NotifyOfPropertyChange(nameof(MessageForUser));
             }
         }
 
@@ -41,6 +57,18 @@ namespace MoneySplitter.Win10.Common
             }
         }
 
+        public bool IsMessageForUserVisibility
+        {
+            get { return _ismessageForUserVisibility; }
+            set
+            {
+                _ismessageForUserVisibility = value;
+                NotifyOfPropertyChange(nameof(IsMessageForUserVisibility));
+            }
+        }
+        #endregion
+
+        #region Constructor
         public SearchEngine(ISearchApiService searchApiService )
         {
             _timer = new DispatcherTimer
@@ -52,12 +80,9 @@ namespace MoneySplitter.Win10.Common
 
             _searchApiService = searchApiService;
         }
+        #endregion
 
-        private async void OnTimerTick(object sender, object e)
-        {
-            await PerformUsersSearchAsync();
-        }
-
+        #region Public methods
         public void Activate()
         {
             _timer.Start();
@@ -80,6 +105,8 @@ namespace MoneySplitter.Win10.Common
             if (string.IsNullOrEmpty(_query))
             {
                 Results?.Clear();
+                MessageForUser = Defines.Search.TEXTBOX_EMPTY;
+                IsMessageForUserVisibility = true;
                 _previousQuery = _query;
                 return;
             }
@@ -90,7 +117,15 @@ namespace MoneySplitter.Win10.Common
 
             _previousQuery = _query;
             Results = new ObservableCollection<UserModel>(responce);
-
+            if(Results.Count==0)
+            {
+                MessageForUser = Defines.Search.NOT_RESULTS;
+                IsMessageForUserVisibility = true;
+            }
+            else
+            {
+                IsMessageForUserVisibility = false;
+            }
             IsSearchInProgress = false;
         }
 
@@ -100,5 +135,13 @@ namespace MoneySplitter.Win10.Common
 
             Results?.Clear();
         }
+        #endregion
+
+        #region Private methods
+        private async void OnTimerTick(object sender, object e)
+        {
+            await PerformUsersSearchAsync();
+        }
+        #endregion
     }
 }

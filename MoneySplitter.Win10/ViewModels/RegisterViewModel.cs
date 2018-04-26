@@ -23,8 +23,8 @@ namespace MoneySplitter.Win10.ViewModels
         private bool _isActiveLoadingProgressRing=false;
 
         private bool _isIssueVisibility = false;
-        private string _issueTitle = Defines.Issue.Register.IssueTitle;
-        private string _issueMessage = Defines.Issue.Register.IssueMessage;
+        private string _issueTitle = Defines.Issue.Register.ISSUE_TITLE;
+        private string _issueMessage = Defines.Issue.Register.ISSUE_MESSAGE;
         #endregion
 
         #region Properties
@@ -139,14 +139,14 @@ namespace MoneySplitter.Win10.ViewModels
                 else
                 {
                     IsIssueVisibility = true;
-                    IssueMessage = Defines.Issue.Register.IssueMessage;
+                    IssueMessage = Defines.Issue.Register.ISSUE_MESSAGE;
                 }
 
             }
             else
             {
                 IsIssueVisibility = true;
-                IssueMessage = Defines.Issue.Register.IssuePassword;
+                IssueMessage = Defines.Issue.Register.ISSUE_PASSWORD;
                 return;
             }
         }

@@ -27,15 +27,21 @@
         {
             public static class Login
             {
-                public const string IssueTitle = "Unable to log in.";
-                public const string IssueMessage = "Please check that you have entered your login and password";
+                public const string ISSUE_TITLE = "Unable to log in.";
+                public const string ISSUE_MESSAGE = "Please check that you have entered your login and password";
             }
             public static class Register
             {
-                public const string IssueTitle = "Unable to Register";
-                public const string IssueMessage = "You have problem whith register";
-                public const string IssuePassword = "Confirmpassword isn't some password";
+                public const string ISSUE_TITLE = "Unable to Register";
+                public const string ISSUE_MESSAGE = "You have problem whith register";
+                public const string ISSUE_PASSWORD = "Confirmpassword isn't some password";
             }
+        }
+        public static class Search
+        {
+            public const string TEXTBOX_EMPTY = "Enter, please query for search!";
+            public const string NOT_RESULTS = "Not results!";
+            public const string PROBLEM_SERVER = "Sory, problems with server!";
         }
     }
 }

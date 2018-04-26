@@ -60,6 +60,7 @@
         <TextBlock VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    Foreground="#2C404B"
+                   FontSize="18"
                    Text="You daon't have friends("
                    Visibility="{x:Bind ViewModel.IsNotFriendsTextVisibility, Mode=OneWay}"/>
     </Grid>

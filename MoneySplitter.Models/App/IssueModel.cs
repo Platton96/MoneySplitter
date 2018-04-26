@@ -1,6 +1,6 @@
 ﻿namespace MoneySplitter.Models.App
 {
-    public class IssueModel
+    public class IssueModel/*: PropertyChangedBase*/
     {
         public bool IsIssueVisibility { get; set; }
         public string IssueTitle { get; set; }

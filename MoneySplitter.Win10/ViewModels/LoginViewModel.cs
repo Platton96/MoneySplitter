@@ -21,8 +21,8 @@ namespace MoneySplitter.Win10.ViewModels
         private bool _isActiveLoadingProgressRing = false;
 
         private bool _isIssueVisibility = false;
-        private string _issueTitle = Defines.Issue.Login.IssueTitle;
-        private string _issueMessage = Defines.Issue.Login.IssueMessage;
+        private string _issueTitle = Defines.Issue.Login.ISSUE_TITLE;
+        private string _issueMessage = Defines.Issue.Login.ISSUE_MESSAGE;
         #endregion
 
         #region Properties
