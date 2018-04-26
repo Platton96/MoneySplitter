@@ -124,21 +124,30 @@ namespace MoneySplitter.Win10.ViewModels
         public async Task Register()
         {
             IsIssueVisibility = false;
-            if (RegisterModel.Password != ConfirmPassword)
+            if (RegisterModel.Password == ConfirmPassword)
+            {
+                IsActiveLoadingProgressRing = true;
+
+                var IsSuccessExecution = await _membershipService.ReisterAndLoadUserDataAsync(RegisterModel);
+                IsActiveLoadingProgressRing = false;
+
+                if (IsSuccessExecution)
+                {
+                    var userModel = _membershipService.CurrentUser;
+                    _navigationManager.NavigateToShellViewModel();
+                }
+                else
+                {
+                    IsIssueVisibility = true;
+                    IssueMessage = Defines.Issue.Register.IssueMessage;
+                }
+
+            }
+            else
             {
                 IsIssueVisibility = true;
                 IssueMessage = Defines.Issue.Register.IssuePassword;
                 return;
-            }
-            else
-            {
-                IsActiveLoadingProgressRing = true;
-                await _membershipService.ReisterAndLoadUserDataAsync(RegisterModel);
-                IsActiveLoadingProgressRing = false;
-
-                var userModel = _membershipService.CurrentUser;
-
-                _navigationManager.NavigateToShellViewModel();
             }
         }
 
