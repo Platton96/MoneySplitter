@@ -7,6 +7,7 @@ namespace MoneySplitter.Win10.ViewModels
 {
     public class RegisterViewModel : Screen
     {
+        #region Fields
         private readonly INavigationManager _navigationManager;
         private readonly IMembershipService _membershipService;
         private readonly IFilePickerService _filePickerService;
@@ -22,9 +23,11 @@ namespace MoneySplitter.Win10.ViewModels
         private bool _isActiveLoadingProgressRing=false;
 
         private bool _isIssueVisibility = false;
-        private string _issueTitle = Defines.Issue.Login.IssueTitle;
-        private string _issueMessage = Defines.Issue.Login.IssueMessage;
+        private string _issueTitle = Defines.Issue.Register.IssueTitle;
+        private string _issueMessage = Defines.Issue.Register.IssueMessage;
+        #endregion
 
+        #region Properties
         public RegisterModel RegisterModel
         {
             get { return _registerModel; }
@@ -65,13 +68,34 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public RegisterViewModel(INavigationManager navigationManager, IMembershipService membershipService, IFilePickerService filePickerService)
+        public bool IsIssueVisibility
         {
-            _membershipService = membershipService;
-            _navigationManager = navigationManager;
-            _filePickerService = filePickerService;
+            get { return _isIssueVisibility; }
+            set
+            {
+                _isIssueVisibility = value;
+                NotifyOfPropertyChange(nameof(IsIssueVisibility));
+            }
+        }
 
-            RegisterModel = new RegisterModel();
+        public string IssueTitle
+        {
+            get { return _issueTitle; }
+            set
+            {
+                _issueTitle = value;
+                NotifyOfPropertyChange(nameof(IssueTitle));
+            }
+        }
+
+        public string IssueMessage
+        {
+            get { return _issueMessage; }
+            set
+            {
+                _issueMessage = value;
+                NotifyOfPropertyChange(nameof(IssueMessage));
+            }
         }
 
         public bool IsActiveLoadingProgressRing
@@ -83,11 +107,27 @@ namespace MoneySplitter.Win10.ViewModels
                 NotifyOfPropertyChange(nameof(IsActiveLoadingProgressRing));
             }
         }
+        #endregion
 
+        #region Constructor
+        public RegisterViewModel(INavigationManager navigationManager, IMembershipService membershipService, IFilePickerService filePickerService)
+        {
+            _membershipService = membershipService;
+            _navigationManager = navigationManager;
+            _filePickerService = filePickerService;
+
+            RegisterModel = new RegisterModel();
+        }
+        #endregion
+
+        #region Public methods
         public async Task Register()
         {
+            IsIssueVisibility = false;
             if (RegisterModel.Password != ConfirmPassword)
             {
+                IsIssueVisibility = true;
+                IssueMessage = Defines.Issue.Register.IssuePassword;
                 return;
             }
             else
@@ -104,7 +144,9 @@ namespace MoneySplitter.Win10.ViewModels
 
         public async Task BrowseAvatarImageAsync()
         {
+            IsActiveLoadingProgressRing = true;
             var imageResult = await _filePickerService.BrowseImageAsync();
+            IsActiveLoadingProgressRing = false;
 
             RegisterModel.ImageBase64String = imageResult.Base64StringImage;
             LabelForAvatarImage = imageResult.ImageName;
@@ -112,11 +154,13 @@ namespace MoneySplitter.Win10.ViewModels
 
         public async Task BrowseBackgroundImageAsync()
         {
+            IsActiveLoadingProgressRing = true;
             var imageResult = await _filePickerService.BrowseImageAsync();
+            IsActiveLoadingProgressRing = false;
 
             RegisterModel.BackgroundImageBase64String = imageResult.Base64StringImage;
             LabelForBackgroundImage = imageResult.ImageName;
         }
-
+        #endregion
     }
 }
