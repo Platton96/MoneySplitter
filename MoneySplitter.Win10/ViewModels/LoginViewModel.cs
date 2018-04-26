@@ -7,6 +7,7 @@ namespace MoneySplitter.Win10.ViewModels
 {
     public class LoginViewModel : Screen
     {
+        #region Fields
         private readonly INavigationManager _navigationManager;
         private IMembershipService _membershipService;
         private IFriendsManager _friendsManager;
@@ -22,11 +23,9 @@ namespace MoneySplitter.Win10.ViewModels
         private bool _isIssueVisibility = false;
         private string _issueTitle = Defines.Issue.Login.IssueTitle;
         private string _issueMessage = Defines.Issue.Login.IssueMessage;
-        private IssueModel _issue=new IssueModel()
-        {
+        #endregion
 
-        };
-
+        #region Properties
         public string Email
         {
             get { return _email; }
@@ -86,15 +85,18 @@ namespace MoneySplitter.Win10.ViewModels
                 NotifyOfPropertyChange(nameof(IssueMessage));
             }
         }
+        #endregion
 
-
+        #region Constructor
         public LoginViewModel(INavigationManager navigationManager, IMembershipService membershipService, IFriendsManager friendsManager)
         {
             _navigationManager = navigationManager;
             _membershipService = membershipService;
             _friendsManager = friendsManager;
         }
+        #endregion
 
+        #region Public methods
         public async Task SignInAsync()
         {
             IsActiveLoadingProgressRing = true;
@@ -119,5 +121,6 @@ namespace MoneySplitter.Win10.ViewModels
         {
             _navigationManager.NavigateToRegisterViewModel();
         }
+        #endregion
     }
 }

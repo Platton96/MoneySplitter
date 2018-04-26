@@ -10,7 +10,9 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <customControls:IssueControl ViewModel="{x:Bind ViewModel.Issue, Mode=OneWay}"/>
+        <customControls:IssueControl IsIssueVisibility="{x:Bind ViewModel.IsIssueVisibility, Mode=OneWay}"
+                                     IssueMessageText="{x:Bind ViewModel.IssueMessage, Mode=OneWay}"
+                                     IssueTitleText="{x:Bind ViewModel.IssueTitle, Mode=OneWay}"/>
 
         <StackPanel VerticalAlignment="Center"
                     HorizontalAlignment="Center">
