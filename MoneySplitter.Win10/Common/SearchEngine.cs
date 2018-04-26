@@ -113,10 +113,18 @@ namespace MoneySplitter.Win10.Common
 
             IsSearchInProgress = true;
 
-            var responce = await _searchApiService.SearchUsersAsync(_query);
+            var executionResult = await _searchApiService.SearchUsersAsync(_query);
 
             _previousQuery = _query;
-            Results = new ObservableCollection<UserModel>(responce);
+            if (!executionResult.IsSuccess)
+            {
+                Results?.Clear();
+                MessageForUser = Defines.Search.PROBLEM_SERVER;
+                IsMessageForUserVisibility = true;
+                return;
+            }
+
+            Results = new ObservableCollection<UserModel>(executionResult.Result);
             if(Results.Count==0)
             {
                 MessageForUser = Defines.Search.NOT_RESULTS;

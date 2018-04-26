@@ -24,7 +24,7 @@ namespace MoneySplitter.Services.Api
 
         public async Task<ExecutionResult<UserModel>> SignInAsync(string email, string password)
         {
-            ExecutionResult<UserModel> result = new ExecutionResult<UserModel>
+            var result = new ExecutionResult<UserModel>
             {
                 IsSuccess = false
             };
@@ -58,7 +58,7 @@ namespace MoneySplitter.Services.Api
 
         public async Task<ExecutionResult<UserModel>> RegisterAsync(RegisterModel registerModel)
         {
-            ExecutionResult<UserModel> result = new ExecutionResult<UserModel>
+            var result = new ExecutionResult<UserModel>
             {
                 IsSuccess = false
             };

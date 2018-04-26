@@ -6,6 +6,6 @@ namespace MoneySplitter.Infrastructure
 {
     public interface ISearchApiService
     {
-        Task<IEnumerable<UserModel>> SearchUsersAsync(string query);
+        Task<ExecutionResult<IEnumerable<UserModel>>> SearchUsersAsync(string query);
     }
 }
