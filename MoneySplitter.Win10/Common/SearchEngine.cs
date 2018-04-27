@@ -116,10 +116,11 @@ namespace MoneySplitter.Win10.Common
             var executionResult = await _searchApiService.SearchUsersAsync(_query);
 
             _previousQuery = _query;
+
             if (!executionResult.IsSuccess)
             {
                 Results?.Clear();
-                MessageForUser = Defines.Search.PROBLEM_SERVER;
+                MessageForUser = Defines.ErrorDetails.PROBLEM_SERVER;
                 IsMessageForUserVisable = true;
                 return;
             }
