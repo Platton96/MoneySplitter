@@ -13,11 +13,8 @@ namespace MoneySplitter.Win10.ViewModels
         private readonly IMembershipService _membershipService;
         private readonly IFilePickerService _filePickerService;
 
-        private const string DEFEALT_TEXT_LABEL_AVATAR = "Browse avatar image";
-        private const string DEFEALT_TEXT_LABEL_BACKGROUND = "Browse background image";
-
-        private string _laberlForAvatarImage = DEFEALT_TEXT_LABEL_AVATAR;
-        private string _labelForBackgroundIamge = DEFEALT_TEXT_LABEL_BACKGROUND;
+        private string _laberlForAvatarImage = Defines.Register.BrowseImage.AVATAR;
+        private string _labelForBackgroundIamge = Defines.Register.BrowseImage.BACKGROUND;
 
         private string _confirmPassword;
         private RegisterModel _registerModel;
@@ -114,6 +111,7 @@ namespace MoneySplitter.Win10.ViewModels
         public async Task Register()
         {
             IsErrorVisible = false;
+
             if (RegisterModel.Password != ConfirmPassword)
             {
                 IsErrorVisible = true;
@@ -124,6 +122,7 @@ namespace MoneySplitter.Win10.ViewModels
                 };
                 return;
             }
+
             IsActiveLoadingProgressRing = true;
             var IsSuccessExecution = await _membershipService.ReisterAndLoadUserDataAsync(RegisterModel);
             IsActiveLoadingProgressRing = false;
@@ -137,9 +136,8 @@ namespace MoneySplitter.Win10.ViewModels
                     ErrorDescription = Defines.ErrorDetails.Register.ERROR_DESCRIPTION
                 };
                 return;
-
             }
-            var userModel = _membershipService.CurrentUser;
+
             _navigationManager.NavigateToShellViewModel();
         }
 
