@@ -10,7 +10,6 @@ namespace MoneySplitter.Win10.ViewModels
         #region Fields
         private readonly INavigationManager _navigationManager;
         private IMembershipService _membershipService;
-        private IFriendsManager _friendsManager;
 
         private const string DEFAULT_USER_LOGIN = "ivan_17@epam.com";
         private const string DEFAULT_USER_PASSWORD = "1234abcd";
@@ -80,11 +79,10 @@ namespace MoneySplitter.Win10.ViewModels
         #endregion
 
         #region Constructor
-        public LoginViewModel(INavigationManager navigationManager, IMembershipService membershipService, IFriendsManager friendsManager)
+        public LoginViewModel(INavigationManager navigationManager, IMembershipService membershipService)
         {
             _navigationManager = navigationManager;
             _membershipService = membershipService;
-            _friendsManager = friendsManager;
         }
         #endregion
 
@@ -94,15 +92,15 @@ namespace MoneySplitter.Win10.ViewModels
             IsActiveLoadingProgressRing = true;
             IsErrorVisible = false;
 
-            var isSuccessExecution = await _membershipService.SingInAndLoadUserDataAsync(Email, Password)
-                || await _friendsManager.LoadUserFriendsAsync();
+            var isSuccessExecution = await _membershipService.SingInAndLoadUserDataAsync(Email, Password);
 
             IsActiveLoadingProgressRing = false;
+
             if (!isSuccessExecution)
             {
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
-                    ErrorTitle = Defines.ErrorDetails.Login.ERROR_TITLE,
+                    ErrorTitle = Defines.ErrorDetails.DEFAULT_ERROR_TITLE,
                     ErrorDescription = Defines.ErrorDetails.Login.ERROR_DESCRIPTION
                 };
 
@@ -112,7 +110,6 @@ namespace MoneySplitter.Win10.ViewModels
 
             var userModel = _membershipService.CurrentUser;
             _navigationManager.NavigateToShellViewModel();
-
         }
 
         public void NavigateToRegister()
