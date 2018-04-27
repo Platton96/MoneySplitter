@@ -63,5 +63,8 @@
                    FontSize="18"
                    Text="You daon't have friends("
                    Visibility="{x:Bind ViewModel.IsNotFriendsTextVisibility, Mode=OneWay}"/>
+        <customControls:ErrorDetailsControl IsErrorVisable="{x:Bind ViewModel.IsErrorVisible, Mode=OneWay}"
+                                            ErrorDetails="{x:Bind ViewModel.ErrorDetailsModel, Mode=OneWay}"/>
+        <customControls:LoadRingControl IsActiveRing="{x:Bind ViewModel.IsActiveLoadingProgressRing, Mode=OneWay}"/>
     </Grid>
 </Page>
