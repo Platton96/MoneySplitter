@@ -46,7 +46,10 @@ namespace MoneySplitter.Win10.Common
                 };
             }
 
-            else return null;
+            else
+            {
+                return null;
+            }
         }
     }
 }

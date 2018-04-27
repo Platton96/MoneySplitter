@@ -65,15 +65,17 @@
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
-
-        <customControls:LoadRingControl IsActiveRing="{x:Bind ViewModel.SearchEngine.IsSearchInProgress, Mode=OneWay}"
-                                        Grid.Row="1"/>
+        
         <TextBlock VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    Foreground="#2C404B"
                    FontSize="18"
                    Grid.Row="1"
                    Text="{x:Bind ViewModel.SearchEngine.MessageForUser, Mode=OneWay}"
-                   Visibility="{x:Bind ViewModel.SearchEngine.IsMessageForUserVisibility, Mode=OneWay}"/>
+                   Visibility="{x:Bind ViewModel.SearchEngine.IsMessageForUserVisable, Mode=OneWay}"/>
+        
+        <customControls:LoadRingControl IsActiveRing="{x:Bind ViewModel.SearchEngine.IsSearchInProgress, Mode=OneWay}"
+                                        Grid.Row="1"/>
+
     </Grid>
 </Page>

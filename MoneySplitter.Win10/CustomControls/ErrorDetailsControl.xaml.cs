@@ -34,7 +34,5 @@ namespace MoneySplitter.Win10.CustomControls
             typeof(ErrorDetailsModel),
             typeof(ErrorDetailsControl),
             null);
-
-  
     }
 }
