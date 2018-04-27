@@ -1,6 +1,4 @@
-﻿using MoneySplitter.Models.App;
-
-namespace MoneySplitter.Win10
+﻿namespace MoneySplitter.Win10
 {
     public static class Defines
     {
@@ -25,15 +23,22 @@ namespace MoneySplitter.Win10
             public const string PNG = ".png";
         }
 
+        public static class Register
+        {
+            public static class BrowseImage
+            {
+                public const string BACKGROUND = "Browse background image";
+                public const string AVATAR = "Browse avatar image";
+            }
+        }
+
         public static class ErrorDetails
         {
+            public const string PROBLEM_SERVER = "Sory, problems with server!";
+            public const string DEFAULT_ERROR_TITLE = "Wrong";
+
             public static class Login
             {
-                //public const ErrorDetailsModel ERROR_LOGIN = new ErrorDetailsModel()
-                //{
-                //    ErrorDescription= "Please check that you have entered your login and password",
-                //    ErrorTitle= "Unable to log in."
-                //};
                 public const string ERROR_TITLE = "Unable to log in.";
                 public const string ERROR_DESCRIPTION = "Please check that you have entered your login and password";
             }
@@ -44,11 +49,11 @@ namespace MoneySplitter.Win10
                 public const string ERROR_PASSWORD = "Confirmpassword isn't some password";
             }
         }
+
         public static class Search
         {
             public const string TEXTBOX_EMPTY = "Enter, please query for search!";
             public const string NOT_RESULTS = "Not results!";
-            public const string PROBLEM_SERVER = "Sory, problems with server!";
         }
     }
 }
