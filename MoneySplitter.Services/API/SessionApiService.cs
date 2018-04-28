@@ -43,7 +43,7 @@ namespace MoneySplitter.Services.Api
                 userData = await _queryApiService.PostAsync<UserData, LoginModel>(loginModel, apiUrlSignIn);
             });
 
-            var userModel = _mapper.ConvertDataUserToUserModel(userData);
+            var userModel = _mapper.ConvertUserDataToUserModel(userData);
 
             if (userModel == null)
             {
@@ -67,14 +67,14 @@ namespace MoneySplitter.Services.Api
 
             UserData userData = null;
 
-            var registerUserData = _mapper.ConvertRegisterModelToDataRegisterUser(registerModel);
+            var registerUserData = _mapper.ConvertRegisterModelToRegisterUserData(registerModel);
 
             await _executor.ExecuteWithRetryAsync(async () =>
             {
                 userData = await _queryApiService.PostAsync<UserData, RegisterUserData>(registerUserData, apiUrlRegister);
             });
 
-            var userModel = _mapper.ConvertDataUserToUserModel(userData);
+            var userModel = _mapper.ConvertUserDataToUserModel(userData);
             if (userModel == null)
             {
                 return result;

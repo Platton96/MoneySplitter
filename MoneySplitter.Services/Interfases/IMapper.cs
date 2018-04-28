@@ -6,7 +6,7 @@ namespace MoneySplitter.Services.Inerfaces
 {
     public interface IMapper
     {
-        UserModel ConvertDataUserToUserModel(UserData userData);
-        RegisterUserData ConvertRegisterModelToDataRegisterUser(RegisterModel registerModel);
+        UserModel ConvertUserDataToUserModel(UserData userData);
+        RegisterUserData ConvertRegisterModelToRegisterUserData(RegisterModel registerModel);
     }
 }

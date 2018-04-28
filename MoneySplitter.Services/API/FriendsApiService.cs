@@ -78,7 +78,7 @@ namespace MoneySplitter.Services.Api
                 return result;
             }
 
-            result.Result = userFriendsData.Select(x => _mapper.ConvertDataUserToUserModel(x)).ToList();
+            result.Result = userFriendsData.Select(x => _mapper.ConvertUserDataToUserModel(x)).ToList();
             result.IsSuccess = true;
             return result;
         }

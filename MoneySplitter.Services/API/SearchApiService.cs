@@ -47,7 +47,7 @@ namespace MoneySplitter.Services.Api
             return new ExecutionResult<IEnumerable<UserModel>>
             {
                 IsSuccess = true,
-                Result = usersData.Select(x => _mapper.ConvertDataUserToUserModel(x)).ToList()
+                Result = usersData.Select(x => _mapper.ConvertUserDataToUserModel(x)).ToList()
             };
 
         }

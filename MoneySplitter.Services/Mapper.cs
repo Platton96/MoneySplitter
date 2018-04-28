@@ -7,30 +7,30 @@ namespace MoneySplitter.Services
 {
     public class Mapper : IMapper
     {
-        public UserModel ConvertDataUserToUserModel(UserData dataUser)
+        public UserModel ConvertUserDataToUserModel(UserData userData)
         {
-            if (dataUser==null)
+            if (userData==null)
             {
                 return null;
             }
 
             var userModel = new UserModel()
             {
-                Id = dataUser.Id,
-                Name = dataUser.Name,
-                Surname = dataUser.Surname,
-                Email = dataUser.Email,
-                PhoneNumber = dataUser.PhoneNumber,
-                CreditCardNumber = dataUser.CreditCardNumber,
-                Ballance = dataUser.Ballance,
-                Token=dataUser.Token,
-                ImageUrl=dataUser.ImageUrl
+                Id = userData.Id,
+                Name = userData.Name,
+                Surname = userData.Surname,
+                Email = userData.Email,
+                PhoneNumber = userData.PhoneNumber,
+                CreditCardNumber = userData.CreditCardNumber,
+                Ballance = userData.Ballance,
+                Token=userData.Token,
+                ImageUrl=userData.ImageUrl
             };
 
             return userModel;
         }
 
-        public RegisterUserData ConvertRegisterModelToDataRegisterUser( RegisterModel registerModel)
+        public RegisterUserData ConvertRegisterModelToRegisterUserData( RegisterModel registerModel)
         {
             var dataRegisterUser = new RegisterUserData()
             {
@@ -46,5 +46,6 @@ namespace MoneySplitter.Services
 
             return dataRegisterUser;
         }
+
     }
 }
