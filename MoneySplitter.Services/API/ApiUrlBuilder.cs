@@ -54,5 +54,29 @@ namespace MoneySplitter.Services.Api
              Defines.Api.Friends.FRIENDS,
              Defines.Api.Friends.ALL_FRIENDS));
         }
+
+        public Uri GetAllMyTransactions()
+        {
+            return new Uri(string.Concat(
+                Defines.Api.WEB_API_URL,
+                Defines.Api.Transactions.TRANSACTIONS,
+                Defines.Api.Transactions.MY));
+        }
+
+        public Uri AddTransaction()
+        {
+            return new Uri(string.Concat(
+                Defines.Api.WEB_API_URL,
+                Defines.Api.Transactions.TRANSACTIONS,
+                Defines.Api.Transactions.ADD));
+        }
+
+        public Uri GetAllTransactions()
+        {
+            return new Uri(string.Concat(
+                Defines.Api.WEB_API_URL,
+                Defines.Api.Transactions.TRANSACTIONS,
+                Defines.Api.Transactions.ALL));
+        }
     }
 }
