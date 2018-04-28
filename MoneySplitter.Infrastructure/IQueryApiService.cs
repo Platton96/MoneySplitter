@@ -14,5 +14,8 @@ namespace MoneySplitter.Infrastructure
 
         Task<bool> PostAsync<TBodyQuery>(TBodyQuery bodyQuery, Uri uri)
              where TBodyQuery : class;
+
+        Task<TResultQuery> GetUseHeadersAsync<TResultQuery>(Uri uri)
+             where TResultQuery : class;
     }
 }

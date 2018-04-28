@@ -31,8 +31,6 @@ namespace MoneySplitter.Services.Api
         {
             using (var httpClient = new HttpClient())
             {
-               // httpClient.DefaultRequestHeaders.Add("X-USERNAME", username);
-               //httpClient
                var content = new StringContent(JsonConvert.SerializeObject(bodyQuery), Encoding.UTF8, "application/json");
                 var responce = await httpClient.PostAsync(uri, content);
 
@@ -60,6 +58,20 @@ namespace MoneySplitter.Services.Api
             return resultQuery;
         }
 
+        public async Task<TResultQuery> GetUseHeadersAsync<TResultQuery>(Uri uri)
+             where TResultQuery : class
+        {
+            TResultQuery resultQuery;
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.AddCredentials();
+                var responce = await httpClient.GetAsync(uri);
+                resultQuery = await GetContentResponce<TResultQuery>(responce);
+            }
+
+            return resultQuery;
+        }
+
         private async Task<TContentResponce> GetContentResponce<TContentResponce>(HttpResponseMessage responseMessage)
             where TContentResponce : class
         {
@@ -71,6 +83,8 @@ namespace MoneySplitter.Services.Api
             var contentResponce = await responseMessage.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<TContentResponce>(contentResponce);
         }
+
+
     }
 }
 
