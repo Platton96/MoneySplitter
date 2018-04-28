@@ -14,7 +14,7 @@ namespace MoneySplitter.Services
                 return null;
             }
 
-            var userModel = new UserModel()
+            return new UserModel()
             {
                 Id = userData.Id,
                 Name = userData.Name,
@@ -26,13 +26,11 @@ namespace MoneySplitter.Services
                 Token=userData.Token,
                 ImageUrl=userData.ImageUrl
             };
-
-            return userModel;
         }
 
         public RegisterUserData ConvertRegisterModelToRegisterUserData( RegisterModel registerModel)
         {
-            var dataRegisterUser = new RegisterUserData()
+            return  new RegisterUserData()
             {
                 Name = registerModel.Name,
                 Surname = registerModel.Surname,
@@ -43,8 +41,39 @@ namespace MoneySplitter.Services
                 ImageBase64String = registerModel.ImageBase64String,
                 BackgroundImageBase64String=registerModel.BackgroundImageBase64String
             };
+        }
 
-            return dataRegisterUser;
+        public RegisterTransactionData ConvertRegisterTransactioModelToRegisterTransactionData(RegisterTransactionModel registerTransactionModel)
+        {
+            return new RegisterTransactionData()
+            {
+                Title = registerTransactionModel.Title,
+                Token=registerTransactionModel.Token,
+                Email = registerTransactionModel.Email,
+                Cost=registerTransactionModel.Cost,
+                DeadlineDate=registerTransactionModel.DeadlineDate,
+                Description=registerTransactionModel.Description,
+                CollaboratorsIds=registerTransactionModel.CollaboratorsIds,
+                ImageBase64String = registerTransactionModel.ImageBase64String,
+            };
+        }
+
+        public TransactionModel ConvertTransactioDataToTransactionData(TransactionData transactionData)
+        {
+            return new TransactionModel()
+            {
+                Id=transactionData.Id,
+                Owner=transactionData.Owner,
+                CreationDate=transactionData.CreationDate,
+                Title =transactionData.Title,
+                DeadlineDate = transactionData.DeadlineDate,
+                Description = transactionData.Description,
+                Coast=transactionData.Coast,
+                Collaborators=transactionData.Collaborators,
+                Finished=transactionData.Finished,
+                InProgress=transactionData.InProgress,
+                ImageUrl=transactionData.ImageUrl
+            };
         }
 
     }
