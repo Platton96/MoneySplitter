@@ -1,6 +1,5 @@
 ﻿using MoneySplitter.Infrastructure;
 using MoneySplitter.Models;
-using MoneySplitter.Services.Inerfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,15 +10,12 @@ namespace MoneySplitter.Managers
         private IFriendsApiService _friendsApiService;
         private IMembershipService _membershipService;
 
-        public IMapper _mapper;
-
         public IEnumerable<UserModel> UserFriends { get; private set; }
 
-        public FriendsManager(IFriendsApiService friendsApiService, IMembershipService membershipService, IMapper mapper)
+        public FriendsManager(IFriendsApiService friendsApiService, IMembershipService membershipService)
         {
             _friendsApiService = friendsApiService;
             _membershipService = membershipService;
-            _mapper = mapper;
         }
 
         public async Task<bool> AddFriendAsync(int friendId)
