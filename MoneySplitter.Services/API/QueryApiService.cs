@@ -63,7 +63,7 @@ namespace MoneySplitter.Services.Api
         {
             if (responseMessage.StatusCode != HttpStatusCode.OK)
             {
-                throw new Exception();
+                throw new HttpRequestException(Defines.ServerMassage.BAD_RESPONCE);
             }
 
             var contentResponce = await responseMessage.Content.ReadAsStringAsync();

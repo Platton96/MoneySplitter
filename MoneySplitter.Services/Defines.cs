@@ -6,6 +6,10 @@
         {
             public const int COUNT_TRY = 3;
         }
+        public static class ServerMassage
+        {
+            public const string BAD_RESPONCE = "Bad server's response";
+        }
         public static class Api
         {
             public const string WEB_API_URL = "http://moneytransfer.azurewebsites.net";
