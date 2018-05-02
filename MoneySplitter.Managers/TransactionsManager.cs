@@ -15,6 +15,7 @@ namespace MoneySplitter.Managers
         {
             _transactionsApiService = transactionsApiService;
         }
+
         public async Task<bool> LoadUserTransactions()
         {
             var executionResult = await _transactionsApiService.GetAllUserTransactions();

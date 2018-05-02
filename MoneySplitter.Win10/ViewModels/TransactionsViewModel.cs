@@ -4,7 +4,6 @@ using MoneySplitter.Models;
 using MoneySplitter.Models.App;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace MoneySplitter.Win10.ViewModels
 {
@@ -104,6 +103,5 @@ namespace MoneySplitter.Win10.ViewModels
 
             Transactions = new ObservableCollection<TransactionModel>(_transactionsManager.UserTransactions);
         }
-
     }
 }

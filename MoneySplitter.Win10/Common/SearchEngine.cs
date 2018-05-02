@@ -87,8 +87,8 @@ namespace MoneySplitter.Win10.Common
         {
             _previousQuery = string.Empty;
             _query = string.Empty;
-            IsMessageForUserVisable = true;
-            MessageForUser = Defines.Search.TEXTBOX_EMPTY;
+            IsStatusMessageVisible = true;
+            StatusMessage = Defines.Search.TEXTBOX_EMPTY;
             _timer.Start();
         }
 

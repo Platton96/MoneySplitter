@@ -30,7 +30,7 @@ namespace MoneySplitter.Services.Api
                 IsSuccess = false
             };
 
-            var apiUrlGetAllFriends = _apiUrlBuilder.GetAllMyTransactions();
+            var apiUrlGetAllFriends = _apiUrlBuilder.GetAllUserTransactions();
 
             IEnumerable<TransactionData> userTransactionsData = null;
 

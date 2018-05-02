@@ -55,7 +55,7 @@ namespace MoneySplitter.Services.Api
              Defines.Api.Friends.ALL_FRIENDS));
         }
 
-        public Uri GetAllMyTransactions()
+        public Uri GetAllUserTransactions()
         {
             return new Uri(string.Concat(
                 Defines.Api.WEB_API_URL,
