@@ -2,19 +2,24 @@
 {
     public static class Defines
     {
-        public static class Title
+        public static class MenuItem
         {
-            public const string HOME = "Home";
-            public const string FRIENDS = "Friends";
-            public const string SEARCH = "Search";
-        }
+            public static class Title
+            {
+                public const string HOME = "Home";
+                public const string FRIENDS = "Friends";
+                public const string SEARCH = "Search";
+                public const string TRANSACTIONS = "Transactions";
 
-        public static class IconButton
-        {
-            public const string HOME = "&#xE80F;";
-            public const string FRIENDS = "&#xE716;";
-            public const string SEARCH = "&#xE721;";
-            public const string TRANSACTIONS = "&#xE8A5";
+            }
+
+            public static class IconButton
+            {
+                public const string HOME = "&#xE80F;";
+                public const string FRIENDS = "&#xE716;";
+                public const string SEARCH = "&#xE721;";
+                public const string TRANSACTIONS = "&#xE8A5;";
+            }
         }
 
         public static class ImageExtension
