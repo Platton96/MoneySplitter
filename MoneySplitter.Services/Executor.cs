@@ -9,21 +9,25 @@ namespace MoneySplitter.Services
     {
         public async Task ExecuteWithRetryAsync(Func<Task> asyncAction)
         {
-            for (int i = 0; i < Defines.Executor.COUNT_TRY; i++)
+            for (int i = 0; i < Defines.Executor.EXECUTION_ATTEMPTS_COUNT; i++)
             {
-                await ExecuteOneTime(asyncAction);
+                if(await ExecuteOneTime(asyncAction))
+                {
+                    return;
+                }
             }
         }
 
-        public async Task ExecuteOneTime(Func<Task> asyncAction)
+        public async Task<bool> ExecuteOneTime(Func<Task> asyncAction)
         {
             try
             {
                 await asyncAction();
+                return true;
             }
             catch
             {
-                
+                return false;
             }
 
         }
