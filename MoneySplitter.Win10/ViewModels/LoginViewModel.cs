@@ -11,7 +11,7 @@ namespace MoneySplitter.Win10.ViewModels
         private readonly INavigationManager _navigationManager;
         private IMembershipService _membershipService;
 
-        private const string DEFAULT_USER_LOGIN = "ivan_17@epam.com";
+        private const string DEFAULT_USER_LOGIN = "vlad_nagibator12@mail.ru";
         private const string DEFAULT_USER_PASSWORD = "1234abcd";
 
         private string _email = DEFAULT_USER_LOGIN;
