@@ -58,20 +58,6 @@ namespace MoneySplitter.Services.Api
             return resultQuery;
         }
 
-        public async Task<TResultQuery> GetUseHeadersAsync<TResultQuery>(Uri uri)
-             where TResultQuery : class
-        {
-            TResultQuery resultQuery;
-            using (var httpClient = new HttpClient())
-            {
-                httpClient.AddCredentials();
-                var responce = await httpClient.GetAsync(uri);
-                resultQuery = await GetContentResponce<TResultQuery>(responce);
-            }
-
-            return resultQuery;
-        }
-
         private async Task<TContentResponce> GetContentResponce<TContentResponce>(HttpResponseMessage responseMessage)
             where TContentResponce : class
         {
