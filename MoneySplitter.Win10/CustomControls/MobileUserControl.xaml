@@ -109,7 +109,8 @@
     </UserControl.Resources>
     <Grid Margin="5">
 
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Stretch">
             <Ellipse Width="60" Height="60">
                 <Ellipse.Fill>
                     <ImageBrush ImageSource="{x:Bind ViewModel.ImageUrl, Mode=OneWay}"/>
@@ -124,7 +125,10 @@
                 <TextBlock Text="{x:Bind ViewModel.Email, Mode=OneWay}"/>
                 <!--<TextBlock extensions:XamlElementExtensions.Resource="BUTTON_HOME"/>-->
             </StackPanel>
-            <Button Click="OnAddOrRemoveButtonClick" Content="{x:Bind ButtonContent, Mode=OneWay}" Style="{StaticResource DefaultButtonStyle}"/>
+            <Button Click="OnAddOrRemoveButtonClick" 
+                    Content="{x:Bind ButtonContent, Mode=OneWay}" 
+                    Style="{StaticResource DefaultButtonStyle}"
+                    />
         </StackPanel>
     </Grid>
 </UserControl>

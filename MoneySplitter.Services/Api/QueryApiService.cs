@@ -20,13 +20,7 @@ namespace MoneySplitter.Services.Api
                 var content = new StringContent(JsonConvert.SerializeObject(bodyQuery), Encoding.UTF8, "application/json");
                 var responce = await httpClient.PostAsync(uri, content);
 
-                if (responce.StatusCode != HttpStatusCode.OK)
-                {
-                    return null;
-                }
-
-                var contentResponce = await responce.Content.ReadAsStringAsync();
-                resultQuery = JsonConvert.DeserializeObject<TResultQuery>(contentResponce);
+                resultQuery =await GetContentResponce<TResultQuery>(responce);
             }
 
             return resultQuery;
@@ -57,11 +51,25 @@ namespace MoneySplitter.Services.Api
             TResultQuery resultQuery;
             using (var httpClient = new HttpClient())
             {
-                var responce = await httpClient.GetStringAsync(uri);
-                resultQuery = JsonConvert.DeserializeObject<TResultQuery>(responce);
+                var responce = await httpClient.GetAsync(uri);
+                resultQuery = await GetContentResponce<TResultQuery>(responce);
             }
 
             return resultQuery;
         }
+
+        private async Task<TContentResponce> GetContentResponce<TContentResponce>(HttpResponseMessage responseMessage)
+            where TContentResponce : class
+        {
+            if (responseMessage.StatusCode != HttpStatusCode.OK)
+            {
+                throw new HttpRequestException(Defines.ServerMassage.BAD_RESPONCE);
+            }
+
+            var contentResponce = await responseMessage.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<TContentResponce>(contentResponce);
+        }
     }
 }
+
+

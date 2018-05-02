@@ -9,6 +9,11 @@ namespace MoneySplitter.Services
     {
         public UserModel ConvertDataUserToUserModel(UserData dataUser)
         {
+            if (dataUser==null)
+            {
+                return null;
+            }
+
             var userModel = new UserModel()
             {
                 Id = dataUser.Id,

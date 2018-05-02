@@ -1,21 +1,29 @@
 ﻿using Caliburn.Micro;
 using MoneySplitter.Infrastructure;
+using MoneySplitter.Models.App;
 using System.Threading.Tasks;
 
 namespace MoneySplitter.Win10.ViewModels
 {
-    public class LoginViewModel:Screen
+    public class LoginViewModel : Screen
     {
+        #region Fields
         private readonly INavigationManager _navigationManager;
         private IMembershipService _membershipService;
-        private IFriendsManager _friendsManager;
 
         private const string DEFAULT_USER_LOGIN = "ivan_17@epam.com";
         private const string DEFAULT_USER_PASSWORD = "1234abcd";
 
-        private string _email = DEFAULT_USER_LOGIN; 
+        private string _email = DEFAULT_USER_LOGIN;
         private string _password = DEFAULT_USER_PASSWORD;
 
+        private bool _isActiveLoadingProgressRing = false;
+
+        private bool _isErrorVisible= false;
+        private ErrorDetailsModel _errorDetailsModel;
+        #endregion
+
+        #region Properties
         public string Email
         {
             get { return _email; }
@@ -36,29 +44,76 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public LoginViewModel( INavigationManager navigationManager, IMembershipService membershipService, IFriendsManager friendsManager)
+        public bool IsActiveLoadingProgressRing
+        {
+            get { return _isActiveLoadingProgressRing; }
+            set
+            {
+                _isActiveLoadingProgressRing = value;
+                NotifyOfPropertyChange(nameof(IsActiveLoadingProgressRing));
+            }
+        }
+
+        public bool IsErrorVisible
+        {
+            get { return _isErrorVisible; }
+            set
+            {
+                _isErrorVisible = value;
+                NotifyOfPropertyChange(nameof(IsErrorVisible));
+            }
+        }
+
+        public ErrorDetailsModel ErrorDetailsModel
+        {
+            get { return _errorDetailsModel; }
+            set
+            {
+                _errorDetailsModel = value;
+                NotifyOfPropertyChange(nameof(ErrorDetailsModel));
+            }
+        }
+
+        #endregion
+
+        #region Constructor
+        public LoginViewModel(INavigationManager navigationManager, IMembershipService membershipService)
         {
             _navigationManager = navigationManager;
             _membershipService = membershipService;
-            _friendsManager = friendsManager;
         }
+        #endregion
 
+        #region Public methods
         public async Task SignInAsync()
         {
-            await _membershipService.SingInAndLoadUserDataAsync(Email, Password);
-            await _friendsManager.LoadUserFriendsAsync();
+            IsActiveLoadingProgressRing = true;
+            IsErrorVisible = false;
+
+            var isSuccessExecution = await _membershipService.SingInAndLoadUserDataAsync(Email, Password);
+
+            IsActiveLoadingProgressRing = false;
+
+            if (!isSuccessExecution)
+            {
+                ErrorDetailsModel = new ErrorDetailsModel
+                {
+                    ErrorTitle = Defines.ErrorDetails.DEFAULT_ERROR_TITLE,
+                    ErrorDescription = Defines.ErrorDetails.Login.ERROR_DESCRIPTION
+                };
+
+                IsErrorVisible = true;
+                return;
+            }
 
             var userModel = _membershipService.CurrentUser;
-
-            if (userModel != null)
-            {
-                _navigationManager.NavigateToShellViewModel();
-            }
+            _navigationManager.NavigateToShellViewModel();
         }
 
         public void NavigateToRegister()
         {
             _navigationManager.NavigateToRegisterViewModel();
         }
+        #endregion
     }
 }

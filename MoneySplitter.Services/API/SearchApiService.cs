@@ -13,21 +13,43 @@ namespace MoneySplitter.Services.Api
         private readonly IApiUrlBuilder _apiUrlBuilder;
         private readonly IQueryApiService _queryApiService;
         private readonly IMapper _mapper;
+        private readonly IExecutor _executor;
 
-        public SearchApiService(IApiUrlBuilder apiUrlBuilder, IQueryApiService queryApiService, IMapper mapper)
+        public SearchApiService(IApiUrlBuilder apiUrlBuilder, IQueryApiService queryApiService, IMapper mapper, IExecutor executor)
         {
             _apiUrlBuilder = apiUrlBuilder;
             _queryApiService = queryApiService;
             _mapper = mapper;
+            _executor = executor;
         }
 
-        public async Task<IEnumerable<UserModel>> SearchUsersAsync(string query)
+        public async Task<ExecutionResult<IEnumerable<UserModel>>> SearchUsersAsync(string query)
         {
+            var result = new ExecutionResult<IEnumerable<UserModel>>
+            {
+                IsSuccess = false
+            };
+
             var apiUrlSearchUsers = _apiUrlBuilder.SearchUsers(query);
 
-            var usersData = await _queryApiService.GetAsync<IEnumerable<UserData>>(apiUrlSearchUsers);
+            IEnumerable<UserData> usersData = null;
 
-            return usersData.Select(x => _mapper.ConvertDataUserToUserModel(x)).ToList();
+            await _executor.ExecuteWithRetryAsync(async () =>
+            {
+                usersData = await _queryApiService.GetAsync<IEnumerable<UserData>>(apiUrlSearchUsers);
+            });
+
+            if (usersData == null)
+            {
+                return result;
+            }
+
+            return new ExecutionResult<IEnumerable<UserModel>>
+            {
+                IsSuccess = true,
+                Result = usersData.Select(x => _mapper.ConvertDataUserToUserModel(x)).ToList()
+            };
+
         }
     }
 }

@@ -20,11 +20,6 @@ namespace MoneySplitter.Win10.ViewModels
         public async Task AddFriendAsync(int friendId)
         {
             var isSuccessResponce = await _friendsManager.AddFriendAsync(friendId);
-
-            if (isSuccessResponce)
-            {
-                await _friendsManager.LoadUserFriendsAsync();
-            }
         }
 
         public void ChangedQuery(string query)

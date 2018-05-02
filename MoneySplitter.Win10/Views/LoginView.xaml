@@ -5,9 +5,14 @@
     xmlns:local="using:MoneySplitter.Win10.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:customControls="using:MoneySplitter.Win10.CustomControls"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <customControls:ErrorDetailsControl IsErrorVisable="{x:Bind ViewModel.IsErrorVisible, Mode=OneWay}"
+                                            ErrorDetails="{x:Bind ViewModel.ErrorDetailsModel, Mode=OneWay}"/>
+
         <StackPanel VerticalAlignment="Center"
                     HorizontalAlignment="Center">
             
@@ -25,5 +30,7 @@
             <HyperlinkButton Content="Register"
                              Click="OnRegistredClick"/>
         </StackPanel>
+
+        <customControls:LoadRingControl IsActiveRing="{x:Bind ViewModel.IsActiveLoadingProgressRing, Mode=OneWay}"/>
     </Grid>
 </Page>

@@ -45,6 +45,7 @@ namespace MoneySplitter.Win10.Dependencies
             _container.Singleton<IFriendsManager, FriendsManager>();
 
             _container.Singleton<IMapper, Mapper>();
+            _container.Singleton<IExecutor, Executor>();
 
             _container.Singleton<IFilePickerService, FilePickerService>();
             _container.Singleton<SearchEngine>();

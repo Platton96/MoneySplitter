@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using MoneySplitter.Infrastructure;
+using MoneySplitter.Models.App;
 using MoneySplitter.Models.Session;
 using System.Threading.Tasks;
 
@@ -7,19 +8,23 @@ namespace MoneySplitter.Win10.ViewModels
 {
     public class RegisterViewModel : Screen
     {
+        #region Fields
         private readonly INavigationManager _navigationManager;
         private readonly IMembershipService _membershipService;
         private readonly IFilePickerService _filePickerService;
 
-        private const string DEFEALT_TEXT_LABEL_AVATAR = "Browse avatar image";
-        private const string DEFEALT_TEXT_LABEL_BACKGROUND = "Browse background image";
-
-        private string _laberlForAvatarImage = DEFEALT_TEXT_LABEL_AVATAR;
-        private string _labelForBackgroundIamge = DEFEALT_TEXT_LABEL_BACKGROUND;
+        private string _laberlForAvatarImage = Defines.Register.BrowseImage.AVATAR;
+        private string _labelForBackgroundIamge = Defines.Register.BrowseImage.BACKGROUND;
 
         private string _confirmPassword;
         private RegisterModel _registerModel;
+        private bool _isActiveLoadingProgressRing=false;
 
+        private bool _isErrorVisible = false;
+        private ErrorDetailsModel _errorDetailsModel;
+        #endregion
+
+        #region Properties
         public RegisterModel RegisterModel
         {
             get { return _registerModel; }
@@ -60,6 +65,38 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
+        public bool IsErrorVisible
+        {
+            get { return _isErrorVisible; }
+            set
+            {
+                _isErrorVisible = value;
+                NotifyOfPropertyChange(nameof(IsErrorVisible));
+            }
+        }
+
+        public ErrorDetailsModel ErrorDetailsModel
+        {
+            get { return _errorDetailsModel; }
+            set
+            {
+                _errorDetailsModel = value;
+                NotifyOfPropertyChange(nameof(ErrorDetailsModel));
+            }
+        }
+
+        public bool IsActiveLoadingProgressRing
+        {
+            get { return _isActiveLoadingProgressRing; }
+            set
+            {
+                _isActiveLoadingProgressRing = value;
+                NotifyOfPropertyChange(nameof(IsActiveLoadingProgressRing));
+            }
+        }
+        #endregion
+
+        #region Constructor
         public RegisterViewModel(INavigationManager navigationManager, IMembershipService membershipService, IFilePickerService filePickerService)
         {
             _membershipService = membershipService;
@@ -68,26 +105,47 @@ namespace MoneySplitter.Win10.ViewModels
 
             RegisterModel = new RegisterModel();
         }
+        #endregion
 
+        #region Public methods
         public async Task Register()
         {
+            IsErrorVisible = false;
+
             if (RegisterModel.Password != ConfirmPassword)
             {
+                IsErrorVisible = true;
+                ErrorDetailsModel = new ErrorDetailsModel
+                {
+                    ErrorTitle = Defines.ErrorDetails.Register.ERROR_TITLE,
+                    ErrorDescription = Defines.ErrorDetails.Register.ERROR_PASSWORD
+                };
                 return;
             }
-            else
+
+            IsActiveLoadingProgressRing = true;
+            var IsSuccessExecution = await _membershipService.ReisterAndLoadUserDataAsync(RegisterModel);
+            IsActiveLoadingProgressRing = false;
+
+            if (!IsSuccessExecution)
             {
-                await _membershipService.ReisterAndLoadUserDataAsync(RegisterModel);
-
-                var userModel = _membershipService.CurrentUser;
-
-                _navigationManager.NavigateToShellViewModel();
+                IsErrorVisible = true;
+                ErrorDetailsModel = new ErrorDetailsModel
+                {
+                    ErrorTitle = Defines.ErrorDetails.Register.ERROR_TITLE,
+                    ErrorDescription = Defines.ErrorDetails.Register.ERROR_DESCRIPTION
+                };
+                return;
             }
+
+            _navigationManager.NavigateToShellViewModel();
         }
 
         public async Task BrowseAvatarImageAsync()
         {
+            IsActiveLoadingProgressRing = true;
             var imageResult = await _filePickerService.BrowseImageAsync();
+            IsActiveLoadingProgressRing = false;
 
             RegisterModel.ImageBase64String = imageResult.Base64StringImage;
             LabelForAvatarImage = imageResult.ImageName;
@@ -95,11 +153,13 @@ namespace MoneySplitter.Win10.ViewModels
 
         public async Task BrowseBackgroundImageAsync()
         {
+            IsActiveLoadingProgressRing = true;
             var imageResult = await _filePickerService.BrowseImageAsync();
+            IsActiveLoadingProgressRing = false;
 
             RegisterModel.BackgroundImageBase64String = imageResult.Base64StringImage;
             LabelForBackgroundImage = imageResult.ImageName;
         }
-
+        #endregion
     }
 }
