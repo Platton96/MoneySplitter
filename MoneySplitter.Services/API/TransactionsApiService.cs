@@ -34,10 +34,10 @@ namespace MoneySplitter.Services.Api
 
             IEnumerable<TransactionData> userTransactionsData = null;
 
-            await _executor.ExecuteWithRetryAsync(async () =>
+            await _executor.ExecuteWithRetryAsync((System.Func<Task>)(async () =>
             {
-                userTransactionsData = await _queryApiService.GetUseHeadersAsync<IEnumerable<TransactionData>>( apiUrlGetAllFriends);
-            });
+                userTransactionsData = await _queryApiService.GetAsync<IEnumerable<TransactionData>>( (System.Uri)apiUrlGetAllFriends);
+            }));
 
             if (userTransactionsData == null)
             {
