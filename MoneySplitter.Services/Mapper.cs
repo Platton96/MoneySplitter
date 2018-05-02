@@ -58,7 +58,7 @@ namespace MoneySplitter.Services
             };
         }
 
-        public TransactionModel ConvertTransactioDataToTransactionData(TransactionData transactionData)
+        public TransactionModel ConvertTransactioDataToTransactionModel(TransactionData transactionData)
         {
             return new TransactionModel()
             {

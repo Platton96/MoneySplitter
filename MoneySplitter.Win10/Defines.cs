@@ -14,6 +14,7 @@
             public const string HOME = "&#xE80F;";
             public const string FRIENDS = "&#xE716;";
             public const string SEARCH = "&#xE721;";
+            public const string TRANSACTIONS = "&#xE8A5";
         }
 
         public static class ImageExtension
