@@ -15,11 +15,11 @@ namespace MoneySplitter.Win10.Common
 
         private readonly ISearchApiService _searchApiService;
         private bool _isSearchInProgress;
-        private string _previousQuery = string.Empty;
+        private string _previousQuery;
         private string _query;
 
         private string _messageForUser;
-        private bool _ismessageForUserVisable=true;
+        private bool _isMessageForUserVisable;
 
         private TimeSpan TIMER_INTERVAL = TimeSpan.FromSeconds(1);
         #endregion
@@ -59,10 +59,10 @@ namespace MoneySplitter.Win10.Common
 
         public bool IsMessageForUserVisable
         {
-            get { return _ismessageForUserVisable; }
+            get { return _isMessageForUserVisable; }
             set
             {
-                _ismessageForUserVisable = value;
+                _isMessageForUserVisable = value;
                 NotifyOfPropertyChange(nameof(IsMessageForUserVisable));
             }
         }
@@ -85,6 +85,10 @@ namespace MoneySplitter.Win10.Common
         #region Public methods
         public void Activate()
         {
+            _previousQuery = string.Empty;
+            _query = string.Empty;
+            IsMessageForUserVisable = true;
+            MessageForUser = Defines.Search.TEXTBOX_EMPTY;
             _timer.Start();
         }
 
