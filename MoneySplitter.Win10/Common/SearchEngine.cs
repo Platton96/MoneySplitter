@@ -18,8 +18,8 @@ namespace MoneySplitter.Win10.Common
         private string _previousQuery = string.Empty;
         private string _query;
 
-        private string _messageForUser;
-        private bool _ismessageForUserVisable=true;
+        private string _statusMessage;
+        private bool _isStatusMessageVisible=true;
 
         private TimeSpan TIMER_INTERVAL = TimeSpan.FromSeconds(1);
         #endregion
@@ -37,13 +37,13 @@ namespace MoneySplitter.Win10.Common
             }
         }
 
-        public string MessageForUser
+        public string StatusMessage
         {
-            get { return _messageForUser; }
+            get { return _statusMessage; }
             set
             {
-                _messageForUser = value;
-                NotifyOfPropertyChange(nameof(MessageForUser));
+                _statusMessage = value;
+                NotifyOfPropertyChange(nameof(StatusMessage));
             }
         }
 
@@ -57,13 +57,13 @@ namespace MoneySplitter.Win10.Common
             }
         }
 
-        public bool IsMessageForUserVisable
+        public bool IsStatusMessageVisible
         {
-            get { return _ismessageForUserVisable; }
+            get { return _isStatusMessageVisible; }
             set
             {
-                _ismessageForUserVisable = value;
-                NotifyOfPropertyChange(nameof(IsMessageForUserVisable));
+                _isStatusMessageVisible = value;
+                NotifyOfPropertyChange(nameof(IsStatusMessageVisible));
             }
         }
         #endregion
@@ -105,8 +105,8 @@ namespace MoneySplitter.Win10.Common
             if (string.IsNullOrEmpty(_query))
             {
                 Results?.Clear();
-                MessageForUser = Defines.Search.TEXTBOX_EMPTY;
-                IsMessageForUserVisable = true;
+                StatusMessage = Defines.Search.TEXTBOX_EMPTY;
+                IsStatusMessageVisible = true;
                 _previousQuery = _query;
                 return;
             }
@@ -120,20 +120,20 @@ namespace MoneySplitter.Win10.Common
             if (!executionResult.IsSuccess)
             {
                 Results?.Clear();
-                MessageForUser = Defines.ErrorDetails.PROBLEM_SERVER;
-                IsMessageForUserVisable = true;
+                StatusMessage = Defines.ErrorDetails.PROBLEM_SERVER;
+                IsStatusMessageVisible = true;
                 return;
             }
 
             Results = new ObservableCollection<UserModel>(executionResult.Result);
             if(Results.Count==0)
             {
-                MessageForUser = Defines.Search.NOT_RESULTS;
-                IsMessageForUserVisable = true;
+                StatusMessage = Defines.Search.NOT_RESULTS;
+                IsStatusMessageVisible = true;
             }
             else
             {
-                IsMessageForUserVisable = false;
+                IsStatusMessageVisible = false;
             }
             IsSearchInProgress = false;
         }

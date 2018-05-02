@@ -4,7 +4,7 @@
     {
         public static class Executor
         {
-            public const int COUNT_TRY = 3;
+            public const int EXECUTION_ATTEMPTS_COUNT = 3;
         }
         public static class ServerMassage
         {

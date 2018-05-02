@@ -64,8 +64,6 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-
-
         public ErrorDetailsModel ErrorDetailsModel
         {
             get { return _errorDetailsModel; }
