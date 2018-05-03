@@ -12,7 +12,7 @@
     <Grid>
         <StackPanel>
             <TextBlock Text="{x:Bind ViewModel.Title, Mode=OneWay}"/>
-            <TextBlock Text="{x:Bind ViewModel.Coast, Mode=OneWay}"/>
+            <TextBlock Text="{x:Bind ViewModel.Cost, Mode=OneWay}"/>
         </StackPanel>
     </Grid>
 </UserControl>

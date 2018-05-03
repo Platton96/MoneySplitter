@@ -25,7 +25,7 @@ namespace MoneySplitter.Services.Api
 
         public async Task<bool> AddFriendAsync(string token, string email, int friendId)
         {
-            var apiUrlAddFriend = _apiUrlBuilder.AddFriend();
+            var addFriendUrl = _apiUrlBuilder.AddFriend();
 
             var addFriendData = new AddFriendData
             {
@@ -34,12 +34,12 @@ namespace MoneySplitter.Services.Api
                 FriendId = friendId
             };
  
-            return await _queryApiService.PostAsync(addFriendData, apiUrlAddFriend);
+            return await _queryApiService.PostAsync(addFriendData, addFriendUrl);
         }
 
         public async Task<bool> RemoveFriendAsync(string token, string email, int friendId)
         {
-            var apiUrlRemoveFriend = _apiUrlBuilder.RemoveFriend();
+            var removeFriendUrl = _apiUrlBuilder.RemoveFriend();
 
             var removeFriendData = new RemoveFriendData
             {
@@ -48,7 +48,7 @@ namespace MoneySplitter.Services.Api
                 FriendId = friendId
             };
 
-            return await _queryApiService.PostAsync(removeFriendData, apiUrlRemoveFriend);
+            return await _queryApiService.PostAsync(removeFriendData, removeFriendUrl);
         }
 
         public async Task<ExecutionResult<IEnumerable<UserModel>>> GetAllUserFriendsAsync(string token, string email )
@@ -58,7 +58,7 @@ namespace MoneySplitter.Services.Api
                 IsSuccess = false
             };
 
-            var apiUrlGetAllFriends = _apiUrlBuilder.GetAllFriends();
+            var allFriendsUrl = _apiUrlBuilder.AllFriends();
 
             var getUserData = new GetUserData
             {
@@ -70,7 +70,7 @@ namespace MoneySplitter.Services.Api
 
             await _executor.ExecuteWithRetryAsync(async () =>
             {
-                userFriendsData= await _queryApiService.PostAsync<IEnumerable<UserData>, GetUserData>(getUserData, apiUrlGetAllFriends);
+                userFriendsData= await _queryApiService.PostAsync<IEnumerable<UserData>, GetUserData>(getUserData, allFriendsUrl);
             });
 
             if (userFriendsData == null)
@@ -78,8 +78,11 @@ namespace MoneySplitter.Services.Api
                 return result;
             }
 
-            result.Result = userFriendsData.Select(x => _mapper.ConvertUserDataToUserModel(x)).ToList();
+            result.Result =
+                userFriendsData.Select(x => _mapper.ConvertUserDataToUserModel(x)).ToList();
+
             result.IsSuccess = true;
+
             return result;
         }
     }

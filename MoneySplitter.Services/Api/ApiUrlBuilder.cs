@@ -47,7 +47,7 @@ namespace MoneySplitter.Services.Api
                 Defines.Api.Friends.REMOVE_FRIEND));
         }
 
-        public Uri GetAllFriends()
+        public Uri AllFriends()
         {
             return new Uri(string.Concat(
              Defines.Api.WEB_API_URL,
@@ -55,7 +55,7 @@ namespace MoneySplitter.Services.Api
              Defines.Api.Friends.ALL_FRIENDS));
         }
 
-        public Uri GetAllUserTransactions()
+        public Uri AllUserTransactions()
         {
             return new Uri(string.Concat(
                 Defines.Api.WEB_API_URL,
@@ -71,7 +71,7 @@ namespace MoneySplitter.Services.Api
                 Defines.Api.Transactions.ADD));
         }
 
-        public Uri GetAllTransactions()
+        public Uri AllTransactions()
         {
             return new Uri(string.Concat(
                 Defines.Api.WEB_API_URL,

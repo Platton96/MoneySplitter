@@ -7,7 +7,6 @@ namespace MoneySplitter.Win10.CustomControls
 {
     public sealed partial class DesktopUserContol : UserControl
     {
-
         public event EventHandler<UserModel> OnAddOrRemoveItemClick;
 
         public UserModel ViewModel

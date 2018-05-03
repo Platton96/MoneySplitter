@@ -8,10 +8,10 @@ namespace MoneySplitter.Infrastructure
         Uri Register();
         Uri SearchUsers(string query);
         Uri AddFriend();
-        Uri GetAllFriends();
+        Uri AllFriends();
         Uri RemoveFriend();
         Uri AddTransaction();
-        Uri GetAllUserTransactions();
-        Uri GetAllTransactions();
+        Uri AllUserTransactions();
+        Uri AllTransactions();
     }
 }

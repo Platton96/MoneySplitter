@@ -17,9 +17,9 @@ namespace MoneySplitter.Win10.ViewModels
         private string _email = DEFAULT_USER_LOGIN;
         private string _password = DEFAULT_USER_PASSWORD;
 
-        private bool _isActiveLoadingProgressRing = false;
+        private bool _isLoading;
 
-        private bool _isErrorVisible= false;
+        private bool _isErrorVisible;
         private ErrorDetailsModel _errorDetailsModel;
         #endregion
 
@@ -44,13 +44,13 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public bool IsActiveLoadingProgressRing
+        public bool IsLoading
         {
-            get { return _isActiveLoadingProgressRing; }
+            get { return _isLoading; }
             set
             {
-                _isActiveLoadingProgressRing = value;
-                NotifyOfPropertyChange(nameof(IsActiveLoadingProgressRing));
+                _isLoading = value;
+                NotifyOfPropertyChange(nameof(IsLoading));
             }
         }
 
@@ -87,12 +87,12 @@ namespace MoneySplitter.Win10.ViewModels
         #region Public methods
         public async Task SignInAsync()
         {
-            IsActiveLoadingProgressRing = true;
+            IsLoading = true;
             IsErrorVisible = false;
 
             var isSuccessExecution = await _membershipService.SingInAndLoadUserDataAsync(Email, Password);
 
-            IsActiveLoadingProgressRing = false;
+            IsLoading = false;
 
             if (!isSuccessExecution)
             {

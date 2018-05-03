@@ -11,11 +11,13 @@ namespace MoneySplitter.Win10.CustomControls
             get { return (TransactionModel)GetValue(ViewModelProperty); }
             set { SetValue(ViewModelProperty, value); }
         }
+
         public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(
             "ViewModel",
             typeof(TransactionModel),
             typeof(TransctionsControl),
             null);
+
         public TransctionsControl()
         {
             InitializeComponent();

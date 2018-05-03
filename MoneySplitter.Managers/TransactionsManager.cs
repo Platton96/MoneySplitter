@@ -20,6 +20,7 @@ namespace MoneySplitter.Managers
         {
             var executionResult = await _transactionsApiService.GetAllUserTransactions();
             UserTransactions = executionResult.Result;
+
             return executionResult.IsSuccess;
         }
     }

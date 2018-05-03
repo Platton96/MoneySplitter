@@ -30,13 +30,13 @@ namespace MoneySplitter.Services.Api
                 IsSuccess = false
             };
 
-            var apiUrlGetAllFriends = _apiUrlBuilder.GetAllUserTransactions();
+            var allUserTransactionsUrl = _apiUrlBuilder.AllUserTransactions();
 
             IEnumerable<TransactionData> userTransactionsData = null;
 
-            await _executor.ExecuteWithRetryAsync((System.Func<Task>)(async () =>
+            await _executor.ExecuteWithRetryAsync((async () =>
             {
-                userTransactionsData = await _queryApiService.GetAsync<IEnumerable<TransactionData>>( (System.Uri)apiUrlGetAllFriends);
+                userTransactionsData = await _queryApiService.GetAsync<IEnumerable<TransactionData>>(allUserTransactionsUrl);
             }));
 
             if (userTransactionsData == null)
@@ -44,7 +44,9 @@ namespace MoneySplitter.Services.Api
                 return result;
             }
 
-            result.Result = userTransactionsData.Select(x => _mapper.ConvertTransactioDataToTransactionModel(x)).ToList();
+            result.Result = 
+                userTransactionsData.Select(x => _mapper.ConvertTransactioDataToTransactionModel(x)).ToList();
+
             result.IsSuccess = true;
             return result;
         }

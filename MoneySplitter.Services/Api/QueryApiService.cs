@@ -69,8 +69,6 @@ namespace MoneySplitter.Services.Api
             var contentResponce = await responseMessage.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<TContentResponce>(contentResponce);
         }
-
-
     }
 }
 

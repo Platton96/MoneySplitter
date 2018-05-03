@@ -14,7 +14,7 @@ namespace MoneySplitter.Models
         public IEnumerable<UserModel> Collaborators { get; set; }
         public IEnumerable<UserModel> Finished { get; set; }
         public IEnumerable<UserModel> InProgress { get; set; }
-        public double Coast { get; set; }
+        public double Cost { get; set; }
         public string ImageUrl { get; set; }
     }
 }
