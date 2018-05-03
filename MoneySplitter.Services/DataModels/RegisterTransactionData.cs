@@ -13,7 +13,7 @@ namespace MoneySplitter.Services.DataModels
         [DataMember]
         public string Token { get; set; }
 
-        [DataMember]
+        [DataMember(Name = "Coast")]
         public double Cost { get; set; }
 
         [DataMember]

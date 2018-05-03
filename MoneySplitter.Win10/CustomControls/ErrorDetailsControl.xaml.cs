@@ -6,11 +6,6 @@ namespace MoneySplitter.Win10.CustomControls
 {
     public sealed partial class ErrorDetailsControl : UserControl
     {
-        public ErrorDetailsControl()
-        {
-            InitializeComponent();
-        }
-
         public bool IsErrorVisable
         {
             get { return (bool)GetValue(IsErrorVisableProperty); }
@@ -34,5 +29,10 @@ namespace MoneySplitter.Win10.CustomControls
             typeof(ErrorDetailsModel),
             typeof(ErrorDetailsControl),
             null);
+
+        public ErrorDetailsControl()
+        {
+            InitializeComponent();
+        }
     }
 }
