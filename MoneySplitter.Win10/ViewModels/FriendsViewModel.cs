@@ -39,13 +39,13 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public bool IsActiveLoadingProgressRing
+        public bool IsLoading
         {
-            get { return _isActiveLoadingProgressRing; }
+            get { return _isLoading; }
             set
             {
-                _isActiveLoadingProgressRing = value;
-                NotifyOfPropertyChange(nameof(IsActiveLoadingProgressRing));
+                _isLoading = value;
+                NotifyOfPropertyChange(nameof(IsLoading));
             }
         }
 
@@ -91,13 +91,13 @@ namespace MoneySplitter.Win10.ViewModels
         {
             base.OnActivate();
 
-            IsActiveLoadingProgressRing = true;
+            IsLoading = true;
             IsErrorVisible = false;
             IsNotFriendsTextVisibility = false;
 
             var isSuccessExecution = await _friendsManager.LoadUserFriendsAsync();
 
-            IsActiveLoadingProgressRing = false;
+            IsLoading = false;
             if (!isSuccessExecution)
             {
                 ErrorDetailsModel = new ErrorDetailsModel
