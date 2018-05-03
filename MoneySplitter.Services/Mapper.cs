@@ -68,7 +68,7 @@ namespace MoneySplitter.Services
                 Title = transactionData.Title,
                 DeadlineDate = transactionData.DeadlineDate,
                 Description = transactionData.Description,
-                Coast = transactionData.Coast,
+                Cost = transactionData.Cost,
                 Collaborators = transactionData.Collaborators,
                 Finished = transactionData.Finished,
                 InProgress = transactionData.InProgress,

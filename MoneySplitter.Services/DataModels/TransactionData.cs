@@ -36,7 +36,7 @@ namespace MoneySplitter.Services.DataModels
         public IEnumerable<UserModel> InProgress { get; set; }
 
         [DataMember]
-        public double Coast { get; set; }
+        public double Cost { get; set; }
 
         [DataMember]
         public string ImageUrl { get; set; }

@@ -30,6 +30,6 @@
         </ListView>
         <customControls:ErrorDetailsControl IsErrorVisable="{x:Bind ViewModel.IsErrorVisible, Mode=OneWay}"
                                             ErrorDetails="{x:Bind ViewModel.ErrorDetailsModel, Mode=OneWay}"/>
-        <customControls:LoadRingControl IsActiveRing="{x:Bind ViewModel.IsActiveLoadingProgressRing, Mode=OneWay}"/>
+        <customControls:LoadRingControl IsActiveRing="{x:Bind ViewModel.IsLoading, Mode=OneWay}"/>
     </Grid>
 </Page>
