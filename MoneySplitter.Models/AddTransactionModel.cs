@@ -5,8 +5,6 @@ namespace MoneySplitter.Models
 {
     public class AddTransactionModel
     {
-        public string Email { get; set; }
-        public string Token { get; set; }
         public double Cost { get; set; }
         public IEnumerable<int> CollaboratorsIds { get; set; }
         public string Description { get; set; }

@@ -43,13 +43,11 @@ namespace MoneySplitter.Services
             };
         }
 
-        public RegisterTransactionData ConvertRegisterTransactioModelToRegisterTransactionData(RegisterTransactionModel registerTransactionModel)
+        public AddTransactionData ConvertAddTransactioModelToAddTransactionData(AddTransactionModel registerTransactionModel)
         {
-            return new RegisterTransactionData()
+            return new AddTransactionData()
             {
                 Title = registerTransactionModel.Title,
-                Token = registerTransactionModel.Token,
-                Email = registerTransactionModel.Email,
                 Cost = registerTransactionModel.Cost,
                 DeadlineDate = registerTransactionModel.DeadlineDate,
                 Description = registerTransactionModel.Description,

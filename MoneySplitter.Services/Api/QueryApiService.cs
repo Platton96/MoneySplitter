@@ -51,6 +51,7 @@ namespace MoneySplitter.Services.Api
             TResultQuery resultQuery;
             using (var httpClient = new HttpClient())
             {
+                httpClient.AddCredentials();
                 var responce = await httpClient.GetAsync(uri);
                 resultQuery = await GetContentResponce<TResultQuery>(responce);
             }
