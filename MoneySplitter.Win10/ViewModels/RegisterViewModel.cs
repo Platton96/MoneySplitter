@@ -18,9 +18,9 @@ namespace MoneySplitter.Win10.ViewModels
 
         private string _confirmPassword;
         private RegisterModel _registerModel;
-        private bool _isActiveLoadingProgressRing=false;
+        private bool _isLoading;
 
-        private bool _isErrorVisible = false;
+        private bool _isErrorVisible;
         private ErrorDetailsModel _errorDetailsModel;
         #endregion
 
@@ -85,13 +85,13 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public bool IsActiveLoadingProgressRing
+        public bool IsLoading
         {
-            get { return _isActiveLoadingProgressRing; }
+            get { return _isLoading; }
             set
             {
-                _isActiveLoadingProgressRing = value;
-                NotifyOfPropertyChange(nameof(IsActiveLoadingProgressRing));
+                _isLoading = value;
+                NotifyOfPropertyChange(nameof(IsLoading));
             }
         }
         #endregion
@@ -123,9 +123,9 @@ namespace MoneySplitter.Win10.ViewModels
                 return;
             }
 
-            IsActiveLoadingProgressRing = true;
+            IsLoading = true;
             var IsSuccessExecution = await _membershipService.ReisterAndLoadUserDataAsync(RegisterModel);
-            IsActiveLoadingProgressRing = false;
+            IsLoading = false;
 
             if (!IsSuccessExecution)
             {
@@ -143,9 +143,9 @@ namespace MoneySplitter.Win10.ViewModels
 
         public async Task BrowseAvatarImageAsync()
         {
-            IsActiveLoadingProgressRing = true;
+            IsLoading = true;
             var imageResult = await _filePickerService.BrowseImageAsync();
-            IsActiveLoadingProgressRing = false;
+            IsLoading = false;
 
             RegisterModel.ImageBase64String = imageResult.Base64StringImage;
             LabelForAvatarImage = imageResult.ImageName;
@@ -153,9 +153,9 @@ namespace MoneySplitter.Win10.ViewModels
 
         public async Task BrowseBackgroundImageAsync()
         {
-            IsActiveLoadingProgressRing = true;
+            IsLoading = true;
             var imageResult = await _filePickerService.BrowseImageAsync();
-            IsActiveLoadingProgressRing = false;
+            IsLoading = false;
 
             RegisterModel.BackgroundImageBase64String = imageResult.Base64StringImage;
             LabelForBackgroundImage = imageResult.ImageName;

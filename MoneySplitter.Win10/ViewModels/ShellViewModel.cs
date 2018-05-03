@@ -26,9 +26,10 @@ namespace MoneySplitter.Win10.ViewModels
         #region Properties
         private IDictionary<string, Type> _mainMenuPages = new Dictionary<string, Type>()
         {
-            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.IconButton.HOME, Defines.Title.HOME),  typeof(HomeViewModel) },
-            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.IconButton.FRIENDS, Defines.Title.FRIENDS), typeof(FriendsViewModel) },
-            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.IconButton.SEARCH, Defines.Title.SEARCH),typeof(SearchUsersViewModel) }
+            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.HOME, Defines.MenuItem.Title.HOME),  typeof(HomeViewModel) },
+            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.FRIENDS, Defines.MenuItem.Title.FRIENDS), typeof(FriendsViewModel) },
+            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.SEARCH, Defines.MenuItem.Title.SEARCH),typeof(SearchUsersViewModel) },
+            {string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.TRANSACTIONS,Defines.MenuItem.Title.TRANSACTIONS),typeof(TransactionsViewModel) }
         };
 
         public string SelectedMenuItem

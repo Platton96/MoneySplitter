@@ -33,23 +33,20 @@ namespace MoneySplitter.Win10.Common
         {
             var file = await _picker.PickSingleFileAsync();
 
-            if (file != null)
-            {
-                var stream = await file.OpenStreamForReadAsync();
-                var bytes = new byte[(int)stream.Length];
-                stream.Read(bytes, 0, (int)stream.Length);
-
-                return new FileImageModel
-                {
-                    Base64StringImage = Convert.ToBase64String(bytes),
-                    ImageName = file.Name
-                };
-            }
-
-            else
+            if (file == null)
             {
                 return null;
             }
+
+            var stream = await file.OpenStreamForReadAsync();
+            var bytes = new byte[(int)stream.Length];
+            stream.Read(bytes, 0, (int)stream.Length);
+
+            return new FileImageModel
+            {
+                Base64StringImage = Convert.ToBase64String(bytes),
+                ImageName = file.Name
+            };
         }
     }
 }

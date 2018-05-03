@@ -111,6 +111,9 @@
     <Compile Include="CustomControls\MobileUserControl.xaml.cs">
       <DependentUpon>MobileUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\TransctionsControl.xaml.cs">
+      <DependentUpon>TransctionsControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Defines.cs" />
     <Compile Include="Extensions\XamlElementExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -120,6 +123,7 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="ViewModels\TransactionsViewModel.cs" />
     <Compile Include="Views\SearchUsersView.xaml.cs">
       <DependentUpon>SearchUsersView.xaml</DependentUpon>
     </Compile>
@@ -139,6 +143,9 @@
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dependecies\WinAppDependenciesModule.cs" />
+    <Compile Include="Views\TransactionsView.xaml.cs">
+      <DependentUpon>TransactionsView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -177,6 +184,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CustomControls\TransctionsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SearchUsersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -198,6 +209,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ShellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TransactionsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -228,7 +243,9 @@
       <Name>MoneySplitter.Services</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Styles\" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

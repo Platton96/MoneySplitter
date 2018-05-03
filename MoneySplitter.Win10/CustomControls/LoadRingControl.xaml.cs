@@ -5,10 +5,6 @@ namespace MoneySplitter.Win10.CustomControls
 {
     public sealed partial class LoadRingControl : UserControl
     {
-        public LoadRingControl()
-        {
-            InitializeComponent();
-        }
         public bool IsActiveRing
         {
             get { return (bool)GetValue(IsActiveRingProperty); }
@@ -20,5 +16,10 @@ namespace MoneySplitter.Win10.CustomControls
             typeof(bool),
             typeof(LoadRingControl),
             null);
+
+        public LoadRingControl()
+        {
+            InitializeComponent();
+        }
     }
 }

@@ -6,6 +6,6 @@ namespace MoneySplitter.Infrastructure
     public interface IExecutor
     {
         Task ExecuteWithRetryAsync(Func<Task> asyncAction);
-        Task ExecuteOneTime(Func<Task<bool>> asyncAction);
+        Task<bool> ExecuteOneTime(Func<Task> asyncAction);
     }
 }

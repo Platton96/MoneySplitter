@@ -35,15 +35,15 @@ namespace MoneySplitter.Services.Api
                 Password = password
             };
 
-            var apiUrlSignIn = _apiUrlBuilder.Authorization();
+            var signInUrl = _apiUrlBuilder.Authorization();
 
             UserData userData = null;
             await _executor.ExecuteWithRetryAsync(async () =>
             {
-                userData = await _queryApiService.PostAsync<UserData, LoginModel>(loginModel, apiUrlSignIn);
+                userData = await _queryApiService.PostAsync<UserData, LoginModel>(loginModel, signInUrl);
             });
 
-            var userModel = _mapper.ConvertDataUserToUserModel(userData);
+            var userModel = _mapper.ConvertUserDataToUserModel(userData);
 
             if (userModel == null)
             {
@@ -63,18 +63,18 @@ namespace MoneySplitter.Services.Api
                 IsSuccess = false
             };
 
-            var apiUrlRegister = _apiUrlBuilder.Register();
+            var registerUrl = _apiUrlBuilder.Register();
 
             UserData userData = null;
 
-            var registerUserData = _mapper.ConvertRegisterModelToDataRegisterUser(registerModel);
+            var registerUserData = _mapper.ConvertRegisterModelToRegisterUserData(registerModel);
 
             await _executor.ExecuteWithRetryAsync(async () =>
             {
-                userData = await _queryApiService.PostAsync<UserData, RegisterUserData>(registerUserData, apiUrlRegister);
+                userData = await _queryApiService.PostAsync<UserData, RegisterUserData>(registerUserData, registerUrl);
             });
 
-            var userModel = _mapper.ConvertDataUserToUserModel(userData);
+            var userModel = _mapper.ConvertUserDataToUserModel(userData);
             if (userModel == null)
             {
                 return result;
