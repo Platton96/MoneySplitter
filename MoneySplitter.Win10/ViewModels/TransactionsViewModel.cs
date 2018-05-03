@@ -13,9 +13,9 @@ namespace MoneySplitter.Win10.ViewModels
 
         private ITransactionsManager _transactionsManager;
 
-        private bool _isNotTransactionsTextVisibility = false;
-        private bool _isActiveLoadingProgressRing = false;
-        private bool _isErrorVisible = false;
+        private bool _isNotTransactionsTextVisibility;
+        private bool _isLoading;
+        private bool _isErrorVisible;
         private ErrorDetailsModel _errorDetailsModel;
 
         public ObservableCollection<TransactionModel> Transactions

@@ -14,9 +14,9 @@ namespace MoneySplitter.Win10.ViewModels
 
         private IFriendsManager _friendsManager;
 
-        private bool _isNotFriendsTextVisibility = false;
-        private bool _isActiveLoadingProgressRing = false;
-        private bool _isErrorVisible = false;
+        private bool _isNotFriendsTextVisibility;
+        private bool _isLoading;
+        private bool _isErrorVisible;
         private ErrorDetailsModel _errorDetailsModel;
 
         public ObservableCollection<UserModel> Friends
