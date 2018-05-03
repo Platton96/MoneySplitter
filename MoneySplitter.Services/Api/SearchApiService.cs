@@ -30,13 +30,13 @@ namespace MoneySplitter.Services.Api
                 IsSuccess = false
             };
 
-            var apiUrlSearchUsers = _apiUrlBuilder.SearchUsers(query);
+            var searchUsersUrl = _apiUrlBuilder.SearchUsers(query);
 
             IEnumerable<UserData> usersData = null;
 
             await _executor.ExecuteWithRetryAsync(async () =>
             {
-                usersData = await _queryApiService.GetAsync<IEnumerable<UserData>>(apiUrlSearchUsers);
+                usersData = await _queryApiService.GetAsync<IEnumerable<UserData>>(searchUsersUrl);
             });
 
             if (usersData == null)
@@ -47,7 +47,7 @@ namespace MoneySplitter.Services.Api
             return new ExecutionResult<IEnumerable<UserModel>>
             {
                 IsSuccess = true,
-                Result = usersData.Select(x => _mapper.ConvertDataUserToUserModel(x)).ToList()
+                Result = usersData.Select(x => _mapper.ConvertUserDataToUserModel(x)).ToList()
             };
 
         }

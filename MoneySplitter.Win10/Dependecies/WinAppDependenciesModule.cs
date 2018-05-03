@@ -28,6 +28,7 @@ namespace MoneySplitter.Win10.Dependencies
             _container.PerRequest<HomeViewModel>();
             _container.PerRequest<FriendsViewModel>();
             _container.PerRequest<SearchUsersViewModel>();
+            _container.PerRequest<TransactionsViewModel>();
         }
 
         public void InitializeServices()
@@ -40,10 +41,10 @@ namespace MoneySplitter.Win10.Dependencies
             _container.Singleton<ISessionApiService, SessionApiService>();
             _container.Singleton<ISearchApiService, SearchApiService>();
             _container.Singleton<IFriendsApiService, FriendsApiService>();
-
+            _container.Singleton<ITransactionsApiService, TransactionsApiService>();
             _container.Singleton<IMembershipService, MembershipService>();
             _container.Singleton<IFriendsManager, FriendsManager>();
-
+            _container.Singleton<ITransactionsManager, TransactionsManager>();
             _container.Singleton<IMapper, Mapper>();
             _container.Singleton<IExecutor, Executor>();
 

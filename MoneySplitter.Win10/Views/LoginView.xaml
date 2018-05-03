@@ -31,6 +31,6 @@
                              Click="OnRegistredClick"/>
         </StackPanel>
 
-        <customControls:LoadRingControl IsActiveRing="{x:Bind ViewModel.IsActiveLoadingProgressRing, Mode=OneWay}"/>
+        <customControls:LoadRingControl IsActiveRing="{x:Bind ViewModel.IsLoading, Mode=OneWay}"/>
     </Grid>
 </Page>

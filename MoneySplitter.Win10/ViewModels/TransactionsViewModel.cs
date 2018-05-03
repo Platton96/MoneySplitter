@@ -4,38 +4,37 @@ using MoneySplitter.Models;
 using MoneySplitter.Models.App;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace MoneySplitter.Win10.ViewModels
 {
-    public class FriendsViewModel : Screen
+    public class TransactionsViewModel : Screen
     {
-        private ObservableCollection<UserModel> _friends;
+        private ObservableCollection<TransactionModel> _transactions;
 
-        private IFriendsManager _friendsManager;
+        private ITransactionsManager _transactionsManager;
 
-        private bool _isNotFriendsTextVisibility;
+        private bool _isNotTransactionsTextVisibility;
         private bool _isLoading;
         private bool _isErrorVisible;
         private ErrorDetailsModel _errorDetailsModel;
 
-        public ObservableCollection<UserModel> Friends
+        public ObservableCollection<TransactionModel> Transactions
         {
-            get { return _friends; }
+            get { return _transactions; }
             set
             {
-                _friends = value;
-                NotifyOfPropertyChange(nameof(Friends));
+                _transactions = value;
+                NotifyOfPropertyChange(nameof(Transactions));
             }
         }
 
-        public bool IsNotFriendsTextVisibility
+        public bool IsNotTransactionsTextVisibility
         {
-            get { return _isNotFriendsTextVisibility; }
+            get { return _isNotTransactionsTextVisibility; }
             set
             {
-                _isNotFriendsTextVisibility = value;
-                NotifyOfPropertyChange(nameof(IsNotFriendsTextVisibility));
+                _isNotTransactionsTextVisibility = value;
+                NotifyOfPropertyChange(nameof(IsNotTransactionsTextVisibility));
             }
         }
 
@@ -68,23 +67,10 @@ namespace MoneySplitter.Win10.ViewModels
                 NotifyOfPropertyChange(nameof(ErrorDetailsModel));
             }
         }
-
-        public FriendsViewModel(IFriendsManager friendsManager)
+        
+        public TransactionsViewModel(ITransactionsManager transactionsManager)
         {
-            _friendsManager = friendsManager;
-        }
-
-        public async Task RemoveFriendAsync(int friendId)
-        {
-            var friend = Friends.Where(x => x.Id == friendId).First();
-            Friends.Remove(friend);
-
-            var isSuccessResponce = await _friendsManager.RemoveFriendAsync(friendId);
-
-            if (isSuccessResponce)
-            {
-                await _friendsManager.LoadUserFriendsAsync();
-            }
+            _transactionsManager = transactionsManager;
         }
 
         protected override async void OnActivate()
@@ -93,9 +79,9 @@ namespace MoneySplitter.Win10.ViewModels
 
             IsLoading = true;
             IsErrorVisible = false;
-            IsNotFriendsTextVisibility = false;
+            IsNotTransactionsTextVisibility = false;
 
-            var isSuccessExecution = await _friendsManager.LoadUserFriendsAsync();
+            var isSuccessExecution = await _transactionsManager.LoadUserTransactions();
 
             IsLoading = false;
             if (!isSuccessExecution)
@@ -109,14 +95,13 @@ namespace MoneySplitter.Win10.ViewModels
                 IsErrorVisible = true;
                 return;
             }
-            if (_friendsManager.UserFriends.Count()==0)
+            if (_transactionsManager.UserTransactions.Count() == 0)
             {
-                IsNotFriendsTextVisibility = true;
+                IsNotTransactionsTextVisibility = true;
                 return;
             }
 
-            Friends = new ObservableCollection<UserModel>(_friendsManager.UserFriends);
+            Transactions = new ObservableCollection<TransactionModel>(_transactionsManager.UserTransactions);
         }
     }
 }
-

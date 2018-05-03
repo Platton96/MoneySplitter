@@ -15,7 +15,7 @@ namespace MoneySplitter.Win10.Common
 
         private readonly ISearchApiService _searchApiService;
         private bool _isSearchInProgress;
-        private string _previousQuery = string.Empty;
+        private string _previousQuery;
         private string _query;
 
         private string _statusMessage;
@@ -85,6 +85,10 @@ namespace MoneySplitter.Win10.Common
         #region Public methods
         public void Activate()
         {
+            _previousQuery = string.Empty;
+            _query = string.Empty;
+            IsStatusMessageVisible = true;
+            StatusMessage = Defines.Search.TEXTBOX_EMPTY;
             _timer.Start();
         }
 

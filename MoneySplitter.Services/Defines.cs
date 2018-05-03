@@ -33,6 +33,19 @@
                 public const string ALL_FRIENDS= "/all";
                 public const string REMOVE_FRIEND = "/remove";
             }
+
+            public static class Transactions
+            {
+                public const string TRANSACTIONS = "/transactions";
+                public const string ALL = "/all";
+                public const string ADD = "/add";
+                public const string MY = "/my";
+            }
+            public static class HeaderNames
+            {
+                public const string USER_NAME = "X-USERNAME";
+                public const string TOKEN = "X-TOKEN";
+            }
         }
     }
 }
