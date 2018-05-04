@@ -29,7 +29,7 @@ namespace MoneySplitter.Win10.ViewModels
             { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.HOME, Defines.MenuItem.Title.HOME),  typeof(HomeViewModel) },
             { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.FRIENDS, Defines.MenuItem.Title.FRIENDS), typeof(FriendsViewModel) },
             { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.SEARCH, Defines.MenuItem.Title.SEARCH),typeof(SearchUsersViewModel) },
-            {string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.TRANSACTIONS,Defines.MenuItem.Title.TRANSACTIONS),typeof(TransactionsViewModel) }
+            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.TRANSACTIONS,Defines.MenuItem.Title.TRANSACTIONS),typeof(TransactionsViewModel) }
         };
 
         public string SelectedMenuItem
@@ -99,6 +99,11 @@ namespace MoneySplitter.Win10.ViewModels
 
         public void NavigateToClikedItemMenu(string value)
         {
+            if(value == null)
+            {
+                return;
+            }
+
             _navigationManager.NavigateToShellViewModel(_mainMenuPages[value]);
         }
 
