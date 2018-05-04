@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MoneySplitter.Services.Api
 {
-    public class TransactionsApiService:ITransactionsApiService
+    public class TransactionsApiService : ITransactionsApiService
     {
         private readonly IApiUrlBuilder _apiUrlBuilder;
         private readonly IQueryApiService _queryApiService;

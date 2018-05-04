@@ -31,6 +31,7 @@ namespace MoneySplitter.Services.Api
         {
             using (var httpClient = new HttpClient())
             {
+                httpClient.AddCredentials();
                var content = new StringContent(JsonConvert.SerializeObject(bodyQuery), Encoding.UTF8, "application/json");
                 var responce = await httpClient.PostAsync(uri, content);
 
