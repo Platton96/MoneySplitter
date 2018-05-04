@@ -26,7 +26,7 @@ namespace MoneySplitter.Managers
 
         public async Task<bool> AddFriendAsync(AddTransactionModel addTransactionModel)
         {
-            return await _friendsApiService.AddFriendAsync(_membershipService.CurrentUser.Token, _membershipService.CurrentUser.Email, friendId);
+            return await _transactionsApiService.AddTransactionAsync(addTransactionModel);
         }
     }
 }

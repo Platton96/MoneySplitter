@@ -11,5 +11,10 @@ namespace MoneySplitter.Win10.Views
             InitializeComponent();
             DataContextChanged += (s, e) => { ViewModel = DataContext as TransactionsViewModel; };
         }
+
+        private void OnAddTransactionButtonClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            ViewModel.NavigateToAddTransaction();
+        }
     }
 }
