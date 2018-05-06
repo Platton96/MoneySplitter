@@ -83,7 +83,7 @@ namespace MoneySplitter.Win10.ViewModels
         #region Methods
         public async Task RemoveFriendAsync(int friendId)
         {
-            var friend = Friends.Where(x => x.Id == friendId).First();
+            var friend = Friends.FirstOrDefault(x => x.Id == friendId);
             Friends.Remove(friend);
 
             var isSuccessResponce = await _friendsManager.RemoveFriendAsync(friendId);

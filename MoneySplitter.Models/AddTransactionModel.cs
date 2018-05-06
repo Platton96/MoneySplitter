@@ -9,7 +9,7 @@ namespace MoneySplitter.Models
         public IEnumerable<int> CollaboratorsIds { get; set; }
         public string Description { get; set; }
         public string Title { get; set; }
-        public DateTime DeadlineDate { get; set; }
+        public DateTimeOffset DeadlineDate { get; set; }
         public string ImageBase64String { get; set; }
 
     }

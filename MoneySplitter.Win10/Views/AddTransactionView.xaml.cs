@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MoneySplitter.Models;
+using MoneySplitter.Win10.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,9 +19,22 @@ namespace MoneySplitter.Win10.Views
 {
     public sealed partial class AddTransactionView : Page
     {
+        AddTransactionViewModel ViewModel { get; set; }
+
         public AddTransactionView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+            DataContextChanged += (s, e) => { ViewModel = DataContext as AddTransactionViewModel; };
+        }
+
+        private void OnAddFriendButtonClick(object sender, UserModel e)
+        {
+            ViewModel.AddFriendToCollabarators(e.Id);
+        }
+
+        private void OnRemoveFriendButtonClick(object sender, UserModel e)
+        {
+            ViewModel.RemoveFriendFromCollabarators(e.Id);
         }
     }
 }

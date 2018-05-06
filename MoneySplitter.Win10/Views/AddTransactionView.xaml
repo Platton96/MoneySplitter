@@ -5,21 +5,93 @@
     xmlns:local="using:MoneySplitter.Win10.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:MoneySplitter.Models"
+    xmlns:customControls="using:MoneySplitter.Win10.CustomControls"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="11*"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <Grid>
-            
+            <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Padding="3">
+
+                <TextBox PlaceholderText="Enter depts title"
+                     Text="{x:Bind ViewModel.AddTransactionModel.Title, Mode=TwoWay}"
+                     Header="Title"/>
+                <TextBox AcceptsReturn="True" 
+                         TextWrapping="Wrap"
+                         MaxHeight="100" 
+                         Width="350" 
+                         Header="Description"
+                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                         Text="{x:Bind ViewModel.AddTransactionModel.Description, Mode=TwoWay}"/>
+                <TextBox PlaceholderText="Enter depts cost"
+                     Text="{x:Bind ViewModel.AddTransactionModel.Cost, Mode=TwoWay}"
+                     Header="Cost"/>
+                <DatePicker Header="Debt's diedline date"
+                            Date="{x:Bind ViewModel.AddTransactionModel.DeadlineDate, Mode=TwoWay }"/>
+                
+                <StackPanel Orientation="Horizontal"  Margin="0,8,0,0">
+                    <TextBlock Text="xbcccccccccccccc"
+                           Margin="0,0,5,0"
+                           VerticalAlignment="Center"/>
+                    <Button Content="browse" 
+                        HorizontalAlignment="Right"/>
+                </StackPanel>
+            </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <StackPanel>
+                    <TextBlock Text="Select friend"/>
+                    <ListView
+                      ItemsSource="{x:Bind ViewModel.Friends, Mode=OneWay}"
+                      IsItemClickEnabled="True"
+                      >
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="models:UserModel">
+                                <customControls:MobileUserControl ViewModel="{x:Bind Mode=OneWay}"
+                                                                  ButtonContent="+"
+                                                                  OnAddOrRemoveItemClick="OnAddFriendButtonClick"
+                                                              
+      />
+
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1">
+                <ListView x:Name="FriendsList"
+                  ItemsSource="{x:Bind ViewModel.Collabarators, Mode=OneWay}"
+                  IsItemClickEnabled="True">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="models:UserModel">
+                            <customControls:MobileUserControl ViewModel="{x:Bind Mode=OneWay}"
+                                                              ButtonContent="-"
+                                                              OnAddOrRemoveItemClick="OnRemoveFriendButtonClick"
+                                                              
+/>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Button Content="Confirm"
+                    HorizontalAlignment="Center"/>
         </Grid>
     </Grid>
 </Page>

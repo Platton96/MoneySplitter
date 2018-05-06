@@ -49,7 +49,7 @@ namespace MoneySplitter.Services
             {
                 Title = registerTransactionModel.Title,
                 Cost = registerTransactionModel.Cost,
-                DeadlineDate = registerTransactionModel.DeadlineDate,
+                DeadlineDate = registerTransactionModel.DeadlineDate.DateTime,
                 Description = registerTransactionModel.Description,
                 CollaboratorsIds = registerTransactionModel.CollaboratorsIds,
                 ImageBase64String = registerTransactionModel.ImageBase64String,
