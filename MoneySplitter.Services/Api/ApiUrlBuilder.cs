@@ -31,20 +31,24 @@ namespace MoneySplitter.Services.Api
                 query));
         }
 
-        public Uri AddFriend()
+        public Uri AddFriend(int friendId)
         {
             return new Uri(string.Concat(
                 Defines.Api.WEB_API_URL,
                 Defines.Api.Friends.FRIENDS,
-                Defines.Api.Friends.ADD_FRIEND));
+                Defines.Api.Friends.ADD_FRIEND,
+                Defines.Api.Friends.FRIEND_ID,
+                friendId.ToString()));
         }
 
-        public Uri RemoveFriend()
+        public Uri RemoveFriend(int friendId)
         {
             return new Uri(string.Concat(
                 Defines.Api.WEB_API_URL,
                 Defines.Api.Friends.FRIENDS,
-                Defines.Api.Friends.REMOVE_FRIEND));
+                Defines.Api.Friends.REMOVE_FRIEND,
+                Defines.Api.Friends.FRIEND_ID,
+                friendId.ToString()));
         }
 
         public Uri AllFriends()

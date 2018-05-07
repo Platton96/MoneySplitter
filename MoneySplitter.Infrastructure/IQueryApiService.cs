@@ -5,14 +5,19 @@ namespace MoneySplitter.Infrastructure
 {
     public interface IQueryApiService
     {
-       Task <TResultQuery> PostAsync<TResultQuery, TBodyQuery> (TBodyQuery bodyQuery, Uri uri)
+        Task<TResultQuery> PostAsync<TResultQuery, TBodyQuery>(Uri uri, TBodyQuery bodyQuery)
             where TResultQuery : class
-            where TBodyQuery : class ;
+            where TBodyQuery : class;
 
         Task<TResultQuery> GetAsync<TResultQuery>(Uri uri)
             where TResultQuery : class;
 
-        Task<bool> PostAsync<TBodyQuery>(TBodyQuery bodyQuery, Uri uri)
-             where TBodyQuery : class;
+        Task<bool> PostAsync(Uri uri);
+
+        Task<TResultQuery> PostAsync<TResultQuery>(Uri uri)
+            where TResultQuery : class;
+
+        Task<bool> PostAsync<TBodyQuery>(Uri uri, TBodyQuery bodyQuery)
+            where TBodyQuery : class;
     }
 }

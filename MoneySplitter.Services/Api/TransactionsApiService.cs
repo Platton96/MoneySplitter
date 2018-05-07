@@ -57,7 +57,7 @@ namespace MoneySplitter.Services.Api
 
             var addTransactionData = _mapper.ConvertAddTransactioModelToAddTransactionData(addTransactionModel);
 
-            return await _queryApiService.PostAsync(addTransactionData, addTransactiodUrl);
+            return await _queryApiService.PostAsync( addTransactiodUrl, addTransactionData);
         }
 
     }
