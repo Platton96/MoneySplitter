@@ -55,6 +55,11 @@ namespace MoneySplitter.Win10.Common
             _shellNavigationService.NavigateToViewModel<AddTransactionViewModel>();
         }
 
+        public void NavigateToTransactionsViewModel()
+        {
+            _shellNavigationService.NavigateToViewModel<TransactionsViewModel>();
+        }
+
         public void NavigateToShellViewModel(Type viewModelType)
         {
             _shellNavigationService.NavigateToViewModel(viewModelType);

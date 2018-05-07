@@ -12,6 +12,7 @@ namespace MoneySplitter.Infrastructure
         void NavigateToShellViewModel(Type viewModelType);
         void NavigateToSearchUsersViewModel();
         void NavigateToAddTransactionViewModel();
+        void NavigateToTransactionsViewModel();
         void GoBack();
 
         event EventHandler<Type> OnShellNavigationManagerNavigated;

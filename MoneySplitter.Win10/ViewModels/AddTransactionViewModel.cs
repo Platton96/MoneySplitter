@@ -3,10 +3,8 @@ using MoneySplitter.Infrastructure;
 using MoneySplitter.Models;
 using MoneySplitter.Models.App;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MoneySplitter.Win10.ViewModels
@@ -18,9 +16,10 @@ namespace MoneySplitter.Win10.ViewModels
         private ObservableCollection<UserModel> _collabarators;
         private AddTransactionModel _addTransactionModel;
 
-        private IFriendsManager _friendsManager;
+        private  IFriendsManager _friendsManager;
         private ITransactionsManager _transactionsManager;
         private readonly IFilePickerService _filePickerService;
+        private INavigationManager _navigationManager;
 
         private string _laberlForTransactionImage = Defines.Register.BrowseImage.AVATAR;
         private bool _isNoCollaboratorsTextVisibility;
@@ -28,13 +27,6 @@ namespace MoneySplitter.Win10.ViewModels
         private bool _isErrorVisible;
         private ErrorDetailsModel _errorDetailsModel;
         #endregion
-
-        public AddTransactionViewModel(ITransactionsManager transactionsManager, IFriendsManager friendsManager, IFilePickerService filePickerService)
-        {
-            _friendsManager = friendsManager;
-            _transactionsManager = transactionsManager;
-            _filePickerService = filePickerService;
-        }
 
         #region Properties
         public ObservableCollection<UserModel> Friends
@@ -115,14 +107,32 @@ namespace MoneySplitter.Win10.ViewModels
                 NotifyOfPropertyChange(nameof(ErrorDetailsModel));
             }
         }
+        public string NOT_COLLABARATORS = Defines.AddTransaction.NOT_COLLABARATORS;
         #endregion
 
-        protected override void OnActivate()
+        public AddTransactionViewModel(ITransactionsManager transactionsManager, IFriendsManager friendsManager,
+            IFilePickerService filePickerService, INavigationManager navigationManager)
+        {
+            _friendsManager = friendsManager;
+            _transactionsManager = transactionsManager;
+            _filePickerService = filePickerService;
+            _navigationManager = navigationManager;
+
+            AddTransactionModel = new AddTransactionModel
+            {
+                DeadlineDate = DateTime.Now
+            };
+        }
+
+        #region Methods
+        protected override async void OnActivate()
         {
             base.OnActivate();
-            if(_friendsManager.UserFriends.Count()==0)
+            if(_friendsManager.UserFriends==null)
             {
-                _friendsManager.LoadUserFriendsAsync();
+                IsLoading = true;
+                await _friendsManager.LoadUserFriendsAsync();
+                IsLoading = false;
             }
 
             Friends = new ObservableCollection<UserModel>(_friendsManager.UserFriends);
@@ -142,7 +152,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public void RemoveFriendFromCollabarators(int friendId)
         {
-            var friend = Friends.FirstOrDefault(x => x.Id == friendId);
+            var friend = Collabarators.FirstOrDefault(x => x.Id == friendId);
             Collabarators.Remove(friend);
 
             if (Collabarators.Count==0)
@@ -153,10 +163,25 @@ namespace MoneySplitter.Win10.ViewModels
             Friends.Add(friend);
         }
 
-        //public Task AddTransaction()
-        //{
-            
-        //}
+        public async Task AddTransactionAsync()
+        {
+            IsLoading = true;
+            var IsSuccessExecution = await _transactionsManager.AddTransactionAsync(AddTransactionModel);
+            IsLoading = false;
+
+            if (!IsSuccessExecution)
+            {
+                IsErrorVisible = true;
+                ErrorDetailsModel = new ErrorDetailsModel
+                {
+                    ErrorTitle = Defines.ErrorDetails.DEFAULT_ERROR_TITLE,
+                    ErrorDescription = Defines.ErrorDetails.PROBLEM_SERVER
+                };
+                return;
+            }
+
+            _navigationManager.NavigateToTransactionsViewModel();
+        }
 
         public async Task BrowseTransactionImageAsync()
         {
@@ -167,5 +192,6 @@ namespace MoneySplitter.Win10.ViewModels
             AddTransactionModel.ImageBase64String = imageResult.Base64StringImage;
             LabelForTransactionImage = imageResult.ImageName;
         }
+        #endregion
     }
 }

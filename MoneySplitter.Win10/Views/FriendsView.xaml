@@ -33,13 +33,19 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <ListView x:Name="FriendsList"
+                  HorizontalContentAlignment="Stretch"
                   ItemsSource="{x:Bind ViewModel.Friends, Mode=OneWay}"
                   IsItemClickEnabled="True">
-
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:UserModel">
                     <customControls:MobileUserControl ViewModel="{x:Bind Mode=OneWay}"
                                                       ButtonContent="-"
+                                                      HorizontalAlignment="Stretch"
                                                       OnAddOrRemoveItemClick="OnRemoveItemClick"/>
 
                 </DataTemplate>
