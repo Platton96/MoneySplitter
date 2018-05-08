@@ -20,6 +20,7 @@ namespace MoneySplitter.Win10.CustomControls
             get { return (string)GetValue(ButtonContentProperty); }
             set { SetValue(ButtonContentProperty, value); }
         }
+
         public bool IsButtonVisible
         {
             get { return (bool)GetValue(IsButtonVisibleProperty); }

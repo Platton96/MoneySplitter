@@ -3,7 +3,6 @@ using MoneySplitter.Infrastructure;
 using MoneySplitter.Models;
 using MoneySplitter.Models.App;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -71,6 +70,7 @@ namespace MoneySplitter.Win10.ViewModels
                 NotifyOfPropertyChange(nameof(LabelForTransactionImage));
             }
         }
+
         public bool IsNotCollaboratorsTextVisibility
         {
             get { return _isNoCollaboratorsTextVisibility; }

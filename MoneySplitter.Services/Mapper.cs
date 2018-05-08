@@ -43,16 +43,16 @@ namespace MoneySplitter.Services
             };
         }
 
-        public AddTransactionData ConvertAddTransactioModelToAddTransactionData(AddTransactionModel registerTransactionModel)
+        public AddTransactionData ConvertAddTransactioModelToAddTransactionData(AddTransactionModel addTransactionModel)
         {
             return new AddTransactionData()
             {
-                Title = registerTransactionModel.Title,
-                Cost = registerTransactionModel.Cost,
-                DeadlineDate = registerTransactionModel.DeadlineDate.DateTime,
-                Description = registerTransactionModel.Description,
-                CollaboratorsIds = registerTransactionModel.CollaboratorsIds,
-                ImageBase64String = registerTransactionModel.ImageBase64String,
+                Title = addTransactionModel.Title,
+                Cost = addTransactionModel.Cost,
+                DeadlineDate = addTransactionModel.DeadlineDate.DateTime,
+                Description = addTransactionModel.Description,
+                CollaboratorsIds = addTransactionModel.CollaboratorsIds,
+                ImageBase64String = addTransactionModel.ImageBase64String,
             };
         }
 

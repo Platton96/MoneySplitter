@@ -6,6 +6,7 @@ namespace MoneySplitter.Win10.Views
     public sealed partial class TransactionsView : Page
     {
         public TransactionsViewModel ViewModel { get; set; }
+
         public TransactionsView()
         {
             InitializeComponent();
