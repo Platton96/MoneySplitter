@@ -11,8 +11,8 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="9*"/>
-            <RowDefinition Height="11*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <Grid>
@@ -35,7 +35,8 @@
                      Header="Cost"/>
                 <DatePicker Header="Debt's diedline date"
                             Date="{x:Bind ViewModel.AddTransactionModel.DeadlineDate, Mode=TwoWay }"/>
-                
+                <CheckBox Content="Are you callbarator?"
+                          IsChecked="{x:Bind ViewModel.IsSelfCollabarator, Mode=TwoWay}"/>
                 <StackPanel Orientation="Horizontal"  Margin="0,8,0,0">
                     <TextBlock Text="{x:Bind  ViewModel.LabelForTransactionImage, Mode=OneWay}"
                            Margin="0,0,5,0"

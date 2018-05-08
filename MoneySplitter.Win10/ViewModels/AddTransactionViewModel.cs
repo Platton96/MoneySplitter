@@ -3,6 +3,7 @@ using MoneySplitter.Infrastructure;
 using MoneySplitter.Models;
 using MoneySplitter.Models.App;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,10 +21,12 @@ namespace MoneySplitter.Win10.ViewModels
         private ITransactionsManager _transactionsManager;
         private readonly IFilePickerService _filePickerService;
         private INavigationManager _navigationManager;
+        private IMembershipService _membershipService;
 
         private string _laberlForTransactionImage = Defines.Register.BrowseImage.AVATAR;
         private bool _isNoCollaboratorsTextVisibility;
         private bool _isLoading;
+        private bool? _isSelfCollabarator;
         private bool _isErrorVisible;
         private ErrorDetailsModel _errorDetailsModel;
         #endregion
@@ -98,6 +101,16 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
+        public bool? IsSelfCollabarator
+        {
+            get { return _isSelfCollabarator; }
+            set
+            {
+                _isSelfCollabarator = value;
+                NotifyOfPropertyChange(nameof(IsSelfCollabarator));
+            }
+        }
+
         public ErrorDetailsModel ErrorDetailsModel
         {
             get { return _errorDetailsModel; }
@@ -111,12 +124,13 @@ namespace MoneySplitter.Win10.ViewModels
         #endregion
 
         public AddTransactionViewModel(ITransactionsManager transactionsManager, IFriendsManager friendsManager,
-            IFilePickerService filePickerService, INavigationManager navigationManager)
+            IFilePickerService filePickerService, INavigationManager navigationManager, IMembershipService membershipService)
         {
             _friendsManager = friendsManager;
             _transactionsManager = transactionsManager;
             _filePickerService = filePickerService;
             _navigationManager = navigationManager;
+            _membershipService = membershipService;
 
             AddTransactionModel = new AddTransactionModel
             {
@@ -165,6 +179,13 @@ namespace MoneySplitter.Win10.ViewModels
 
         public async Task AddTransactionAsync()
         {
+            if(IsSelfCollabarator==true)
+            {
+                Collabarators.Add(_membershipService.CurrentUser);
+            }
+
+            AddTransactionModel.CollaboratorsIds = Collabarators.Select(x => x.Id);
+
             IsLoading = true;
             var IsSuccessExecution = await _transactionsManager.AddTransactionAsync(AddTransactionModel);
             IsLoading = false;
