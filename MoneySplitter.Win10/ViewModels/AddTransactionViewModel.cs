@@ -165,7 +165,6 @@ namespace MoneySplitter.Win10.ViewModels
             IsNotCollaboratorsTextVisibility = false;
             Friends.Remove(friend);
             Collabarators.Add(friend);
-
         }
 
         public void RemoveFriendFromCollabarators(int friendId)
