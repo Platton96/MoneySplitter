@@ -43,12 +43,17 @@
                   Grid.Row="1"
                   ItemsSource="{x:Bind ViewModel.SearchEngine.Results, Mode=OneWay}"
                   IsItemClickEnabled="True">
-
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
 
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:UserModel">
                     <customControls:MobileUserControl ViewModel="{x:Bind Mode=OneWay}"
                                                       ButtonContent="+"
+                                                      IsButtonVisible="True"
                                                       OnAddOrRemoveItemClick="OnMobileUserControlAddUserItemClick"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
