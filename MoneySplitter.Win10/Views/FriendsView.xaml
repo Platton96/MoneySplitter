@@ -45,6 +45,7 @@
                 <DataTemplate x:DataType="models:UserModel">
                     <customControls:MobileUserControl ViewModel="{x:Bind Mode=OneWay}"
                                                       ButtonContent="-"
+                                                      IsButtonVisible="True"
                                                       HorizontalAlignment="Stretch"
                                                       OnAddOrRemoveItemClick="OnRemoveItemClick"/>
 

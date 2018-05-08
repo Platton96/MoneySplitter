@@ -97,7 +97,7 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
-                    ErrorTitle = Defines.ErrorDetails.Login.ERROR_TITLE,
+                    ErrorTitle = Defines.ErrorDetails.DEFAULT_ERROR_TITLE,
                     ErrorDescription = Defines.ErrorDetails.PROBLEM_SERVER
                 };
 
