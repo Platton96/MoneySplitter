@@ -20,6 +20,11 @@ namespace MoneySplitter.Win10.CustomControls
             get { return (string)GetValue(ButtonContentProperty); }
             set { SetValue(ButtonContentProperty, value); }
         }
+        public bool IsButtonVisible
+        {
+            get { return (bool)GetValue(IsButtonVisibleProperty); }
+            set { SetValue(IsButtonVisibleProperty, value); }
+        }
 
         public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(
             "ViewModel",
@@ -32,7 +37,13 @@ namespace MoneySplitter.Win10.CustomControls
             typeof(string),
             typeof(MobileUserControl),
             null);
-            
+
+        public static readonly DependencyProperty IsButtonVisibleProperty = DependencyProperty.Register(
+            "IsButtonVisible",
+            typeof(bool),
+            typeof(MobileUserControl),
+            null);
+
         public MobileUserControl()
         {
             InitializeComponent();

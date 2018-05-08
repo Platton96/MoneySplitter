@@ -15,16 +15,6 @@ namespace MoneySplitter.Win10.Views
             DataContextChanged += (s, e) => { ViewModel = DataContext as AddTransactionViewModel; };
         }
 
-        private void OnAddFriendButtonClick(object sender, UserModel e)
-        {
-            ViewModel.AddFriendToCollabarators(e.Id);
-        }
-
-        private void OnRemoveFriendButtonClick(object sender, UserModel e)
-        {
-            ViewModel.RemoveFriendFromCollabarators(e.Id);
-        }
-
         private async void OnBrowseImageButtonClick(object sender, RoutedEventArgs e)
         {
             await ViewModel.BrowseTransactionImageAsync();
@@ -33,6 +23,18 @@ namespace MoneySplitter.Win10.Views
         private async void AddTransactionAsync(object sender, RoutedEventArgs e)
         {
             await ViewModel.AddTransactionAsync();
+        }
+
+        private void OnAddFriendClick(object sender, ItemClickEventArgs e)
+        {
+            var selectedFriend = e.ClickedItem as UserModel;
+            ViewModel.AddFriendToCollabarators(selectedFriend.Id);
+        }
+
+        private void OnRemoveFriendClick(object sender, ItemClickEventArgs e)
+        {
+            var selectedFriend = e.ClickedItem as UserModel;
+            ViewModel.RemoveFriendFromCollabarators(selectedFriend.Id);
         }
     }
 }

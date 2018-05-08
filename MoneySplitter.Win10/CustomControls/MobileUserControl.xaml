@@ -131,13 +131,14 @@
                 </TextBlock>
                 <TextBlock Text="{x:Bind ViewModel.Email, Mode=OneWay}"
                            HorizontalAlignment="Stretch"
-                           TextTrimming="WordEllipsis"/>
+                           TextTrimming="CharacterEllipsis"/>
                 <!--<TextBlock extensions:XamlElementExtensions.Resource="BUTTON_HOME"/>-->
             </StackPanel >
         <Button Click="OnAddOrRemoveButtonClick" 
-                    Content="{x:Bind ButtonContent, Mode=OneWay}" 
-                    Style="{StaticResource DefaultButtonStyle}"
-                    Grid.Column="2"
-                    HorizontalAlignment="Right"/>
+                Content="{x:Bind ButtonContent, Mode=OneWay}" 
+                Style="{StaticResource DefaultButtonStyle}"
+                Grid.Column="2"
+                HorizontalAlignment="Right"
+                Visibility="{x:Bind IsButtonVisible, Mode=OneWay}"/>
     </Grid>
 </UserControl>

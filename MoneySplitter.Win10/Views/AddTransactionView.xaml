@@ -60,29 +60,38 @@
                 </Grid.RowDefinitions>
                 <TextBlock Text="Select friend" HorizontalAlignment="Center"/>
                 <ListView Grid.Row="1"
-                        ItemsSource="{x:Bind ViewModel.Friends, Mode=OneWay}"
-                        IsItemClickEnabled="True"
-                        ScrollViewer.VerticalScrollMode="Enabled"
+                          ItemsSource="{x:Bind ViewModel.Friends, Mode=OneWay}"
+                          IsItemClickEnabled="True"
+                          ScrollViewer.VerticalScrollMode="Enabled"
+                          ItemClick="OnAddFriendClick"
                         >
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="models:UserModel">
                             <customControls:MobileUserControl ViewModel="{x:Bind Mode=OneWay}"
-                                                                    ButtonContent="+"
-                                                                    OnAddOrRemoveItemClick="OnAddFriendButtonClick"/>
+                                                              IsButtonVisible="False"
+                                                              />
+                                                                     
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </Grid>
             <Grid Grid.Column="1">
-                <ListView x:Name="FriendsList"
-                  ItemsSource="{x:Bind ViewModel.Collabarators, Mode=OneWay}"
-                  IsItemClickEnabled="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Callaborators" HorizontalAlignment="Center"/>
+                <ListView Grid.Row="1"
+                          x:Name="FriendsList"
+                          ItemsSource="{x:Bind ViewModel.Collabarators, Mode=OneWay}"
+                          IsItemClickEnabled="True"
+                          ItemClick="OnRemoveFriendClick"
+                          >
 
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="models:UserModel">
                             <customControls:MobileUserControl ViewModel="{x:Bind Mode=OneWay}"
-                                                              ButtonContent="-"
-                                                              OnAddOrRemoveItemClick="OnRemoveFriendButtonClick"/>
+                                                              IsButtonVisible="False"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
