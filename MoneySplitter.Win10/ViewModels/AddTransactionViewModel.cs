@@ -123,8 +123,12 @@ namespace MoneySplitter.Win10.ViewModels
         public string NOT_COLLABARATORS = Defines.AddTransaction.NOT_COLLABARATORS;
         #endregion
 
-        public AddTransactionViewModel(ITransactionsManager transactionsManager, IFriendsManager friendsManager,
-            IFilePickerService filePickerService, INavigationManager navigationManager, IMembershipService membershipService)
+        public AddTransactionViewModel(
+            ITransactionsManager transactionsManager, 
+            IFriendsManager friendsManager,
+            IFilePickerService filePickerService, 
+            INavigationManager navigationManager, 
+            IMembershipService membershipService)
         {
             _friendsManager = friendsManager;
             _transactionsManager = transactionsManager;
