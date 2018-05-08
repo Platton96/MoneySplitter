@@ -27,6 +27,9 @@ namespace MoneySplitter.Services.DataModels
         public UserModel Owner { get; set; }
 
         [DataMember]
+        public bool IsClosed { get; set; }
+
+        [DataMember]
         public IEnumerable<UserModel> Collaborators { get; set; }
 
         [DataMember]
@@ -37,6 +40,9 @@ namespace MoneySplitter.Services.DataModels
 
         [DataMember (Name="Coast")]
         public double Cost { get; set; }
+
+        [DataMember]
+        public double SingleCost { get; set; }
 
         [DataMember]
         public string ImageUrl { get; set; }
