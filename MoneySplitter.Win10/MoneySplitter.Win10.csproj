@@ -118,6 +118,7 @@
     <Compile Include="Extensions\XamlElementExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AddTransactionViewModel.cs" />
+    <Compile Include="ViewModels\IncomingAndOutcomingViewModel.cs" />
     <Compile Include="ViewModels\SearchUsersViewModel.cs" />
     <Compile Include="ViewModels\FriendsViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
@@ -127,6 +128,9 @@
     <Compile Include="ViewModels\TransactionsViewModel.cs" />
     <Compile Include="Views\AddTransactionView.xaml.cs">
       <DependentUpon>AddTransactionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IncomingAndOutcomingView.xaml.cs">
+      <DependentUpon>IncomingAndOutcomingView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SearchUsersView.xaml.cs">
       <DependentUpon>SearchUsersView.xaml</DependentUpon>
@@ -193,6 +197,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AddTransactionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\IncomingAndOutcomingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
