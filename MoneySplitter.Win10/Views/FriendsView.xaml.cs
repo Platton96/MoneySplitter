@@ -15,12 +15,6 @@ namespace MoneySplitter.Win10.Views
             DataContextChanged += (s, e) => { ViewModel = DataContext as FriendsViewModel; };
         }
 
-        private async void OnRemoveButtonClick(object sender, RoutedEventArgs e)
-        {
-            var selectUser = ((FrameworkElement)sender).DataContext as UserModel;
-            await ViewModel.RemoveFriendAsync(selectUser.Id);
-        }
-
         private async void OnRemoveItemClick(object sender, UserModel e)
         {
             await ViewModel.RemoveFriendAsync(e.Id);

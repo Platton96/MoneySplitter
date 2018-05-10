@@ -8,5 +8,6 @@ namespace MoneySplitter.Infrastructure
     {
         Task<bool> LoadUserTransactions();
         IEnumerable<TransactionModel> UserTransactions { get; }
+        Task<bool> AddTransactionAsync(AddTransactionModel addTransactionModel);
     }
 }

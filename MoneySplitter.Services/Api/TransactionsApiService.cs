@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MoneySplitter.Services.Api
 {
-    public class TransactionsApiService:ITransactionsApiService
+    public class TransactionsApiService : ITransactionsApiService
     {
         private readonly IApiUrlBuilder _apiUrlBuilder;
         private readonly IQueryApiService _queryApiService;
@@ -49,6 +49,15 @@ namespace MoneySplitter.Services.Api
 
             result.IsSuccess = true;
             return result;
+        }
+
+        public async Task<bool> AddTransactionAsync(AddTransactionModel addTransactionModel)
+        {
+            var addTransactiodUrl = _apiUrlBuilder.AddTransaction();
+
+            var addTransactionData = _mapper.ConvertAddTransactioModelToAddTransactionData(addTransactionModel);
+
+            return await _queryApiService.PostAsync(addTransactiodUrl, addTransactionData);
         }
 
     }

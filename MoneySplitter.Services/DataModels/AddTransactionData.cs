@@ -5,14 +5,8 @@ using System.Runtime.Serialization;
 namespace MoneySplitter.Services.DataModels
 {
     [DataContract]
-    public class RegisterTransactionData
+    public class AddTransactionData
     {
-        [DataMember]
-        public string Email { get; set; }
-
-        [DataMember]
-        public string Token { get; set; }
-
         [DataMember(Name = "Coast")]
         public double Cost { get; set; }
 

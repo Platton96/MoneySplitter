@@ -27,24 +27,25 @@ namespace MoneySplitter.Services.Api
                 Defines.Api.WEB_API_URL,
                 Defines.Api.Users.USERS,
                 Defines.Api.Users.SEARCH,
-                Defines.Api.Users.SEARCH_PARAMETR,
-                query));
+                CreateQueryParameter(Defines.Api.Users.SEARCH_PARAMETR, query)));
         }
 
-        public Uri AddFriend()
+        public Uri AddFriend(int friendId)
         {
             return new Uri(string.Concat(
                 Defines.Api.WEB_API_URL,
                 Defines.Api.Friends.FRIENDS,
-                Defines.Api.Friends.ADD_FRIEND));
+                Defines.Api.Friends.ADD_FRIEND,
+                CreateQueryParameter(Defines.Api.Friends.FRIEND_ID, friendId)));
         }
 
-        public Uri RemoveFriend()
+        public Uri RemoveFriend(int friendId)
         {
             return new Uri(string.Concat(
                 Defines.Api.WEB_API_URL,
                 Defines.Api.Friends.FRIENDS,
-                Defines.Api.Friends.REMOVE_FRIEND));
+                Defines.Api.Friends.REMOVE_FRIEND,
+                CreateQueryParameter(Defines.Api.Friends.FRIEND_ID, friendId)));
         }
 
         public Uri AllFriends()
@@ -77,6 +78,11 @@ namespace MoneySplitter.Services.Api
                 Defines.Api.WEB_API_URL,
                 Defines.Api.Transactions.TRANSACTIONS,
                 Defines.Api.Transactions.ALL));
+        }
+
+        private string CreateQueryParameter(string parameterName, object parameterValue)
+        {
+            return $"?{parameterName}={parameterValue}";
         }
     }
 }

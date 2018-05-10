@@ -29,6 +29,7 @@ namespace MoneySplitter.Win10.Dependencies
             _container.PerRequest<FriendsViewModel>();
             _container.PerRequest<SearchUsersViewModel>();
             _container.PerRequest<TransactionsViewModel>();
+            _container.PerRequest<AddTransactionViewModel>();
         }
 
         public void InitializeServices()

@@ -23,35 +23,21 @@ namespace MoneySplitter.Services.Api
             _executor = executor;
         }
 
-        public async Task<bool> AddFriendAsync(string token, string email, int friendId)
+        public async Task<bool> AddFriendAsync(int friendId)
         {
-            var addFriendUrl = _apiUrlBuilder.AddFriend();
+            var addFriendUrl = _apiUrlBuilder.AddFriend(friendId);
 
-            var addFriendData = new AddFriendData
-            {
-                Token = token,
-                Email = email,
-                FriendId = friendId
-            };
- 
-            return await _queryApiService.PostAsync(addFriendData, addFriendUrl);
+            return await _queryApiService.PostAsync(addFriendUrl);
         }
 
-        public async Task<bool> RemoveFriendAsync(string token, string email, int friendId)
+        public async Task<bool> RemoveFriendAsync(int friendId)
         {
-            var removeFriendUrl = _apiUrlBuilder.RemoveFriend();
+            var removeFriendUrl = _apiUrlBuilder.RemoveFriend(friendId);
 
-            var removeFriendData = new RemoveFriendData
-            {
-                Token = token,
-                Email = email,
-                FriendId = friendId
-            };
-
-            return await _queryApiService.PostAsync(removeFriendData, removeFriendUrl);
+            return await _queryApiService.PostAsync(removeFriendUrl);
         }
 
-        public async Task<ExecutionResult<IEnumerable<UserModel>>> GetAllUserFriendsAsync(string token, string email )
+        public async Task<ExecutionResult<IEnumerable<UserModel>>> GetAllUserFriendsAsync()
         {
             var result = new ExecutionResult<IEnumerable<UserModel>>
             {
@@ -60,17 +46,11 @@ namespace MoneySplitter.Services.Api
 
             var allFriendsUrl = _apiUrlBuilder.AllFriends();
 
-            var getUserData = new GetUserData
-            {
-                Token = token,
-                Email = email
-            };
-
             IEnumerable<UserData> userFriendsData = null;
 
             await _executor.ExecuteWithRetryAsync(async () =>
             {
-                userFriendsData= await _queryApiService.PostAsync<IEnumerable<UserData>, GetUserData>(getUserData, allFriendsUrl);
+                userFriendsData= await _queryApiService.GetAsync<IEnumerable<UserData>>(allFriendsUrl);
             });
 
             if (userFriendsData == null)

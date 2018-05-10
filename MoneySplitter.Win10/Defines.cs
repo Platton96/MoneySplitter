@@ -61,5 +61,9 @@
             public const string TEXTBOX_EMPTY = "Enter, please query for search!";
             public const string NOT_RESULTS = "Not results!";
         }
+        public static class AddTransaction
+        {
+            public const string NOT_COLLABARATORS = "Select friend!";
+        }
     }
 }

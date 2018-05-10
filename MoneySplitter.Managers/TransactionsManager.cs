@@ -23,5 +23,10 @@ namespace MoneySplitter.Managers
 
             return executionResult.IsSuccess;
         }
+
+        public async Task<bool> AddTransactionAsync(AddTransactionModel addTransactionModel)
+        {
+            return await _transactionsApiService.AddTransactionAsync(addTransactionModel);
+        }
     }
 }

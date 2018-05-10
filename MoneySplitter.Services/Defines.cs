@@ -23,7 +23,7 @@
             {
                 public const string USERS = "/users";
                 public const string SEARCH = "/search";
-                public const string SEARCH_PARAMETR = "?query=";
+                public const string SEARCH_PARAMETR = "query";
             }
 
             public static class Friends
@@ -32,6 +32,7 @@
                 public const string ADD_FRIEND = "/add";
                 public const string ALL_FRIENDS= "/all";
                 public const string REMOVE_FRIEND = "/remove";
+                public const string FRIEND_ID = "friendId";
             }
 
             public static class Transactions

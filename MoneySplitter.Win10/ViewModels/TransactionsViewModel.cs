@@ -9,6 +9,7 @@ namespace MoneySplitter.Win10.ViewModels
 {
     public class TransactionsViewModel : Screen
     {
+        #region Fields
         private ObservableCollection<TransactionModel> _transactions;
 
         private ITransactionsManager _transactionsManager;
@@ -17,7 +18,10 @@ namespace MoneySplitter.Win10.ViewModels
         private bool _isLoading;
         private bool _isErrorVisible;
         private ErrorDetailsModel _errorDetailsModel;
+        private INavigationManager _navigationManager;
+        #endregion
 
+        #region Properties
         public ObservableCollection<TransactionModel> Transactions
         {
             get { return _transactions; }
@@ -67,12 +71,17 @@ namespace MoneySplitter.Win10.ViewModels
                 NotifyOfPropertyChange(nameof(ErrorDetailsModel));
             }
         }
-        
-        public TransactionsViewModel(ITransactionsManager transactionsManager)
+        #endregion
+
+        #region Constructor
+        public TransactionsViewModel(ITransactionsManager transactionsManager, INavigationManager navigationManager)
         {
             _transactionsManager = transactionsManager;
+            _navigationManager = navigationManager;
         }
+        #endregion
 
+        #region Methods
         protected override async void OnActivate()
         {
             base.OnActivate();
@@ -88,7 +97,7 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
-                    ErrorTitle = Defines.ErrorDetails.Login.ERROR_TITLE,
+                    ErrorTitle = Defines.ErrorDetails.DEFAULT_ERROR_TITLE,
                     ErrorDescription = Defines.ErrorDetails.PROBLEM_SERVER
                 };
 
@@ -103,5 +112,11 @@ namespace MoneySplitter.Win10.ViewModels
 
             Transactions = new ObservableCollection<TransactionModel>(_transactionsManager.UserTransactions);
         }
+
+        public void NavigateToAddTransaction()
+        {
+            _navigationManager.NavigateToAddTransactionViewModel();
+        }
+        #endregion
     }
 }

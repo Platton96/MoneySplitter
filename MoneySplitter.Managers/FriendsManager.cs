@@ -20,12 +20,12 @@ namespace MoneySplitter.Managers
 
         public async Task<bool> AddFriendAsync(int friendId)
         {
-            return await _friendsApiService.AddFriendAsync(_membershipService.CurrentUser.Token, _membershipService.CurrentUser.Email, friendId);
+            return await _friendsApiService.AddFriendAsync(friendId);
         }
 
         public async Task<bool> LoadUserFriendsAsync()
         {
-            var executionResult = await _friendsApiService.GetAllUserFriendsAsync(_membershipService.CurrentUser.Token, _membershipService.CurrentUser.Email);
+            var executionResult = await _friendsApiService.GetAllUserFriendsAsync();
             UserFriends = executionResult.Result;
 
             return executionResult.IsSuccess;
@@ -33,7 +33,7 @@ namespace MoneySplitter.Managers
 
         public async Task<bool> RemoveFriendAsync(int friendId)
         {
-            return await _friendsApiService.RemoveFriendAsync(_membershipService.CurrentUser.Token, _membershipService.CurrentUser.Email, friendId);
+            return await _friendsApiService.RemoveFriendAsync(friendId);
         }
     }
 }
