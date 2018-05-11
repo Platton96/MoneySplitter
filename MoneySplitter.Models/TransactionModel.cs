@@ -16,5 +16,6 @@ namespace MoneySplitter.Models
         public IEnumerable<UserModel> InProgress { get; set; }
         public double Cost { get; set; }
         public string ImageUrl { get; set; }
+        public double SingleCost { get; set; }
     }
 }

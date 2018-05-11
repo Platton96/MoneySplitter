@@ -70,7 +70,8 @@ namespace MoneySplitter.Services
                 Collaborators = transactionData.Collaborators,
                 Finished = transactionData.Finished,
                 InProgress = transactionData.InProgress,
-                ImageUrl = transactionData.ImageUrl
+                ImageUrl = transactionData.ImageUrl,
+                SingleCost = transactionData.SingleCost
             };
         }
 
