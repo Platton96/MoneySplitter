@@ -100,6 +100,9 @@
     <Compile Include="Common\NavigateManager.cs" />
     <Compile Include="Common\SearchEngine.cs" />
     <Compile Include="Converters\MenuItemTitleConverter.cs" />
+    <Compile Include="CustomControls\CollabaratorControl.xaml.cs">
+      <DependentUpon>CollabaratorControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\DesktopUserContol.xaml.cs">
       <DependentUpon>DesktopUserContol.xaml</DependentUpon>
     </Compile>
@@ -112,8 +115,8 @@
     <Compile Include="CustomControls\MobileUserControl.xaml.cs">
       <DependentUpon>MobileUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\TransctionsControl.xaml.cs">
-      <DependentUpon>TransctionsControl.xaml</DependentUpon>
+    <Compile Include="CustomControls\TransctionControl.xaml.cs">
+      <DependentUpon>TransctionControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Defines.cs" />
     <Compile Include="Extensions\XamlElementExtensions.cs" />
@@ -177,6 +180,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CustomControls\CollabaratorControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomControls\DesktopUserContol.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -193,7 +200,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CustomControls\TransctionsControl.xaml">
+    <Page Include="CustomControls\TransctionControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
