@@ -90,7 +90,7 @@ namespace MoneySplitter.Win10.ViewModels
             IsErrorVisible = false;
             IsNotTransactionsTextVisibility = false;
 
-            var isSuccessExecution = await _transactionsManager.LoadUserTransactions();
+            var isSuccessExecution = await _transactionsManager.LoadUserTransactionsAsync();
 
             IsLoading = false;
             if (!isSuccessExecution)

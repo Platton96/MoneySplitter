@@ -6,7 +6,7 @@ namespace MoneySplitter.Infrastructure
 {
     public interface ITransactionsManager
     {
-        Task<bool> LoadUserTransactions();
+        Task<bool> LoadUserTransactionsAsync();
         IEnumerable<TransactionModel> UserTransactions { get; }
         Task<bool> AddTransactionAsync(AddTransactionModel addTransactionModel);
     }

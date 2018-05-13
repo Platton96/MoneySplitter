@@ -32,7 +32,7 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public ObservableCollection<CollabaratorModel>LendPersons
+        public ObservableCollection<CollabaratorModel> LendPersons
         {
             get { return _lendPersons; }
             set
@@ -57,8 +57,12 @@ namespace MoneySplitter.Win10.ViewModels
             _collabaratorModelFactory = collabaratorModelFactory;
             _navigationManager = navigationManager;
         }
-      
 
+        protected override void OnActivate()
+        {
+            base.OnActivate();
+            Debtors =new ObservableCollection<CollabaratorModel> (_collabaratorModelFactory.GetDebtors());
+        }
 
     }
 }

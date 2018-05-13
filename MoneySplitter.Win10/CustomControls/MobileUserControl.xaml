@@ -107,6 +107,7 @@
             </Setter>
         </Style>
     </UserControl.Resources>
+    
     <Grid Margin="5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>

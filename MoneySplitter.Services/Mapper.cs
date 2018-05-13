@@ -2,6 +2,7 @@
 using MoneySplitter.Services.DataModels;
 using MoneySplitter.Services.Inerfaces;
 using MoneySplitter.Models.Session;
+using System.Linq;
 
 namespace MoneySplitter.Services
 {
@@ -67,9 +68,9 @@ namespace MoneySplitter.Services
                 DeadlineDate = transactionData.DeadlineDate,
                 Description = transactionData.Description,
                 Cost = transactionData.Cost,
-                Collaborators = transactionData.Collaborators,
-                Finished = transactionData.Finished,
-                InProgress = transactionData.InProgress,
+                Collaborators = transactionData.Collaborators.Select(user=>ConvertUserDataToUserModel(user)),
+                Finished = transactionData.Finished.Select(user => ConvertUserDataToUserModel(user)),
+                InProgress = transactionData.InProgress.Select(user => ConvertUserDataToUserModel(user)),
                 ImageUrl = transactionData.ImageUrl,
                 SingleCost = transactionData.SingleCost
             };

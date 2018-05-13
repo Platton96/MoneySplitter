@@ -6,6 +6,8 @@ namespace MoneySplitter.Models
     {
         public string FullName { get; set; }
         public string Email { get; set; }
+        public int FriendId { get; set; }
+        public string ImageUrl { get; set; }
         public COLLABARATOR_STATUS CollabaratorStatus { get; set; }
         public TRANSACTION_STAYUS TransactionStatus { get; set; }
         public double Cost { get; set; }

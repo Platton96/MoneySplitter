@@ -1,9 +1,6 @@
 ﻿using MoneySplitter.Infrastructure;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MoneySplitter.Models;
 
 namespace MoneySplitter.Win10.Common
@@ -13,7 +10,7 @@ namespace MoneySplitter.Win10.Common
         private ITransactionsManager _transactionsManager;
         private IMembershipService _membershipService;
 
-        public CollabaratorModelFactory(ITransactionsManager transactionsManager, IMembershipService membershipService )
+        public  CollabaratorModelFactory(ITransactionsManager transactionsManager, IMembershipService membershipService )
         {
             _transactionsManager = transactionsManager;
             _membershipService = membershipService;
@@ -72,6 +69,8 @@ namespace MoneySplitter.Win10.Common
                 CollabaratorStatus = collabaratorStatus,
                 TransactionStatus=transactionStatus,
                 Email=userModel.Email,
+                FriendId=userModel.Id,
+                ImageUrl=userModel.ImageUrl
             };
 
         }
@@ -98,18 +97,22 @@ namespace MoneySplitter.Win10.Common
         
         private CollabaratorModel ConvertCollaboratorRecordsToOneRecord(IEnumerable<CollabaratorModel> collabaratorRecords, COLLABARATOR_STATUS collabaratorStatusForManyRecords)
         {
+           
             if(collabaratorRecords.Count()==1)
             {
+
                 return collabaratorRecords.FirstOrDefault();
             }
-
+            var firstRecord = collabaratorRecords.FirstOrDefault();
             return new CollabaratorModel
             {
-                Email = collabaratorRecords.FirstOrDefault().Email,
-                FullName = collabaratorRecords.FirstOrDefault().FullName,
+                Email = firstRecord.Email,
+                FullName = firstRecord.FullName,
                 Cost = collabaratorRecords.Sum(r => r.Cost),
                 CollabaratorStatus = collabaratorStatusForManyRecords,
-                TransactionStatus = TRANSACTION_STAYUS.Undefined
+                TransactionStatus = TRANSACTION_STAYUS.Undefined,
+                ImageUrl= firstRecord.ImageUrl,
+                FriendId= firstRecord.FriendId
             };
         }
     }
