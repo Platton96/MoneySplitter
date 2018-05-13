@@ -5,9 +5,24 @@
     xmlns:local="using:MoneySplitter.Win10.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:MoneySplitter.Models"
+    xmlns:customControls="using:MoneySplitter.Win10.CustomControls"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock>Incomming</TextBlock>
+        <ListView x:Name="DebtorsList"
+                      ItemsSource="{x:Bind ViewModel.Debtors, Mode=OneWay}"
+                      IsItemClickEnabled="True">
+
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:CollabaratorModel">
+                    <customControls:CollabaratorControl ViewModel="{x:Bind Mode=OneWay}"
+                                                        ButtonContent="qwewr"
+                                                        IsButtonVisible="True"
+                                                        IconGlyph="&#xE80F;"/>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>
