@@ -1,7 +1,19 @@
-﻿namespace MoneySplitter.Win10
+﻿using Windows.UI;
+using Windows.UI.Xaml.Media;
+
+namespace MoneySplitter.Win10
 {
     public static class Defines
     {
+        public static class Arrow
+        {
+            public static class Glyph
+            {
+                public const string UP = "&#xF0AD;";
+                public const string DOWN = "&#xF0AE;";
+            }
+
+        }
         public static class MenuItem
         {
             public static class Title
