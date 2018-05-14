@@ -1,9 +1,7 @@
 ﻿using Caliburn.Micro;
 using MoneySplitter.Infrastructure;
 using MoneySplitter.Models;
-using MoneySplitter.Models.App;
 using System.Collections.ObjectModel;
-using System.Linq;
 using MoneySplitter.Win10.Common;
 
 
@@ -16,9 +14,11 @@ namespace MoneySplitter.Win10.ViewModels
         private ObservableCollection<CollabaratorModel> _lendPersons;
 
         private bool _isNotTransactionsTextVisibility;
+        private bool _isLoading;
 
         private INavigationManager _navigationManager;
         private CollabaratorModelFactory _collabaratorModelFactory;
+        private ITransactionsManager _transactionsManager;
         #endregion
 
         #region Properties
@@ -51,17 +51,39 @@ namespace MoneySplitter.Win10.ViewModels
                 NotifyOfPropertyChange(nameof(IsNotTransactionsTextVisibility));
             }
         }
+
+        public bool IsLoading
+        {
+            get { return _isLoading; }
+            set
+            {
+                _isLoading = value;
+                NotifyOfPropertyChange(nameof(IsLoading));
+            }
+        }
         #endregion
-        public IncomingAndOutcomingViewModel(CollabaratorModelFactory collabaratorModelFactory, INavigationManager navigationManager)
+        public IncomingAndOutcomingViewModel(CollabaratorModelFactory collabaratorModelFactory, INavigationManager navigationManager, ITransactionsManager transactionsManager)
         {
             _collabaratorModelFactory = collabaratorModelFactory;
             _navigationManager = navigationManager;
+            _transactionsManager = transactionsManager;
+            
         }
 
-        protected override void OnActivate()
+        protected override async void OnActivate()
         {
             base.OnActivate();
-            Debtors =new ObservableCollection<CollabaratorModel> (_collabaratorModelFactory.GetDebtors());
+
+            if (_transactionsManager.UserTransactions == null)
+            {
+                IsLoading = true;
+               await  _transactionsManager.LoadUserTransactionsAsync();
+                IsLoading = false;
+            }
+
+            Debtors = new ObservableCollection<CollabaratorModel> (_collabaratorModelFactory.GetDebtors());
+            LendPersons = new ObservableCollection<CollabaratorModel>(_collabaratorModelFactory.GetLendPersons());
+
         }
 
     }

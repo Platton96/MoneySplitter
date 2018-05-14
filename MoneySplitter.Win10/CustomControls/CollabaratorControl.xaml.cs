@@ -21,11 +21,6 @@ namespace MoneySplitter.Win10.CustomControls
             set { SetValue(ButtonContentProperty, value); }
         }
 
-        public string IconGlyph
-        {
-            get { return (string)GetValue(IconGlyphProperty); }
-            set { SetValue(IconGlyphProperty, value); }
-        }
         public bool IsButtonVisible
         {
             get { return (bool)GetValue(IsButtonVisibleProperty); }
@@ -40,12 +35,6 @@ namespace MoneySplitter.Win10.CustomControls
 
         public static readonly DependencyProperty ButtonContentProperty = DependencyProperty.Register(
             "ButtonContent",
-            typeof(string),
-            typeof(CollabaratorControl),
-            null);
-
-        public static readonly DependencyProperty IconGlyphProperty = DependencyProperty.Register(
-            "IconGlyph",
             typeof(string),
             typeof(CollabaratorControl),
             null);

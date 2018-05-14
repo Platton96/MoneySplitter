@@ -10,19 +10,67 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ListView x:Name="DebtorsList"
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Foreground="#2C404B"
+                   FontSize="18"
+                   Text="Debters"/>
+            <ListView x:Name="DebtorsList"
                       ItemsSource="{x:Bind ViewModel.Debtors, Mode=OneWay}"
-                      IsItemClickEnabled="True">
+                      IsItemClickEnabled="True"
+                      Grid.Row="1">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:CollabaratorModel">
+                        <customControls:CollabaratorControl ViewModel="{x:Bind Mode=OneWay}"
+                                                            ButtonContent="qwewr"/>
 
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models:CollabaratorModel">
-                    <customControls:CollabaratorControl ViewModel="{x:Bind Mode=OneWay}"
-                                                        ButtonContent="qwewr"
-                                                        IsButtonVisible="True"
-                                                        IconGlyph="&#xE80F;"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        <Grid  Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Foreground="#2C404B"
+                   FontSize="18"
+                   Text="Lend persons"/>
 
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            <ListView x:Name="LendPersonsList"
+                      ItemsSource="{x:Bind ViewModel.LendPersons, Mode=OneWay}"
+                      IsItemClickEnabled="True"
+                      Grid.Row="1">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:CollabaratorModel">
+                        <customControls:CollabaratorControl ViewModel="{x:Bind Mode=OneWay}"
+                                                        ButtonContent="qwewr"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        <customControls:LoadRingControl IsActiveRing="{x:Bind ViewModel.IsLoading, Mode=OneWay}"/>
     </Grid>
 </Page>

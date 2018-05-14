@@ -8,24 +8,9 @@ namespace MoneySplitter.Models
         public string Email { get; set; }
         public int FriendId { get; set; }
         public string ImageUrl { get; set; }
-        public COLLABARATOR_STATUS CollabaratorStatus { get; set; }
-        public TRANSACTION_STAYUS TransactionStatus { get; set; }
+        public CollabaratorStatus CollabaratorStatus { get; set; }
+        public TransactionStatus TransactionStatus { get; set; }
+        public int TransactionId { get; set; }
         public double Cost { get; set; }
-    }
-
-    public enum COLLABARATOR_STATUS
-    {
-        OneDebt,
-        ManyDebt,
-        OneLend,
-        ManyLend
-    }
-
-    public enum TRANSACTION_STAYUS
-    {
-        InBegin,
-        InProgress,
-        InFinish,
-        Undefined
     }
 }

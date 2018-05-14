@@ -99,7 +99,11 @@
     <Compile Include="Common\FilePickerService.cs" />
     <Compile Include="Common\NavigateManager.cs" />
     <Compile Include="Common\SearchEngine.cs" />
+    <Compile Include="Converters\CollabaratorButtonVisibilityConverter.cs" />
     <Compile Include="Converters\MenuItemTitleConverter.cs" />
+    <Compile Include="CustomControls\ArrowsControl.xaml.cs">
+      <DependentUpon>ArrowsControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\CollabaratorControl.xaml.cs">
       <DependentUpon>CollabaratorControl.xaml</DependentUpon>
     </Compile>
@@ -115,6 +119,7 @@
     <Compile Include="CustomControls\MobileUserControl.xaml.cs">
       <DependentUpon>MobileUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\Models\ArrowModel.cs" />
     <Compile Include="CustomControls\TransctionControl.xaml.cs">
       <DependentUpon>TransctionControl.xaml</DependentUpon>
     </Compile>
@@ -180,6 +185,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CustomControls\ArrowsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomControls\CollabaratorControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

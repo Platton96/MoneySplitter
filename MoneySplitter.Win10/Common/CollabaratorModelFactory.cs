@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using MoneySplitter.Models;
+using System;
 
 namespace MoneySplitter.Win10.Common
 {
@@ -19,21 +20,21 @@ namespace MoneySplitter.Win10.Common
         public IEnumerable<CollabaratorModel> GetDebtors()
         {
             return _transactionsManager.UserTransactions.Where(tr => tr.Owner.Id == _membershipService.CurrentUser.Id)
-                .SelectMany(tr => ConvertTransactionModelToCollabaratorModel(tr, COLLABARATOR_STATUS.OneDebt))
+                .SelectMany(tr => ConvertTransactionModelToCollabaratorModel(tr, CollabaratorStatus.ONE_DEBT))
                 .GroupBy
                 (
                     cl => cl.Email,
                     cl => cl,
                     (key, value) => new { Email = key, CollaboratorRecords = value }
                 )
-                .Select(cl => ConvertCollaboratorRecordsToOneRecord(cl.CollaboratorRecords, COLLABARATOR_STATUS.ManyDebt));
+                .Select(cl => ConvertCollaboratorRecordsToOneRecord(cl.CollaboratorRecords, CollabaratorStatus.MANY_DEBT));
         }
          
-        public IEnumerable<CollabaratorModel> GetLendPerson()
+        public IEnumerable<CollabaratorModel> GetLendPersons()
         {
             return _transactionsManager.UserTransactions.Where(tr => tr.Owner.Id != _membershipService.CurrentUser.Id)
                 .Select(
-                            tr => ConvertDataToCollabatorModel(tr.Owner, tr, COLLABARATOR_STATUS.OneLend, GetTransactionStatus(tr.Owner, tr))
+                            tr => ConvertDataToCollabatorModel(tr.Owner, tr, CollabaratorStatus.ONE_LEND, GetTransactionStatus(tr.Owner, tr))
                        )
                .GroupBy
                 (
@@ -41,16 +42,16 @@ namespace MoneySplitter.Win10.Common
                     cl => cl,
                     (key, value) => new { Email = key, CollaboratorRecords = value }
                 )
-                .Select(cl => ConvertCollaboratorRecordsToOneRecord(cl.CollaboratorRecords, COLLABARATOR_STATUS.ManyLend));
+                .Select(cl => ConvertCollaboratorRecordsToOneRecord(cl.CollaboratorRecords, CollabaratorStatus.MANY_LEND));
         }
 
-        private IEnumerable<CollabaratorModel> ConvertTransactionModelToCollabaratorModel(TransactionModel transactionModel, COLLABARATOR_STATUS collabaratorStatus)
+        private IEnumerable<CollabaratorModel> ConvertTransactionModelToCollabaratorModel(TransactionModel transactionModel, CollabaratorStatus collabaratorStatus)
         {
            return transactionModel.Collaborators.Where(cl => cl.Id != _membershipService.CurrentUser.Id)
-                    .Select(cl => ConvertDataToCollabatorModel(cl, transactionModel, collabaratorStatus, TRANSACTION_STAYUS.InBegin))
+                    .Select(cl => ConvertDataToCollabatorModel(cl, transactionModel, collabaratorStatus, TransactionStatus.IN_BEGIN))
                     .Concat(
                               transactionModel.InProgress.Where(user => user.Id != _membershipService.CurrentUser.Id)
-                              .Select(user => ConvertDataToCollabatorModel(user, transactionModel, collabaratorStatus, TRANSACTION_STAYUS.InProgress))
+                              .Select(user => ConvertDataToCollabatorModel(user, transactionModel, collabaratorStatus, TransactionStatus.IN_PROGRESS))
                            );
 
 
@@ -59,13 +60,13 @@ namespace MoneySplitter.Win10.Common
         private CollabaratorModel ConvertDataToCollabatorModel(
             UserModel userModel,
             TransactionModel transactionModel,
-            COLLABARATOR_STATUS collabaratorStatus,
-            TRANSACTION_STAYUS transactionStatus)
+            CollabaratorStatus collabaratorStatus,
+            TransactionStatus transactionStatus)
         {
             return new CollabaratorModel
             {
                 FullName = userModel.Name + " " + userModel.Surname,
-                Cost = transactionModel.SingleCost,
+                Cost = Math.Round(transactionModel.SingleCost, 2),
                 CollabaratorStatus = collabaratorStatus,
                 TransactionStatus=transactionStatus,
                 Email=userModel.Email,
@@ -75,27 +76,27 @@ namespace MoneySplitter.Win10.Common
 
         }
 
-        private TRANSACTION_STAYUS GetTransactionStatus(UserModel user, TransactionModel transaction)
+        private TransactionStatus GetTransactionStatus(UserModel user, TransactionModel transaction)
         {
             if(transaction.Collaborators.Any(cl=>cl==user))
             {
-                return TRANSACTION_STAYUS.InBegin;
+                return TransactionStatus.IN_BEGIN;
             }
 
             if(transaction.InProgress.Any(cl=>cl==user))
             {
-                return TRANSACTION_STAYUS.InProgress;
+                return TransactionStatus.IN_PROGRESS;
             }
 
             if (transaction.Finished.Any(cl=>cl==user))
             {
-                return TRANSACTION_STAYUS.InFinish;
+                return TransactionStatus.IN_FINISH;
             }
 
-            return TRANSACTION_STAYUS.Undefined;
+            return TransactionStatus.UNDEFINED;
         }
         
-        private CollabaratorModel ConvertCollaboratorRecordsToOneRecord(IEnumerable<CollabaratorModel> collabaratorRecords, COLLABARATOR_STATUS collabaratorStatusForManyRecords)
+        private CollabaratorModel ConvertCollaboratorRecordsToOneRecord(IEnumerable<CollabaratorModel> collabaratorRecords, CollabaratorStatus collabaratorStatusForManyRecords)
         {
            
             if(collabaratorRecords.Count()==1)
@@ -110,7 +111,7 @@ namespace MoneySplitter.Win10.Common
                 FullName = firstRecord.FullName,
                 Cost = collabaratorRecords.Sum(r => r.Cost),
                 CollabaratorStatus = collabaratorStatusForManyRecords,
-                TransactionStatus = TRANSACTION_STAYUS.Undefined,
+                TransactionStatus = TransactionStatus.UNDEFINED,
                 ImageUrl= firstRecord.ImageUrl,
                 FriendId= firstRecord.FriendId
             };
