@@ -41,6 +41,17 @@
                 public const string ALL = "/all";
                 public const string ADD = "/add";
                 public const string MY = "/my";
+                public const string COLLABARATE = "/collabarate";
+                public const string APPROVE = "approve";
+
+                public static class Parameters
+                {
+                    public const string ID = "id";
+                    public const string TRANSACTION_ID = "transactionId";
+                    public const string USER_ID = "userId";
+                }
+
+
             }
             public static class HeaderNames
             {

@@ -1,10 +1,17 @@
-﻿using Windows.UI;
-using Windows.UI.Xaml.Media;
-
-namespace MoneySplitter.Win10
+﻿namespace MoneySplitter.Win10
 {
     public static class Defines
     {
+        public static class Collabarator
+        {
+            public static class ButtonContent
+            {
+                public const string GIVE = "Give!";
+                public const string APPROVE = "Approve";
+                public const string REMIND = "Remind";
+            }
+        }
+
         public static class Arrow
         {
             public static class Glyph
