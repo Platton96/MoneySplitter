@@ -3,26 +3,26 @@ using MoneySplitter.Infrastructure;
 using MoneySplitter.Models;
 using System.Collections.ObjectModel;
 using MoneySplitter.Win10.Common;
-
+using System.Threading.Tasks;
 
 namespace MoneySplitter.Win10.ViewModels
 {
-    public class IncomingAndOutcomingViewModel :Screen
+    public class IncomingAndOutcomingViewModel : Screen
     {
         #region Fields
-        private ObservableCollection<CollabaratorModel> _debtors;
-        private ObservableCollection<CollabaratorModel> _lendPersons;
+        private ObservableCollection<CollaboratorModel> _debtors;
+        private ObservableCollection<CollaboratorModel> _lendPersons;
 
         private bool _isNotTransactionsTextVisibility;
         private bool _isLoading;
 
         private INavigationManager _navigationManager;
-        private CollabaratorModelFactory _collabaratorModelFactory;
+        private CollaboratorModelFactory _collabaratorModelFactory;
         private ITransactionsManager _transactionsManager;
         #endregion
 
         #region Properties
-        public ObservableCollection<CollabaratorModel> Debtors
+        public ObservableCollection<CollaboratorModel> Debtors
         {
             get { return _debtors; }
             set
@@ -32,7 +32,7 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public ObservableCollection<CollabaratorModel> LendPersons
+        public ObservableCollection<CollaboratorModel> LendPersons
         {
             get { return _lendPersons; }
             set
@@ -62,12 +62,12 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
         #endregion
-        public IncomingAndOutcomingViewModel(CollabaratorModelFactory collabaratorModelFactory, INavigationManager navigationManager, ITransactionsManager transactionsManager)
+        public IncomingAndOutcomingViewModel(CollaboratorModelFactory collaboratorModelFactory, INavigationManager navigationManager, ITransactionsManager transactionsManager)
         {
-            _collabaratorModelFactory = collabaratorModelFactory;
+            _collabaratorModelFactory = collaboratorModelFactory;
             _navigationManager = navigationManager;
             _transactionsManager = transactionsManager;
-            
+
         }
 
         protected override async void OnActivate()
@@ -77,13 +77,23 @@ namespace MoneySplitter.Win10.ViewModels
             if (_transactionsManager.UserTransactions == null)
             {
                 IsLoading = true;
-               await  _transactionsManager.LoadUserTransactionsAsync();
+                await _transactionsManager.LoadUserTransactionsAsync();
                 IsLoading = false;
             }
 
-            Debtors = new ObservableCollection<CollabaratorModel> (_collabaratorModelFactory.GetDebtors());
-            LendPersons = new ObservableCollection<CollabaratorModel>(_collabaratorModelFactory.GetLendPersons());
+            Debtors = new ObservableCollection<CollaboratorModel>(_collabaratorModelFactory.GetDebtors());
+            LendPersons = new ObservableCollection<CollaboratorModel>(_collabaratorModelFactory.GetLendPersons());
 
+        }
+
+        public async Task MoveUserToInProgress(int transactionId)
+        {
+            await _transactionsManager.MoveUserToInProgress(transactionId);
+        }
+
+        public async Task MoveUserToFinished(int transactionId, int userId)
+        {
+            await _transactionsManager.MoveUserToFinished(transactionId, userId);
         }
 
     }

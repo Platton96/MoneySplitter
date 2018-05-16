@@ -1,9 +1,6 @@
 ﻿using MoneySplitter.Models;
-using MoneySplitter.Models.App;
 using MoneySplitter.Win10.CustomControls.Models;
-using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Web;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -12,14 +9,14 @@ namespace MoneySplitter.Win10.CustomControls
 {
     public sealed partial class ArrowsControl : UserControl
     {
-        private IDictionary<CollabaratorStatus, ArrowModel> _arrows;
+        private IDictionary<CollaboratorStatus, ArrowModel> _arrows;
 
         private void InitializeArrows()
         {
-            _arrows = new Dictionary<CollabaratorStatus, ArrowModel>()
+            _arrows = new Dictionary<CollaboratorStatus, ArrowModel>()
             {
                 {
-                    CollabaratorStatus.ONE_LEND,
+                    CollaboratorStatus.ONE_LEND,
                     new ArrowModel
                     {
                         Glyph = HttpUtility.HtmlDecode(Defines.Arrow.Glyph.DOWN),
@@ -28,7 +25,7 @@ namespace MoneySplitter.Win10.CustomControls
                  },
 
                  {
-                    CollabaratorStatus.MANY_LEND,
+                    CollaboratorStatus.MANY_LEND,
                     new ArrowModel
                     {
                         Glyph = HttpUtility.HtmlDecode(Defines.Arrow.Glyph.DOWN),
@@ -37,7 +34,7 @@ namespace MoneySplitter.Win10.CustomControls
                  },
 
                  {
-                    CollabaratorStatus.ONE_DEBT,
+                    CollaboratorStatus.ONE_DEBT,
                     new ArrowModel
                     {
                         Glyph = HttpUtility.HtmlDecode(Defines.Arrow.Glyph.UP),
@@ -46,7 +43,7 @@ namespace MoneySplitter.Win10.CustomControls
                  },
 
                  {
-                    CollabaratorStatus.MANY_DEBT,
+                    CollaboratorStatus.MANY_DEBT,
                     new ArrowModel
                     {
                         Glyph = HttpUtility.HtmlDecode(Defines.Arrow.Glyph.UP),
@@ -59,13 +56,13 @@ namespace MoneySplitter.Win10.CustomControls
 
         public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(
           "Value",
-          typeof(CollabaratorStatus),
+          typeof(CollaboratorStatus),
           typeof(ArrowsControl),
-          new PropertyMetadata(default(CollabaratorStatus), new PropertyChangedCallback(OnValueChanged)));
+          new PropertyMetadata(default(CollaboratorStatus), new PropertyChangedCallback(OnValueChanged)));
 
-        public CollabaratorStatus Value
+        public CollaboratorStatus Value
         {
-            get => (CollabaratorStatus)GetValue(ValueProperty);
+            get => (CollaboratorStatus)GetValue(ValueProperty);
             set => SetValue(ValueProperty, value);
         }
 
@@ -83,7 +80,7 @@ namespace MoneySplitter.Win10.CustomControls
 
         public void UpdateArrowsStatus()
         {
-            if (Value == CollabaratorStatus.ONE_DEBT || Value == CollabaratorStatus.ONE_LEND)
+            if (Value == CollaboratorStatus.ONE_DEBT || Value == CollaboratorStatus.ONE_LEND)
             {
                 SecondArrowIcon.Visibility = Visibility.Collapsed;
             }

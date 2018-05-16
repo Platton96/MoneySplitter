@@ -1,7 +1,6 @@
-﻿
-namespace MoneySplitter.Models
+﻿namespace MoneySplitter.Models
 {
-    public enum CollabaratorStatus
+    public enum CollaboratorStatus
     {
         ONE_DEBT,
         MANY_DEBT,

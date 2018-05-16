@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="MoneySplitter.Win10.CustomControls.CollabaratorControl"
+    x:Class="MoneySplitter.Win10.CustomControls.CollaboratorControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MoneySplitter.Win10.CustomControls"

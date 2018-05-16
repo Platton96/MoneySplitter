@@ -35,9 +35,9 @@
                 </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="models:CollabaratorModel">
-                        <customControls:CollabaratorControl ViewModel="{x:Bind Mode=OneWay}"
-                                                            OnRemindCollaboratorButtonClick="CollabaratorControl_OnRemindCollaboratorButtonClick"
-                                                            OnApproveCollaboratorButtonClick="CollabaratorControl_OnGiveCollaboratorButtonClick"/>
+                        <customControls:CollaboratorControl ViewModel="{x:Bind Mode=OneWay}"
+                                                            OnRemindCollaboratorButtonClick="OnRemindCollaboratorButtonClick"
+                                                            OnApproveCollaboratorButtonClick="OnApproveCollaboratorButtonClick"/>
                                                             
 
                     </DataTemplate>
@@ -67,8 +67,8 @@
                 </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="models:CollabaratorModel">
-                        <customControls:CollabaratorControl ViewModel="{x:Bind Mode=OneWay}"
-                                                            OnGiveCollaboratorButtonClick="CollabaratorControl_OnGiveCollaboratorButtonClick_1"/>
+                        <customControls:CollaboratorControl ViewModel="{x:Bind Mode=OneWay}"
+                                                            OnGiveCollaboratorButtonClick="OnGiveCollaboratorButtonClick"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

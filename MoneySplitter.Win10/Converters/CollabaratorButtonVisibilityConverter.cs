@@ -17,9 +17,9 @@ namespace MoneySplitter.Win10.Converters
             {
                 return null;
             }
-            var collabaratorStatus = (CollabaratorStatus)value;
+            var collabaratorStatus = (CollaboratorStatus)value;
 
-            if (collabaratorStatus == CollabaratorStatus.MANY_LEND || collabaratorStatus == CollabaratorStatus.MANY_DEBT)
+            if (collabaratorStatus == CollaboratorStatus.MANY_LEND || collabaratorStatus == CollaboratorStatus.MANY_DEBT)
             {
                 return Visibility.Collapsed;
             }

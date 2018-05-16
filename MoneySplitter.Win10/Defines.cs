@@ -2,7 +2,7 @@
 {
     public static class Defines
     {
-        public static class Collabarator
+        public static class Collaborator
         {
             public static class ButtonContent
             {

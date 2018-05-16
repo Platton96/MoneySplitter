@@ -95,7 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Common\CollabaratorModelFactory.cs" />
+    <Compile Include="Common\CollaboratorModelFactory.cs" />
     <Compile Include="Common\FilePickerService.cs" />
     <Compile Include="Common\NavigateManager.cs" />
     <Compile Include="Common\SearchEngine.cs" />
@@ -104,8 +104,8 @@
     <Compile Include="CustomControls\ArrowsControl.xaml.cs">
       <DependentUpon>ArrowsControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\CollabaratorControl.xaml.cs">
-      <DependentUpon>CollabaratorControl.xaml</DependentUpon>
+    <Compile Include="CustomControls\CollaboratorControl.xaml.cs">
+      <DependentUpon>CollaboratorControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\DesktopUserContol.xaml.cs">
       <DependentUpon>DesktopUserContol.xaml</DependentUpon>
@@ -190,7 +190,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CustomControls\CollabaratorControl.xaml">
+    <Page Include="CustomControls\CollaboratorControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
