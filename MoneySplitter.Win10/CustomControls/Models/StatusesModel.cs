@@ -16,4 +16,4 @@ namespace MoneySplitter.Win10.CustomControls.Models
         }
 
     }
-}   
+}

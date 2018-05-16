@@ -14,7 +14,7 @@ namespace MoneySplitter.Services.Api
         private readonly IMapper _mapper;
         private readonly IExecutor _executor;
 
-        public SessionApiService(IApiUrlBuilder apiUrlBuilder, IQueryApiService queryApiService, IMapper mapper, IExecutor executor )
+        public SessionApiService(IApiUrlBuilder apiUrlBuilder, IQueryApiService queryApiService, IMapper mapper, IExecutor executor)
         {
             _apiUrlBuilder = apiUrlBuilder;
             _queryApiService = queryApiService;

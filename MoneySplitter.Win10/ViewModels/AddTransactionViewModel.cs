@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace MoneySplitter.Win10.ViewModels
 {
-    public class AddTransactionViewModel :Screen
+    public class AddTransactionViewModel : Screen
     {
         #region Fields
         private ObservableCollection<UserModel> _friends;
         private ObservableCollection<UserModel> _collabarators;
         private AddTransactionModel _addTransactionModel;
 
-        private  IFriendsManager _friendsManager;
+        private IFriendsManager _friendsManager;
         private ITransactionsManager _transactionsManager;
         private readonly IFilePickerService _filePickerService;
         private INavigationManager _navigationManager;
@@ -124,10 +124,10 @@ namespace MoneySplitter.Win10.ViewModels
         #endregion
 
         public AddTransactionViewModel(
-            ITransactionsManager transactionsManager, 
+            ITransactionsManager transactionsManager,
             IFriendsManager friendsManager,
-            IFilePickerService filePickerService, 
-            INavigationManager navigationManager, 
+            IFilePickerService filePickerService,
+            INavigationManager navigationManager,
             IMembershipService membershipService)
         {
             _friendsManager = friendsManager;
@@ -146,7 +146,7 @@ namespace MoneySplitter.Win10.ViewModels
         protected override async void OnActivate()
         {
             base.OnActivate();
-            if(_friendsManager.UserFriends==null)
+            if (_friendsManager.UserFriends == null)
             {
                 IsLoading = true;
                 await _friendsManager.LoadUserFriendsAsync();
@@ -172,7 +172,7 @@ namespace MoneySplitter.Win10.ViewModels
             var friend = Collabarators.FirstOrDefault(x => x.Id == friendId);
             Collabarators.Remove(friend);
 
-            if (Collabarators.Count==0)
+            if (Collabarators.Count == 0)
             {
                 IsNotCollaboratorsTextVisibility = true;
             }
@@ -182,7 +182,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public async Task AddTransactionAsync()
         {
-            if(IsSelfCollabarator==true)
+            if (IsSelfCollabarator == true)
             {
                 Collabarators.Add(_membershipService.CurrentUser);
             }

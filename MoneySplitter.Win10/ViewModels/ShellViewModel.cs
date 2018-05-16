@@ -15,9 +15,9 @@ namespace MoneySplitter.Win10.ViewModels
 
         private readonly IMembershipService _membershipService;
         private readonly INavigationManager _navigationManager;
-        private const string DEFAULT_TITLE="Home";
+        private const string DEFAULT_TITLE = "Home";
 
-        private string _titleFrameText= DEFAULT_TITLE;
+        private string _titleFrameText = DEFAULT_TITLE;
         private UserModel _userModel;
         private string _searchQuery;
         private string _selectedMenuItem;
@@ -100,7 +100,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public void NavigateToClikedItemMenu(string value)
         {
-            if(value == null)
+            if (value == null)
             {
                 return;
             }

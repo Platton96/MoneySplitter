@@ -9,7 +9,7 @@ using MoneySplitter.Managers;
 
 namespace MoneySplitter.Win10.Dependencies
 {
-    public  class WinAppDependenciesModule
+    public class WinAppDependenciesModule
     {
         private WinRTContainer _container;
 

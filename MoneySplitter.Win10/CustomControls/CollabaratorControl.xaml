@@ -10,10 +10,9 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
     <UserControl.Resources>
-        <Style TargetType="ProgressRing" x:Key="ProgressRingStyle">
-            <Setter Property="Foreground" Value="#2C404B"/>
-            <Setter Property="Width" Value="68"/>
-            <Setter Property="Height" Value="68"/>
+        <Style TargetType="Button" x:Key="CollabaratorButtonStyle">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment"  Value="Center"/>
         </Style>
         <Style TargetType="Grid" x:Key="ProgressRingGridStyle">
             <Setter Property="VerticalAlignment" Value="Stretch"/>
@@ -21,9 +20,9 @@
         </Style>
         <SolidColorBrush x:Name="RedBrush" Color="Red"/>
         <SolidColorBrush x:Name="GreenBrush" Color="Green"/>
-        
+
         <converters:CollabaratorButtonVisibilityConverter x:Key="CollabaratorButtonVisibilityConverter" />
-        
+
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -46,7 +45,7 @@
             <TextBlock IsTextSelectionEnabled = "True"
                        TextTrimming="WordEllipsis"
                        Text="{x:Bind ViewModel.FullName, Mode=OneWay}">
-                           
+
             </TextBlock>
             <TextBlock Text="{x:Bind ViewModel.Email, Mode=OneWay}"
                            HorizontalAlignment="Stretch"
@@ -60,10 +59,20 @@
             Text="{x:Bind ViewModel.Cost, Mode=OneWay}"/>
             <Run Text="$" />
         </TextBlock>
-        <Button x:Name="CollaboratorButton"
-                Click="OnButtonClick" 
+        <Button x:Name="GiveCollaboratorButton"
                 Grid.Column="4"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"/>
+                Style="{StaticResource CollabaratorButtonStyle}"
+                Visibility="{x:Bind ViewModel.IsGiveButtonVisibil, Mode=OneWay}"
+                Click="OnGiveButtonClick"/>
+        <Button x:Name="RemindCollaboratorButton"
+                Click="OnRemindButtonClick"
+                Grid.Column="4"
+                Visibility="{x:Bind ViewModel.IsRemindButtonVisibil, Mode=OneWay}"
+                Style="{StaticResource CollabaratorButtonStyle}"/>
+        <Button x:Name="ApproveCollaboratorButton"
+                Click="OnApproveButtonClick" 
+                Grid.Column="4"
+                Style="{StaticResource CollabaratorButtonStyle}"
+                Visibility="{x:Bind ViewModel.IsApproveButtonVisibil, Mode=OneWay}"/>
     </Grid>
 </UserControl>

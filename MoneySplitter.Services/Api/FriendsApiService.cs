@@ -50,7 +50,7 @@ namespace MoneySplitter.Services.Api
 
             await _executor.ExecuteWithRetryAsync(async () =>
             {
-                userFriendsData= await _queryApiService.GetAsync<IEnumerable<UserData>>(allFriendsUrl);
+                userFriendsData = await _queryApiService.GetAsync<IEnumerable<UserData>>(allFriendsUrl);
             });
 
             if (userFriendsData == null)

@@ -116,7 +116,7 @@ namespace MoneySplitter.Win10.ViewModels
                 IsErrorVisible = true;
                 return;
             }
-            if (_friendsManager.UserFriends.Count()==0)
+            if (_friendsManager.UserFriends.Count() == 0)
             {
                 IsNotFriendsTextVisibility = true;
                 return;

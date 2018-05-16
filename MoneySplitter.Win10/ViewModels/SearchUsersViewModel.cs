@@ -10,7 +10,7 @@ namespace MoneySplitter.Win10.ViewModels
         private IFriendsManager _friendsManager;
 
         public SearchEngine SearchEngine { get; set; }
-        
+
         public SearchUsersViewModel(SearchEngine searchEngine, IFriendsManager friendsManager)
         {
             SearchEngine = searchEngine;

@@ -11,7 +11,7 @@ namespace MoneySplitter.Win10.Common
         private ITransactionsManager _transactionsManager;
         private IMembershipService _membershipService;
 
-        public  CollabaratorModelFactory(ITransactionsManager transactionsManager, IMembershipService membershipService )
+        public CollabaratorModelFactory(ITransactionsManager transactionsManager, IMembershipService membershipService)
         {
             _transactionsManager = transactionsManager;
             _membershipService = membershipService;
@@ -29,7 +29,7 @@ namespace MoneySplitter.Win10.Common
                 )
                 .Select(cl => ConvertCollaboratorRecordsToOneRecord(cl.CollaboratorRecords, CollabaratorStatus.MANY_DEBT));
         }
-         
+
         public IEnumerable<CollabaratorModel> GetLendPersons()
         {
             return _transactionsManager.UserTransactions.Where(tr => tr.Owner.Id != _membershipService.CurrentUser.Id)
@@ -47,16 +47,16 @@ namespace MoneySplitter.Win10.Common
 
         private IEnumerable<CollabaratorModel> ConvertTransactionModelToCollabaratorModel(TransactionModel transactionModel, CollabaratorStatus collabaratorStatus)
         {
-           return transactionModel.Collaborators.Where(cl => cl.Id != _membershipService.CurrentUser.Id)
-                    .Select(cl => ConvertDataToCollabatorModel(cl, transactionModel, collabaratorStatus, TransactionStatus.IN_BEGIN))
-                    .Concat(
-                              transactionModel.InProgress.Where(user => user.Id != _membershipService.CurrentUser.Id)
-                              .Select(user => ConvertDataToCollabatorModel(user, transactionModel, collabaratorStatus, TransactionStatus.IN_PROGRESS))
-                           );
+            return transactionModel.Collaborators.Where(cl => cl.Id != _membershipService.CurrentUser.Id)
+                     .Select(cl => ConvertDataToCollabatorModel(cl, transactionModel, collabaratorStatus, TransactionStatus.IN_BEGIN))
+                     .Concat(
+                               transactionModel.InProgress.Where(user => user.Id != _membershipService.CurrentUser.Id)
+                               .Select(user => ConvertDataToCollabatorModel(user, transactionModel, collabaratorStatus, TransactionStatus.IN_PROGRESS))
+                            );
 
 
         }
-        
+
         private CollabaratorModel ConvertDataToCollabatorModel(
             UserModel userModel,
             TransactionModel transactionModel,
@@ -68,38 +68,38 @@ namespace MoneySplitter.Win10.Common
                 FullName = userModel.Name + " " + userModel.Surname,
                 Cost = Math.Round(transactionModel.SingleCost, 2),
                 CollabaratorStatus = collabaratorStatus,
-                TransactionStatus=transactionStatus,
-                Email=userModel.Email,
-                FriendId=userModel.Id,
-                ImageUrl=userModel.ImageUrl
+                TransactionStatus = transactionStatus,
+                Email = userModel.Email,
+                FriendId = userModel.Id,
+                ImageUrl = userModel.ImageUrl
             };
 
         }
 
         private TransactionStatus GetTransactionStatus(UserModel user, TransactionModel transaction)
         {
-            if(transaction.Collaborators.Any(cl=>cl.Id == user.Id))
+            if (transaction.Collaborators.Any(cl => cl.Id == user.Id))
             {
                 return TransactionStatus.IN_BEGIN;
             }
 
-            if(transaction.InProgress.Any(cl=>cl.Id == user.Id))
+            if (transaction.InProgress.Any(cl => cl.Id == user.Id))
             {
                 return TransactionStatus.IN_PROGRESS;
             }
 
-            if (transaction.Finished.Any(cl=>cl.Id == user.Id))
+            if (transaction.Finished.Any(cl => cl.Id == user.Id))
             {
                 return TransactionStatus.IN_FINISH;
             }
 
             return TransactionStatus.UNDEFINED;
         }
-        
+
         private CollabaratorModel ConvertCollaboratorRecordsToOneRecord(IEnumerable<CollabaratorModel> collabaratorRecords, CollabaratorStatus collabaratorStatusForManyRecords)
         {
-           
-            if(collabaratorRecords.Count() == 1 )
+
+            if (collabaratorRecords.Count() == 1)
             {
 
                 return collabaratorRecords.FirstOrDefault();
@@ -112,8 +112,8 @@ namespace MoneySplitter.Win10.Common
                 Cost = collabaratorRecords.Sum(r => r.Cost),
                 CollabaratorStatus = collabaratorStatusForManyRecords,
                 TransactionStatus = TransactionStatus.UNDEFINED,
-                ImageUrl= firstRecord.ImageUrl,
-                FriendId= firstRecord.FriendId
+                ImageUrl = firstRecord.ImageUrl,
+                FriendId = firstRecord.FriendId
             };
         }
     }

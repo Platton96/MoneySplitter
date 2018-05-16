@@ -44,7 +44,7 @@ namespace MoneySplitter.Services.Api
                 return result;
             }
 
-            result.Result = 
+            result.Result =
                 userTransactionsData.Select(x => _mapper.ConvertTransactioDataToTransactionModel(x)).ToList();
 
             result.IsSuccess = true;

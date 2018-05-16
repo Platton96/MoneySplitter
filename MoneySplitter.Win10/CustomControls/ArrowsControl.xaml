@@ -12,7 +12,7 @@
         <SolidColorBrush x:Name="RedBrush" Color="Red"/>
         <SolidColorBrush x:Name="GreenBrush" Color="Green"/>
     </UserControl.Resources>
-    
+
     <Grid>
         <StackPanel Orientation="Horizontal"
                     VerticalAlignment="Center"
