@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+﻿using Windows.UI.Xaml.Controls;
 using MoneySplitter.Win10.ViewModels;
+using MoneySplitter.Models;
 
 namespace MoneySplitter.Win10.Views
 {
@@ -23,6 +11,21 @@ namespace MoneySplitter.Win10.Views
         {
             InitializeComponent();
             DataContextChanged += (s, e) => { ViewModel = DataContext as IncomingAndOutcomingViewModel; };
+        }
+
+        private void OnRemindCollaboratorButtonClick(object sender, CollaboratorModel e)
+        {
+
+        }
+
+        private async void OnGiveCollaboratorButtonClick(object sender, CollaboratorModel e)
+        {
+            await ViewModel.MoveUserToInProgress(e.TransactionId);
+        }
+
+        private async void OnApproveCollaboratorButtonClick(object sender, CollaboratorModel e)
+        {
+            await ViewModel.MoveUserToFinished(e.TransactionId, e.FriendId);
         }
     }
 }

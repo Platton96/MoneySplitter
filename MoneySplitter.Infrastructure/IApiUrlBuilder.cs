@@ -13,5 +13,7 @@ namespace MoneySplitter.Infrastructure
         Uri AddTransaction();
         Uri AllUserTransactions();
         Uri AllTransactions();
+        Uri Collabarate(int transactionId);
+        Uri Approve(int transactionId, int userId);
     }
 }

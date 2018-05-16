@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Linq;
 using MoneySplitter.Infrastructure;
+using MoneySplitter.Models.Services;
 
 namespace MoneySplitter.Services.Api
 {
-    public  class ApiUrlBuilder : IApiUrlBuilder
+    public class ApiUrlBuilder : IApiUrlBuilder
     {
         public Uri Authorization()
         {
@@ -80,9 +82,43 @@ namespace MoneySplitter.Services.Api
                 Defines.Api.Transactions.ALL));
         }
 
+        public Uri Collabarate(int transactionId)
+        {
+            return new Uri(string.Concat(
+                Defines.Api.WEB_API_URL,
+                Defines.Api.Transactions.TRANSACTIONS,
+                Defines.Api.Transactions.COLLABARATE,
+                CreateQueryParameter(Defines.Api.Transactions.Parameters.ID, transactionId)));
+        }
+
+        public Uri Approve(int transactionId, int userId)
+        {
+            return new Uri(string.Concat(
+                Defines.Api.WEB_API_URL,
+                Defines.Api.Transactions.TRANSACTIONS,
+                Defines.Api.Transactions.APPROVE,
+                CreateQueryParameters(
+                    new QueryParameterModel
+                    {
+                        Header = Defines.Api.Transactions.Parameters.TRANSACTION_ID,
+                        Value = transactionId.ToString()
+                    },
+                    new QueryParameterModel
+                    {
+                        Header = Defines.Api.Transactions.Parameters.USER_ID,
+                        Value = userId.ToString()
+                    }
+               )
+             ));
+        }
         private string CreateQueryParameter(string parameterName, object parameterValue)
         {
             return $"?{parameterName}={parameterValue}";
+        }
+
+        private string CreateQueryParameters(params QueryParameterModel[] parameters)
+        {
+            return "?" + string.Join("&", parameters.Select(pr => pr.Header + pr.Value));
         }
     }
 }

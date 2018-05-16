@@ -60,5 +60,19 @@ namespace MoneySplitter.Services.Api
             return await _queryApiService.PostAsync(addTransactiodUrl, addTransactionData);
         }
 
+        public async Task<bool> MoveUserToInProgress(int transactionId)
+        {
+            var collabarateUrl = _apiUrlBuilder.Collabarate(transactionId);
+
+            return await _queryApiService.PostAsync(collabarateUrl);
+        }
+
+        public async Task<bool> MoveUserToFineshed(int transactionId, int userId)
+        {
+            var approveTransactionUrl = _apiUrlBuilder.Approve(transactionId, userId);
+
+            return await _queryApiService.PostAsync(approveTransactionUrl);
+        }
+
     }
 }
