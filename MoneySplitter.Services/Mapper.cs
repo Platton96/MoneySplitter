@@ -69,8 +69,8 @@ namespace MoneySplitter.Services
                 Description = transactionData.Description,
                 Cost = transactionData.Cost,
                 Collaborators = transactionData.Collaborators.Select(user => ConvertUserDataToUserModel(user)),
-                Finished = transactionData.Finished.Select(user => ConvertUserDataToUserModel(user)),
-                InProgress = transactionData.InProgress.Select(user => ConvertUserDataToUserModel(user)),
+                FinishedIds = transactionData.FinishedIds,
+                InProgressIds = transactionData.InProgressIds,
                 ImageUrl = transactionData.ImageUrl,
                 SingleCost = transactionData.SingleCost
             };

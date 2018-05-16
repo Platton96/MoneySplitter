@@ -32,7 +32,7 @@
             <ColumnDefinition Width = "2*"/>
             <ColumnDefinition Width = "2*"/>
         </Grid.ColumnDefinitions>
-        <local:ArrowsControl Value = "{x:Bind ViewModel.CollabaratorStatus, Mode=OneWay}"/>
+        <local:ArrowsControl Value = "{x:Bind ViewModel.CollaboratorStatus, Mode=OneWay}"/>
         <Ellipse Width = "60" Height = "60"
                  Grid.Column = "1">
             <Ellipse.Fill>

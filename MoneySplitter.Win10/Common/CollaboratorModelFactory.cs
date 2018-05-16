@@ -50,8 +50,8 @@ namespace MoneySplitter.Win10.Common
             return transactionModel.Collaborators.Where(cl => cl.Id != _membershipService.CurrentUser.Id)
                      .Select(cl => ConvertDataToCollabatorModel(cl, transactionModel, collabaratorStatus, TransactionStatus.IN_BEGIN))
                      .Concat(
-                               transactionModel.InProgress.Where(user => user.Id != _membershipService.CurrentUser.Id)
-                               .Select(user => ConvertDataToCollabatorModel(user, transactionModel, collabaratorStatus, TransactionStatus.IN_PROGRESS))
+                               transactionModel.InProgressIds.Where(id => id != _membershipService.CurrentUser.Id)
+                               .Select(userId => ConvertDataToCollabatorModel(GetCollaborator(userId, transactionModel), transactionModel, collabaratorStatus, TransactionStatus.IN_PROGRESS))
                             );
 
 
@@ -79,21 +79,20 @@ namespace MoneySplitter.Win10.Common
 
         private TransactionStatus GetTransactionStatus(UserModel user, TransactionModel transaction)
         {
-            if (transaction.Collaborators.Any(cl => cl.Id == user.Id))
-            {
-                return TransactionStatus.IN_BEGIN;
-            }
-
-            if (transaction.InProgress.Any(cl => cl.Id == user.Id))
+            if (transaction.InProgressIds.Any(id => id == user.Id))
             {
                 return TransactionStatus.IN_PROGRESS;
             }
 
-            if (transaction.Finished.Any(cl => cl.Id == user.Id))
+            if (transaction.FinishedIds.Any(id => id == user.Id))
             {
                 return TransactionStatus.IN_FINISH;
             }
 
+            if (transaction.Collaborators.Any(cl => cl.Id == user.Id))
+            {
+                return TransactionStatus.IN_BEGIN;
+            }
             return TransactionStatus.UNDEFINED;
         }
 
@@ -117,6 +116,12 @@ namespace MoneySplitter.Win10.Common
                 FriendId = firstRecord.FriendId,
                 TransactionId = 0
             };
+        }
+
+        private UserModel GetCollaborator(int collaboratorId, TransactionModel transactionModel)
+        {
+            return transactionModel.Collaborators
+                .FirstOrDefault(user=>user.Id==collaboratorId);
         }
     }
 }

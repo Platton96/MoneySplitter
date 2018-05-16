@@ -33,10 +33,10 @@ namespace MoneySplitter.Services.DataModels
         public IEnumerable<UserData> Collaborators { get; set; }
 
         [DataMember]
-        public IEnumerable<UserData> Finished { get; set; }
+        public IEnumerable<int> FinishedIds { get; set; }
 
         [DataMember]
-        public IEnumerable<UserData> InProgress { get; set; }
+        public IEnumerable<int> InProgressIds { get; set; }
 
         [DataMember(Name = "Coast")]
         public double Cost { get; set; }
