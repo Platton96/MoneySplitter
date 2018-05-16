@@ -34,7 +34,7 @@ namespace MoneySplitter.Win10.Common
         {
             return _transactionsManager.UserTransactions.Where(tr => tr.Owner.Id != _membershipService.CurrentUser.Id)
                 .Select(
-                            tr => ConvertDataToCollabatorModel(tr.Owner, tr, CollabaratorStatus.ONE_LEND, GetTransactionStatus(tr.Owner, tr))
+                            tr => ConvertDataToCollabatorModel(tr.Owner, tr, CollabaratorStatus.ONE_LEND, GetTransactionStatus(_membershipService.CurrentUser, tr))
                        )
                .GroupBy
                 (
@@ -78,17 +78,17 @@ namespace MoneySplitter.Win10.Common
 
         private TransactionStatus GetTransactionStatus(UserModel user, TransactionModel transaction)
         {
-            if(transaction.Collaborators.Any(cl=>cl==user))
+            if(transaction.Collaborators.Any(cl=>cl.Id == user.Id))
             {
                 return TransactionStatus.IN_BEGIN;
             }
 
-            if(transaction.InProgress.Any(cl=>cl==user))
+            if(transaction.InProgress.Any(cl=>cl.Id == user.Id))
             {
                 return TransactionStatus.IN_PROGRESS;
             }
 
-            if (transaction.Finished.Any(cl=>cl==user))
+            if (transaction.Finished.Any(cl=>cl.Id == user.Id))
             {
                 return TransactionStatus.IN_FINISH;
             }
@@ -99,7 +99,7 @@ namespace MoneySplitter.Win10.Common
         private CollabaratorModel ConvertCollaboratorRecordsToOneRecord(IEnumerable<CollabaratorModel> collabaratorRecords, CollabaratorStatus collabaratorStatusForManyRecords)
         {
            
-            if(collabaratorRecords.Count()==1)
+            if(collabaratorRecords.Count() == 1 )
             {
 
                 return collabaratorRecords.FirstOrDefault();
