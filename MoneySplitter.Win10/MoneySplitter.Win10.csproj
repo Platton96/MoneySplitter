@@ -120,6 +120,7 @@
       <DependentUpon>MobileUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\Models\ArrowModel.cs" />
+    <Compile Include="CustomControls\Models\StatusesModel.cs" />
     <Compile Include="CustomControls\TransctionControl.xaml.cs">
       <DependentUpon>TransctionControl.xaml</DependentUpon>
     </Compile>
