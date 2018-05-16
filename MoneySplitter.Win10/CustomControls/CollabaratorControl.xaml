@@ -27,11 +27,11 @@
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width = "auto"/>
-            <ColumnDefinition Width = "auto"/>
-            <ColumnDefinition Width = "3*"/>
             <ColumnDefinition Width = "*"/>
             <ColumnDefinition Width = "auto"/>
+            <ColumnDefinition Width = "5*"/>
+            <ColumnDefinition Width = "2*"/>
+            <ColumnDefinition Width = "2*"/>
         </Grid.ColumnDefinitions>
         <local:ArrowsControl Value = "{x:Bind ViewModel.CollabaratorStatus, Mode=OneWay}"/>
         <Ellipse Width = "60" Height = "60"
@@ -60,11 +60,10 @@
             Text="{x:Bind ViewModel.Cost, Mode=OneWay}"/>
             <Run Text="$" />
         </TextBlock>
-        <Button Click="OnButtonClick" 
-                Content="{x:Bind ButtonContent, Mode=OneWay}" 
+        <Button x:Name="CollaboratorButton"
+                Click="OnButtonClick" 
                 Grid.Column="4"
                 HorizontalAlignment="Right"
-                Visibility="{x:Bind ViewModel.CollabaratorStatus, Converter={StaticResource CollabaratorButtonVisibilityConverter}, Mode=OneWay}"
                 VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

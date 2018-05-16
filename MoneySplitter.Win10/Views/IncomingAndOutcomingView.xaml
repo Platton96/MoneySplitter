@@ -36,7 +36,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="models:CollabaratorModel">
                         <customControls:CollabaratorControl ViewModel="{x:Bind Mode=OneWay}"
-                                                            ButtonContent="qwewr"/>
+                                                            />
 
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -66,7 +66,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="models:CollabaratorModel">
                         <customControls:CollabaratorControl ViewModel="{x:Bind Mode=OneWay}"
-                                                        ButtonContent="qwewr"/>
+                                                        />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
