@@ -49,13 +49,13 @@ namespace MoneySplitter.Win10.Common
         private IEnumerable<CollaboratorModel> ConvertTransactionModelToCollabaratorModel(TransactionModel transactionModel, CollaboratorStatus collabaratorStatus)
         {
             return transactionModel.Collaborators.Where(cl => cl.Id != _membershipService.CurrentUser.Id)
-                     .Select(cl => ConvertDataToCollabatorModel(cl, transactionModel, collabaratorStatus, TransactionStatus.IN_BEGIN))
+                     .Select(cl => ConvertDataToCollabatorModel(cl, transactionModel, collabaratorStatus, UserRole.IN_BEGIN))
                      .Concat(
                                transactionModel.InProgressIds.Where(id => id != _membershipService.CurrentUser.Id)
                                .Select(
                                        userId => ConvertDataToCollabatorModel(
                                                    GetCollaborator(userId, transactionModel), 
-                                                   transactionModel, collabaratorStatus, TransactionStatus.IN_PROGRESS
+                                                   transactionModel, collabaratorStatus, UserRole.IN_PROGRESS
                                                  )     
                                       )
                             );
@@ -65,12 +65,12 @@ namespace MoneySplitter.Win10.Common
             UserModel userModel,
             TransactionModel transactionModel,
             CollaboratorStatus collaboratorStatus,
-            TransactionStatus transactionStatus)
+            UserRole transactionStatus)
         {
             return new CollaboratorModel
             {
-                FullName = userModel.Name + " " + userModel.Surname,
-                Cost = Math.Round(transactionModel.SingleCost, 2),
+                FullName = $"{userModel.Name} {userModel.Surname}",
+                Cost = Math.Round(transactionModel.SingleCost, Defines.Collaborator.COUNT_NUMBER_AFTER_POINT),
                 CollaboratorStatus = collaboratorStatus,
                 TransactionStatus = transactionStatus,
                 Email = userModel.Email,
@@ -81,29 +81,29 @@ namespace MoneySplitter.Win10.Common
 
         }
 
-        private TransactionStatus GetTransactionStatus(UserModel user, TransactionModel transaction)
+        private UserRole GetTransactionStatus(UserModel user, TransactionModel transaction)
         {
             if (transaction.InProgressIds.Any(id => id == user.Id))
             {
-                return TransactionStatus.IN_PROGRESS;
+                return UserRole.IN_PROGRESS;
             }
 
             if (transaction.FinishedIds.Any(id => id == user.Id))
             {
-                return TransactionStatus.IN_FINISH;
+                return UserRole.FINISHED;
             }
 
             if (transaction.Collaborators.Any(cl => cl.Id == user.Id))
             {
-                return TransactionStatus.IN_BEGIN;
+                return UserRole.IN_BEGIN;
             }
-            return TransactionStatus.UNDEFINED;
+            return UserRole.UNDEFINED;
         }
 
         private CollaboratorModel ConvertCollaboratorRecordsToOneRecord(IEnumerable<CollaboratorModel> collabaratorRecords, CollaboratorStatus collaboratorStatusForManyRecords)
         {
 
-            if (collabaratorRecords.Count() == 1)
+            if (!collabaratorRecords.Any())
             {
                 return collabaratorRecords.FirstOrDefault();
             }
@@ -115,7 +115,7 @@ namespace MoneySplitter.Win10.Common
                 FullName = firstRecord.FullName,
                 Cost = collabaratorRecords.Sum(r => r.Cost),
                 CollaboratorStatus = collaboratorStatusForManyRecords,
-                TransactionStatus = TransactionStatus.UNDEFINED,
+                TransactionStatus = UserRole.UNDEFINED,
                 ImageUrl = firstRecord.ImageUrl,
                 FriendId = firstRecord.FriendId,
             };

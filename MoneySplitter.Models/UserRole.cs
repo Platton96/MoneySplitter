@@ -1,10 +1,10 @@
 ﻿namespace MoneySplitter.Models
 {
-    public enum TransactionStatus
+    public enum UserRole
     {
         IN_BEGIN,
         IN_PROGRESS,
-        IN_FINISH,
+        FINISHED,
         UNDEFINED
     }
 }
