@@ -10,6 +10,8 @@
                 public const string APPROVE = "Approve";
                 public const string REMIND = "Remind";
             }
+
+            public const int COUNT_NUMBER_AFTER_POINT = 2;
         }
 
         public static class Arrow
