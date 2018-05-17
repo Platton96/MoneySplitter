@@ -33,7 +33,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public ObservableCollection<CollaboratorModel> LendPersons
         {
-            get { return _lendPersons; }
+            get => _lendPersons; 
             set
             {
                 _lendPersons = value;
@@ -43,7 +43,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public bool IsLoading
         {
-            get { return _isLoading; }
+            get => _isLoading; 
             set
             {
                 _isLoading = value;

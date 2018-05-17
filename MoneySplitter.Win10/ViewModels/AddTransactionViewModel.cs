@@ -16,11 +16,11 @@ namespace MoneySplitter.Win10.ViewModels
         private ObservableCollection<UserModel> _collabarators;
         private AddTransactionModel _addTransactionModel;
 
-        private IFriendsManager _friendsManager;
-        private ITransactionsManager _transactionsManager;
+        private readonly IFriendsManager _friendsManager;
+        private readonly ITransactionsManager _transactionsManager;
         private readonly IFilePickerService _filePickerService;
-        private INavigationManager _navigationManager;
-        private IMembershipService _membershipService;
+        private readonly INavigationManager _navigationManager;
+        private readonly IMembershipService _membershipService;
 
         private string _laberlForTransactionImage = Defines.Register.BrowseImage.AVATAR;
         private bool _isNoCollaboratorsTextVisibility;
@@ -33,7 +33,7 @@ namespace MoneySplitter.Win10.ViewModels
         #region Properties
         public ObservableCollection<UserModel> Friends
         {
-            get { return _friends; }
+            get => _friends; 
             set
             {
                 _friends = value;
@@ -43,7 +43,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public ObservableCollection<UserModel> Collabarators
         {
-            get { return _collabarators; }
+            get => _collabarators; 
             set
             {
                 _collabarators = value;
@@ -53,7 +53,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public AddTransactionModel AddTransactionModel
         {
-            get { return _addTransactionModel; }
+            get => _addTransactionModel; 
             set
             {
                 _addTransactionModel = value;
@@ -63,7 +63,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public string LabelForTransactionImage
         {
-            get { return _laberlForTransactionImage; }
+            get => _laberlForTransactionImage; 
             set
             {
                 _laberlForTransactionImage = value;
@@ -73,7 +73,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public bool IsNotCollaboratorsTextVisibility
         {
-            get { return _isNoCollaboratorsTextVisibility; }
+            get => _isNoCollaboratorsTextVisibility; 
             set
             {
                 _isNoCollaboratorsTextVisibility = value;
@@ -83,7 +83,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public bool IsLoading
         {
-            get { return _isLoading; }
+            get => _isLoading; 
             set
             {
                 _isLoading = value;
@@ -93,7 +93,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public bool IsErrorVisible
         {
-            get { return _isErrorVisible; }
+            get  => _isErrorVisible; 
             set
             {
                 _isErrorVisible = value;
@@ -103,7 +103,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public bool? IsSelfCollabarator
         {
-            get { return _isSelfCollabarator; }
+            get => _isSelfCollabarator; 
             set
             {
                 _isSelfCollabarator = value;
@@ -113,7 +113,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public ErrorDetailsModel ErrorDetailsModel
         {
-            get { return _errorDetailsModel; }
+            get => _errorDetailsModel;
             set
             {
                 _errorDetailsModel = value;
@@ -140,6 +140,7 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 DeadlineDate = DateTime.Now
             };
+            IsSelfCollabarator = true;
         }
 
         #region Methods
@@ -172,7 +173,7 @@ namespace MoneySplitter.Win10.ViewModels
             var friend = Collabarators.FirstOrDefault(x => x.Id == friendId);
             Collabarators.Remove(friend);
 
-            if (Collabarators.Count == 0)
+            if (!Collabarators.Any())
             {
                 IsNotCollaboratorsTextVisibility = true;
             }
