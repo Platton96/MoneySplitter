@@ -2,7 +2,7 @@
 {
     public class QueryParameterModel
     {
-        public string Header { get; set; }
-        public string Value { get; set; }
+        public string ParameterName { get; set; }
+        public string ParameterValue { get; set; }
     }
 }
