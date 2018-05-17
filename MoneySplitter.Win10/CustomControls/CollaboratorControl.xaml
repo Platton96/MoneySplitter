@@ -50,6 +50,7 @@
             <TextBlock Text="{x:Bind ViewModel.Email, Mode=OneWay}"
                            HorizontalAlignment="Stretch"
                            TextTrimming="CharacterEllipsis"/>
+            <!--<TextBlock extensions:XamlElementExtensions.Resource="BUTTON_HOME"/>-->
         </StackPanel >
         <TextBlock  Grid.Column="3"
                     HorizontalAlignment="Center"
