@@ -19,7 +19,7 @@ namespace MoneySplitter.Win10.CustomControls
                     CollaboratorStatus.ONE_LEND,
                     new ArrowModel
                     {
-                        Glyph = HttpUtility.HtmlDecode(Defines.Arrow.Glyph.DOWN),
+                        Glyph = HttpUtility.HtmlDecode(Defines.Arrow.Glyph.UP),
                         Color = RedBrush
                     }
                  },
@@ -28,7 +28,7 @@ namespace MoneySplitter.Win10.CustomControls
                     CollaboratorStatus.MANY_LEND,
                     new ArrowModel
                     {
-                        Glyph = HttpUtility.HtmlDecode(Defines.Arrow.Glyph.DOWN),
+                        Glyph = HttpUtility.HtmlDecode(Defines.Arrow.Glyph.UP),
                         Color = RedBrush
                     }
                  },
@@ -37,7 +37,7 @@ namespace MoneySplitter.Win10.CustomControls
                     CollaboratorStatus.ONE_DEBT,
                     new ArrowModel
                     {
-                        Glyph = HttpUtility.HtmlDecode(Defines.Arrow.Glyph.UP),
+                        Glyph = HttpUtility.HtmlDecode(Defines.Arrow.Glyph.DOWN),
                         Color = GreenBrush
                     }
                  },
@@ -46,7 +46,7 @@ namespace MoneySplitter.Win10.CustomControls
                     CollaboratorStatus.MANY_DEBT,
                     new ArrowModel
                     {
-                        Glyph = HttpUtility.HtmlDecode(Defines.Arrow.Glyph.UP),
+                        Glyph = HttpUtility.HtmlDecode(Defines.Arrow.Glyph.DOWN),
                         Color = GreenBrush
                     }
                  },
@@ -85,7 +85,6 @@ namespace MoneySplitter.Win10.CustomControls
                 SecondArrowIcon.Visibility = Visibility.Collapsed;
             }
 
-            var a = RedBrush;
             FirstArrowIcon.Glyph = _arrows[Value].Glyph;
             FirstArrowIcon.Foreground = _arrows[Value].Color;
 
