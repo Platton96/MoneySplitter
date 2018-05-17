@@ -15,15 +15,15 @@ namespace MoneySplitter.Win10.ViewModels
 
         private bool _isLoading;
 
-        private INavigationManager _navigationManager;
-        private CollaboratorModelFactory _collabaratorModelFactory;
-        private ITransactionsManager _transactionsManager;
+        private readonly INavigationManager _navigationManager;
+        private readonly CollaboratorModelFactory _collabaratorModelFactory;
+        private readonly ITransactionsManager _transactionsManager;
         #endregion
 
         #region Properties
         public ObservableCollection<CollaboratorModel> Debtors
         {
-            get { return _debtors; }
+            get => _debtors; 
             set
             {
                 _debtors = value;

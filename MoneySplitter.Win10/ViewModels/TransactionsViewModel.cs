@@ -12,13 +12,14 @@ namespace MoneySplitter.Win10.ViewModels
         #region Fields
         private ObservableCollection<TransactionModel> _transactions;
 
-        private ITransactionsManager _transactionsManager;
+        private readonly ITransactionsManager _transactionsManager;
+        private readonly INavigationManager _navigationManager;
 
         private bool _isNotTransactionsTextVisibility;
         private bool _isLoading;
         private bool _isErrorVisible;
         private ErrorDetailsModel _errorDetailsModel;
-        private INavigationManager _navigationManager;
+
         #endregion
 
         #region Properties

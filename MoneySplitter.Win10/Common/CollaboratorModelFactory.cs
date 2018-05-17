@@ -8,8 +8,8 @@ namespace MoneySplitter.Win10.Common
 {
     public class CollaboratorModelFactory
     {
-        private ITransactionsManager _transactionsManager;
-        private IMembershipService _membershipService;
+        private readonly ITransactionsManager _transactionsManager;
+        private readonly IMembershipService _membershipService;
 
         public CollaboratorModelFactory(ITransactionsManager transactionsManager, IMembershipService membershipService)
         {

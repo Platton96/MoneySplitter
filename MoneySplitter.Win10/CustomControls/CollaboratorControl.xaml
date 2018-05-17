@@ -21,8 +21,6 @@
         <SolidColorBrush x:Name="RedBrush" Color="Red"/>
         <SolidColorBrush x:Name="GreenBrush" Color="Green"/>
 
-        <converters:CollabaratorButtonVisibilityConverter x:Key="CollabaratorButtonVisibilityConverter" />
-
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>

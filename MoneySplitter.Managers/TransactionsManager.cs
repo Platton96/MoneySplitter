@@ -7,7 +7,7 @@ namespace MoneySplitter.Managers
 {
     public class TransactionsManager : ITransactionsManager
     {
-        private ITransactionsApiService _transactionsApiService;
+        private readonly ITransactionsApiService _transactionsApiService;
 
         public IEnumerable<TransactionModel> UserTransactions { get; private set; }
 

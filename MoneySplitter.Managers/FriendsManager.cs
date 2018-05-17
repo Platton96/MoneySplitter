@@ -7,8 +7,8 @@ namespace MoneySplitter.Managers
 {
     public class FriendsManager : IFriendsManager
     {
-        private IFriendsApiService _friendsApiService;
-        private IMembershipService _membershipService;
+        private readonly IFriendsApiService _friendsApiService;
+        private readonly IMembershipService _membershipService;
 
         public IEnumerable<UserModel> UserFriends { get; private set; }
 
