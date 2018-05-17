@@ -100,13 +100,13 @@ namespace MoneySplitter.Services.Api
                 CreateQueryParameters(
                     new QueryParameterModel
                     {
-                        Header = Defines.Api.Transactions.Parameters.TRANSACTION_ID,
-                        Value = transactionId.ToString()
+                        ParameterName = Defines.Api.Transactions.Parameters.TRANSACTION_ID,
+                        ParameterValue = transactionId.ToString()
                     },
                     new QueryParameterModel
                     {
-                        Header = Defines.Api.Transactions.Parameters.USER_ID,
-                        Value = userId.ToString()
+                        ParameterName = Defines.Api.Transactions.Parameters.USER_ID,
+                        ParameterValue = userId.ToString()
                     }
                )
              ));
@@ -118,7 +118,7 @@ namespace MoneySplitter.Services.Api
 
         private string CreateQueryParameters(params QueryParameterModel[] parameters)
         {
-            return "?" + string.Join("&", parameters.Select(pr => pr.Header + pr.Value));
+            return "?" + string.Join("&", parameters.Select(pr => pr.ParameterName + pr.ParameterValue));
         }
     }
 }
