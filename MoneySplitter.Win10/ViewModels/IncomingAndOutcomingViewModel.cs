@@ -74,14 +74,14 @@ namespace MoneySplitter.Win10.ViewModels
 
         }
 
-        public async Task MoveUserToInProgress(int transactionId)
+        public async Task MoveUserToInProgressAsync(int transactionId)
         {
-            await _transactionsManager.MoveUserToInProgress(transactionId);
+            await _transactionsManager.MoveUserToInProgressAsync(transactionId);
         }
 
-        public async Task MoveUserToFinished(int transactionId, int userId)
+        public async Task MoveUserToFinishedAsync(int transactionId, int userId)
         {
-            await _transactionsManager.MoveUserToFinished(transactionId, userId);
+            await _transactionsManager.MoveUserToFinishedAsync(transactionId, userId);
         }
 
     }

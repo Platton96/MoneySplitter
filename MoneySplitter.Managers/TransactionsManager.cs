@@ -29,14 +29,14 @@ namespace MoneySplitter.Managers
             return await _transactionsApiService.AddTransactionAsync(addTransactionModel);
         }
 
-        public async Task<bool> MoveUserToInProgress(int transactionId)
+        public async Task<bool> MoveUserToInProgressAsync(int transactionId)
         {
-            return await _transactionsApiService.MoveUserToInProgress(transactionId);
+            return await _transactionsApiService.MoveUserToInProgressAsync(transactionId);
         }
 
-        public async Task<bool> MoveUserToFinished(int transactionId, int userId)
+        public async Task<bool> MoveUserToFinishedAsync(int transactionId, int userId)
         {
-            return await _transactionsApiService.MoveUserToFineshed(transactionId, userId);
+            return await _transactionsApiService.MoveUserToFineshedAsync(transactionId, userId);
         }
     }
 }
