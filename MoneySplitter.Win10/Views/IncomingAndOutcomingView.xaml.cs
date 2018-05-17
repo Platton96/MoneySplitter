@@ -20,12 +20,12 @@ namespace MoneySplitter.Win10.Views
 
         private async void OnGiveCollaboratorButtonClick(object sender, CollaboratorModel e)
         {
-            await ViewModel.MoveUserToInProgress(e.TransactionId);
+            await ViewModel.MoveUserToInProgressAsync(e.TransactionId);
         }
 
         private async void OnApproveCollaboratorButtonClick(object sender, CollaboratorModel e)
         {
-            await ViewModel.MoveUserToFinished(e.TransactionId, e.FriendId);
+            await ViewModel.MoveUserToFinishedAsync(e.TransactionId, e.FriendId);
         }
     }
 }
