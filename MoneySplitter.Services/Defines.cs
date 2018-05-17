@@ -41,7 +41,7 @@
                 public const string ALL = "/all";
                 public const string ADD = "/add";
                 public const string MY = "/my";
-                public const string COLLABARATE = "/collaborate";
+                public const string COLLABORATE = "/collaborate";
                 public const string APPROVE = "approve";
 
                 public static class Parameters

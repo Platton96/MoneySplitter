@@ -14,6 +14,4 @@
         public bool IsRemindButtonVisibil => CollaboratorStatus == CollaboratorStatus.ONE_DEBT && TransactionStatus == TransactionStatus.IN_BEGIN;
         public bool IsApproveButtonVisibil => CollaboratorStatus == CollaboratorStatus.ONE_DEBT && TransactionStatus == TransactionStatus.IN_PROGRESS;
     }
-
-
 }

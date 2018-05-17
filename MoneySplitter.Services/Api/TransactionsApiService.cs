@@ -62,9 +62,9 @@ namespace MoneySplitter.Services.Api
 
         public async Task<bool> MoveUserToInProgress(int transactionId)
         {
-            var collabarateUrl = _apiUrlBuilder.Collabarate(transactionId);
+            var collaborateUrl = _apiUrlBuilder.Collaborate(transactionId);
 
-            return await _queryApiService.PostAsync(collabarateUrl);
+            return await _queryApiService.PostAsync(collaborateUrl);
         }
 
         public async Task<bool> MoveUserToFineshed(int transactionId, int userId)

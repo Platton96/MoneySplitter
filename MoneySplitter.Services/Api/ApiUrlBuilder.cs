@@ -82,12 +82,12 @@ namespace MoneySplitter.Services.Api
                 Defines.Api.Transactions.ALL));
         }
 
-        public Uri Collabarate(int transactionId)
+        public Uri Collaborate(int transactionId)
         {
             return new Uri(string.Concat(
                 Defines.Api.WEB_API_URL,
                 Defines.Api.Transactions.TRANSACTIONS,
-                Defines.Api.Transactions.COLLABARATE,
+                Defines.Api.Transactions.COLLABORATE,
                 CreateQueryParameter(Defines.Api.Transactions.Parameters.ID, transactionId)));
         }
 

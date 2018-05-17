@@ -13,7 +13,6 @@ namespace MoneySplitter.Win10.ViewModels
         private ObservableCollection<CollaboratorModel> _debtors;
         private ObservableCollection<CollaboratorModel> _lendPersons;
 
-        private bool _isNotTransactionsTextVisibility;
         private bool _isLoading;
 
         private INavigationManager _navigationManager;
@@ -42,16 +41,6 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public bool IsNotTransactionsTextVisibility
-        {
-            get { return _isNotTransactionsTextVisibility; }
-            set
-            {
-                _isNotTransactionsTextVisibility = value;
-                NotifyOfPropertyChange(nameof(IsNotTransactionsTextVisibility));
-            }
-        }
-
         public bool IsLoading
         {
             get { return _isLoading; }
@@ -67,7 +56,6 @@ namespace MoneySplitter.Win10.ViewModels
             _collabaratorModelFactory = collaboratorModelFactory;
             _navigationManager = navigationManager;
             _transactionsManager = transactionsManager;
-
         }
 
         protected override async void OnActivate()

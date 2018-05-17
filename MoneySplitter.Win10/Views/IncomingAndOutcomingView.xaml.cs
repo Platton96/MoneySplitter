@@ -15,7 +15,7 @@ namespace MoneySplitter.Win10.Views
 
         private void OnRemindCollaboratorButtonClick(object sender, CollaboratorModel e)
         {
-
+            //code for remind
         }
 
         private async void OnGiveCollaboratorButtonClick(object sender, CollaboratorModel e)

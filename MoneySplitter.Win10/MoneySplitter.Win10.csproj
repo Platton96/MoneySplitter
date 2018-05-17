@@ -99,7 +99,6 @@
     <Compile Include="Common\FilePickerService.cs" />
     <Compile Include="Common\NavigateManager.cs" />
     <Compile Include="Common\SearchEngine.cs" />
-    <Compile Include="Converters\CollabaratorButtonVisibilityConverter.cs" />
     <Compile Include="Converters\MenuItemTitleConverter.cs" />
     <Compile Include="CustomControls\ArrowsControl.xaml.cs">
       <DependentUpon>ArrowsControl.xaml</DependentUpon>

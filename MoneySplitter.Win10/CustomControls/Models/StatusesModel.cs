@@ -7,6 +7,5 @@ namespace MoneySplitter.Win10.CustomControls.Models
     {
         public TransactionStatus TransactionStatus { get; set; }
         public CollaboratorStatus CollabaratorStatus { get; set; }
-
     }
 }

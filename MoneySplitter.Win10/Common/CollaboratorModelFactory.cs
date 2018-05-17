@@ -34,7 +34,8 @@ namespace MoneySplitter.Win10.Common
         {
             return _transactionsManager.UserTransactions.Where(tr => tr.Owner.Id != _membershipService.CurrentUser.Id)
                 .Select(
-                            tr => ConvertDataToCollabatorModel(tr.Owner, tr, CollaboratorStatus.ONE_LEND, GetTransactionStatus(_membershipService.CurrentUser, tr))
+                            tr => ConvertDataToCollabatorModel(tr.Owner, tr, CollaboratorStatus.ONE_LEND,
+                            GetTransactionStatus(_membershipService.CurrentUser, tr))
                        )
                .GroupBy
                 (
@@ -51,10 +52,13 @@ namespace MoneySplitter.Win10.Common
                      .Select(cl => ConvertDataToCollabatorModel(cl, transactionModel, collabaratorStatus, TransactionStatus.IN_BEGIN))
                      .Concat(
                                transactionModel.InProgressIds.Where(id => id != _membershipService.CurrentUser.Id)
-                               .Select(userId => ConvertDataToCollabatorModel(GetCollaborator(userId, transactionModel), transactionModel, collabaratorStatus, TransactionStatus.IN_PROGRESS))
+                               .Select(
+                                       userId => ConvertDataToCollabatorModel(
+                                                   GetCollaborator(userId, transactionModel), 
+                                                   transactionModel, collabaratorStatus, TransactionStatus.IN_PROGRESS
+                                                 )     
+                                      )
                             );
-
-
         }
 
         private CollaboratorModel ConvertDataToCollabatorModel(
@@ -101,9 +105,9 @@ namespace MoneySplitter.Win10.Common
 
             if (collabaratorRecords.Count() == 1)
             {
-
                 return collabaratorRecords.FirstOrDefault();
             }
+
             var firstRecord = collabaratorRecords.FirstOrDefault();
             return new CollaboratorModel
             {
@@ -114,7 +118,6 @@ namespace MoneySplitter.Win10.Common
                 TransactionStatus = TransactionStatus.UNDEFINED,
                 ImageUrl = firstRecord.ImageUrl,
                 FriendId = firstRecord.FriendId,
-                TransactionId = 0
             };
         }
 

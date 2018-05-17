@@ -85,7 +85,6 @@ namespace MoneySplitter.Win10.CustomControls
                 SecondArrowIcon.Visibility = Visibility.Collapsed;
             }
 
-
             var a = RedBrush;
             FirstArrowIcon.Glyph = _arrows[Value].Glyph;
             FirstArrowIcon.Foreground = _arrows[Value].Color;

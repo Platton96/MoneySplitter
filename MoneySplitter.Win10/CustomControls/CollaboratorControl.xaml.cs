@@ -46,6 +46,5 @@ namespace MoneySplitter.Win10.CustomControls
         {
             OnApproveCollaboratorButtonClick?.Invoke(this, ViewModel);
         }
-
     }
 }
