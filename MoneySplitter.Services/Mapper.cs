@@ -18,7 +18,7 @@ namespace MoneySplitter.Services
             return new UserModel()
             {
                 Id = userData.Id,
-                Name = userData.Name,
+                Name = userData.UserName,
                 Surname = userData.Surname,
                 Email = userData.Email,
                 PhoneNumber = userData.PhoneNumber,
@@ -62,7 +62,7 @@ namespace MoneySplitter.Services
             return new TransactionModel()
             {
                 Id = transactionData.Id,
-                Owner = transactionData.Owner,
+                Owner = ConvertUserDataToUserModel(transactionData.Owner),
                 CreationDate = transactionData.CreationDate,
                 Title = transactionData.Title,
                 DeadlineDate = transactionData.DeadlineDate,

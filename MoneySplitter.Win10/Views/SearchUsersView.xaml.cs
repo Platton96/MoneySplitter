@@ -31,5 +31,10 @@ namespace MoneySplitter.Win10.Views
         {
             await ViewModel.AddFriendAsync(e.Id);
         }
+
+        private void UsersGridView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
     }
 }
