@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using MoneySplitter.Infrastructure;
+using MoneySplitter.Models;
 using MoneySplitter.Win10.ViewModels;
 using System;
 using System.Linq;
@@ -50,6 +51,11 @@ namespace MoneySplitter.Win10.Common
             _shellNavigationService.NavigateToViewModel<FriendsViewModel>();
         }
 
+        public void NavigateToFriendDetails(UserModel userModel)
+        {
+            _shellNavigationService.NavigateToViewModel<FriendDetailsViewModel>(userModel);
+        }
+
         public void NavigateToAddTransactionViewModel()
         {
             _shellNavigationService.NavigateToViewModel<AddTransactionViewModel>();
@@ -60,14 +66,14 @@ namespace MoneySplitter.Win10.Common
             _shellNavigationService.NavigateToViewModel<TransactionsViewModel>();
         }
 
-        public void NavigateToShellViewModel(Type viewModelType)
-        {
-            _shellNavigationService.NavigateToViewModel(viewModelType);
-        }
-
         public void NavigateToSearchUsersViewModel()
         {
             _shellNavigationService.NavigateToViewModel<SearchUsersViewModel>();
+        }
+
+        public void NavigateToShellViewModel(Type viewModelType)
+        {
+            _shellNavigationService.NavigateToViewModel(viewModelType);
         }
 
         public void GoBack()

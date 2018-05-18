@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoneySplitter.Models;
+using System;
 
 namespace MoneySplitter.Infrastructure
 {
@@ -9,6 +10,7 @@ namespace MoneySplitter.Infrastructure
         void InitializeShellNavigationService(object navigationService);
         void NavigateToHomeViewModel();
         void NavigateToFriendsViewModel();
+        void NavigateToFriendDetails(UserModel userModel);
         void NavigateToShellViewModel(Type viewModelType);
         void NavigateToSearchUsersViewModel();
         void NavigateToAddTransactionViewModel();
