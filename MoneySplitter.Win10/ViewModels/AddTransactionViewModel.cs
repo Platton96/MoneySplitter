@@ -25,7 +25,7 @@ namespace MoneySplitter.Win10.ViewModels
         private string _laberlForTransactionImage = Defines.Register.BrowseImage.AVATAR;
         private bool _isNoCollaboratorsTextVisibility;
         private bool _isLoading;
-        private bool? _isSelfCollabarator;
+        private bool _isSelfCollabarator;
         private bool _isErrorVisible;
         private ErrorDetailsModel _errorDetailsModel;
         #endregion
@@ -101,7 +101,7 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public bool? IsSelfCollabarator
+        public bool IsSelfCollabarator
         {
             get => _isSelfCollabarator; 
             set
