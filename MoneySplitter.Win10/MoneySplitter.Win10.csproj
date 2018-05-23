@@ -97,8 +97,10 @@
     </Compile>
     <Compile Include="Common\CollaboratorModelFactory.cs" />
     <Compile Include="Common\FilePickerService.cs" />
+    <Compile Include="Common\FriendTransactionModelFactory.cs" />
     <Compile Include="Common\NavigateManager.cs" />
     <Compile Include="Common\SearchEngine.cs" />
+    <Compile Include="Common\TransactioEventModelFactory.cs" />
     <Compile Include="Converters\MenuItemTitleConverter.cs" />
     <Compile Include="CustomControls\ArrowsControl.xaml.cs">
       <DependentUpon>ArrowsControl.xaml</DependentUpon>
@@ -122,6 +124,9 @@
     <Compile Include="CustomControls\Models\StatusesModel.cs" />
     <Compile Include="CustomControls\TransctionControl.xaml.cs">
       <DependentUpon>TransctionControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\UserDetailsControl.xaml.cs">
+      <DependentUpon>UserDetailsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Defines.cs" />
     <Compile Include="Extensions\XamlElementExtensions.cs" />
@@ -214,6 +219,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomControls\TransctionControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\UserDetailsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
