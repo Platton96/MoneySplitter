@@ -9,6 +9,7 @@
                 public const string GIVE = "Give!";
                 public const string APPROVE = "Approve";
                 public const string REMIND = "Remind";
+                public const string GLYPH_RINGER = "&#xEA8F;";
             }
 
             public const int COUNT_NUMBER_AFTER_POINT = 2;

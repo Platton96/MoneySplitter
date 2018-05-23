@@ -11,5 +11,6 @@ namespace MoneySplitter.Infrastructure
         Task<bool> AddTransactionAsync(AddTransactionModel addTransactionModel);
         Task<bool> MoveUserToInProgressAsync(int transactionId);
         Task<bool> MoveUserToFinishedAsync(int transactionId, int userId);
+        Task<ExecutionResult<IEnumerable<TransactionModel>>> GetFriendTransactionsAsync(int friendId);
     }
 }

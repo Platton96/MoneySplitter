@@ -5,6 +5,7 @@
         IN_BEGIN,
         IN_PROGRESS,
         FINISHED,
+        UserTransaction,
         UNDEFINED
     }
 }

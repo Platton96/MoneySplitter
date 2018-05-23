@@ -117,7 +117,8 @@
 
             <Ellipse Width="60" Height="60">
                 <Ellipse.Fill>
-                    <ImageBrush ImageSource="{x:Bind ViewModel.ImageUrl, Mode=OneWay}"/>
+                    <ImageBrush ImageSource="{x:Bind ViewModel.ImageUrl, Mode=OneWay}"
+                                Stretch="UniformToFill"/>
                 </Ellipse.Fill>
             </Ellipse>
             <StackPanel VerticalAlignment="Center" Margin="7"

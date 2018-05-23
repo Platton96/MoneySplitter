@@ -72,7 +72,8 @@ namespace MoneySplitter.Services
                 FinishedIds = transactionData.FinishedIds,
                 InProgressIds = transactionData.InProgressIds,
                 ImageUrl = transactionData.ImageUrl,
-                SingleCost = transactionData.SingleCost
+                SingleCost = transactionData.SingleCost,
+                OngoingDate = transactionData.OngoingDate
             };
         }
 
