@@ -30,15 +30,15 @@ namespace MoneySplitter.Services.DataModels
         public bool IsClosed { get; set; }
 
         [DataMember]
-        public IEnumerable<UserModel> Collaborators { get; set; }
+        public IEnumerable<UserData> Collaborators { get; set; }
 
         [DataMember]
-        public IEnumerable<UserModel> Finished { get; set; }
+        public IEnumerable<int> FinishedIds { get; set; }
 
         [DataMember]
-        public IEnumerable<UserModel> InProgress { get; set; }
+        public IEnumerable<int> InProgressIds { get; set; }
 
-        [DataMember (Name="Coast")]
+        [DataMember(Name = "Coast")]
         public double Cost { get; set; }
 
         [DataMember]

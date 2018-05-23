@@ -11,7 +11,7 @@ namespace MoneySplitter.Services.DataModels
         [DataMember]
         public string Token { get; set; }
 
-        [DataMember (Name="Id")]
+        [DataMember(Name = "Id")]
         public int FriendId { get; set; }
     }
 }

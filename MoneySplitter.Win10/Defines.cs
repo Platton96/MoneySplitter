@@ -2,6 +2,27 @@
 {
     public static class Defines
     {
+        public static class Collaborator
+        {
+            public static class ButtonContent
+            {
+                public const string GIVE = "Give!";
+                public const string APPROVE = "Approve";
+                public const string REMIND = "Remind";
+            }
+
+            public const int COUNT_NUMBER_AFTER_POINT = 2;
+        }
+
+        public static class Arrow
+        {
+            public static class Glyph
+            {
+                public const string UP = "&#xF0AD;";
+                public const string DOWN = "&#xF0AE;";
+            }
+
+        }
         public static class MenuItem
         {
             public static class Title
@@ -10,6 +31,7 @@
                 public const string FRIENDS = "Friends";
                 public const string SEARCH = "Search";
                 public const string TRANSACTIONS = "Transactions";
+                public const string INCOMING_AND_OUTCOMING = "Incoming and Outcoming";
 
             }
 
@@ -19,6 +41,7 @@
                 public const string FRIENDS = "&#xE716;";
                 public const string SEARCH = "&#xE721;";
                 public const string TRANSACTIONS = "&#xE8A5;";
+                public const string INCOMING_AND_OUTCOMING = "&#xE8CB;";
             }
         }
 

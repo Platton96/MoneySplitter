@@ -44,7 +44,7 @@ namespace MoneySplitter.Services.Api
                 return result;
             }
 
-            result.Result = 
+            result.Result =
                 userTransactionsData.Select(x => _mapper.ConvertTransactioDataToTransactionModel(x)).ToList();
 
             result.IsSuccess = true;
@@ -58,6 +58,20 @@ namespace MoneySplitter.Services.Api
             var addTransactionData = _mapper.ConvertAddTransactioModelToAddTransactionData(addTransactionModel);
 
             return await _queryApiService.PostAsync(addTransactiodUrl, addTransactionData);
+        }
+
+        public async Task<bool> MoveUserToInProgressAsync(int transactionId)
+        {
+            var collaborateUrl = _apiUrlBuilder.Collaborate(transactionId);
+
+            return await _queryApiService.PostAsync(collaborateUrl);
+        }
+
+        public async Task<bool> MoveUserToFineshedAsync(int transactionId, int userId)
+        {
+            var approveTransactionUrl = _apiUrlBuilder.Approve(transactionId, userId);
+
+            return await _queryApiService.PostAsync(approveTransactionUrl);
         }
 
     }

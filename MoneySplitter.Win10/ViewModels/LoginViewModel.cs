@@ -9,7 +9,7 @@ namespace MoneySplitter.Win10.ViewModels
     {
         #region Fields
         private readonly INavigationManager _navigationManager;
-        private IMembershipService _membershipService;
+        private readonly IMembershipService _membershipService;
 
         private const string DEFAULT_USER_LOGIN = "vlad_nagibator12@mail.ru";
         private const string DEFAULT_USER_PASSWORD = "1234abcd";

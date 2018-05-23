@@ -13,7 +13,7 @@ namespace MoneySplitter.Win10.ViewModels
         #region Fields
         private ObservableCollection<UserModel> _friends;
 
-        private IFriendsManager _friendsManager;
+        private readonly IFriendsManager _friendsManager;
 
         private bool _isNotFriendsTextVisibility;
         private bool _isLoading;
@@ -116,7 +116,7 @@ namespace MoneySplitter.Win10.ViewModels
                 IsErrorVisible = true;
                 return;
             }
-            if (_friendsManager.UserFriends.Count()==0)
+            if (!_friendsManager.UserFriends.Any())
             {
                 IsNotFriendsTextVisibility = true;
                 return;

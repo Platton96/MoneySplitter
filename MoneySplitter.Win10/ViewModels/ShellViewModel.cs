@@ -15,9 +15,9 @@ namespace MoneySplitter.Win10.ViewModels
 
         private readonly IMembershipService _membershipService;
         private readonly INavigationManager _navigationManager;
-        private const string DEFAULT_TITLE="Home";
+        private const string DEFAULT_TITLE = "Home";
 
-        private string _titleFrameText= DEFAULT_TITLE;
+        private string _titleFrameText = DEFAULT_TITLE;
         private UserModel _userModel;
         private string _searchQuery;
         private string _selectedMenuItem;
@@ -29,7 +29,8 @@ namespace MoneySplitter.Win10.ViewModels
             { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.HOME, Defines.MenuItem.Title.HOME),  typeof(HomeViewModel) },
             { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.FRIENDS, Defines.MenuItem.Title.FRIENDS), typeof(FriendsViewModel) },
             { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.SEARCH, Defines.MenuItem.Title.SEARCH),typeof(SearchUsersViewModel) },
-            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.TRANSACTIONS,Defines.MenuItem.Title.TRANSACTIONS),typeof(TransactionsViewModel) }
+            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.TRANSACTIONS,Defines.MenuItem.Title.TRANSACTIONS),typeof(TransactionsViewModel) },
+            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.INCOMING_AND_OUTCOMING,Defines.MenuItem.Title.INCOMING_AND_OUTCOMING), typeof(IncomingAndOutcomingViewModel) }
         };
 
         public string SelectedMenuItem
@@ -99,7 +100,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public void NavigateToClikedItemMenu(string value)
         {
-            if(value == null)
+            if (value == null)
             {
                 return;
             }

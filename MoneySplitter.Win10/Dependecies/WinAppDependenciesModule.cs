@@ -9,7 +9,7 @@ using MoneySplitter.Managers;
 
 namespace MoneySplitter.Win10.Dependencies
 {
-    public  class WinAppDependenciesModule
+    public class WinAppDependenciesModule
     {
         private WinRTContainer _container;
 
@@ -30,6 +30,7 @@ namespace MoneySplitter.Win10.Dependencies
             _container.PerRequest<SearchUsersViewModel>();
             _container.PerRequest<TransactionsViewModel>();
             _container.PerRequest<AddTransactionViewModel>();
+            _container.PerRequest<IncomingAndOutcomingViewModel>();
         }
 
         public void InitializeServices()
@@ -50,6 +51,7 @@ namespace MoneySplitter.Win10.Dependencies
             _container.Singleton<IExecutor, Executor>();
 
             _container.Singleton<IFilePickerService, FilePickerService>();
+            _container.Singleton<CollaboratorModelFactory>();
             _container.Singleton<SearchEngine>();
         }
     }
