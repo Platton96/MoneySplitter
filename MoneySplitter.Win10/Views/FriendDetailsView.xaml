@@ -7,8 +7,44 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:customControls="using:MoneySplitter.Win10.CustomControls"
     mc:Ignorable="d">
+    
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <customControls:DesktopUserContol ViewModel="{x:Bind ViewModel.Friend, Mode=OneWay}"/>
+    <Grid VerticalAlignment="Stretch"
+          HorizontalAlignment="Stretch">
+        <Image Source="{x:Bind ViewModel.Friend.BackgroundImageUrl, Mode=OneWay}"
+               HorizontalAlignment="Stretch"
+               Stretch="UniformToFill"
+               VerticalAlignment="Top"
+               Height="400"/>
+        <Grid HorizontalAlignment="Stretch"
+              VerticalAlignment="Top"
+              Margin="0,200,0,0"
+              Height="200">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#00FFFFFF" Offset="0.0" />
+                    <GradientStop Color="#FFFFFFFF" Offset="1" />
+                </LinearGradientBrush>
+            </Grid.Background>
+        </Grid>
+        <Grid Margin="0, 200,0,0"
+              Padding="5,5,10,5"
+              VerticalAlignment="Stretch"
+              HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.Background>
+                <SolidColorBrush Color="#FFFFFF" Opacity="0.8" />
+            </Grid.Background>
+            <customControls:UserDetailsControl ViewModel="{x:Bind ViewModel.Friend}"/>
+        </Grid>
+
     </Grid>
 </Page>

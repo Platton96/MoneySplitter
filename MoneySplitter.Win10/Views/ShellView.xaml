@@ -24,7 +24,8 @@
         <NavigationView x:Name="NavView"
                         SelectedItem="{x:Bind ViewModel.SelectedMenuItem, Mode=TwoWay}"
                         MenuItemsSource="{x:Bind ViewModel.MenuItems, Mode=OneWay}"
-                        MenuItemTemplate="{StaticResource MenuItemTemplate}">
+                        MenuItemTemplate="{StaticResource MenuItemTemplate}"
+                        AlwaysShowHeader="False">
             <!--<NavigationView.AutoSuggestBox>
                 <AutoSuggestBox x:Name="ASB" QueryIcon="Find"
                                 Text="{x:Bind ViewModel.SearchQuery, Mode=TwoWay}"
@@ -47,7 +48,7 @@
             </NavigationView.HeaderTemplate>
 
 
-            <Frame x:Name="ContentFrame" Margin="24"
+            <Frame x:Name="ContentFrame" Margin="0"
                    Loaded="OnShellFrameLoaded"
                    DataContext="{x:Null}">
 

@@ -101,7 +101,9 @@
     <Compile Include="Common\NavigateManager.cs" />
     <Compile Include="Common\SearchEngine.cs" />
     <Compile Include="Common\TransactioEventModelFactory.cs" />
+    <Compile Include="Converters\BankCardConverter.cs" />
     <Compile Include="Converters\MenuItemTitleConverter.cs" />
+    <Compile Include="Converters\PhoneNumberConverter.cs" />
     <Compile Include="CustomControls\ArrowsControl.xaml.cs">
       <DependentUpon>ArrowsControl.xaml</DependentUpon>
     </Compile>
@@ -114,6 +116,9 @@
     <Compile Include="CustomControls\ErrorDetailsControl.xaml.cs">
       <DependentUpon>ErrorDetailsControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\FriendTransactionControl.xaml.cs">
+      <DependentUpon>FriendTransactionControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\LoadRingControl.xaml.cs">
       <DependentUpon>LoadRingControl.xaml</DependentUpon>
     </Compile>
@@ -122,6 +127,7 @@
     </Compile>
     <Compile Include="CustomControls\Models\ArrowModel.cs" />
     <Compile Include="CustomControls\Models\StatusesModel.cs" />
+    <Compile Include="CustomControls\Models\UserRoleLabelModel.cs" />
     <Compile Include="CustomControls\TransctionControl.xaml.cs">
       <DependentUpon>TransctionControl.xaml</DependentUpon>
     </Compile>
@@ -207,6 +213,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomControls\ErrorDetailsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\FriendTransactionControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

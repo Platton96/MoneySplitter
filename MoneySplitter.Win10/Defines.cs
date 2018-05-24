@@ -15,6 +15,15 @@
             public const int COUNT_NUMBER_AFTER_POINT = 2;
         }
 
+        public static class UserRoleLabel
+        {
+            public static class Content
+            {
+                public const string IN_BEGIN = "AWAIT";
+                public const string IN_PROGRESS = "UNCOMFIRMED";
+                public const string FINISHED = "COMFIRTED";
+            }
+        }
         public static class Arrow
         {
             public static class Glyph

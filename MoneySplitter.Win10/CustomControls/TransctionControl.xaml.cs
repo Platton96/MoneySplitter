@@ -22,5 +22,6 @@ namespace MoneySplitter.Win10.CustomControls
         {
             InitializeComponent();
         }
+
     }
 }

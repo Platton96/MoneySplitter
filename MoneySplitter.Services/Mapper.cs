@@ -25,7 +25,8 @@ namespace MoneySplitter.Services
                 CreditCardNumber = userData.CreditCardNumber,
                 Ballance = userData.Ballance,
                 Token = userData.Token,
-                ImageUrl = userData.ImageUrl
+                ImageUrl = userData.ImageUrl,
+                BackgroundImageUrl=userData.BackgroundImageUrl
             };
         }
 
