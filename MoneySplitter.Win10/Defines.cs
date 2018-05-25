@@ -22,6 +22,7 @@
                 public const string IN_BEGIN = "AWAIT";
                 public const string IN_PROGRESS = "UNCOMFIRMED";
                 public const string FINISHED = "COMFIRTED";
+                public const string USER_TRANSACTION = "MY TRANSACTION";
             }
         }
         public static class Arrow

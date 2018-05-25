@@ -2,6 +2,7 @@
 using MoneySplitter.Infrastructure;
 using MoneySplitter.Models;
 using MoneySplitter.Models.App;
+using MoneySplitter.Win10.Common;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -10,10 +11,11 @@ namespace MoneySplitter.Win10.ViewModels
     public class TransactionsViewModel : Screen
     {
         #region Fields
-        private ObservableCollection<TransactionModel> _transactions;
+        private ObservableCollection<TransactionEventModel> _transactions;
 
         private readonly ITransactionsManager _transactionsManager;
         private readonly INavigationManager _navigationManager;
+        private readonly TransactionEventModelFactory _transactionEventModelFactory;
 
         private bool _isNotTransactionsTextVisibility;
         private bool _isLoading;
@@ -23,7 +25,7 @@ namespace MoneySplitter.Win10.ViewModels
         #endregion
 
         #region Properties
-        public ObservableCollection<TransactionModel> Transactions
+        public ObservableCollection<TransactionEventModel> Transactions
         {
             get { return _transactions; }
             set
@@ -75,10 +77,13 @@ namespace MoneySplitter.Win10.ViewModels
         #endregion
 
         #region Constructor
-        public TransactionsViewModel(ITransactionsManager transactionsManager, INavigationManager navigationManager)
+        public TransactionsViewModel(ITransactionsManager transactionsManager, 
+            INavigationManager navigationManager,
+            TransactionEventModelFactory transactionEventModelFactory)
         {
             _transactionsManager = transactionsManager;
             _navigationManager = navigationManager;
+            _transactionEventModelFactory = transactionEventModelFactory;
         }
         #endregion
 
@@ -111,7 +116,7 @@ namespace MoneySplitter.Win10.ViewModels
                 return;
             }
 
-            Transactions = new ObservableCollection<TransactionModel>(_transactionsManager.UserTransactions);
+            Transactions = new ObservableCollection<TransactionEventModel>(_transactionEventModelFactory.GetTransactionEvents( _transactionsManager.UserTransactions));
         }
 
         public void NavigateToAddTransaction()

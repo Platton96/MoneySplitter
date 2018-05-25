@@ -9,24 +9,24 @@ namespace MoneySplitter.Win10.CustomControls
 {
     public sealed partial class FriendTransactionControl : UserControl
     {
-        public event EventHandler<FriendTransactionModel> OnGiveTransactionButtonClick;
-        public event EventHandler<FriendTransactionModel> OnRemindTransactionButtonClick;
-        public event EventHandler<FriendTransactionModel> OnApproveTransactionButtonClick;
+        public event EventHandler<TransactionEventModel> OnGiveTransactionButtonClick;
+        public event EventHandler<TransactionEventModel> OnRemindTransactionButtonClick;
+        public event EventHandler<TransactionEventModel> OnApproveTransactionButtonClick;
 
         private IDictionary<UserRole, UserRoleLabelModel> _userRoleLabels;
 
-        public FriendTransactionModel ViewModel
+        public TransactionEventModel ViewModel
         {
-            get { return (FriendTransactionModel)GetValue(ViewModelProperty); }
+            get { return (TransactionEventModel)GetValue(ViewModelProperty); }
             set { SetValue(ViewModelProperty, value); }
         }
 
 
         public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(
             "ViewModel",
-            typeof(FriendTransactionModel),
+            typeof(TransactionEventModel),
             typeof(FriendTransactionControl),
-            new PropertyMetadata(default(FriendTransactionModel ), new PropertyChangedCallback(OnValueChanged)));
+            new PropertyMetadata(default(TransactionEventModel), new PropertyChangedCallback(OnValueChanged)));
 
 
         public FriendTransactionControl()
@@ -38,7 +38,7 @@ namespace MoneySplitter.Win10.CustomControls
         public static void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs eventArgs)
         {
             var control = (FriendTransactionControl)sender;
-            control.UpdateArrowsStatus();
+            control.UpdateUserRole();
         }
 
         private void InitializeUserRoleLabels()
@@ -69,14 +69,23 @@ namespace MoneySplitter.Win10.CustomControls
                         Content=Defines.UserRoleLabel.Content.FINISHED,
                         Color = GreenBrush
                     }
+                },
+                {
+                    UserRole.USER_TRANSACTION,
+                    new UserRoleLabelModel
+                    {
+                        Content=Defines.UserRoleLabel.Content.USER_TRANSACTION,
+                        Color = DarkBlueBrush
+                    }
                 }
             };
 
         }
 
-        public void UpdateArrowsStatus()
+        public void UpdateUserRole()
         {
-         
+            UserRoleLabelBorder.Background = _userRoleLabels[ViewModel.UserRole].Color;
+            UserRoleLabel.Text = _userRoleLabels[ViewModel.UserRole].Content;
         }
 
         private void OnGiveButtonClick(object sender, RoutedEventArgs e)

@@ -100,7 +100,7 @@
     <Compile Include="Common\FriendTransactionModelFactory.cs" />
     <Compile Include="Common\NavigateManager.cs" />
     <Compile Include="Common\SearchEngine.cs" />
-    <Compile Include="Common\TransactioEventModelFactory.cs" />
+    <Compile Include="Common\TransactionEventModelFactory.cs" />
     <Compile Include="Converters\BankCardConverter.cs" />
     <Compile Include="Converters\MenuItemTitleConverter.cs" />
     <Compile Include="Converters\PhoneNumberConverter.cs" />

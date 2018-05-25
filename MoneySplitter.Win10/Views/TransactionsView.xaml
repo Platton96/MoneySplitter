@@ -9,7 +9,9 @@
     xmlns:models="using:MoneySplitter.Models"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+          ScrollViewer.VerticalScrollMode="Enabled"
+          ScrollViewer.VerticalScrollBarVisibility="Auto">
         <TextBlock VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    Foreground="#2C404B"
@@ -22,11 +24,14 @@
 
             <ListView x:Name="TransactionsList"
                       ItemsSource="{x:Bind ViewModel.Transactions, Mode=OneWay}"
-                      IsItemClickEnabled="True">
+                      IsItemClickEnabled="True"
+                      ScrollViewer.VerticalScrollMode="Enabled"
+                      ScrollViewer.VerticalScrollBarVisibility="Visible">
+                
 
                 <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="models:TransactionModel">
-                        <customControls:TransctionControl ViewModel="{x:Bind Mode=OneWay}"/>
+                    <DataTemplate x:DataType="models:TransactionEventModel">
+                        <customControls:FriendTransactionControl ViewModel="{x:Bind Mode=OneWay}"/>
 
                     </DataTemplate>
                 </ListView.ItemTemplate>

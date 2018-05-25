@@ -12,15 +12,16 @@
         <SolidColorBrush x:Name="RedBrush" Color="Red"/>
         <SolidColorBrush x:Name="GreenBrush" Color="Green"/>
         <SolidColorBrush x:Name="YellowBrush" Color="Yellow"/>
+        <SolidColorBrush x:Name="DarkBlueBrush" Color="DarkBlue"/>
     </UserControl.Resources>
 
-    <Grid>
+    <Grid Margin="5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition  Width="auto"/>
         </Grid.ColumnDefinitions>
-        <Rectangle Width="120" Height="60">
+        <Rectangle Width="100" Height="140">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="{x:Bind ViewModel.ImageUrl, Mode=OneWay}"
                             Stretch="UniformToFill"/>
@@ -31,28 +32,40 @@
                         HorizontalAlignment="Stretch">
             <TextBlock IsTextSelectionEnabled="True"
                        Text="{x:Bind ViewModel.Title, Mode=OneWay}"
-                       Style="{StaticResource HeaderTextBlockStyle}"
+                       Style="{StaticResource SubtitleTextBlockStyle}"
                        HorizontalAlignment="Stretch"
                        TextTrimming="WordEllipsis"/>
 
             <TextBlock  HorizontalAlignment="Stretch"
                         TextTrimming="CharacterEllipsis">
                 <Run Text="Diedline date: "/>
-                <Run Text="{x:Bind ViewModel.DiedlineDate, Mode=OneWay}"/>
+                <Run Text="{x:Bind ViewModel.Date, Mode=OneWay}"/>
             </TextBlock>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock  HorizontalAlignment="Stretch"
                             TextTrimming="CharacterEllipsis">
-                    <Run Text="{x:Bind ViewModel.DiedlineDate, Mode=OneWay}"/>
-                    <Run Text=" $ "/>
+                    <Run Text="{x:Bind ViewModel.SingleCost, Mode=OneWay}"/>
+                    <Run Text="$  "/>
 
                 </TextBlock>
-                <Border Background="x:UserRoleLabelBorder">
+                <Border x:Name="UserRoleLabelBorder">
                     <TextBlock x:Name="UserRoleLabel"
                                Foreground="White"/>
                 </Border>
             </StackPanel>
+            <GridView ItemsSource="{x:Bind ViewModel.CollaboratorImageUrls}">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <Ellipse Width="30" Height="30">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{x:Bind  Mode=OneWay}"
+                                Stretch="UniformToFill"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
             <!--<TextBlock extensions:XamlElementExtensions.Resource="BUTTON_HOME"/>-->
         </StackPanel >
     </Grid>

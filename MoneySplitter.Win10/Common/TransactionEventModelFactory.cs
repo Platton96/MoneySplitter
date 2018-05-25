@@ -6,27 +6,29 @@ using System.Linq;
 
 namespace MoneySplitter.Win10.Common
 {
-    public class TransactioEventModelFactory
+    public class TransactionEventModelFactory
     {
         private readonly ITransactionsManager _transactionsManager;
         private readonly IMembershipService _membershipService;
 
-        public TransactioEventModelFactory(ITransactionsManager transactionsManager, IMembershipService membershipService)
+        public TransactionEventModelFactory(ITransactionsManager transactionsManager, IMembershipService membershipService)
         {
             _transactionsManager = transactionsManager;
             _membershipService = membershipService;
         }
 
-        public IEnumerable<TransactionEventModel> GetTransactionEvents(IEnumerable<TransactionModel> friendTransactions)
+        public IEnumerable<TransactionEventModel> GetTransactionEvents(IEnumerable<TransactionModel> friendTransactions,
+            int? friendId = null,
+            bool isDeadLineShowed = false)
         {
-            return friendTransactions.Select(tr => ConvertTransactionModelToTransactionEventModel(tr));
+            return friendTransactions.Select(tr => ConvertTransactionModelToTransactionEventModel(tr, friendId, isDeadLineShowed));
         }
 
         private UserRole GetUserRole(int userId, TransactionModel transaction)
         {
             if (transaction.Owner.Id == userId)
             {
-                return UserRole.UserTransaction;
+                return UserRole.USER_TRANSACTION;
             }
             if (transaction.InProgressIds.Any(id => id == userId))
             {
@@ -72,10 +74,21 @@ namespace MoneySplitter.Win10.Common
             return allCollaborators.Count() <= MAX_COUNT_IMAGE ? allCollaborators : allCollaborators.Take(MAX_COUNT_IMAGE - 1);
         }
 
-        private DateTime GetDate(TransactionModel transactionModel)
+        private TypeDate GetTypeDate(TransactionModel transactionModel, bool IsDeadLineShowed)
         {
-            if (transactionModel.OngoingDate == null ||
+            if (IsDeadLineShowed || 
+                transactionModel.OngoingDate == null ||
                 transactionModel.DeadlineDate < transactionModel.OngoingDate)
+            {
+                return TypeDate.DEADLINE_DATE;
+            }
+
+            return TypeDate.ONGOIND_DATE;
+        }
+
+        private DateTime GetDate(TypeDate typeDate, TransactionModel transactionModel)
+        {
+            if(typeDate == TypeDate.DEADLINE_DATE)
             {
                 return transactionModel.DeadlineDate;
             }
@@ -83,17 +96,20 @@ namespace MoneySplitter.Win10.Common
             return transactionModel.OngoingDate;
         }
 
-        private TransactionEventModel ConvertTransactionModelToTransactionEventModel(TransactionModel transactionModel)
+        private TransactionEventModel ConvertTransactionModelToTransactionEventModel(TransactionModel transactionModel, int? friendId, bool isDeadLineShowed)
         {
+            var typeDate = GetTypeDate(transactionModel, isDeadLineShowed);
             return new TransactionEventModel
             {
                 Title = transactionModel.Title,
-                SingleCost = transactionModel.SingleCost,
+                SingleCost = Math.Round(transactionModel.SingleCost, Defines.Collaborator.COUNT_NUMBER_AFTER_POINT),
                 UserRole = GetUserRole(_membershipService.CurrentUser.Id, transactionModel),
-                Date = GetDate(transactionModel),
+                TypeDate = typeDate,
+                Date = GetDate(typeDate,transactionModel),
                 NotVisibilCollabarratorsCount = GetNotVisibilCollabarratorsCount(transactionModel),
                 CollaboratorImageUrls = GetVicibilCollaboratorsImageUrls(transactionModel),
-                TransactionId = transactionModel.Id
+                TransactionId = transactionModel.Id,
+                ImageUrl = transactionModel.ImageUrl
             };
         }
     }

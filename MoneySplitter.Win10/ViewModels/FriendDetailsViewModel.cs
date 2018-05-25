@@ -3,12 +3,8 @@ using MoneySplitter.Infrastructure;
 using MoneySplitter.Models;
 using MoneySplitter.Models.App;
 using MoneySplitter.Win10.Common;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MoneySplitter.Win10.ViewModels
 {
@@ -18,7 +14,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         private readonly ITransactionsManager _transactionsManager;
         private readonly FriendTransactionModelFactory _friendTransactionModelFactory;
-        private readonly TransactioEventModelFactory _transactioEventModelFactory;
+        private readonly TransactionEventModelFactory _transactioEventModelFactory;
 
         private UserModel _friend;
 
@@ -121,7 +117,7 @@ namespace MoneySplitter.Win10.ViewModels
         #region Constructor
         public FriendDetailsViewModel(ITransactionsManager transactionsManager, 
             FriendTransactionModelFactory friendTransactionModelFactory,
-            TransactioEventModelFactory transactioEventModelFactory)
+            TransactionEventModelFactory transactioEventModelFactory)
             
         {
             _transactionsManager = transactionsManager;
