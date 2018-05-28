@@ -102,8 +102,11 @@
     <Compile Include="Common\SearchEngine.cs" />
     <Compile Include="Common\TransactionEventModelFactory.cs" />
     <Compile Include="Converters\BankCardConverter.cs" />
+    <Compile Include="Converters\DateCoverter.cs" />
     <Compile Include="Converters\MenuItemTitleConverter.cs" />
+    <Compile Include="Converters\NotVisibilCollabarratorsCountVisibilityConverter.cs" />
     <Compile Include="Converters\PhoneNumberConverter.cs" />
+    <Compile Include="Converters\TypeDateCoverter.cs" />
     <Compile Include="CustomControls\ArrowsControl.xaml.cs">
       <DependentUpon>ArrowsControl.xaml</DependentUpon>
     </Compile>

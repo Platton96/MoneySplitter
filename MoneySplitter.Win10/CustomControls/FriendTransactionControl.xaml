@@ -5,14 +5,19 @@
     xmlns:local="using:MoneySplitter.Win10.CustomControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:MoneySplitter.Win10.Converters"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
     <UserControl.Resources>
-        <SolidColorBrush x:Name="RedBrush" Color="Red"/>
-        <SolidColorBrush x:Name="GreenBrush" Color="Green"/>
-        <SolidColorBrush x:Name="YellowBrush" Color="Yellow"/>
-        <SolidColorBrush x:Name="DarkBlueBrush" Color="DarkBlue"/>
+        <SolidColorBrush x:Name="RedBrush" Color="#ff4d46"/>
+        <SolidColorBrush x:Name="GreenBrush" Color="#47a439"/>
+        <SolidColorBrush x:Name="YellowBrush" Color="#e69f2d"/>
+        <SolidColorBrush x:Name="DarkBlueBrush" Color="#458ce4"/>
+        <SolidColorBrush x:Name="NotVisibilCallobartorCountColor" Color="#5c5c5c"/>
+        <converters:DateCoverter x:Key="DateConverter" />
+        <converters:TypeDateCoverter x:Key="TypeDateCoverter" />
+        <converters:NotVisibilCollabarratorsCountVisibilityConverter x:Key="NotVisibilCollabarratorsCountVisibilityConverter"/>
     </UserControl.Resources>
 
     <Grid Margin="5">
@@ -20,14 +25,17 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition  Width="auto"/>
+            <ColumnDefinition  Width="auto"/>
         </Grid.ColumnDefinitions>
-        <Rectangle Width="100" Height="140">
+        <Rectangle Width="68" 
+                   Height="120">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="{x:Bind ViewModel.ImageUrl, Mode=OneWay}"
                             Stretch="UniformToFill"/>
             </Rectangle.Fill>
         </Rectangle>
-        <StackPanel VerticalAlignment="Center" Margin="7"
+        <StackPanel VerticalAlignment="Center" 
+                    Margin="8"
                         Grid.Column="1"
                         HorizontalAlignment="Stretch">
             <TextBlock IsTextSelectionEnabled="True"
@@ -38,35 +46,74 @@
 
             <TextBlock  HorizontalAlignment="Stretch"
                         TextTrimming="CharacterEllipsis">
-                <Run Text="Diedline date: "/>
-                <Run Text="{x:Bind ViewModel.Date, Mode=OneWay}"/>
+                <Run Text="{x:Bind ViewModel.TypeDate, Converter={StaticResource TypeDateCoverter}, Mode=OneWay}"/>
+                <Run Text="{x:Bind ViewModel.Date, Converter={StaticResource DateConverter}, Mode=OneWay}"/>
             </TextBlock>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock  HorizontalAlignment="Stretch"
-                            TextTrimming="CharacterEllipsis">
-                    <Run Text="{x:Bind ViewModel.SingleCost, Mode=OneWay}"/>
-                    <Run Text="$  "/>
-
+                            TextTrimming="CharacterEllipsis"
+                            FontSize="16"
+                            VerticalAlignment="Center">
+                    <Run Text="{x:Bind ViewModel.SingleCost, Mode=OneWay}"/><Run Text="$"/>
                 </TextBlock>
-                <Border x:Name="UserRoleLabelBorder">
+                <Border x:Name="UserRoleLabelBorder"
+                        Margin="8,0,0,0"
+                        Padding="4"
+                        VerticalAlignment="Center">
                     <TextBlock x:Name="UserRoleLabel"
                                Foreground="White"/>
                 </Border>
             </StackPanel>
-            <GridView ItemsSource="{x:Bind ViewModel.CollaboratorImageUrls}">
-                <GridView.ItemTemplate>
-                    <DataTemplate x:DataType="x:String">
-                        <Ellipse Width="30" Height="30">
-                            <Ellipse.Fill>
-                                <ImageBrush ImageSource="{x:Bind  Mode=OneWay}"
-                                Stretch="UniformToFill"/>
-                            </Ellipse.Fill>
-                        </Ellipse>
-                    </DataTemplate>
-                </GridView.ItemTemplate>
-            </GridView>
+            <StackPanel Orientation="Horizontal">
+                <ItemsControl ItemsSource="{x:Bind ViewModel.CollaboratorImageUrls, Mode=OneWay}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="x:String">
+                            <Ellipse Width="36"
+                                     Height="36"
+                                     Margin="0,4,8,0">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{x:Bind  Mode=OneWay}"
+                                                Stretch="UniformToFill"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <Border Background="{StaticResource NotVisibilCallobartorCountColor}"
+                        Visibility="{x:Bind ViewModel.NotVisibilCollabarratorsCount, Converter={StaticResource NotVisibilCollabarratorsCountVisibilityConverter}, Mode=OneWay}"
+                        CornerRadius="30"
+                        Width="36"
+                        Height="36"
+                        VerticalAlignment="Center">
+                    <TextBlock Foreground="White"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontSize="14">
+                        <Run Text="+"/><Run Text="{x:Bind ViewModel.NotVisibilCollabarratorsCount , Mode=OneWay}"/>
+                    </TextBlock>
+
+                </Border>
+            </StackPanel>
             <!--<TextBlock extensions:XamlElementExtensions.Resource="BUTTON_HOME"/>-->
         </StackPanel >
+        <Button x:Name="GiveCollaboratorButton"
+                Grid.Column="2"
+                Style="{StaticResource CollabaratorButtonStyle}"
+                Visibility="{x:Bind ViewModel.IsGiveButtonVisibil, Mode=OneWay}"
+                Content="Give"
+                Click="OnGiveButtonClick"/>
+        <Button x:Name="RemindCollaboratorButton"
+                Click="OnRemindButtonClick"
+                Content="Remind"
+                Grid.Column="2"
+                Visibility="{x:Bind ViewModel.IsRemindButtonVisibil, Mode=OneWay}"
+                Style="{StaticResource CollabaratorButtonStyle}"/>
+        
     </Grid>
 </UserControl>
