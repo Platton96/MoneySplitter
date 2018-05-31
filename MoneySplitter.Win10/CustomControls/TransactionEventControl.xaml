@@ -10,10 +10,6 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
     <UserControl.Resources>
-        <SolidColorBrush x:Name="RedBrush" Color="#ff4d46"/>
-        <SolidColorBrush x:Name="GreenBrush" Color="#47a439"/>
-        <SolidColorBrush x:Name="YellowBrush" Color="#e69f2d"/>
-        <SolidColorBrush x:Name="DarkBlueBrush" Color="#458ce4"/>
         <SolidColorBrush x:Name="NotVisibilCallobartorCountColor" Color="#5c5c5c"/>
         <SolidColorBrush x:Name="Border" Color="#c5c5c5"/>
         <converters:DateCoverter x:Key="DateConverter" />
@@ -77,13 +73,7 @@
                             VerticalAlignment="Center">
                     <Run Text="{x:Bind ViewModel.SingleCost, Mode=OneWay}"/><Run Text="$"/>
                         </TextBlock>
-                        <Border x:Name="UserRoleLabelBorder"
-                        Padding="4"
-                        Margin="4,0,0,0"
-                        VerticalAlignment="Center">
-                            <TextBlock x:Name="UserRoleLabel"
-                               Foreground="White"/>
-                        </Border>
+                        <local:TransactionStatusControl Role="{x:Bind ViewModel.UserRole, Mode=OneWay}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <ItemsControl ItemsSource="{x:Bind ViewModel.CollaboratorImageUrls, Mode=OneWay}">

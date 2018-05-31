@@ -10,96 +10,101 @@ using Windows.UI.Xaml.Navigation;
 
 namespace MoneySplitter.Win10.Common
 {
-    public class NavigationManager : INavigationManager
-    {
-        #region Fields and constructor
-        private readonly INavigationService _windowNavigationService;
-        private INavigationService _shellNavigationService;
+	public class NavigationManager : INavigationManager
+	{
+		#region Fields and constructor
+		private readonly INavigationService _windowNavigationService;
+		private INavigationService _shellNavigationService;
 
-        public event EventHandler<Type> OnShellNavigationManagerNavigated;
+		public event EventHandler<Type> OnShellNavigationManagerNavigated;
 
-        public NavigationManager(INavigationService navigationService)
-        {
-            _windowNavigationService = navigationService;
+		public NavigationManager(INavigationService navigationService)
+		{
+			_windowNavigationService = navigationService;
 
-        }
-        #endregion
+		}
+		#endregion
 
-        public void NavigateToShellViewModel()
-        {
-            _windowNavigationService.NavigateToViewModel<ShellViewModel>();
-        }
+		public void NavigateToShellViewModel()
+		{
+			_windowNavigationService.NavigateToViewModel<ShellViewModel>();
+		}
 
-        public void InitializeShellNavigationService(object navigationService)
-        {
-            _shellNavigationService = (INavigationService)navigationService;
-            _shellNavigationService.Navigated += OnShellNavigationServiceNavigated;
-        }
+		public void InitializeShellNavigationService(object navigationService)
+		{
+			_shellNavigationService = (INavigationService)navigationService;
+			_shellNavigationService.Navigated += OnShellNavigationServiceNavigated;
+		}
 
-        public void NavigateToRegisterViewModel()
-        {
-            _windowNavigationService.NavigateToViewModel<RegisterViewModel>();
-        }
+		public void NavigateToRegisterViewModel()
+		{
+			_windowNavigationService.NavigateToViewModel<RegisterViewModel>();
+		}
 
-        public void NavigateToHomeViewModel()
-        {
-            _shellNavigationService.NavigateToViewModel<HomeViewModel>();
-        }
+		public void NavigateToHomeViewModel()
+		{
+			_shellNavigationService.NavigateToViewModel<HomeViewModel>();
+		}
 
-        public void NavigateToFriendsViewModel()
-        {
-            _shellNavigationService.NavigateToViewModel<FriendsViewModel>();
-        }
+		public void NavigateToFriendsViewModel()
+		{
+			_shellNavigationService.NavigateToViewModel<FriendsViewModel>();
+		}
 
-        public void NavigateToFriendDetails(UserModel userModel)
-        {
-            _shellNavigationService.NavigateToViewModel<FriendDetailsViewModel>(userModel);
-        }
+		public void NavigateToFriendDetails(UserModel userModel)
+		{
+			_shellNavigationService.NavigateToViewModel<FriendDetailsViewModel>(userModel);
+		}
 
-        public void NavigateToAddTransactionViewModel()
-        {
-            _shellNavigationService.NavigateToViewModel<AddTransactionViewModel>();
-        }
+		public void NavigateToAddTransactionViewModel()
+		{
+			_shellNavigationService.NavigateToViewModel<AddTransactionViewModel>();
+		}
 
-        public void NavigateToTransactionsViewModel()
-        {
-            _shellNavigationService.NavigateToViewModel<TransactionsViewModel>();
-        }
+		public void NavigateToTransactionDetailsViewModel(TransactionEventModel transaction)
+		{
+			_shellNavigationService.NavigateToViewModel<TransactionDetailsViewModel>(transaction);
+		}
 
-        public void NavigateToSearchUsersViewModel()
-        {
-            _shellNavigationService.NavigateToViewModel<SearchUsersViewModel>();
-        }
+		public void NavigateToTransactionsViewModel()
+		{
+			_shellNavigationService.NavigateToViewModel<TransactionsViewModel>();
+		}
 
-        public void NavigateToShellViewModel(Type viewModelType)
-        {
-            _shellNavigationService.NavigateToViewModel(viewModelType);
-        }
+		public void NavigateToSearchUsersViewModel()
+		{
+			_shellNavigationService.NavigateToViewModel<SearchUsersViewModel>();
+		}
 
-        public void GoBack()
-        {
-            if (_shellNavigationService.CanGoBack)
-            {
-                _shellNavigationService.GoBack();
-            }
-        }
+		public void NavigateToShellViewModel(Type viewModelType)
+		{
+			_shellNavigationService.NavigateToViewModel(viewModelType);
+		}
 
-        private void SetBackButtonVisibility(bool value)
-        {
-            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = value ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
-        }
+		public void GoBack()
+		{
+			if (_shellNavigationService.CanGoBack)
+			{
+				_shellNavigationService.GoBack();
+			}
+		}
 
-        private void OnShellNavigationServiceNavigated(object sender, NavigationEventArgs e)
-        {
-            var sameViewModel = _shellNavigationService.BackStack.FirstOrDefault(w => w.SourcePageType == e.SourcePageType);
-            if (sameViewModel != null)
-            {
-                _shellNavigationService.BackStack.Remove(sameViewModel);
-            }
+		private void SetBackButtonVisibility(bool value)
+		{
+			SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = value ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+		}
 
-            SetBackButtonVisibility(_shellNavigationService.CanGoBack);
-            OnShellNavigationManagerNavigated?.Invoke(this, (e.Content as Page).DataContext.GetType());
-        }
+		private void OnShellNavigationServiceNavigated(object sender, NavigationEventArgs e)
+		{
+			var sameViewModel = _shellNavigationService.BackStack.FirstOrDefault(w => w.SourcePageType == e.SourcePageType);
+			if (sameViewModel != null)
+			{
+				_shellNavigationService.BackStack.Remove(sameViewModel);
+			}
 
-    }
+			SetBackButtonVisibility(_shellNavigationService.CanGoBack);
+			OnShellNavigationManagerNavigated?.Invoke(this, (e.Content as Page).DataContext.GetType());
+		}
+
+	}
 }

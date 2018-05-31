@@ -103,12 +103,16 @@
     <Compile Include="Common\TransactionEventModelFactory.cs" />
     <Compile Include="Converters\BankCardConverter.cs" />
     <Compile Include="Converters\DateCoverter.cs" />
+    <Compile Include="Converters\DateTimeToTimeLeftConverter.cs" />
     <Compile Include="Converters\MenuItemTitleConverter.cs" />
     <Compile Include="Converters\NotVisibilCollabarratorsCountVisibilityConverter.cs" />
     <Compile Include="Converters\PhoneNumberConverter.cs" />
     <Compile Include="Converters\TypeDateCoverter.cs" />
     <Compile Include="CustomControls\ArrowsControl.xaml.cs">
       <DependentUpon>ArrowsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Blur.xaml.cs">
+      <DependentUpon>Blur.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\CollaboratorControl.xaml.cs">
       <DependentUpon>CollaboratorControl.xaml</DependentUpon>
@@ -131,6 +135,9 @@
     <Compile Include="CustomControls\Models\ArrowModel.cs" />
     <Compile Include="CustomControls\Models\StatusesModel.cs" />
     <Compile Include="CustomControls\Models\UserRoleLabelModel.cs" />
+    <Compile Include="CustomControls\TransactionStatusControl.xaml.cs">
+      <DependentUpon>TransactionStatusControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\UserDetailsControl.xaml.cs">
       <DependentUpon>UserDetailsControl.xaml</DependentUpon>
     </Compile>
@@ -146,6 +153,7 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="ViewModels\TransactionDetailsViewModel.cs" />
     <Compile Include="ViewModels\TransactionsViewModel.cs" />
     <Compile Include="Views\AddTransactionView.xaml.cs">
       <DependentUpon>AddTransactionView.xaml</DependentUpon>
@@ -175,6 +183,9 @@
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dependecies\WinAppDependenciesModule.cs" />
+    <Compile Include="Views\TransactionDetailsView.xaml.cs">
+      <DependentUpon>TransactionDetailsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TransactionsView.xaml.cs">
       <DependentUpon>TransactionsView.xaml</DependentUpon>
     </Compile>
@@ -204,6 +215,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CustomControls\Blur.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomControls\CollaboratorControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -225,6 +240,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomControls\MobileUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\TransactionStatusControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -273,6 +292,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\TransactionDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\TransactionsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -284,6 +307,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.6</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Animations">
+      <Version>3.0.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

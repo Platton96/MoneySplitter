@@ -53,6 +53,8 @@
                 <ListView x:Name="TransactionsList"
                           ItemsSource="{x:Bind ViewModel.Transactions, Mode=OneWay}"
                           IsItemClickEnabled="True"
+                          SelectionMode="None"
+                          ItemClick="OnTransactionItemClick"
                           ScrollViewer.VerticalScrollMode="Enabled"
                           ScrollViewer.VerticalScrollBarVisibility="Visible">
                     <ListView.ItemContainerStyle>

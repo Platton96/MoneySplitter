@@ -199,6 +199,7 @@ namespace MoneySplitter.Win10.ViewModels
         {
             SortTransactionEventModel(SelectTypeSort.SortParameter);
         }
+
         private void SortTransactionEventModel(SortParameter sortParameter)
         {
             if(Transactions==null)
@@ -241,6 +242,11 @@ namespace MoneySplitter.Win10.ViewModels
 
             };
         }
+
+		public void NavigateToTransactionDetails(TransactionEventModel transaction)
+		{
+			_navigationManager.NavigateToTransactionDetailsViewModel(transaction);
+		}
         #endregion
     }
 }

@@ -22,6 +22,7 @@ namespace MoneySplitter.Win10.Dependencies
         {
             _container.PerRequest<LoginViewModel>();
             _container.PerRequest<RegisterViewModel>();
+			_container.PerRequest<TransactionDetailsViewModel>();
 
             _container.PerRequest<ShellViewModel>();
 
