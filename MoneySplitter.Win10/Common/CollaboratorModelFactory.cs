@@ -109,6 +109,7 @@ namespace MoneySplitter.Win10.Common
             }
 
             var firstRecord = collabaratorRecords.FirstOrDefault();
+
             return new CollaboratorModel
             {
                 Email = firstRecord.Email,
