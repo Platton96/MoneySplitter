@@ -27,30 +27,16 @@
                         MenuItemTemplate="{StaticResource MenuItemTemplate}"
                         AlwaysShowHeader="False"
                         >
-            <!--<NavigationView.AutoSuggestBox>
-                <AutoSuggestBox x:Name="ASB" QueryIcon="Find"
-                                Text="{x:Bind ViewModel.SearchQuery, Mode=TwoWay}"
-                               IsEnabled="False"/>
-            </NavigationView.AutoSuggestBox>-->
             <NavigationView.HeaderTemplate
                 >
                 <DataTemplate x:DataType="viewmodels:ShellViewModel" >
-                    <Grid Margin="24,0,0,0" Visibility="Collapsed">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Style="{StaticResource TitleTextBlockStyle}"
-                               FontSize="12"
-                               Text="{x:Bind TitleFrameText, Converter={StaticResource MenuItemToTitle}, ConverterParameter='1', Mode=OneWay}"/>
-                        </StackPanel>
+                    <Grid Margin="0,0,0,0" Visibility="Collapsed">
                     </Grid>
                 </DataTemplate>
             </NavigationView.HeaderTemplate>
 
 
-            <Frame x:Name="ContentFrame" Margin="0"
+            <Frame x:Name="ContentFrame" 
                    Loaded="OnShellFrameLoaded"
                    DataContext="{x:Null}">
 
@@ -60,7 +46,26 @@
                     </TransitionCollection>
                 </Frame.ContentTransitions>
             </Frame>
-
         </NavigationView>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
+                <VisualState x:Name="Normal">
+                    <VisualState.Setters>
+                        <Setter Target="ContentFrame.Margin" Value="0"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="700"></AdaptiveTrigger>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="Mobile">
+                    <VisualState.Setters>
+                        <Setter Target="ContentFrame.Margin" Value="0,-52,0,0"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"></AdaptiveTrigger>
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </Grid>
 </Page>
