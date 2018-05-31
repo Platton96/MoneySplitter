@@ -102,6 +102,7 @@
     <Compile Include="Common\SearchEngine.cs" />
     <Compile Include="Common\TransactionEventModelFactory.cs" />
     <Compile Include="Converters\BankCardConverter.cs" />
+    <Compile Include="Converters\OppositeBoolToVisibilityConverter.cs" />
     <Compile Include="Converters\DateCoverter.cs" />
     <Compile Include="Converters\DateTimeToTimeLeftConverter.cs" />
     <Compile Include="Converters\MenuItemTitleConverter.cs" />

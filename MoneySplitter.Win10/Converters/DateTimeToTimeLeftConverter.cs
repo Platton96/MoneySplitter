@@ -14,7 +14,7 @@ namespace MoneySplitter.Win10.Converters
 
 		public object Convert(object value, Type targetType, object parameter, string language)
 		{
-			if(value == null)
+			if (value == null)
 			{
 				return null;
 			}
@@ -22,22 +22,29 @@ namespace MoneySplitter.Win10.Converters
 			var date = (DateTime)value;
 
 			var difference = date - DateTime.Now;
+			if (difference < TimeSpan.Zero)
+			{
+				difference = -difference;
+			}
 
 			var result = string.Empty;
 
-			if (difference.Days > 1)
+			if (difference.Days >= 1)
 			{
 				result += $"{difference.Days} {DAYS} ";
 			}
 
-			if (difference.Hours > 1)
+			if (difference.Hours >= 1)
 			{
 				result += $"{difference.Hours} {HOURS} ";
 			}
 
-			result += $"{difference.Hours} {HOURS} ";
+			if (difference.Days < 1)
+			{
+				result += $"{difference.Minutes} {MINUTES} ";
+			}
 
-			return string.Format(difference >= TimeSpan.Zero ? ONGOING_TEMPLATE : OVERDUED_TEMPLATE, result);
+			return string.Format(date - DateTime.Now > TimeSpan.Zero ? ONGOING_TEMPLATE : OVERDUED_TEMPLATE, result);
 
 		}
 
