@@ -78,7 +78,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="models:CollaboratorModel">
                                 <customControls:CollaboratorControl ViewModel="{x:Bind Mode=OneWay}"
-                                                                OnGiveCollaboratorButtonClick="OnGiveCollaboratorButtonClick"/>
+                                                                    OnGiveCollaboratorButtonClick="OnGiveCollaboratorButtonClick"/>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>

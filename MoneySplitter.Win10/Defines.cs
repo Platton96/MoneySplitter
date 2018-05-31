@@ -2,6 +2,17 @@
 {
     public static class Defines
     {
+        public static class SortModel
+        {
+            public static class Title
+            {
+                public const string CREATING_DATE = "Creating date";
+                public const string TRANSACTION_DATE = "Transaction date";
+                public const string USER_ROLE = "User role";
+                public const string SINGLE_COST = "Cost";
+                public const string NAME_TRANSACTION = "Name transaction";
+            }
+        }
         public static class Collaborator
         {
             public static class ButtonContent

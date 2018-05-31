@@ -25,22 +25,24 @@
                         SelectedItem="{x:Bind ViewModel.SelectedMenuItem, Mode=TwoWay}"
                         MenuItemsSource="{x:Bind ViewModel.MenuItems, Mode=OneWay}"
                         MenuItemTemplate="{StaticResource MenuItemTemplate}"
-                        AlwaysShowHeader="False">
+                        AlwaysShowHeader="False"
+                        >
             <!--<NavigationView.AutoSuggestBox>
                 <AutoSuggestBox x:Name="ASB" QueryIcon="Find"
                                 Text="{x:Bind ViewModel.SearchQuery, Mode=TwoWay}"
                                IsEnabled="False"/>
             </NavigationView.AutoSuggestBox>-->
-            <NavigationView.HeaderTemplate>
-                <DataTemplate x:DataType="viewmodels:ShellViewModel">
-                    <Grid Margin="24,10,0,0">
+            <NavigationView.HeaderTemplate
+                >
+                <DataTemplate x:DataType="viewmodels:ShellViewModel" >
+                    <Grid Margin="24,0,0,0" Visibility="Collapsed">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Style="{StaticResource TitleTextBlockStyle}"
-                               FontSize="28"
+                               FontSize="12"
                                Text="{x:Bind TitleFrameText, Converter={StaticResource MenuItemToTitle}, ConverterParameter='1', Mode=OneWay}"/>
                         </StackPanel>
                     </Grid>

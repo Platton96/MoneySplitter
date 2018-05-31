@@ -119,8 +119,8 @@
     <Compile Include="CustomControls\ErrorDetailsControl.xaml.cs">
       <DependentUpon>ErrorDetailsControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\FriendTransactionControl.xaml.cs">
-      <DependentUpon>FriendTransactionControl.xaml</DependentUpon>
+    <Compile Include="CustomControls\TransactionEventControl.xaml.cs">
+      <DependentUpon>TransactionEventControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\LoadRingControl.xaml.cs">
       <DependentUpon>LoadRingControl.xaml</DependentUpon>
@@ -219,7 +219,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CustomControls\FriendTransactionControl.xaml">
+    <Page Include="CustomControls\TransactionEventControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -238,6 +238,11 @@
     <Page Include="CustomControls\UserDetailsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\GlobalStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Views\AddTransactionView.xaml">
       <SubType>Designer</SubType>
@@ -306,9 +311,7 @@
       <Name>MoneySplitter.Services</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Styles\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

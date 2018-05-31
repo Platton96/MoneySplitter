@@ -7,7 +7,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace MoneySplitter.Win10.CustomControls
 {
-    public sealed partial class FriendTransactionControl : UserControl
+    public sealed partial class TransactionEventControl : UserControl
     {
         public event EventHandler<TransactionEventModel> OnGiveTransactionButtonClick;
         public event EventHandler<TransactionEventModel> OnRemindTransactionButtonClick;
@@ -25,11 +25,11 @@ namespace MoneySplitter.Win10.CustomControls
         public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(
             "ViewModel",
             typeof(TransactionEventModel),
-            typeof(FriendTransactionControl),
+            typeof(TransactionEventControl),
             new PropertyMetadata(default(TransactionEventModel), new PropertyChangedCallback(OnValueChanged)));
 
 
-        public FriendTransactionControl()
+        public TransactionEventControl()
         {
             InitializeComponent();
             InitializeUserRoleLabels();
@@ -37,7 +37,7 @@ namespace MoneySplitter.Win10.CustomControls
 
         public static void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs eventArgs)
         {
-            var control = (FriendTransactionControl)sender;
+            var control = (TransactionEventControl)sender;
             control.UpdateUserRole();
         }
 

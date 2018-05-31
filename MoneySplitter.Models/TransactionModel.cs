@@ -10,7 +10,7 @@ namespace MoneySplitter.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime CreationDate { get; set; }
-        public DateTime OngoingDate { get; set; }
+        public DateTime? OngoingDate { get; set; }
         public UserModel Owner { get; set; }
         public IEnumerable<UserModel> Collaborators { get; set; }
         public IEnumerable<int> FinishedIds { get; set; }

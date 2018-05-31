@@ -47,6 +47,14 @@ namespace MoneySplitter.Win10.Common
             return UserRole.UNDEFINED;
         }
 
+        private UserRole GetFriendRole(int? friendId, TransactionModel transactionModel)
+        {
+            if (friendId == null)
+            {
+                return UserRole.UNDEFINED;
+            }
+            return GetUserRole((int)friendId, transactionModel);
+        }
         private int GetNotVisibilCollabarratorsCount(TransactionModel transactionModel)
         {
             var VisibilUserWithoutMeAndOwnerCount = transactionModel.Owner.Id == _membershipService.CurrentUser.Id ? 2 : 1;
@@ -76,7 +84,7 @@ namespace MoneySplitter.Win10.Common
 
         private TypeDate GetTypeDate(TransactionModel transactionModel, bool IsDeadLineShowed)
         {
-            if (IsDeadLineShowed || 
+            if (IsDeadLineShowed ||
                 transactionModel.OngoingDate == null ||
                 transactionModel.DeadlineDate < transactionModel.OngoingDate)
             {
@@ -88,12 +96,12 @@ namespace MoneySplitter.Win10.Common
 
         private DateTime GetDate(TypeDate typeDate, TransactionModel transactionModel)
         {
-            if(typeDate == TypeDate.DEADLINE_DATE)
+            if (typeDate == TypeDate.DEADLINE_DATE)
             {
                 return transactionModel.DeadlineDate;
             }
 
-            return transactionModel.OngoingDate;
+            return (DateTime)transactionModel.OngoingDate;
         }
 
         private TransactionEventModel ConvertTransactionModelToTransactionEventModel(TransactionModel transactionModel, int? friendId, bool isDeadLineShowed)
@@ -104,8 +112,9 @@ namespace MoneySplitter.Win10.Common
                 Title = transactionModel.Title,
                 SingleCost = Math.Round(transactionModel.SingleCost, Defines.Collaborator.COUNT_NUMBER_AFTER_POINT),
                 UserRole = GetUserRole(_membershipService.CurrentUser.Id, transactionModel),
+                FriendRole = GetFriendRole(friendId, transactionModel),
                 TypeDate = typeDate,
-                Date = GetDate(typeDate,transactionModel),
+                Date = GetDate(typeDate, transactionModel),
                 NotVisibilCollabarratorsCount = GetNotVisibilCollabarratorsCount(transactionModel),
                 CollaboratorImageUrls = GetVicibilCollaboratorsImageUrls(transactionModel),
                 TransactionId = transactionModel.Id,
