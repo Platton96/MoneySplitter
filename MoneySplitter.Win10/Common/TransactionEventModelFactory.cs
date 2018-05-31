@@ -19,9 +19,10 @@ namespace MoneySplitter.Win10.Common
 
         public IEnumerable<TransactionEventModel> GetTransactionEvents(IEnumerable<TransactionModel> friendTransactions,
             int? friendId = null,
+            bool isForceHide = false,
             bool isDeadLineShowed = false)
         {
-            return friendTransactions.Select(tr => ConvertTransactionModelToTransactionEventModel(tr, friendId, isDeadLineShowed));
+            return friendTransactions.Select(tr => ConvertTransactionModelToTransactionEventModel(tr, friendId, isForceHide, isDeadLineShowed));
         }
 
         private UserRole GetUserRole(int userId, TransactionModel transaction)
@@ -104,7 +105,10 @@ namespace MoneySplitter.Win10.Common
             return (DateTime)transactionModel.OngoingDate;
         }
 
-        private TransactionEventModel ConvertTransactionModelToTransactionEventModel(TransactionModel transactionModel, int? friendId, bool isDeadLineShowed)
+        private TransactionEventModel ConvertTransactionModelToTransactionEventModel(TransactionModel transactionModel,
+            int? friendId, 
+            bool isForceHide,
+            bool isDeadLineShowed)
         {
             var typeDate = GetTypeDate(transactionModel, isDeadLineShowed);
             return new TransactionEventModel
@@ -118,7 +122,9 @@ namespace MoneySplitter.Win10.Common
                 NotVisibilCollabarratorsCount = GetNotVisibilCollabarratorsCount(transactionModel),
                 CollaboratorImageUrls = GetVicibilCollaboratorsImageUrls(transactionModel),
                 TransactionId = transactionModel.Id,
-                ImageUrl = transactionModel.ImageUrl
+                ImageUrl = transactionModel.ImageUrl,
+                IsForceHide = isForceHide
+                
             };
         }
     }

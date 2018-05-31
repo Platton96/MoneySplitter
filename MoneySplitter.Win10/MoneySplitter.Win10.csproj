@@ -131,9 +131,6 @@
     <Compile Include="CustomControls\Models\ArrowModel.cs" />
     <Compile Include="CustomControls\Models\StatusesModel.cs" />
     <Compile Include="CustomControls\Models\UserRoleLabelModel.cs" />
-    <Compile Include="CustomControls\TransctionControl.xaml.cs">
-      <DependentUpon>TransctionControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="CustomControls\UserDetailsControl.xaml.cs">
       <DependentUpon>UserDetailsControl.xaml</DependentUpon>
     </Compile>
@@ -228,10 +225,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomControls\MobileUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CustomControls\TransctionControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
