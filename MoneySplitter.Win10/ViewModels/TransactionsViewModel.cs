@@ -3,6 +3,7 @@ using MoneySplitter.Infrastructure;
 using MoneySplitter.Models;
 using MoneySplitter.Models.App;
 using MoneySplitter.Win10.Common;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -17,6 +18,35 @@ namespace MoneySplitter.Win10.ViewModels
 
         public IEnumerable<SortModel> SortModels { get; private set; }
 
+        private IDictionary<SortParameter, Func<TransactionEventModel, IComparable>> _getParameterFunctions =
+            new Dictionary<SortParameter, Func<TransactionEventModel, IComparable>>()
+            {
+                {
+                    SortParameter.CREATING_DATE,
+                    x=>x.CreatingDate!=null?x.CreatingDate:DateTime.Now
+                },
+
+                {
+                    SortParameter.NAME_TRANSACTION,
+                    x=>x.Title
+                },
+
+                {
+                    SortParameter.SINGLE_COST,
+                    x=>x.SingleCost
+                },
+
+                {
+                    SortParameter.TRANSACTION_DATE,
+                    x=>x.Date
+                },
+
+                {
+                    SortParameter.USER_ROLE,
+                    x=>x.UserRole
+                },
+
+    };
         private readonly ITransactionsManager _transactionsManager;
         private readonly INavigationManager _navigationManager;
         private readonly TransactionEventModelFactory _transactionEventModelFactory;
@@ -85,6 +115,11 @@ namespace MoneySplitter.Win10.ViewModels
             get => _selectSortType;
             set
             {
+                if(value == _selectSortType)
+                {
+                    return;
+                }
+
                 _selectSortType = value;
                 NotifyOfPropertyChange(nameof(SelectTypeSort));
             }
@@ -151,7 +186,6 @@ namespace MoneySplitter.Win10.ViewModels
                 IsErrorVisible = true;
                 return;
             }
-            var a = _transactionsManager.UserTransactions;
             Transactions = new ObservableCollection<TransactionEventModel>(_transactionEventModelFactory.GetTransactionEvents(_transactionsManager.UserTransactions));
 
         }
@@ -159,6 +193,20 @@ namespace MoneySplitter.Win10.ViewModels
         public void NavigateToAddTransaction()
         {
             _navigationManager.NavigateToAddTransactionViewModel();
+        }
+        
+        public void SortTransactionEventModel()
+        {
+            SortTransactionEventModel(SelectTypeSort.SortParameter);
+        }
+        private void SortTransactionEventModel(SortParameter sortParameter)
+        {
+            if(Transactions==null)
+            {
+                return;
+            }
+            var getParameter = _getParameterFunctions[sortParameter];
+            Transactions= new ObservableCollection <TransactionEventModel>( Transactions.OrderBy(x => getParameter(x)));
         }
 
         private void InializeSortModels()

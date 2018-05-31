@@ -32,7 +32,7 @@ namespace MoneySplitter.Win10.Views
 
         private void OnSelectSortParameter(object sender, SelectionChangedEventArgs e)
         {
-            
+            ViewModel.SortTransactionEventModel();    
         }
     }
 }
