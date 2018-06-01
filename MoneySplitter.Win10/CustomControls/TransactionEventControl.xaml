@@ -45,18 +45,28 @@
                         </Rectangle.Fill>
                     </Rectangle>
                 </Border>
-                <StackPanel VerticalAlignment="Top" 
+                <Grid VerticalAlignment="Top" 
                         Grid.Column="1"
                         Margin="8,0,0,0"
                         HorizontalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
                     <TextBlock Text="{x:Bind ViewModel.Title, Mode=OneWay}"
-                       FontSize="16"
-                       Foreground="{StaticResource DarkColorBrush}"
-                       TextWrapping="Wrap"
-                       HorizontalAlignment="Stretch"/>
+                               FontSize="16"
+                               VerticalAlignment="Top"
+                               Foreground="{StaticResource DarkColorBrush}"
+                               MaxLines="2"
+                               Margin="0,-6,4,0"
+                               TextWrapping="Wrap"
+                               TextTrimming="CharacterEllipsis"
+                               HorizontalAlignment="Stretch"/>  
 
                     <TextBlock  HorizontalAlignment="Stretch"
-                                TextWrapping="Wrap"
+                                Grid.Row="1"
                                 FontSize="14"
                                 Foreground="{StaticResource DarkGrayColorBrush}"
                                 >
@@ -64,8 +74,9 @@
                         <Run Text="{x:Bind ViewModel.Date, Converter={StaticResource DateConverter}, Mode=OneWay}"/>
                     </TextBlock>
 
-                    <StackPanel Orientation="Horizontal"
-                            Margin="0,4,4,4">
+                    <StackPanel Grid.Row="2" 
+                                Orientation="Horizontal"
+                                Margin="0,4,4,4">
                         <TextBlock  HorizontalAlignment="Stretch"
                                     TextTrimming="CharacterEllipsis"
                                     FontSize="14"
@@ -76,7 +87,10 @@
                         </TextBlock>
                              <local:TransactionStatusControl Role="{x:Bind ViewModel.UserRole, Mode=OneWay}"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal"
+                                Grid.Row="3"
+                                VerticalAlignment="Bottom"
+                                >
                         <ItemsControl ItemsSource="{x:Bind ViewModel.CollaboratorImageUrls, Mode=OneWay}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -112,7 +126,7 @@
                         </Border>
                     </StackPanel>
                     <!--<TextBlock extensions:XamlElementExtensions.Resource="BUTTON_HOME"/>-->
-                </StackPanel >
+                </Grid>
                 <Button x:Name="GiveCollaboratorButton"
                         Grid.Column="2"
                         Visibility="{x:Bind ViewModel.IsGiveButtonVisibil, Mode=OneWay}"
