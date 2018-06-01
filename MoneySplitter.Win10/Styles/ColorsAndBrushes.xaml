@@ -1,0 +1,12 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MoneySplitter.Win10.Styles">
+
+    <SolidColorBrush x:Key="NotVisibilCallobartorCountColor" Color="#5c5c5c"/>
+    <SolidColorBrush x:Key="Border" Color="#c5c5c5"/>
+    <SolidColorBrush x:Key="DarkColorBrush" Color="#242424"/>
+    <SolidColorBrush x:Key="DarkGrayColorBrush" Color="#464646"/>
+    <SolidColorBrush x:Key="BorderImageBrush" Color="#c7c1c1"/>
+
+</ResourceDictionary>

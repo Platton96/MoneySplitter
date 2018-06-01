@@ -20,7 +20,7 @@ namespace MoneySplitter.Win10.Converters
 
             if(typeDate==TypeDate.DEADLINE_DATE)
             {
-                return "Deadline date: ";
+                return "Deadline: ";
             }
             return "Event date: ";
         }
