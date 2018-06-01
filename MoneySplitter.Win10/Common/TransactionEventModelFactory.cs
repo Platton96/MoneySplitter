@@ -25,6 +25,14 @@ namespace MoneySplitter.Win10.Common
 			return friendTransactions.Select(tr => ConvertTransactionModelToTransactionEventModel(tr, friendId, isForceHide, isDeadLineShowed));
 		}
 
+		public TransactionEventModel GetTransactionEvent(TransactionModel friendTransaction,
+			int? friendId = null,
+			bool isForceHide = false,
+			bool isDeadLineShowed = false)
+		{
+			return ConvertTransactionModelToTransactionEventModel(friendTransaction, friendId, isForceHide, isDeadLineShowed);
+		}
+
 		private UserRole GetUserRole(int userId, TransactionModel transaction)
 		{
 			if (transaction.Owner.Id == userId)
