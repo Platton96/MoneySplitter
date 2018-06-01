@@ -107,28 +107,39 @@
             </Setter>
         </Style>
     </UserControl.Resources>
+    
     <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition  Width="auto"/>
+        </Grid.ColumnDefinitions>
 
-        <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Stretch">
             <Ellipse Width="60" Height="60">
                 <Ellipse.Fill>
                     <ImageBrush ImageSource="{x:Bind ViewModel.ImageUrl, Mode=OneWay}"/>
                 </Ellipse.Fill>
             </Ellipse>
-            <StackPanel VerticalAlignment="Center" Margin="7">
-                <TextBlock IsTextSelectionEnabled="True">
+            <StackPanel VerticalAlignment="Center" Margin="7"
+                        Grid.Column="1"
+                        HorizontalAlignment="Stretch">
+                <TextBlock IsTextSelectionEnabled="True"
+                           HorizontalAlignment="Stretch"
+                           TextTrimming="WordEllipsis">
                     <Run Text="{x:Bind ViewModel.Name, Mode=OneWay}" />
                     <Run Text=" "/>
                     <Run Text="{x:Bind ViewModel.Surname, Mode=OneWay}"/>
                 </TextBlock>
-                <TextBlock Text="{x:Bind ViewModel.Email, Mode=OneWay}"/>
+                <TextBlock Text="{x:Bind ViewModel.Email, Mode=OneWay}"
+                           HorizontalAlignment="Stretch"
+                           TextTrimming="CharacterEllipsis"/>
                 <!--<TextBlock extensions:XamlElementExtensions.Resource="BUTTON_HOME"/>-->
-            </StackPanel>
-            <Button Click="OnAddOrRemoveButtonClick" 
-                    Content="{x:Bind ButtonContent, Mode=OneWay}" 
-                    Style="{StaticResource DefaultButtonStyle}"
-                    />
-        </StackPanel>
+            </StackPanel >
+        <Button Click="OnAddOrRemoveButtonClick" 
+                Content="{x:Bind ButtonContent, Mode=OneWay}" 
+                Style="{StaticResource DefaultButtonStyle}"
+                Grid.Column="2"
+                HorizontalAlignment="Right"
+                Visibility="{x:Bind IsButtonVisible, Mode=OneWay}"/>
     </Grid>
 </UserControl>

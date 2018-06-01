@@ -9,6 +9,6 @@ namespace MoneySplitter.Services.Inerfaces
         UserModel ConvertUserDataToUserModel(UserData userData);
         RegisterUserData ConvertRegisterModelToRegisterUserData(RegisterModel registerModel);
         TransactionModel ConvertTransactioDataToTransactionModel(TransactionData transactionData);
-        RegisterTransactionData ConvertRegisterTransactioModelToRegisterTransactionData(RegisterTransactionModel registerTransactionModel);
+        AddTransactionData ConvertAddTransactioModelToAddTransactionData(AddTransactionModel addTransactionModel);
     }
 }

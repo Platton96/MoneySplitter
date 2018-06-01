@@ -16,18 +16,22 @@
                    FontSize="18"
                    Text="You daon't have transactions("
                    Visibility="{x:Bind ViewModel.IsNotTransactionsTextVisibility, Mode=OneWay}"/>
+        <StackPanel>
+            <Button Content="add" 
+                    Click="OnAddTransactionButtonClick"/>
 
-        <ListView x:Name="TransactionsList"
-                  ItemsSource="{x:Bind ViewModel.Transactions, Mode=OneWay}"
-                  IsItemClickEnabled="True">
+            <ListView x:Name="TransactionsList"
+                      ItemsSource="{x:Bind ViewModel.Transactions, Mode=OneWay}"
+                      IsItemClickEnabled="True">
 
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models:TransactionModel">
-                    <customControls:TransctionsControl ViewModel="{x:Bind Mode=OneWay}"/>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:TransactionModel">
+                        <customControls:TransctionControl ViewModel="{x:Bind Mode=OneWay}"/>
 
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
         <customControls:ErrorDetailsControl IsErrorVisable="{x:Bind ViewModel.IsErrorVisible, Mode=OneWay}"
                                             ErrorDetails="{x:Bind ViewModel.ErrorDetailsModel, Mode=OneWay}"/>
         <customControls:LoadRingControl IsActiveRing="{x:Bind ViewModel.IsLoading, Mode=OneWay}"/>

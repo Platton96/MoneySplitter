@@ -1,5 +1,4 @@
-﻿
-namespace MoneySplitter.Models.App
+﻿namespace MoneySplitter.Models.App
 {
     public class FileImageModel
     {

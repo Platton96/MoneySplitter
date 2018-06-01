@@ -6,10 +6,16 @@ namespace MoneySplitter.Win10.Views
     public sealed partial class TransactionsView : Page
     {
         public TransactionsViewModel ViewModel { get; set; }
+
         public TransactionsView()
         {
             InitializeComponent();
             DataContextChanged += (s, e) => { ViewModel = DataContext as TransactionsViewModel; };
+        }
+
+        private void OnAddTransactionButtonClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            ViewModel.NavigateToAddTransaction();
         }
     }
 }

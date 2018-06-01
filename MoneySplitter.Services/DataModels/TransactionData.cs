@@ -27,16 +27,22 @@ namespace MoneySplitter.Services.DataModels
         public UserModel Owner { get; set; }
 
         [DataMember]
-        public IEnumerable<UserModel> Collaborators { get; set; }
+        public bool IsClosed { get; set; }
 
         [DataMember]
-        public IEnumerable<UserModel> Finished { get; set; }
+        public IEnumerable<UserData> Collaborators { get; set; }
 
         [DataMember]
-        public IEnumerable<UserModel> InProgress { get; set; }
+        public IEnumerable<int> FinishedIds { get; set; }
 
-        [DataMember (Name="Coast")]
+        [DataMember]
+        public IEnumerable<int> InProgressIds { get; set; }
+
+        [DataMember(Name = "Coast")]
         public double Cost { get; set; }
+
+        [DataMember]
+        public double SingleCost { get; set; }
 
         [DataMember]
         public string ImageUrl { get; set; }

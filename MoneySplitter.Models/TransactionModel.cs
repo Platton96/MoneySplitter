@@ -12,9 +12,10 @@ namespace MoneySplitter.Models
         public DateTime CreationDate { get; set; }
         public UserModel Owner { get; set; }
         public IEnumerable<UserModel> Collaborators { get; set; }
-        public IEnumerable<UserModel> Finished { get; set; }
-        public IEnumerable<UserModel> InProgress { get; set; }
+        public IEnumerable<int> FinishedIds { get; set; }
+        public IEnumerable<int> InProgressIds { get; set; }
         public double Cost { get; set; }
         public string ImageUrl { get; set; }
+        public double SingleCost { get; set; }
     }
 }

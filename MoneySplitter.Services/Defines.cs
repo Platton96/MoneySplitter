@@ -23,15 +23,16 @@
             {
                 public const string USERS = "/users";
                 public const string SEARCH = "/search";
-                public const string SEARCH_PARAMETR = "?query=";
+                public const string SEARCH_PARAMETR = "query";
             }
 
             public static class Friends
             {
                 public const string FRIENDS = "/friends";
                 public const string ADD_FRIEND = "/add";
-                public const string ALL_FRIENDS= "/all";
+                public const string ALL_FRIENDS = "/all";
                 public const string REMOVE_FRIEND = "/remove";
+                public const string FRIEND_ID = "friendId";
             }
 
             public static class Transactions
@@ -40,6 +41,17 @@
                 public const string ALL = "/all";
                 public const string ADD = "/add";
                 public const string MY = "/my";
+                public const string COLLABORATE = "/collaborate";
+                public const string APPROVE = "approve";
+
+                public static class Parameters
+                {
+                    public const string ID = "id";
+                    public const string TRANSACTION_ID = "transactionId";
+                    public const string USER_ID = "userId";
+                }
+
+
             }
             public static class HeaderNames
             {

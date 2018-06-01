@@ -9,15 +9,20 @@ namespace MoneySplitter.Win10.ViewModels
 {
     public class TransactionsViewModel : Screen
     {
+        #region Fields
         private ObservableCollection<TransactionModel> _transactions;
 
-        private ITransactionsManager _transactionsManager;
+        private readonly ITransactionsManager _transactionsManager;
+        private readonly INavigationManager _navigationManager;
 
         private bool _isNotTransactionsTextVisibility;
         private bool _isLoading;
         private bool _isErrorVisible;
         private ErrorDetailsModel _errorDetailsModel;
 
+        #endregion
+
+        #region Properties
         public ObservableCollection<TransactionModel> Transactions
         {
             get { return _transactions; }
@@ -67,12 +72,17 @@ namespace MoneySplitter.Win10.ViewModels
                 NotifyOfPropertyChange(nameof(ErrorDetailsModel));
             }
         }
-        
-        public TransactionsViewModel(ITransactionsManager transactionsManager)
+        #endregion
+
+        #region Constructor
+        public TransactionsViewModel(ITransactionsManager transactionsManager, INavigationManager navigationManager)
         {
             _transactionsManager = transactionsManager;
+            _navigationManager = navigationManager;
         }
+        #endregion
 
+        #region Methods
         protected override async void OnActivate()
         {
             base.OnActivate();
@@ -81,14 +91,14 @@ namespace MoneySplitter.Win10.ViewModels
             IsErrorVisible = false;
             IsNotTransactionsTextVisibility = false;
 
-            var isSuccessExecution = await _transactionsManager.LoadUserTransactions();
+            var isSuccessExecution = await _transactionsManager.LoadUserTransactionsAsync();
 
             IsLoading = false;
             if (!isSuccessExecution)
             {
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
-                    ErrorTitle = Defines.ErrorDetails.Login.ERROR_TITLE,
+                    ErrorTitle = Defines.ErrorDetails.DEFAULT_ERROR_TITLE,
                     ErrorDescription = Defines.ErrorDetails.PROBLEM_SERVER
                 };
 
@@ -103,5 +113,11 @@ namespace MoneySplitter.Win10.ViewModels
 
             Transactions = new ObservableCollection<TransactionModel>(_transactionsManager.UserTransactions);
         }
+
+        public void NavigateToAddTransaction()
+        {
+            _navigationManager.NavigateToAddTransactionViewModel();
+        }
+        #endregion
     }
 }

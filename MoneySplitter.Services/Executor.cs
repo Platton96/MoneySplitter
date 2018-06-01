@@ -11,7 +11,7 @@ namespace MoneySplitter.Services
         {
             for (int i = 0; i < Defines.Executor.EXECUTION_ATTEMPTS_COUNT; i++)
             {
-                if(await ExecuteOneTime(asyncAction))
+                if (await ExecuteOneTime(asyncAction))
                 {
                     return;
                 }

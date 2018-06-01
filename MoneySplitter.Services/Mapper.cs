@@ -2,6 +2,7 @@
 using MoneySplitter.Services.DataModels;
 using MoneySplitter.Services.Inerfaces;
 using MoneySplitter.Models.Session;
+using System.Linq;
 
 namespace MoneySplitter.Services
 {
@@ -9,7 +10,7 @@ namespace MoneySplitter.Services
     {
         public UserModel ConvertUserDataToUserModel(UserData userData)
         {
-            if (userData==null)
+            if (userData == null)
             {
                 return null;
             }
@@ -28,9 +29,9 @@ namespace MoneySplitter.Services
             };
         }
 
-        public RegisterUserData ConvertRegisterModelToRegisterUserData( RegisterModel registerModel)
+        public RegisterUserData ConvertRegisterModelToRegisterUserData(RegisterModel registerModel)
         {
-            return  new RegisterUserData()
+            return new RegisterUserData()
             {
                 Name = registerModel.Name,
                 Surname = registerModel.Surname,
@@ -43,18 +44,16 @@ namespace MoneySplitter.Services
             };
         }
 
-        public RegisterTransactionData ConvertRegisterTransactioModelToRegisterTransactionData(RegisterTransactionModel registerTransactionModel)
+        public AddTransactionData ConvertAddTransactioModelToAddTransactionData(AddTransactionModel addTransactionModel)
         {
-            return new RegisterTransactionData()
+            return new AddTransactionData()
             {
-                Title = registerTransactionModel.Title,
-                Token = registerTransactionModel.Token,
-                Email = registerTransactionModel.Email,
-                Cost = registerTransactionModel.Cost,
-                DeadlineDate = registerTransactionModel.DeadlineDate,
-                Description = registerTransactionModel.Description,
-                CollaboratorsIds = registerTransactionModel.CollaboratorsIds,
-                ImageBase64String = registerTransactionModel.ImageBase64String,
+                Title = addTransactionModel.Title,
+                Cost = addTransactionModel.Cost,
+                DeadlineDate = addTransactionModel.DeadlineDate.DateTime,
+                Description = addTransactionModel.Description,
+                CollaboratorsIds = addTransactionModel.CollaboratorsIds,
+                ImageBase64String = addTransactionModel.ImageBase64String,
             };
         }
 
@@ -69,10 +68,11 @@ namespace MoneySplitter.Services
                 DeadlineDate = transactionData.DeadlineDate,
                 Description = transactionData.Description,
                 Cost = transactionData.Cost,
-                Collaborators = transactionData.Collaborators,
-                Finished = transactionData.Finished,
-                InProgress = transactionData.InProgress,
-                ImageUrl = transactionData.ImageUrl
+                Collaborators = transactionData.Collaborators.Select(user => ConvertUserDataToUserModel(user)),
+                FinishedIds = transactionData.FinishedIds,
+                InProgressIds = transactionData.InProgressIds,
+                ImageUrl = transactionData.ImageUrl,
+                SingleCost = transactionData.SingleCost
             };
         }
 

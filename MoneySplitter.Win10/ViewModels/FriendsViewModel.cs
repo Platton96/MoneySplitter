@@ -10,15 +10,18 @@ namespace MoneySplitter.Win10.ViewModels
 {
     public class FriendsViewModel : Screen
     {
+        #region Fields
         private ObservableCollection<UserModel> _friends;
 
-        private IFriendsManager _friendsManager;
+        private readonly IFriendsManager _friendsManager;
 
         private bool _isNotFriendsTextVisibility;
         private bool _isLoading;
         private bool _isErrorVisible;
         private ErrorDetailsModel _errorDetailsModel;
+        #endregion
 
+        #region Properties
         public ObservableCollection<UserModel> Friends
         {
             get { return _friends; }
@@ -68,15 +71,19 @@ namespace MoneySplitter.Win10.ViewModels
                 NotifyOfPropertyChange(nameof(ErrorDetailsModel));
             }
         }
+        #endregion
 
+        #region Constructor
         public FriendsViewModel(IFriendsManager friendsManager)
         {
             _friendsManager = friendsManager;
         }
+        #endregion
 
+        #region Methods
         public async Task RemoveFriendAsync(int friendId)
         {
-            var friend = Friends.Where(x => x.Id == friendId).First();
+            var friend = Friends.FirstOrDefault(x => x.Id == friendId);
             Friends.Remove(friend);
 
             var isSuccessResponce = await _friendsManager.RemoveFriendAsync(friendId);
@@ -109,7 +116,7 @@ namespace MoneySplitter.Win10.ViewModels
                 IsErrorVisible = true;
                 return;
             }
-            if (_friendsManager.UserFriends.Count()==0)
+            if (!_friendsManager.UserFriends.Any())
             {
                 IsNotFriendsTextVisibility = true;
                 return;
@@ -117,6 +124,7 @@ namespace MoneySplitter.Win10.ViewModels
 
             Friends = new ObservableCollection<UserModel>(_friendsManager.UserFriends);
         }
+        #endregion
     }
 }
 

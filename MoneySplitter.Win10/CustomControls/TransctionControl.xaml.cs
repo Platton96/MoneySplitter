@@ -4,7 +4,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace MoneySplitter.Win10.CustomControls
 {
-    public sealed partial class TransctionsControl : UserControl
+    public sealed partial class TransctionControl : UserControl
     {
         public TransactionModel ViewModel
         {
@@ -15,10 +15,10 @@ namespace MoneySplitter.Win10.CustomControls
         public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(
             "ViewModel",
             typeof(TransactionModel),
-            typeof(TransctionsControl),
+            typeof(TransctionControl),
             null);
 
-        public TransctionsControl()
+        public TransctionControl()
         {
             InitializeComponent();
         }
