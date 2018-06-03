@@ -23,8 +23,7 @@
        
     </UserControl.Resources>
     
-        <Grid>
-        <Border>
+
             <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
@@ -145,7 +144,6 @@
                     </Button.Content>
                 </Button>
             </Grid>
-        </Border>
-    </Grid>
+
 
 </UserControl>
