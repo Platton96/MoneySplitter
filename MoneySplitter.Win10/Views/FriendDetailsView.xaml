@@ -6,8 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:customControls="using:MoneySplitter.Win10.CustomControls"
+    xmlns:models="using:MoneySplitter.Models"
     mc:Ignorable="d">
-    
+    <Page.Resources>
+        <ResourceDictionary Source="../Styles/GlobalStyles.xaml"/>
+    </Page.Resources>
 
     <Grid VerticalAlignment="Stretch"
           HorizontalAlignment="Stretch">
@@ -44,6 +47,41 @@
                 <SolidColorBrush Color="#FFFFFF" Opacity="0.8" />
             </Grid.Background>
             <customControls:UserDetailsControl ViewModel="{x:Bind ViewModel.Friend}"/>
+            <Grid Grid.Row="1"
+                  Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Style="{StaticResource ListHeaderTextStyle}"
+                           Text="Debts"/>
+                <ListView x:Name="DebtsList"
+                          ItemsSource="{x:Bind ViewModel.Debts, Mode=OneWay}"
+                          IsItemClickEnabled="True"
+                          Grid.Row="1">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="models:TransactionEventModel">
+                            <Grid Margin="12,12,12,0">
+                                <Border BorderThickness="0,0,0,1"
+                                        BorderBrush="{StaticResource Border}">
+                                    <Grid Padding="0,0,0,12">
+                                        <customControls:TransactionEventControl ViewModel="{x:Bind Mode=OneWay}"
+                                                                                                                    />
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
         </Grid>
 
     </Grid>

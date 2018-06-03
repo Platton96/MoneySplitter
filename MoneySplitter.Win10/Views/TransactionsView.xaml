@@ -74,7 +74,7 @@
                                         BorderBrush="{StaticResource Border}">
                                     <Grid Padding="0,0,0,12">
                                     <customControls:TransactionEventControl ViewModel="{x:Bind Mode=OneWay}"
-                                                                        OnGiveTransactionButtonClick="OnGiveCollaboratorButtonClick"/>
+                                                                            OnGiveTransactionButtonClick="OnGiveCollaboratorButtonClick"/>
                                     </Grid>
                                 </Border>
                             </Grid>

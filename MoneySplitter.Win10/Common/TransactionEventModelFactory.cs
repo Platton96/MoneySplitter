@@ -22,10 +22,24 @@ namespace MoneySplitter.Win10.Common
 			bool isForceHide = false,
 			bool isDeadLineShowed = false)
 		{
-			return friendTransactions.Select(tr => ConvertTransactionModelToTransactionEventModel(tr, friendId, isForceHide, isDeadLineShowed));
+			return friendTransactions
+                .Select(tr => ConvertTransactionModelToTransactionEventModel(tr, friendId, isForceHide, isDeadLineShowed));
 		}
+        public IEnumerable<TransactionEventModel> GetFriendDebts(IEnumerable<TransactionModel> friendTransactions, int friendId)
+        {
+            return GetTransactionEvents(friendTransactions.
+                Where(tr => tr.Owner.Id == _membershipService.CurrentUser.Id), friendId, false, true);
+     
+        }
 
-		public TransactionEventModel GetTransactionEvent(TransactionModel friendTransaction,
+        public IEnumerable<TransactionEventModel> GetFriendLends(IEnumerable<TransactionModel> friendTransactions, int friendId)
+        {
+
+            return GetTransactionEvents(friendTransactions.
+                Where(tr => tr.Owner.Id == _membershipService.CurrentUser.Id), friendId);
+        }
+
+        public TransactionEventModel GetTransactionEvent(TransactionModel friendTransaction,
 			int? friendId = null,
 			bool isForceHide = false,
 			bool isDeadLineShowed = false)

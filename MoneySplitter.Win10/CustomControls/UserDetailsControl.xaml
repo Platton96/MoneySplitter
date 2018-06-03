@@ -10,8 +10,13 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
     <UserControl.Resources>
-        <converters:BankCardConverter x:Key="BankCardConverter" />
-        <converters:PhoneNumberConverter x:Key="PhoneNumberConverter" />
+        <ResourceDictionary>
+            <converters:BankCardConverter x:Key="BankCardConverter" />
+            <converters:PhoneNumberConverter x:Key="PhoneNumberConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/GlobalStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </UserControl.Resources>
 
     <Grid>
@@ -31,24 +36,27 @@
             <TextBlock IsTextSelectionEnabled="True" 
                        TextTrimming="CharacterEllipsis"
                        HorizontalAlignment="Stretch"
-                       FontStyle="Oblique">
+                       Style="{StaticResource ControlMainTextStyle}">
                     <Run Text="{x:Bind ViewModel.Name, Mode=OneWay}" />
                     <Run Text=" "/>
                     <Run Text="{x:Bind ViewModel.Surname, Mode=OneWay}"/>
             </TextBlock>
             <TextBlock HorizontalAlignment="Stretch"
-                       TextTrimming="CharacterEllipsis">
+                       TextTrimming="CharacterEllipsis"
+                       Style="{StaticResource ControlAdditionTextStyle}">
                 <Run Text="Email: "/>
                 <Run Text="{x:Bind ViewModel.Email, Mode=OneWay}"/>
 
             </TextBlock>
             <TextBlock HorizontalAlignment="Stretch"
-                       TextTrimming="CharacterEllipsis">
+                       TextTrimming="CharacterEllipsis"
+                       Style="{StaticResource ControlAdditionTextStyle}">
                 <Run Text="Phone number: "/>
                 <Run Text="{x:Bind ViewModel.PhoneNumber, Converter={StaticResource PhoneNumberConverter}, Mode=OneWay}"/>
             </TextBlock>
             <TextBlock HorizontalAlignment="Stretch"
-                       TextTrimming="CharacterEllipsis">
+                       TextTrimming="CharacterEllipsis"
+                       Style="{StaticResource ControlAdditionTextStyle}">
                 <Run Text="Bank card: "/>
                 <Run Text="{x:Bind ViewModel.CreditCardNumber, Converter={StaticResource BankCardConverter}, Mode=OneWay}"/>
             </TextBlock>

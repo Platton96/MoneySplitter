@@ -8,5 +8,6 @@
     <SolidColorBrush x:Key="DarkColorBrush" Color="#242424"/>
     <SolidColorBrush x:Key="DarkGrayColorBrush" Color="#464646"/>
     <SolidColorBrush x:Key="BorderImageBrush" Color="#c7c1c1"/>
+    <SolidColorBrush x:Key="MainBrush" Color="#2C404B"/>
 
 </ResourceDictionary>

@@ -11,14 +11,14 @@
     d:DesignWidth="400">
     <UserControl.Resources>
         <ResourceDictionary>
-        <SolidColorBrush x:Name="NotVisibilCallobartorCountColor" Color="#5c5c5c"/>
-        <SolidColorBrush x:Name="Border" Color="#c5c5c5"/>
-        <converters:DateCoverter x:Key="DateConverter" />
-        <converters:TypeDateCoverter x:Key="TypeDateCoverter" />
-        <converters:NotVisibilCollabarratorsCountVisibilityConverter x:Key="NotVisibilCollabarratorsCountVisibilityConverter"/>
-        <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="../Styles/GlobalStyles.xaml"/>
-        </ResourceDictionary.MergedDictionaries>
+            <SolidColorBrush x:Name="NotVisibilCallobartorCountColor" Color="#5c5c5c"/>
+            <SolidColorBrush x:Name="Border" Color="#c5c5c5"/>
+            <converters:DateCoverter x:Key="DateConverter" />
+            <converters:TypeDateCoverter x:Key="TypeDateCoverter" />
+            <converters:NotVisibilCollabarratorsCountVisibilityConverter x:Key="NotVisibilCollabarratorsCountVisibilityConverter"/>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/GlobalStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
        
     </UserControl.Resources>
