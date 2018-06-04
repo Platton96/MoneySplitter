@@ -3,8 +3,10 @@ using MoneySplitter.Infrastructure;
 using MoneySplitter.Models;
 using MoneySplitter.Models.App;
 using MoneySplitter.Win10.Common;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace MoneySplitter.Win10.ViewModels
 {
@@ -14,7 +16,6 @@ namespace MoneySplitter.Win10.ViewModels
 
         private readonly ITransactionsManager _transactionsManager;
         private readonly TransactionEventModelFactory _transactionEventModelFactory;
-        private readonly TransactionEventModelFactory _transactioEventModelFactory;
 
         private UserModel _friend;
 
@@ -27,6 +28,8 @@ namespace MoneySplitter.Win10.ViewModels
         private bool _isNotTransactionsTextVisibility;
         private bool _isLoading;
         private bool _isErrorVisible;
+        public double _debt;
+        public bool _isDebt;
         private ErrorDetailsModel _errorDetailsModel;
 
         #endregion
@@ -102,7 +105,25 @@ namespace MoneySplitter.Win10.ViewModels
                 NotifyOfPropertyChange(nameof(IsErrorVisible));
             }
         }
+        public bool IsDebt
+        {
+            get => _isDebt;
+            set
+            {
+                _isDebt = value;
+                NotifyOfPropertyChange(nameof(IsDebt));
+            }
+        }
 
+        public double Debt
+        {
+            get => Math.Abs(_debt);
+            set
+            {
+                _debt = value;
+                NotifyOfPropertyChange(nameof(Debt));
+            }
+        }
         public ErrorDetailsModel ErrorDetailsModel
         {
             get => _errorDetailsModel;
@@ -115,12 +136,12 @@ namespace MoneySplitter.Win10.ViewModels
         #endregion
 
         #region Constructor
-        public FriendDetailsViewModel(ITransactionsManager transactionsManager, 
-            TransactionEventModelFactory transactioEventModelFactory)
-            
+        public FriendDetailsViewModel(ITransactionsManager transactionsManager,
+            TransactionEventModelFactory transactionEventModelFactory)
+
         {
             _transactionsManager = transactionsManager;
-            _transactioEventModelFactory = transactioEventModelFactory;
+            _transactionEventModelFactory = transactionEventModelFactory;
         }
         #endregion
         public UserModel Parameter { get; set; }
@@ -145,11 +166,12 @@ namespace MoneySplitter.Win10.ViewModels
                 IsErrorVisible = true;
                 return;
             }
-
             _friendTransactions = executionResult.Result;
             Debts = new ObservableCollection<TransactionEventModel>(_transactionEventModelFactory.GetFriendDebts(_friendTransactions, Friend.Id));
-            //Lends = new ObservableCollection<TransactionEventModel>(_friendTransactionModelFactory.GetFriendLends(_friendTransactions, Friend.Id));
-        //    TransactionEvents = new ObservableCollection<TransactionEventModel>(_transactioEventModelFactory.GetTransactionEvents(_friendTransactions,Friend.Id));
+            Lends = new ObservableCollection<TransactionEventModel>(_transactionEventModelFactory.GetFriendLends(_friendTransactions, Friend.Id));
+            Debt = Debts.Sum(x => x.SingleCost) - Lends.Sum(x => x.SingleCost);
+            IsDebt = _debt > 0 ? true : false;
+            TransactionEvents = new ObservableCollection<TransactionEventModel>(_transactionEventModelFactory.GetCommonTransationsByFriend(_friendTransactions, Friend.Id));
         }
     }
 }

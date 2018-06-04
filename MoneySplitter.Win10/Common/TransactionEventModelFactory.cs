@@ -36,7 +36,13 @@ namespace MoneySplitter.Win10.Common
         {
 
             return GetTransactionEvents(friendTransactions.
-                Where(tr => tr.Owner.Id == _membershipService.CurrentUser.Id), friendId);
+                Where(tr => tr.Owner.Id ==friendId), friendId);
+        }
+
+        public IEnumerable<TransactionEventModel> GetCommonTransationsByFriend(IEnumerable<TransactionModel> friendTransactions, int friendId)
+        {
+            return GetTransactionEvents(friendTransactions.
+                Where(tr => tr.Owner.Id != _membershipService.CurrentUser.Id && tr.Owner.Id != friendId));
         }
 
         public TransactionEventModel GetTransactionEvent(TransactionModel friendTransaction,
