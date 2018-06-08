@@ -128,7 +128,11 @@ namespace MoneySplitter.Win10.ViewModels
 			var userTransactions = _transactionsManager.UserTransactions;
 
 			TransactionsCount = userTransactions.Count();
-			LatestTransaction = _transactionsFactory.GetTransactionEvent(userTransactions.First(), null, true);
+            if(TransactionsCount>0)
+            {
+                LatestTransaction = _transactionsFactory.GetTransactionEvent(userTransactions.First(), null, true);
+            }
+		
 			ConfigureNotifications();
 
 			IsLoading = false;

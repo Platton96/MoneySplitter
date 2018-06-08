@@ -16,7 +16,7 @@ namespace MoneySplitter.Win10.Converters
                 return null;
             }
 
-            return String.Format("{0:+### (##) ####-##-##}", (long)value);
+            return String.Format("{0:+### (##) ###-##-##}", (long)value);
         }
 
         object IValueConverter.ConvertBack(object value, Type targetType, object parameter, string language)

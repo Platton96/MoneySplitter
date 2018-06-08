@@ -42,8 +42,10 @@
                 public const string ADD = "/add";
                 public const string MY = "/my";
                 public const string COLLABORATE = "/collaborate";
-                public const string APPROVE = "approve";
+                public const string APPROVEALL = "/aproveall";
+                public const string APPROVE = "/approve";
                 public const string BY_USER_ID = "byUserId";
+                public const string FRIEND_ID = "friendId";
 
                 public static class Parameters
                 {

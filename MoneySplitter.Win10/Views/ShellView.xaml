@@ -54,7 +54,7 @@
                         <Setter Target="ContentFrame.Margin" Value="0"/>
                     </VisualState.Setters>
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="700"></AdaptiveTrigger>
+                        <AdaptiveTrigger MinWindowWidth="640"></AdaptiveTrigger>
                     </VisualState.StateTriggers>
                 </VisualState>
                 <VisualState x:Name="Mobile">
