@@ -97,7 +97,6 @@
     </Compile>
     <Compile Include="Common\CollaboratorModelFactory.cs" />
     <Compile Include="Common\FilePickerService.cs" />
-    <Compile Include="Common\FriendTransactionModelFactory.cs" />
     <Compile Include="Common\NavigateManager.cs" />
     <Compile Include="Common\SearchEngine.cs" />
     <Compile Include="Common\TransactionEventModelFactory.cs" />

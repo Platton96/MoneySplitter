@@ -1,9 +1,5 @@
 ﻿using MoneySplitter.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.UI.Xaml.Data;
 
 namespace MoneySplitter.Win10.Converters

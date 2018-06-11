@@ -54,7 +54,6 @@ namespace MoneySplitter.Win10.Dependencies
 
             _container.Singleton<IFilePickerService, FilePickerService>();
             _container.Singleton<CollaboratorModelFactory>();
-            _container.Singleton<FriendTransactionModelFactory>();
             _container.Singleton<TransactionEventModelFactory>();
             _container.Singleton<SearchEngine>();
         }
