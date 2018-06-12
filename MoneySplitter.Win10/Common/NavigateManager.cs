@@ -21,7 +21,6 @@ namespace MoneySplitter.Win10.Common
 		public NavigationManager(INavigationService navigationService)
 		{
 			_windowNavigationService = navigationService;
-
 		}
 		#endregion
 

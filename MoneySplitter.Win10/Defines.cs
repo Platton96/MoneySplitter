@@ -2,6 +2,11 @@
 {
     public static class Defines
     {
+        public static class TransactionModel
+        {
+            public const int MAX_COUNT_IMAGE = 4;
+        }
+
         public static class SortModel
         {
             public static class Title

@@ -6,37 +6,36 @@ using System.Linq;
 
 namespace MoneySplitter.Win10.Common
 {
-	public class TransactionEventModelFactory
-	{
-		private readonly ITransactionsManager _transactionsManager;
-		private readonly IMembershipService _membershipService;
+    public class TransactionEventModelFactory
+    {
+        private readonly ITransactionsManager _transactionsManager;
+        private readonly IMembershipService _membershipService;
 
-		public TransactionEventModelFactory(ITransactionsManager transactionsManager, IMembershipService membershipService)
-		{
-			_transactionsManager = transactionsManager;
-			_membershipService = membershipService;
-		}
+        public TransactionEventModelFactory(ITransactionsManager transactionsManager, IMembershipService membershipService)
+        {
+            _transactionsManager = transactionsManager;
+            _membershipService = membershipService;
+        }
 
-		public IEnumerable<TransactionEventModel> GetTransactionEvents(IEnumerable<TransactionModel> friendTransactions,
-			int? friendId = null,
-			bool isForceHide = false,
-			bool isDeadLineShowed = false)
-		{
-			return friendTransactions
+        public IEnumerable<TransactionEventModel> GetTransactionEvents(IEnumerable<TransactionModel> friendTransactions,
+            int? friendId = null,
+            bool isForceHide = false,
+            bool isDeadLineShowed = false)
+        {
+            return friendTransactions
                 .Select(tr => ConvertTransactionModelToTransactionEventModel(tr, friendId, isForceHide, isDeadLineShowed));
-		}
+        }
+
         public IEnumerable<TransactionEventModel> GetFriendDebts(IEnumerable<TransactionModel> friendTransactions, int friendId)
         {
             return GetTransactionEvents(friendTransactions.
-                Where(tr => tr.Owner.Id == _membershipService.CurrentUser.Id), friendId, false, true);
-     
+                Where(tr => IsMyTransaction(tr)), friendId, false, true);
         }
 
         public IEnumerable<TransactionEventModel> GetFriendLends(IEnumerable<TransactionModel> friendTransactions, int friendId)
         {
-
             return GetTransactionEvents(friendTransactions.
-                Where(tr => tr.Owner.Id ==friendId), friendId);
+                Where(tr => tr.Owner.Id == friendId), friendId);
         }
 
         public IEnumerable<TransactionEventModel> GetCommonTransationsByFriend(IEnumerable<TransactionModel> friendTransactions, int friendId)
@@ -46,115 +45,144 @@ namespace MoneySplitter.Win10.Common
         }
 
         public TransactionEventModel GetTransactionEvent(TransactionModel friendTransaction,
-			int? friendId = null,
-			bool isForceHide = false,
-			bool isDeadLineShowed = false)
-		{
-			return ConvertTransactionModelToTransactionEventModel(friendTransaction, friendId, isForceHide, isDeadLineShowed);
-		}
+            int? friendId = null,
+            bool isForceHide = false,
+            bool isDeadLineShowed = false)
+        {
+            return ConvertTransactionModelToTransactionEventModel(friendTransaction, friendId, isForceHide, isDeadLineShowed);
+        }
 
-		private UserRole GetUserRole(int userId, TransactionModel transaction)
-		{
-			if (transaction.Owner.Id == userId)
-			{
-				return UserRole.USER_TRANSACTION;
-			}
-			if (transaction.InProgressIds.Any(id => id == userId))
-			{
-				return UserRole.IN_PROGRESS;
-			}
+        private UserRole GetUserRole(int userId, TransactionModel transaction)
+        {
+            if (transaction.Owner.Id == userId)
+            {
+                return UserRole.MY_TRANSACTION;
+            }
 
-			if (transaction.FinishedIds.Any(id => id == userId))
-			{
-				return UserRole.FINISHED;
-			}
+            if (transaction.InProgressIds.Any(id => id == userId))
+            {
+                return UserRole.IN_PROGRESS;
+            }
 
-			if (transaction.Collaborators.Any(cl => cl.Id == userId))
-			{
-				return UserRole.IN_BEGIN;
-			}
-			return UserRole.UNDEFINED;
-		}
+            if (transaction.FinishedIds.Any(id => id == userId))
+            {
+                return UserRole.FINISHED;
+            }
 
-		private UserRole GetFriendRole(int? friendId, TransactionModel transactionModel)
-		{
-			if (friendId == null)
-			{
-				return UserRole.UNDEFINED;
-			}
-			return GetUserRole((int)friendId, transactionModel);
-		}
-		private int GetNotVisibilCollabarratorsCount(TransactionModel transactionModel)
-		{
-			var VisibilUserWithoutMeAndOwnerCount = transactionModel.Owner.Id == _membershipService.CurrentUser.Id ? 2 : 1;
+            if (transaction.Collaborators.Any(cl => cl.Id == userId))
+            {
+                return UserRole.IN_BEGIN;
+            }
 
-			return transactionModel.Collaborators.Count(cl => cl.Id != transactionModel.Owner.Id &&
-															  cl.Id != _membershipService.CurrentUser.Id) - VisibilUserWithoutMeAndOwnerCount;
+            return UserRole.UNDEFINED;
+        }
 
-		}
+        private UserRole GetFriendRole(int? friendId, TransactionModel transactionModel)
+        {
+            if (friendId == null)
+            {
+                return UserRole.UNDEFINED;
+            }
 
-		private IEnumerable<string> GetVicibilCollaboratorsImageUrls(TransactionModel transactionModel)
-		{
-			const int MAX_COUNT_IMAGE = 4;
-			var OwnerAndMe = new List<string>();
-			OwnerAndMe.Add(transactionModel.Owner.ImageUrl);
+            return GetUserRole((int)friendId, transactionModel);
+        }
 
-			if (transactionModel.Owner.Id != _membershipService.CurrentUser.Id)
-			{
-				OwnerAndMe.Add(_membershipService.CurrentUser.ImageUrl);
-			}
+        private int GetNotVisibilCollabarratorsCount(TransactionModel transactionModel)
+        {
+            var VisibilUserWithoutMeAndOwnerCount = transactionModel.Owner.Id == _membershipService.CurrentUser.Id ? 2 : 1;
 
-			var allCollaborators = OwnerAndMe.Concat(transactionModel.Collaborators.
-														Where(cl => cl.Id != transactionModel.Owner.Id && cl.Id != _membershipService.CurrentUser.Id)
-														.Select(cl => cl.ImageUrl));
+            return transactionModel.Collaborators.Count(cl => IsUserEqualTransactionOwner(cl.Id, transactionModel) &&
+                                                              IsUserEqualCurrentUser(cl.Id)) - VisibilUserWithoutMeAndOwnerCount;
 
-			return allCollaborators.Count() <= MAX_COUNT_IMAGE ? allCollaborators : allCollaborators.Take(MAX_COUNT_IMAGE - 1);
-		}
+        }
 
-		private TypeDate GetTypeDate(TransactionModel transactionModel, bool IsDeadLineShowed)
-		{
-			if (IsDeadLineShowed ||
-				transactionModel.OngoingDate == null ||
-				transactionModel.DeadlineDate < transactionModel.OngoingDate)
-			{
-				return TypeDate.DEADLINE_DATE;
-			}
+        private IEnumerable<string> GetVisibleCollaboratorsImageUrls(TransactionModel transactionModel)
+        {
+            var visibleCollaborators = new List<string>();
+            visibleCollaborators.Add(transactionModel.Owner.ImageUrl);
 
-			return TypeDate.ONGOIND_DATE;
-		}
+            if (!IsMyTransaction(transactionModel))
+            {
+                visibleCollaborators.Add(_membershipService.CurrentUser.ImageUrl);
+            }
 
-		private DateTime GetDate(TypeDate typeDate, TransactionModel transactionModel)
-		{
-			if (typeDate == TypeDate.DEADLINE_DATE)
-			{
-				return transactionModel.DeadlineDate;
-			}
+            foreach (var collaborator in transactionModel.Collaborators)
+            {
+                if (visibleCollaborators.Count>Defines.TransactionModel.MAX_COUNT_IMAGE )
+                {
+                    break;
+                }
 
-			return (DateTime)transactionModel.OngoingDate;
-		}
+                if (!IsUserEqualCurrentUser(collaborator.Id) &&  !IsUserEqualTransactionOwner(collaborator.Id, transactionModel))
+                {
+                    visibleCollaborators.Add(collaborator.ImageUrl);
+                }
 
-		private TransactionEventModel ConvertTransactionModelToTransactionEventModel(TransactionModel transactionModel,
-			int? friendId,
-			bool isForceHide,
-			bool isDeadLineShowed)
-		{
-			var typeDate = GetTypeDate(transactionModel, isDeadLineShowed);
-			return new TransactionEventModel
-			{
-				Title = transactionModel.Title,
-				SingleCost = Math.Round(transactionModel.SingleCost, Defines.Collaborator.COUNT_NUMBER_AFTER_POINT),
-				UserRole = GetUserRole(_membershipService.CurrentUser.Id, transactionModel),
-				FriendRole = GetFriendRole(friendId, transactionModel),
-				TypeDate = typeDate,
-				Date = GetDate(typeDate, transactionModel),
-				NotVisibilCollabarratorsCount = GetNotVisibilCollabarratorsCount(transactionModel),
-				CollaboratorImageUrls = GetVicibilCollaboratorsImageUrls(transactionModel),
-				TransactionId = transactionModel.Id,
-				ImageUrl = transactionModel.ImageUrl,
-				IsForceHide = isForceHide,
-				RootTransaction = transactionModel
-			};
-		}
-	}
+            }
 
+            return visibleCollaborators.Count <= Defines.TransactionModel.MAX_COUNT_IMAGE ? visibleCollaborators : visibleCollaborators.Take(Defines.TransactionModel.MAX_COUNT_IMAGE - 1);
+        }
+
+        private bool IsMyTransaction(TransactionModel transactionModel)
+        {
+            return transactionModel.Owner.Id == _membershipService.CurrentUser.Id;
+        }
+
+        private bool IsUserEqualCurrentUser(int id)
+        {
+            return id == _membershipService.CurrentUser.Id;
+        }
+
+        private bool IsUserEqualTransactionOwner(int userId, TransactionModel transactionModel)
+        {
+            return userId == transactionModel.Owner.Id;
+        }
+
+        private DateType GetTypeDate(TransactionModel transactionModel, bool IsDeadLineShowed)
+        {
+            if (IsDeadLineShowed 
+                || transactionModel.OngoingDate == null 
+                || transactionModel.DeadlineDate < transactionModel.OngoingDate)
+            {
+                return DateType.DEADLINE_DATE;
+            }
+
+            return DateType.ONGOIND_DATE;
+        }
+
+        private DateTime GetDate(DateType typeDate, TransactionModel transactionModel)
+        {
+            if (typeDate == DateType.DEADLINE_DATE)
+            {
+                return transactionModel.DeadlineDate;
+            }
+
+            return (DateTime)transactionModel.OngoingDate;
+        }
+
+        private TransactionEventModel ConvertTransactionModelToTransactionEventModel(
+            TransactionModel transactionModel,
+            int? friendId,
+            bool isForceHide,
+            bool isDeadLineShowed)
+        {
+            var typeDate = GetTypeDate(transactionModel, isDeadLineShowed);
+
+            return new TransactionEventModel
+            {
+                Title = transactionModel.Title,
+                SingleCost = Math.Round(transactionModel.SingleCost, Defines.Collaborator.COUNT_NUMBER_AFTER_POINT),
+                UserRole = GetUserRole(_membershipService.CurrentUser.Id, transactionModel),
+                FriendRole = GetFriendRole(friendId, transactionModel),
+                TypeDate = typeDate,
+                Date = GetDate(typeDate, transactionModel),
+                NotVisibilCollabarratorsCount = GetNotVisibilCollabarratorsCount(transactionModel),
+                CollaboratorImageUrls = GetVisibleCollaboratorsImageUrls(transactionModel),
+                TransactionId = transactionModel.Id,
+                ImageUrl = transactionModel.ImageUrl,
+                IsForceHide = isForceHide,
+                RootTransaction = transactionModel
+            };
+        }
+    }
 }

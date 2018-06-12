@@ -6,22 +6,22 @@ namespace MoneySplitter.Win10.Converters
 {
     public class TypeDateCoverter : IValueConverter
     {
-        object IValueConverter.Convert(object value, Type targetType, object parameter, string language)
+        public object Convert(object value, Type targetType, object parameter, string language)
         {
             if (value == null)
             {
                 return null;
             }
-            var typeDate = (TypeDate)value;
+            var typeDate = (DateType)value;
 
-            if(typeDate==TypeDate.DEADLINE_DATE)
+            if(typeDate==DateType.DEADLINE_DATE)
             {
                 return "Deadline: ";
             }
             return "Event date: ";
         }
 
-        object IValueConverter.ConvertBack(object value, Type targetType, object parameter, string language)
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
             throw new NotImplementedException();
         }

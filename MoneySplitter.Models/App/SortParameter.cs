@@ -2,10 +2,10 @@
 {
     public enum SortParameter
     {
-        CREATING_DATE,
+        CREATION_DATE,
         TRANSACTION_DATE,
         USER_ROLE,
         SINGLE_COST,
-        NAME_TRANSACTION
+        TRANSACTION_NAME
     }
 }

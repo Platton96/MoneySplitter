@@ -136,7 +136,8 @@ namespace MoneySplitter.Win10.ViewModels
         #endregion
 
         #region Constructor
-        public FriendDetailsViewModel(ITransactionsManager transactionsManager,
+        public FriendDetailsViewModel(
+            ITransactionsManager transactionsManager,
             TransactionEventModelFactory transactionEventModelFactory)
 
         {
