@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="using:MoneySplitter.Models"
+    xmlns:extensions="using:MoneySplitter.Win10.Extensions"
     xmlns:customControls="using:MoneySplitter.Win10.CustomControls"
     mc:Ignorable="d">
 
@@ -20,7 +21,7 @@
                     HorizontalAlignment="Center"
                     Padding="3">
 
-                <TextBox PlaceholderText="Enter depts title"
+                <TextBox extensions:XamlElementExtensions.Resource="BUTTON_LOGIN"
                      Text="{x:Bind ViewModel.AddTransactionModel.Title, Mode=TwoWay}"
                      Header="Title"/>
                 <TextBox AcceptsReturn="True" 

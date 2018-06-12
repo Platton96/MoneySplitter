@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="Common\CollaboratorModelFactory.cs" />
     <Compile Include="Common\FilePickerService.cs" />
+    <Compile Include="Common\LocalisationServise.cs" />
     <Compile Include="Common\NavigateManager.cs" />
     <Compile Include="Common\SearchEngine.cs" />
     <Compile Include="Common\TransactionEventModelFactory.cs" />
@@ -195,6 +196,7 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="MoneySplitter.Win10_TemporaryKey.pfx" />
+    <PRIResource Include="Strings\Ru.resw" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Default.rd.xml" />
