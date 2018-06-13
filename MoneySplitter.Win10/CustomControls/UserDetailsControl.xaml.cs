@@ -4,23 +4,24 @@ using Windows.UI.Xaml.Controls;
 
 namespace MoneySplitter.Win10.CustomControls
 {
-    public sealed partial class TransctionControl : UserControl
+    public sealed partial class UserDetailsControl : UserControl
     {
-        public TransactionModel ViewModel
+        public UserModel ViewModel
         {
-            get { return (TransactionModel)GetValue(ViewModelProperty); }
+            get { return (UserModel)GetValue(ViewModelProperty); }
             set { SetValue(ViewModelProperty, value); }
         }
 
         public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(
             "ViewModel",
-            typeof(TransactionModel),
-            typeof(TransctionControl),
+            typeof(UserModel),
+            typeof(UserDetailsControl),
             null);
 
-        public TransctionControl()
+        public UserDetailsControl()
         {
             InitializeComponent();
         }
+
     }
 }

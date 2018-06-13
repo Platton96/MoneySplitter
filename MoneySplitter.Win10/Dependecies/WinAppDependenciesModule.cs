@@ -22,6 +22,7 @@ namespace MoneySplitter.Win10.Dependencies
         {
             _container.PerRequest<LoginViewModel>();
             _container.PerRequest<RegisterViewModel>();
+			_container.PerRequest<TransactionDetailsViewModel>();
 
             _container.PerRequest<ShellViewModel>();
 
@@ -31,6 +32,7 @@ namespace MoneySplitter.Win10.Dependencies
             _container.PerRequest<TransactionsViewModel>();
             _container.PerRequest<AddTransactionViewModel>();
             _container.PerRequest<IncomingAndOutcomingViewModel>();
+            _container.PerRequest<FriendDetailsViewModel>();
         }
 
         public void InitializeServices()
@@ -52,6 +54,7 @@ namespace MoneySplitter.Win10.Dependencies
 
             _container.Singleton<IFilePickerService, FilePickerService>();
             _container.Singleton<CollaboratorModelFactory>();
+            _container.Singleton<TransactionEventModelFactory>();
             _container.Singleton<SearchEngine>();
         }
     }

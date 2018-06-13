@@ -24,30 +24,19 @@
         <NavigationView x:Name="NavView"
                         SelectedItem="{x:Bind ViewModel.SelectedMenuItem, Mode=TwoWay}"
                         MenuItemsSource="{x:Bind ViewModel.MenuItems, Mode=OneWay}"
-                        MenuItemTemplate="{StaticResource MenuItemTemplate}">
-            <!--<NavigationView.AutoSuggestBox>
-                <AutoSuggestBox x:Name="ASB" QueryIcon="Find"
-                                Text="{x:Bind ViewModel.SearchQuery, Mode=TwoWay}"
-                               IsEnabled="False"/>
-            </NavigationView.AutoSuggestBox>-->
-            <NavigationView.HeaderTemplate>
-                <DataTemplate x:DataType="viewmodels:ShellViewModel">
-                    <Grid Margin="24,10,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Style="{StaticResource TitleTextBlockStyle}"
-                               FontSize="28"
-                               Text="{x:Bind TitleFrameText, Converter={StaticResource MenuItemToTitle}, ConverterParameter='1', Mode=OneWay}"/>
-                        </StackPanel>
+                        MenuItemTemplate="{StaticResource MenuItemTemplate}"
+                        AlwaysShowHeader="False"
+                        >
+            <NavigationView.HeaderTemplate
+                >
+                <DataTemplate x:DataType="viewmodels:ShellViewModel" >
+                    <Grid Margin="0,0,0,0" Visibility="Collapsed">
                     </Grid>
                 </DataTemplate>
             </NavigationView.HeaderTemplate>
 
 
-            <Frame x:Name="ContentFrame" Margin="24"
+            <Frame x:Name="ContentFrame" 
                    Loaded="OnShellFrameLoaded"
                    DataContext="{x:Null}">
 
@@ -57,7 +46,26 @@
                     </TransitionCollection>
                 </Frame.ContentTransitions>
             </Frame>
-
         </NavigationView>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
+                <VisualState x:Name="Normal">
+                    <VisualState.Setters>
+                        <Setter Target="ContentFrame.Margin" Value="0"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="640"></AdaptiveTrigger>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="Mobile">
+                    <VisualState.Setters>
+                        <Setter Target="ContentFrame.Margin" Value="0,-52,0,0"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"></AdaptiveTrigger>
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </Grid>
 </Page>

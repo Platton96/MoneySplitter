@@ -62,6 +62,7 @@
                   Grid.Row="1"
                   ItemsSource="{x:Bind ViewModel.SearchEngine.Results, Mode=OneWay}"
                   Visibility="Visible">
+            
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="models:UserModel">
                     <customControls:DesktopUserContol ViewModel="{x:Bind Mode=OneWay}"

@@ -24,7 +24,10 @@ namespace MoneySplitter.Services.DataModels
         public DateTime CreationDate { get; set; }
 
         [DataMember]
-        public UserModel Owner { get; set; }
+        public DateTime? OngoingDate { get; set; }
+
+        [DataMember]
+        public UserData Owner { get; set; }
 
         [DataMember]
         public bool IsClosed { get; set; }

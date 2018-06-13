@@ -5,5 +5,8 @@
     xmlns:local="using:MoneySplitter.Win10"
     xmlns:cm="using:Caliburn.Micro"
     RequestedTheme="Light">
+    <cm:CaliburnApplication.Resources>
+        <ResourceDictionary Source="Converters.xaml"/>
+    </cm:CaliburnApplication.Resources>
 
 </cm:CaliburnApplication>

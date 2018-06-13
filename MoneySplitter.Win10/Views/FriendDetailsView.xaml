@@ -1,0 +1,208 @@
+﻿<Page
+    x:Class="MoneySplitter.Win10.Views.FriendDetailsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MoneySplitter.Win10.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:customControls="using:MoneySplitter.Win10.CustomControls"
+    xmlns:models="using:MoneySplitter.Models"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary Source="../Styles/GlobalStyles.xaml"/>
+    </Page.Resources>
+
+    <Grid VerticalAlignment="Stretch"
+          HorizontalAlignment="Stretch">
+        <Image Source="{x:Bind ViewModel.Friend.BackgroundImageUrl, Mode=OneWay}"
+               HorizontalAlignment="Stretch"
+               Stretch="UniformToFill"
+               VerticalAlignment="Top"
+               Height="400"/>
+        <Grid HorizontalAlignment="Stretch"
+              VerticalAlignment="Top"
+              Margin="0,200,0,0"
+              Height="200">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#00FFFFFF" Offset="0.0" />
+                    <GradientStop Color="#FFFFFFFF" Offset="1" />
+                </LinearGradientBrush>
+            </Grid.Background>
+        </Grid>
+        <Grid Margin="0, 200,0,0"
+              Padding="5,5,10,5"
+              VerticalAlignment="Stretch"
+              HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.Background>
+                <SolidColorBrush Color="#FFFFFF" Opacity="0.8" />
+            </Grid.Background>
+            <Grid Margin="8,0,0,0">
+                <customControls:UserDetailsControl ViewModel="{x:Bind ViewModel.Friend}"/>
+            </Grid>
+            <StackPanel Orientation="Horizontal"
+                        Grid.Column="1">
+                <Grid Height="84"
+                      Width="84"
+                      Margin="0,0,24,0" >
+                    <Border Height="52"
+                            VerticalAlignment="Top"
+                            Width="52"
+                            BorderThickness="1"
+                            HorizontalAlignment="Center"
+                            BorderBrush="{StaticResource DarkGrayColorBrush}"
+                            CornerRadius="30">
+                        <TextBlock Foreground="{StaticResource DarkGrayColorBrush}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center">
+                            <Run Text="{x:Bind ViewModel.Debt, Mode=OneWay}"/><Run Text="$"/>
+                        </TextBlock>
+                    </Border>
+                    <TextBlock Text="Total debt"
+                               VerticalAlignment="Bottom"
+                               HorizontalAlignment="Center"
+                               Visibility="{x:Bind ViewModel.IsDebt, Mode=OneWay}"/>
+                    <TextBlock Text="Total lend"
+                               VerticalAlignment="Bottom"
+                               HorizontalAlignment="Center"
+                               Visibility="{x:Bind ViewModel.IsDebt,Converter={StaticResource OppositeBoolToVisibility},Mode=OneWay}"/>
+                </Grid>
+                <Button Style="{StaticResource DefaultButtonStyle}"
+                        Visibility="{x:Bind ViewModel.IsDebt, Mode=OneWay}"
+                        VerticalAlignment="Center"
+                        Margin="0,0,0,36">
+                    <StackPanel Orientation="Horizontal">
+                        <FontIcon Glyph="&#xE73E;"
+                                              Foreground="{StaticResource DarkGrayColorBrush}"
+                                              FontSize="20"/>
+                        <TextBlock Text="APPROVE ALL"
+                                               Margin="4,0,0,0"
+                                               FontSize="14"
+                                               Foreground="{StaticResource DarkGrayColorBrush}"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <Grid Grid.Row="1"
+                  Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Margin="20,4,0,0"
+                           Style="{StaticResource ListHeaderTextStyle}"
+                           Text="Debts"/>
+                <ListView x:Name="DebtsList"
+                          ItemsSource="{x:Bind ViewModel.Debts, Mode=OneWay}"
+                          IsItemClickEnabled="True"
+                          Grid.Row="1">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="models:TransactionEventModel">
+                            <Grid Margin="8,12,12,0">
+                                <Border BorderThickness="0,0,0,1"
+                                        BorderBrush="{StaticResource Border}">
+                                    <Grid Padding="0,0,0,12">
+                                        <customControls:TransactionEventControl ViewModel="{x:Bind Mode=OneWay}"
+                                                                                                                    />
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+
+            <Grid Grid.Row="1"
+                  Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Margin="20,4,0,0"
+                           Style="{StaticResource ListHeaderTextStyle}"
+                           Text="Lends"/>
+                <ListView x:Name="LendsList"
+                          ItemsSource="{x:Bind ViewModel.Lends, Mode=OneWay}"
+                          IsItemClickEnabled="True"
+                          Grid.Row="1">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="models:TransactionEventModel">
+                            <Grid Margin="8,12,12,0">
+                                <Border BorderThickness="0,0,0,1"
+                                        BorderBrush="{StaticResource Border}">
+                                    <Grid Padding="0,0,0,12">
+                                        <customControls:TransactionEventControl ViewModel="{x:Bind Mode=OneWay}"/>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+
+            <Grid Grid.Row="2"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Margin="20,12,0,0"
+                           Style="{StaticResource ListHeaderTextStyle}"
+                           Text="Common transactions"/>
+                <ListView x:Name="CommonTransactionsList"
+                          ItemsSource="{x:Bind ViewModel.TransactionEvents, Mode=OneWay}"
+                          IsItemClickEnabled="True"
+                          Grid.Row="1">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="models:TransactionEventModel">
+                            <Grid Margin="8,12,12,0">
+                                <Border BorderThickness="0,0,0,1"
+                                        BorderBrush="{StaticResource Border}">
+                                    <Grid Padding="0,0,0,12">
+                                        <customControls:TransactionEventControl ViewModel="{x:Bind Mode=OneWay}"/>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+
+        </Grid>
+        
+
+    </Grid>
+</Page>

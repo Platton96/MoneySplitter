@@ -2,6 +2,22 @@
 {
     public static class Defines
     {
+        public static class TransactionModel
+        {
+            public const int MAX_COUNT_IMAGE = 4;
+        }
+
+        public static class SortModel
+        {
+            public static class Title
+            {
+                public const string CREATING_DATE = "Creating date";
+                public const string TRANSACTION_DATE = "Transaction date";
+                public const string USER_ROLE = "User role";
+                public const string SINGLE_COST = "Cost";
+                public const string NAME_TRANSACTION = "Name transaction";
+            }
+        }
         public static class Collaborator
         {
             public static class ButtonContent
@@ -9,11 +25,22 @@
                 public const string GIVE = "Give!";
                 public const string APPROVE = "Approve";
                 public const string REMIND = "Remind";
+                public const string GLYPH_RINGER = "&#xEA8F;";
             }
 
             public const int COUNT_NUMBER_AFTER_POINT = 2;
         }
 
+        public static class UserRoleLabel
+        {
+            public static class Content
+            {
+                public const string IN_BEGIN = "AWAIT";
+                public const string IN_PROGRESS = "UNCOMFIRMED";
+                public const string FINISHED = "COMFIRTED";
+                public const string USER_TRANSACTION = "MY TRANSACTION";
+            }
+        }
         public static class Arrow
         {
             public static class Glyph

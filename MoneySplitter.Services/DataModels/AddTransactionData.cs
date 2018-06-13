@@ -24,5 +24,8 @@ namespace MoneySplitter.Services.DataModels
 
         [DataMember]
         public string ImageBase64String { get; set; }
+
+        [DataMember]
+        public DateTime? OngoingDate { get; set; }
     }
 }

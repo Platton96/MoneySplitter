@@ -1,0 +1,13 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MoneySplitter.Win10"
+    xmlns:converters="using:MoneySplitter.Win10.Converters">
+    <converters:MenuItemTitleConverter x:Key="MenuItemToTitle" />
+    <converters:DateTimeToTimeLeftConverter x:Key="DateTimeToTimeLeft"/>
+    <converters:DateCoverter x:Key="DateConverter"/>
+    <converters:BankCardConverter x:Key="BlankCardConverter"/>
+    <converters:PhoneNumberConverter x:Key="PhoneNumberConverter"/>
+    <converters:OppositeBoolToVisibilityConverter x:Key="OppositeBoolToVisibility"/>
+
+</ResourceDictionary>

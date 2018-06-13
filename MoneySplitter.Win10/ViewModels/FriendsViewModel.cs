@@ -14,6 +14,7 @@ namespace MoneySplitter.Win10.ViewModels
         private ObservableCollection<UserModel> _friends;
 
         private readonly IFriendsManager _friendsManager;
+        private readonly INavigationManager _navigationManager;
 
         private bool _isNotFriendsTextVisibility;
         private bool _isLoading;
@@ -24,7 +25,7 @@ namespace MoneySplitter.Win10.ViewModels
         #region Properties
         public ObservableCollection<UserModel> Friends
         {
-            get { return _friends; }
+            get => _friends; 
             set
             {
                 _friends = value;
@@ -34,7 +35,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public bool IsNotFriendsTextVisibility
         {
-            get { return _isNotFriendsTextVisibility; }
+            get => _isNotFriendsTextVisibility; 
             set
             {
                 _isNotFriendsTextVisibility = value;
@@ -44,7 +45,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public bool IsLoading
         {
-            get { return _isLoading; }
+            get => _isLoading; 
             set
             {
                 _isLoading = value;
@@ -54,7 +55,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public bool IsErrorVisible
         {
-            get { return _isErrorVisible; }
+            get => _isErrorVisible; 
             set
             {
                 _isErrorVisible = value;
@@ -64,7 +65,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public ErrorDetailsModel ErrorDetailsModel
         {
-            get { return _errorDetailsModel; }
+            get => _errorDetailsModel; 
             set
             {
                 _errorDetailsModel = value;
@@ -74,9 +75,10 @@ namespace MoneySplitter.Win10.ViewModels
         #endregion
 
         #region Constructor
-        public FriendsViewModel(IFriendsManager friendsManager)
+        public FriendsViewModel(IFriendsManager friendsManager, INavigationManager navigationManager)
         {
             _friendsManager = friendsManager;
+            _navigationManager = navigationManager;
         }
         #endregion
 
@@ -92,6 +94,11 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 await _friendsManager.LoadUserFriendsAsync();
             }
+        }
+
+        public void NavigateToFriendDetails(UserModel friend)
+        {
+            _navigationManager.NavigateToFriendDetails(friend);
         }
 
         protected override async void OnActivate()

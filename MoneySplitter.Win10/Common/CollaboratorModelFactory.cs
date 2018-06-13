@@ -109,6 +109,7 @@ namespace MoneySplitter.Win10.Common
             }
 
             var firstRecord = collabaratorRecords.FirstOrDefault();
+
             return new CollaboratorModel
             {
                 Email = firstRecord.Email,
@@ -126,5 +127,6 @@ namespace MoneySplitter.Win10.Common
             return transactionModel.Collaborators
                 .FirstOrDefault(user=>user.Id==collaboratorId);
         }
+
     }
 }
