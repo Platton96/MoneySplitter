@@ -2,6 +2,7 @@
 using MoneySplitter.Models;
 using MoneySplitter.Services.DataModels;
 using MoneySplitter.Services.Inerfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,32 +24,16 @@ namespace MoneySplitter.Services.Api
             _executor = executor;
         }
 
-        public async Task<ExecutionResult<IEnumerable<TransactionModel>>> GetAllUserTransactions()
+        public async Task<ExecutionResult<IEnumerable<TransactionModel>>> GetAllUserTransactionsAsync()
         {
-            var result = new ExecutionResult<IEnumerable<TransactionModel>>
-            {
-                IsSuccess = false
-            };
-
             var allUserTransactionsUrl = _apiUrlBuilder.AllUserTransactions();
+            return await GetAllUserTransactions(allUserTransactionsUrl);
+        }
 
-            IEnumerable<TransactionData> userTransactionsData = null;
-
-            await _executor.ExecuteWithRetryAsync((async () =>
-            {
-                userTransactionsData = await _queryApiService.GetAsync<IEnumerable<TransactionData>>(allUserTransactionsUrl);
-            }));
-
-            if (userTransactionsData == null)
-            {
-                return result;
-            }
-
-            result.Result =
-                userTransactionsData.Select(x => _mapper.ConvertTransactioDataToTransactionModel(x)).ToList();
-
-            result.IsSuccess = true;
-            return result;
+        public async Task<ExecutionResult<IEnumerable<TransactionModel>>> GetAllUserTransactionsAsync(int friendId)
+        {
+            var allUserTransactionsUrl = _apiUrlBuilder.AllUserTransactions(friendId);
+            return await GetAllUserTransactions(allUserTransactionsUrl);
         }
 
         public async Task<bool> AddTransactionAsync(AddTransactionModel addTransactionModel)
@@ -74,5 +59,30 @@ namespace MoneySplitter.Services.Api
             return await _queryApiService.PostAsync(approveTransactionUrl);
         }
 
+        private async Task<ExecutionResult<IEnumerable<TransactionModel>>> GetAllUserTransactions(Uri allUserTransactionsUrl)
+        {
+            var result = new ExecutionResult<IEnumerable<TransactionModel>>
+            {
+                IsSuccess = false
+            };
+
+            IEnumerable<TransactionData> userTransactionsData = null;
+
+            await _executor.ExecuteWithRetryAsync((async () =>
+            {
+                userTransactionsData = await _queryApiService.GetAsync<IEnumerable<TransactionData>>(allUserTransactionsUrl);
+            }));
+
+            if (userTransactionsData == null)
+            {
+                return result;
+            }
+
+            result.Result =
+                userTransactionsData.Select(x => _mapper.ConvertTransactioDataToTransactionModel(x)).ToList();
+
+            result.IsSuccess = true;
+            return result;
+        }
     }
 }

@@ -16,7 +16,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition x:Name="RightColumn"
-                                  Width="*"/>
+                                      Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -78,7 +78,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="models:CollaboratorModel">
                                 <customControls:CollaboratorControl ViewModel="{x:Bind Mode=OneWay}"
-                                                                OnGiveCollaboratorButtonClick="OnGiveCollaboratorButtonClick"/>
+                                                                    OnGiveCollaboratorButtonClick="OnGiveCollaboratorButtonClick"/>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>

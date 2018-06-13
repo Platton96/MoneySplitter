@@ -55,7 +55,14 @@
 
         <GridView x:Name="FriendsGridView"
                   ItemsSource="{x:Bind ViewModel.Friends, Mode=OneWay}"
-                  Visibility="Visible">
+                  Visibility="Visible"
+                  IsItemClickEnabled="True"
+                  ItemClick="OnFriendClick">
+            <GridView.ItemContainerStyle>
+                <Style TargetType="GridViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </GridView.ItemContainerStyle>
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="models:UserModel">
                     <customControls:DesktopUserContol ViewModel="{x:Bind Mode=OneWay}"

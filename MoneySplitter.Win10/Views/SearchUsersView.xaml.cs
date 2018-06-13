@@ -31,5 +31,6 @@ namespace MoneySplitter.Win10.Views
         {
             await ViewModel.AddFriendAsync(e.Id);
         }
+
     }
 }

@@ -66,6 +66,15 @@ namespace MoneySplitter.Services.Api
                 Defines.Api.Transactions.MY));
         }
 
+        public Uri AllUserTransactions(int friendId)
+        {
+            return new Uri(string.Concat(
+                Defines.Api.WEB_API_URL,
+                Defines.Api.Transactions.TRANSACTIONS,
+                Defines.Api.Transactions.MY,
+                CreateQueryParameter(Defines.Api.Transactions.BY_USER_ID, friendId)));
+        }
+
         public Uri AddTransaction()
         {
             return new Uri(string.Concat(
@@ -111,6 +120,16 @@ namespace MoneySplitter.Services.Api
                )
              ));
         }
+
+        public Uri ApproveAll (int friendId)
+        {
+            return new Uri(string.Concat(
+                Defines.Api.WEB_API_URL,
+                Defines.Api.Transactions.TRANSACTIONS,
+                Defines.Api.Transactions.APPROVEALL,
+                CreateQueryParameter(Defines.Api.Transactions.FRIEND_ID, friendId)));
+        }
+
         private string CreateQueryParameter(string parameterName, object parameterValue)
         {
             return $"?{parameterName}={parameterValue}";

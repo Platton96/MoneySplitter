@@ -18,10 +18,15 @@ namespace MoneySplitter.Managers
 
         public async Task<bool> LoadUserTransactionsAsync()
         {
-            var executionResult = await _transactionsApiService.GetAllUserTransactions();
+            var executionResult = await _transactionsApiService.GetAllUserTransactionsAsync();
             UserTransactions = executionResult.Result;
 
             return executionResult.IsSuccess;
+        }
+
+        public async Task<ExecutionResult<IEnumerable<TransactionModel>>> GetFriendTransactionsAsync(int friendId)
+        {
+            return await _transactionsApiService.GetAllUserTransactionsAsync(friendId);
         }
 
         public async Task<bool> AddTransactionAsync(AddTransactionModel addTransactionModel)

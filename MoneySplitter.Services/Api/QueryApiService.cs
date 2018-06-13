@@ -109,5 +109,3 @@ namespace MoneySplitter.Services.Api
 
     }
 }
-
-

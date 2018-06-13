@@ -19,5 +19,11 @@ namespace MoneySplitter.Win10.Views
         {
             await ViewModel.RemoveFriendAsync(e.Id);
         }
+
+        private void OnFriendClick(object sender, ItemClickEventArgs e)
+        {
+            var selectedFriend = e.ClickedItem as UserModel;
+            ViewModel.NavigateToFriendDetails(selectedFriend);
+        }
     }
 }

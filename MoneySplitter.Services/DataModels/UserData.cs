@@ -8,9 +8,9 @@ namespace MoneySplitter.Services.DataModels
     {
         [DataMember]
         public int Id { get; set; }
-
-        [DataMember(Name = "UserName")]
-        public string Name { get; set; }
+        
+        [DataMember]
+        public string UserName { get; set; }
 
         [DataMember]
         public string Surname { get; set; }

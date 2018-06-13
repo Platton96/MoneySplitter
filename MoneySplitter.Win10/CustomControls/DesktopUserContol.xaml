@@ -9,19 +9,25 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
-    <Grid Margin="5">
-        <StackPanel  Style="{ThemeResource SettingsFlyoutSectionStyle}">
-            <Ellipse Width="100" Height="100" >
+    <Grid Margin="5"
+          HorizontalAlignment="Stretch">
+        <StackPanel>
+            <Ellipse Width="120" Height="120" >
                 <Ellipse.Fill>
-                    <ImageBrush ImageSource="{x:Bind ViewModel.ImageUrl, Mode=OneWay}"/>
+                    <ImageBrush ImageSource="{x:Bind ViewModel.ImageUrl, Mode=OneWay}"
+                                Stretch="UniformToFill"/>
                 </Ellipse.Fill>
             </Ellipse>
-            <TextBlock IsTextSelectionEnabled="True" Style="{ThemeResource BaseTextBlockStyle}">
+            <TextBlock IsTextSelectionEnabled="True" 
+                       TextTrimming="CharacterEllipsis"
+                       HorizontalAlignment="Stretch">
                     <Run Text="{x:Bind ViewModel.Name, Mode=OneWay}" />
                     <Run Text=" "/>
                     <Run Text="{x:Bind ViewModel.Surname, Mode=OneWay}"/>
-                </TextBlock>
-            <TextBlock Text="{x:Bind ViewModel.Email, Mode=OneWay}"/>
+             </TextBlock>
+            <TextBlock Text="{x:Bind ViewModel.Email, Mode=OneWay}"
+                       HorizontalAlignment="Stretch"
+                       TextTrimming="CharacterEllipsis"/>
             <Button Click="OnAddOrRemoveButtonClick" Content="{x:Bind ButtonContent, Mode=OneWay}" 
                     Style="{ThemeResource TextBlockButtonStyle}"
                     HorizontalAlignment="Center"/>

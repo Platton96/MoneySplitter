@@ -18,14 +18,15 @@ namespace MoneySplitter.Services
             return new UserModel()
             {
                 Id = userData.Id,
-                Name = userData.Name,
+                Name = userData.UserName,
                 Surname = userData.Surname,
                 Email = userData.Email,
                 PhoneNumber = userData.PhoneNumber,
                 CreditCardNumber = userData.CreditCardNumber,
                 Ballance = userData.Ballance,
                 Token = userData.Token,
-                ImageUrl = userData.ImageUrl
+                ImageUrl = userData.ImageUrl,
+                BackgroundImageUrl=userData.BackgroundImageUrl
             };
         }
 
@@ -62,7 +63,7 @@ namespace MoneySplitter.Services
             return new TransactionModel()
             {
                 Id = transactionData.Id,
-                Owner = transactionData.Owner,
+                Owner = ConvertUserDataToUserModel(transactionData.Owner),
                 CreationDate = transactionData.CreationDate,
                 Title = transactionData.Title,
                 DeadlineDate = transactionData.DeadlineDate,
@@ -72,7 +73,8 @@ namespace MoneySplitter.Services
                 FinishedIds = transactionData.FinishedIds,
                 InProgressIds = transactionData.InProgressIds,
                 ImageUrl = transactionData.ImageUrl,
-                SingleCost = transactionData.SingleCost
+                SingleCost = transactionData.SingleCost,
+                OngoingDate = transactionData.OngoingDate
             };
         }
 
