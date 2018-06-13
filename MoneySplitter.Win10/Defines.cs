@@ -2,6 +2,10 @@
 {
     public static class Defines
     {
+        public static class Localization
+        {
+            public const string RESOURCE_FILE_RU_PATCH = "UsingRESX.Strings/Ru";
+        }
         public static class TransactionModel
         {
             public const int MAX_COUNT_IMAGE = 4;

@@ -1,21 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Resources;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MoneySplitter.Win10.Common
 {
     public class LocalisationServise
     {
-        private readonly ResourceManager _resourseManger;
+        private  ResourceManager _resourseManger;
 
-        public LocalisationServise()
+        public LocalisationServise(string path)
         {
-            _resourseManger=new ResourceManager("UsingRESX.Strings/Ru",
-                Assembly.GetExecutingAssembly());
+            InitializeResurceManger(path);
         }
+
+        public void InitializeResurceManger(string path)
+        {
+            _resourseManger = new ResourceManager(path,
+              Assembly.GetExecutingAssembly());
+        }
+
+
+
     }
 }
