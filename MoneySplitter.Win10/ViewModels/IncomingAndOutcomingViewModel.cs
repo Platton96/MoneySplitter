@@ -51,7 +51,10 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
         #endregion
-        public IncomingAndOutcomingViewModel(CollaboratorModelFactory collaboratorModelFactory, INavigationManager navigationManager, ITransactionsManager transactionsManager)
+        public IncomingAndOutcomingViewModel(
+            CollaboratorModelFactory collaboratorModelFactory, 
+            INavigationManager navigationManager,
+            ITransactionsManager transactionsManager)
         {
             _collabaratorModelFactory = collaboratorModelFactory;
             _navigationManager = navigationManager;

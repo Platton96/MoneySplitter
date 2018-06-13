@@ -13,14 +13,11 @@ namespace MoneySplitter.Win10.CustomControls
 		public event EventHandler<TransactionEventModel> OnRemindTransactionButtonClick;
 		public event EventHandler<TransactionEventModel> OnApproveTransactionButtonClick;
 
-
-
 		public TransactionEventModel ViewModel
 		{
 			get { return (TransactionEventModel)GetValue(ViewModelProperty); }
 			set { SetValue(ViewModelProperty, value); }
 		}
-
 
 		public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(
 			"ViewModel",

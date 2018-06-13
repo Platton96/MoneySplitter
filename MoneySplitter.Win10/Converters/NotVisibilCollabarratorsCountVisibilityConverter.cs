@@ -6,7 +6,7 @@ namespace MoneySplitter.Win10.Converters
 {
     public class NotVisibilCollabarratorsCountVisibilityConverter : IValueConverter
     {
-        object IValueConverter.Convert(object value, Type targetType, object parameter, string language)
+        public object Convert(object value, Type targetType, object parameter, string language)
         {
             if (value == null)
             {
@@ -21,7 +21,7 @@ namespace MoneySplitter.Win10.Converters
             return Visibility.Visible;
         }
 
-        object IValueConverter.ConvertBack(object value, Type targetType, object parameter, string language)
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
             throw new NotImplementedException();
         }

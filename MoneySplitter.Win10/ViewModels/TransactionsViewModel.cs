@@ -22,12 +22,12 @@ namespace MoneySplitter.Win10.ViewModels
             new Dictionary<SortParameter, Func<TransactionEventModel, IComparable>>()
             {
                 {
-                    SortParameter.CREATING_DATE,
+                    SortParameter.CREATION_DATE,
                     x=>x.CreatingDate!=null?x.CreatingDate:DateTime.Now
                 },
 
                 {
-                    SortParameter.NAME_TRANSACTION,
+                    SortParameter.TRANSACTION_NAME,
                     x=>x.Title
                 },
 
@@ -128,7 +128,8 @@ namespace MoneySplitter.Win10.ViewModels
         #endregion
 
         #region Constructor
-        public TransactionsViewModel(ITransactionsManager transactionsManager,
+        public TransactionsViewModel(
+            ITransactionsManager transactionsManager,
             INavigationManager navigationManager,
             TransactionEventModelFactory transactionEventModelFactory)
         {
@@ -216,12 +217,12 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 new SortModel
                 {
-                    SortParameter = SortParameter.CREATING_DATE,
+                    SortParameter = SortParameter.CREATION_DATE,
                     Title = Defines.SortModel.Title.CREATING_DATE
                 },
                 new SortModel
                 {
-                    SortParameter = SortParameter.NAME_TRANSACTION,
+                    SortParameter = SortParameter.TRANSACTION_NAME,
                     Title = Defines.SortModel.Title.NAME_TRANSACTION
                 },
                 new SortModel

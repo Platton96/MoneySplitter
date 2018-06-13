@@ -81,7 +81,7 @@ namespace MoneySplitter.Win10.CustomControls
 					}
 				},
 				{
-					UserRole.USER_TRANSACTION,
+					UserRole.MY_TRANSACTION,
 					new UserRoleLabelModel
 					{
 						Content=Defines.UserRoleLabel.Content.USER_TRANSACTION,

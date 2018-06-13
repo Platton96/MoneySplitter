@@ -10,7 +10,7 @@ namespace MoneySplitter.Models
         public string ImageUrl { get; set; }
         public DateTime Date { get; set; }
         public DateTime CreatingDate { get; set; }
-        public TypeDate TypeDate { get; set; }
+        public DateType TypeDate { get; set; }
         public double SingleCost { get; set; }
         public UserRole UserRole { get; set; }
         public UserRole FriendRole { get; set; }
@@ -23,11 +23,11 @@ namespace MoneySplitter.Models
         public bool IsRemindButtonVisibil => !IsForceHide && UserRole == UserRole.IN_PROGRESS;
 
         public bool IsAproveButtonVisibil => !IsForceHide && 
-                                             UserRole == UserRole.USER_TRANSACTION && 
+                                             UserRole == UserRole.MY_TRANSACTION && 
                                              FriendRole!=UserRole.UNDEFINED;
 
         public bool IsSmallRemindButtonVisibil => !IsForceHide && 
-                                                  UserRole == UserRole.USER_TRANSACTION && 
+                                                  UserRole == UserRole.MY_TRANSACTION && 
                                                   FriendRole == UserRole.IN_BEGIN;
     }
 }

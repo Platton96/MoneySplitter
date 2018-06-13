@@ -127,5 +127,6 @@ namespace MoneySplitter.Win10.Common
             return transactionModel.Collaborators
                 .FirstOrDefault(user=>user.Id==collaboratorId);
         }
+
     }
 }
