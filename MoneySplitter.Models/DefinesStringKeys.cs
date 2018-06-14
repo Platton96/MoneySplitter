@@ -1,4 +1,4 @@
-﻿namespace MoneySplitter.Services
+﻿namespace MoneySplitter.Models
 {
     public enum DefinesStringKeys
     {

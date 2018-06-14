@@ -136,6 +136,8 @@ namespace MoneySplitter.Win10.ViewModels
 			ConfigureNotifications();
 
 			IsLoading = false;
+
+            var localisarionService = new LocalizationServise(Defines.Localization.RESOURCE_FILE_RU_PATCH);
 		}
 
 		private void ConfigureNotifications()

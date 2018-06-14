@@ -4,7 +4,8 @@
     {
         public static class Localization
         {
-            public const string RESOURCE_FILE_RU_PATCH = "UsingRESX.Strings/Ru";
+            public const string RESOURCE_FILE_RU_PATCH = @".\Strings\Ru.resw";
+
         }
         public static class TransactionModel
         {
