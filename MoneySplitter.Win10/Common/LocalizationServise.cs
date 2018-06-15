@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
 using System.Resources;
+using System.Xml.Linq;
 using MoneySplitter.Models;
 using Windows.ApplicationModel.Resources;
 
@@ -10,7 +12,7 @@ namespace MoneySplitter.Win10.Common
     public class LocalizationServise
     {
         private ResourceLoader _resourceLoader;
-        IDictionary<DefinesStringKeys, string> Strings { get; set; }
+        IDictionary<string, string> Strings { get; set; }
 
         public LocalizationServise()
         {
@@ -18,19 +20,22 @@ namespace MoneySplitter.Win10.Common
 
         public void InitializeResurceManger(string path)
         {
-            _resourceLoader.GetForCurrentView();
-
-            public string GetString(string key)
-        {
-            return _resourseManger.GetString(key);
         }
+
+        //public string GetString(string key)
+        //{
+           
+        //}
 
         public void InitializeStrings()
         {
-            foreach (DefinesStringKeys key in Enum.GetValues(typeof(DefinesStringKeys)))
-            {
-                Strings.Add(key, GetString(key.ToString()));
-            }
+            var a = File.ReadAllText(@"D:\Projects\MoneySplitter\MoneySplitter.Win10\Strings\just.txt");
+            
+          
+            
+
+            //var file = XDocument.Load(@"D:\Projects\MoneySplitter\MoneySplitter.Win10\Strings\Ru.resw");
         }
+
     }
 }
