@@ -11,6 +11,11 @@ namespace MoneySplitter.Win10.CustomControls
     {
         private IDictionary<CollaboratorStatus, ArrowModel> _arrows;
 
+        public ArrowsControl()
+        {
+
+        }
+
         private void InitializeArrows()
         {
             _arrows = new Dictionary<CollaboratorStatus, ArrowModel>()

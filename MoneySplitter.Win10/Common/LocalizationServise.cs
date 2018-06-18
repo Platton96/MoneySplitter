@@ -1,40 +1,32 @@
-﻿using System;
+﻿using MoneySplitter.Infrastructure;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
-using System.Resources;
+using System.Linq;
 using System.Xml.Linq;
-using MoneySplitter.Models;
-using Windows.ApplicationModel.Resources;
+using Windows.ApplicationModel;
+using Windows.Storage;
 
 namespace MoneySplitter.Win10.Common
 {
-    public class LocalizationServise
+    public class LocalizationServise : ILocalizationService
     {
-        private ResourceLoader _resourceLoader;
-        IDictionary<string, string> Strings { get; set; }
+        public IDictionary<string, string> Strings { get; private set; }
 
-        public LocalizationServise()
+        public void InitializeStrings(string path)
         {
+            Strings = LoadStringsForLocale(path);
         }
 
-        public void InitializeResurceManger(string path)
+        public Dictionary<string, string> LoadStringsForLocale(string path)
         {
-        }
+            var folder = ApplicationData.Current.LocalFolder.Path;
+            var xmlRepresentation = File.ReadAllText(Package.Current.InstalledLocation.Path + path);
 
-        //public string GetString(string key)
-        //{
-           
-        //}
-
-        public void InitializeStrings()
-        {
-            var a = File.ReadAllText(@"D:\Projects\MoneySplitter\MoneySplitter.Win10\Strings\just.txt");
-            
-          
-            
-
-            //var file = XDocument.Load(@"D:\Projects\MoneySplitter\MoneySplitter.Win10\Strings\Ru.resw");
+            return
+                XDocument.Parse(xmlRepresentation)
+                .Descendants()
+                .Elements("data")
+                .ToDictionary(key => key.FirstAttribute.Value, value => (string)value.Element("value"));
         }
 
     }

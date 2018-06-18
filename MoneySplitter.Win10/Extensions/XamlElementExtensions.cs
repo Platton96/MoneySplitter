@@ -20,6 +20,10 @@ namespace MoneySplitter.Win10.Extensions
                 textBlock.Text = e.NewValue.ToString();
             }
 
+            if (control is Button button)
+            {
+                button.Content = e.NewValue.ToString();
+            }
         }
     }
 }
