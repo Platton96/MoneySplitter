@@ -7,6 +7,7 @@ namespace MoneySplitter.Infrastructure
         IDictionary<string, string> Strings { get; }
         void InitializeStrings(string path);
         Dictionary<string, string> LoadStringsForLocale(string path);
+        string GetValue(string key);
 
     }
 }

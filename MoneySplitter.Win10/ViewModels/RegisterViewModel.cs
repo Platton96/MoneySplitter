@@ -12,8 +12,9 @@ namespace MoneySplitter.Win10.ViewModels
         private readonly INavigationManager _navigationManager;
         private readonly IMembershipService _membershipService;
         private readonly IFilePickerService _filePickerService;
+        private readonly ILocalizationService _localizationService;
 
-        private string _laberlForAvatarImage = Defines.Register.BrowseImage.AVATAR;
+        private string _laberlForAvatarImage; 
         private string _labelForBackgroundIamge = Defines.Register.BrowseImage.BACKGROUND;
 
         private string _confirmPassword;
@@ -97,11 +98,18 @@ namespace MoneySplitter.Win10.ViewModels
         #endregion
 
         #region Constructor
-        public RegisterViewModel(INavigationManager navigationManager, IMembershipService membershipService, IFilePickerService filePickerService)
+        public RegisterViewModel(
+            INavigationManager navigationManager,
+            IMembershipService membershipService, 
+            IFilePickerService filePickerService,
+            ILocalizationService localizationService)
         {
             _membershipService = membershipService;
             _navigationManager = navigationManager;
             _filePickerService = filePickerService;
+            _localizationService = localizationService;
+
+            InitializeField();
 
             RegisterModel = new RegisterModel();
         }
@@ -117,8 +125,8 @@ namespace MoneySplitter.Win10.ViewModels
                 IsErrorVisible = true;
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
-                    ErrorTitle = Defines.ErrorDetails.Register.ERROR_TITLE,
-                    ErrorDescription = Defines.ErrorDetails.Register.ERROR_PASSWORD
+                    ErrorTitle = _localizationService.GetValue("REGISTER_ERROR_TITLE"),
+                    ErrorDescription = _localizationService.GetValue("REGISTER_ERROR_PASSWORD")
                 };
                 return;
             }
@@ -132,13 +140,19 @@ namespace MoneySplitter.Win10.ViewModels
                 IsErrorVisible = true;
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
-                    ErrorTitle = Defines.ErrorDetails.Register.ERROR_TITLE,
-                    ErrorDescription = Defines.ErrorDetails.Register.ERROR_DESCRIPTION
+                    ErrorTitle = _localizationService.GetValue("REGISTER_ERROR_TITLE"),
+                    ErrorDescription = _localizationService.GetValue("REGISTER_ERROR_TITLE")
                 };
                 return;
             }
 
             _navigationManager.NavigateToShellViewModel();
+        }
+
+        private void InitializeField()
+        {
+            _laberlForAvatarImage = _localizationService.GetValue("AVATAR_IMAGE_TEXTBLOCK_TEXT");
+            _labelForBackgroundIamge = _localizationService.GetValue("REGISTER_ERROR_DESCRIPTION");
         }
 
         public async Task BrowseAvatarImageAsync()

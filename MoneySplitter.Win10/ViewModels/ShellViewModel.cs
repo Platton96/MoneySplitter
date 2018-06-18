@@ -30,7 +30,7 @@ namespace MoneySplitter.Win10.ViewModels
             { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.FRIENDS, Defines.MenuItem.Title.FRIENDS), typeof(FriendsViewModel) },
             { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.SEARCH, Defines.MenuItem.Title.SEARCH),typeof(SearchUsersViewModel) },
             { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.TRANSACTIONS,Defines.MenuItem.Title.TRANSACTIONS),typeof(TransactionsViewModel) },
-            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.INCOMING_AND_OUTCOMING,Defines.MenuItem.Title.INCOMING_AND_OUTCOMING), typeof(IncomingAndOutcomingViewModel) }
+            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.INCOMING_AND_OUTCOMING,Defines.MenuItem.Title.INCOMING_AND_OUTGOING), typeof(IncomingAndOutcomingViewModel) }
         };
 
         public string SelectedMenuItem

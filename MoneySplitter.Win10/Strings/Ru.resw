@@ -117,10 +117,80 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AVATAR_IMAGE_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Загрузить изоброжение на профель</value>
+    <comment>registerView</comment>
+  </data>
+  <data name="BACKGROUND_IMAGE_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Загрузить фоновое изоброжение </value>
+    <comment>registerView</comment>
+  </data>
+  <data name="BROWSE_BUTTON_CONTENT" xml:space="preserve">
+    <value>Загрузить</value>
+    <comment>registerView</comment>
+  </data>
+  <data name="CONFIRM_PASSWORD_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Повторите пароль</value>
+    <comment>registerView</comment>
+  </data>
+  <data name="DEFAULT_ERROR_TITLE" xml:space="preserve">
+    <value>Ошибка</value>
+    <comment>error</comment>
+  </data>
+  <data name="EMAIL_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Введите електронную почту</value>
+    <comment>loginView</comment>
+  </data>
   <data name="LOGIN_BUTTON_CONTENT" xml:space="preserve">
     <value>ЛОГИН</value>
+    <comment>loginView</comment>
+  </data>
+  <data name="LOGIN_ERROR_DESCRIPTION" xml:space="preserve">
+    <value>Подалуйста проверьте логин и пароль</value>
+    <comment>error</comment>
+  </data>
+  <data name="LOGIN_ERROR_TITLE" xml:space="preserve">
+    <value>Невозмжно войти</value>
+    <comment>error</comment>
+  </data>
+  <data name="NAME_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Введите имя</value>
+    <comment>registerView</comment>
+  </data>
+  <data name="NUMBER_CREDIT_CARD_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Введите номер кредитной карточки</value>
+    <comment>registerView</comment>
+  </data>
+  <data name="NUMBER_PHONE_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Введите номер телефона</value>
+    <comment>registerView</comment>
+  </data>
+  <data name="PASSWORD_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Введите пароль</value>
+    <comment>loginView</comment>
+  </data>
+  <data name="PROBLEM_SERVER_ERROR" xml:space="preserve">
+    <value>Извиниет, проблемы с сервером</value>
+    <comment>error</comment>
   </data>
   <data name="REGISTER_BUTTON_CONTENT" xml:space="preserve">
     <value>ЗАРЕГИСТРИРОВАТЬСЯ</value>
+    <comment>loginView</comment>
+  </data>
+  <data name="REGISTER_ERROR_DESCRIPTION" xml:space="preserve">
+    <value>Возникли проблемы с регистрацией, проверти валидность данных</value>
+    <comment>error</comment>
+  </data>
+  <data name="REGISTER_ERROR_PASSWORD" xml:space="preserve">
+    <value>Повтрный пароль неверный</value>
+    <comment>error</comment>
+  </data>
+  <data name="REGISTER_ERROR_TITLE" xml:space="preserve">
+    <value>Невозможно зарегестрироваться</value>
+    <comment>error</comment>
+  </data>
+  <data name="SURNAME_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Введите фамилию</value>
+    <comment>registerView</comment>
   </data>
 </root>

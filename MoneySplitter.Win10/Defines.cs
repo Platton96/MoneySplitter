@@ -4,7 +4,7 @@
     {
         public static class Localization
         {
-            public const string RESOURCE_FILE_RU_PATCH = @".\Strings\Ru.resw";
+            public const string RESOURCE_RU_FILE_PATCH = @".\Strings\Ru.resw";
 
         }
         public static class TransactionModel
@@ -63,7 +63,7 @@
                 public const string FRIENDS = "Friends";
                 public const string SEARCH = "Search";
                 public const string TRANSACTIONS = "Transactions";
-                public const string INCOMING_AND_OUTCOMING = "Incoming and Outcoming";
+                public const string INCOMING_AND_OUTGOING = "Incoming and Outcoming";
 
             }
 
