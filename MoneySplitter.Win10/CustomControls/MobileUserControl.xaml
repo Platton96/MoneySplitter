@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:extensions="using:MoneySplitter.Win10.Extensions" 
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:MoneySplitter.Win10.Converters"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -131,16 +132,23 @@
                     <Run Text=" "/>
                     <Run Text="{x:Bind ViewModel.Surname, Mode=OneWay}"/>
                 </TextBlock>
-                <TextBlock Text="{x:Bind ViewModel.Email, Mode=OneWay}"
+            <TextBlock Text="{x:Bind ViewModel.Email, Mode=OneWay}"
                            HorizontalAlignment="Stretch"
                            TextTrimming="CharacterEllipsis"/>
-                <!--<TextBlock extensions:XamlElementExtensions.Resource="BUTTON_HOME"/>-->
-            </StackPanel >
+        </StackPanel >
         <Button Click="OnAddOrRemoveButtonClick" 
-                Content="{x:Bind ButtonContent, Mode=OneWay}" 
                 Style="{StaticResource DefaultButtonStyle}"
                 Grid.Column="2"
                 HorizontalAlignment="Right"
-                Visibility="{x:Bind IsButtonVisible, Mode=OneWay}"/>
+                Visibility="{x:Bind IsButtonVisible, Mode=OneWay}">
+            <Button.Content>
+                <Grid>
+                    <TextBlock Text="-"       
+                               Visibility="{x:Bind IsRemove, Mode=OneWay}"/>
+                    <TextBlock Text="+"
+                               Visibility="{x:Bind IsRemove, Converter={StaticResource OppositeBoolToVisibility}, Mode=OneWay}" />
+                </Grid>
+            </Button.Content>
+        </Button>
     </Grid>
 </UserControl>

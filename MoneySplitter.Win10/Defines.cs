@@ -63,7 +63,7 @@
                 public const string FRIENDS = "Friends";
                 public const string SEARCH = "Search";
                 public const string TRANSACTIONS = "Transactions";
-                public const string INCOMING_AND_OUTGOING = "Incoming and Outcoming";
+                public const string INCOMING_AND_OUTCOMING = "Incoming and Outcoming";
 
             }
 

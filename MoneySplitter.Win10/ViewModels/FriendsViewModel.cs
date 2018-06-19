@@ -15,6 +15,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         private readonly IFriendsManager _friendsManager;
         private readonly INavigationManager _navigationManager;
+        private readonly ILocalizationService _localizationService;
 
         private bool _isNotFriendsTextVisibility;
         private bool _isLoading;
@@ -75,10 +76,11 @@ namespace MoneySplitter.Win10.ViewModels
         #endregion
 
         #region Constructor
-        public FriendsViewModel(IFriendsManager friendsManager, INavigationManager navigationManager)
+        public FriendsViewModel(IFriendsManager friendsManager, INavigationManager navigationManager, ILocalizationService localizationService)
         {
             _friendsManager = friendsManager;
             _navigationManager = navigationManager;
+            _localizationService = localizationService;
         }
         #endregion
 
@@ -116,8 +118,8 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
-                    ErrorTitle = Defines.ErrorDetails.Login.ERROR_TITLE,
-                    ErrorDescription = Defines.ErrorDetails.PROBLEM_SERVER
+                    ErrorTitle = _localizationService.GetValue("DEFAULT_ERROR_TITLE"),
+                    ErrorDescription = _localizationService.GetValue("PROBLEM_SERVER_ERROR")
                 };
 
                 IsErrorVisible = true;

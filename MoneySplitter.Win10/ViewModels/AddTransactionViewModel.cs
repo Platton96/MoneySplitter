@@ -21,8 +21,9 @@ namespace MoneySplitter.Win10.ViewModels
         private readonly IFilePickerService _filePickerService;
         private readonly INavigationManager _navigationManager;
         private readonly IMembershipService _membershipService;
+        private readonly ILocalizationService _localizationService;
 
-        private string _laberlForTransactionImage = Defines.Register.BrowseImage.AVATAR;
+        private string _laberlForTransactionImage;
         private bool _isNoCollaboratorsTextVisibility;
         private bool _isLoading;
         private bool _isSelfCollabarator;
@@ -120,7 +121,6 @@ namespace MoneySplitter.Win10.ViewModels
                 NotifyOfPropertyChange(nameof(ErrorDetailsModel));
             }
         }
-        public string NOT_COLLABARATORS = Defines.AddTransaction.NOT_COLLABARATORS;
         #endregion
 
         public AddTransactionViewModel(
@@ -128,13 +128,17 @@ namespace MoneySplitter.Win10.ViewModels
             IFriendsManager friendsManager,
             IFilePickerService filePickerService,
             INavigationManager navigationManager,
-            IMembershipService membershipService)
+            IMembershipService membershipService,
+            ILocalizationService localizationService)
         {
             _friendsManager = friendsManager;
             _transactionsManager = transactionsManager;
             _filePickerService = filePickerService;
             _navigationManager = navigationManager;
             _membershipService = membershipService;
+            _localizationService = localizationService;
+
+            _laberlForTransactionImage = _localizationService.GetValue("AVATAR_IMAGE_TEXTBLOCK_TEXT");
 
             AddTransactionModel = new AddTransactionModel
             {
@@ -199,8 +203,8 @@ namespace MoneySplitter.Win10.ViewModels
                 IsErrorVisible = true;
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
-                    ErrorTitle = Defines.ErrorDetails.DEFAULT_ERROR_TITLE,
-                    ErrorDescription = Defines.ErrorDetails.PROBLEM_SERVER
+                    ErrorTitle = _localizationService.GetValue("DEFAULT_ERROR_TITLE"),
+                    ErrorDescription = _localizationService.GetValue("PROBLEM_SERVER_ERROR")
                 };
                 return;
             }

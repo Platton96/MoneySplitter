@@ -9,7 +9,9 @@
     xmlns:extensions="using:MoneySplitter.Win10.Extensions"
     xmlns:customControls="using:MoneySplitter.Win10.CustomControls"
     mc:Ignorable="d">
-
+    <Page.Resources>
+        <ResourceDictionary Source="../Styles/GlobalStyles.xaml"/>
+    </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -21,22 +23,23 @@
                     HorizontalAlignment="Center"
                     Padding="3">
 
-                <TextBox extensions:XamlElementExtensions.Resource="BUTTON_LOGIN"
-                     Text="{x:Bind ViewModel.AddTransactionModel.Title, Mode=TwoWay}"
-                     Header="Title"/>
+                <TextBox Text="{x:Bind ViewModel.AddTransactionModel.Title, Mode=TwoWay}"
+                         Style="{StaticResource DefaultTextBoxStyle}"
+                         extensions:XamlElementExtensions.Resource="TITLE_TRANSACTION_PLACEHOLDER_TEXT" />
                 <TextBox AcceptsReturn="True" 
                          TextWrapping="Wrap"
                          MaxHeight="100" 
                          Width="350" 
-                         Header="Description"
                          ScrollViewer.VerticalScrollBarVisibility="Auto"
-                         Text="{x:Bind ViewModel.AddTransactionModel.Description, Mode=TwoWay}"/>
-                <TextBox PlaceholderText="Enter depts cost"
-                     Text="{x:Bind ViewModel.AddTransactionModel.Cost, Mode=TwoWay}"
-                     Header="Cost"/>
+                         Text="{x:Bind ViewModel.AddTransactionModel.Description, Mode=TwoWay}"
+                         Style="{StaticResource DefaultTextBoxStyle}"
+                         extensions:XamlElementExtensions.Resource="DESCRIPTION_TRANSACTION_PLACEHOLDER_TEXT" />
+                <TextBox extensions:XamlElementExtensions.Resource="COST_TRANSACTION_PLACEHOLDER_TEXT"
+                         Text="{x:Bind ViewModel.AddTransactionModel.Cost, Mode=TwoWay}"
+                         Style="{StaticResource DefaultTextBoxStyle}"/>
                 <DatePicker Header="Debt's diedline date"
                             Date="{x:Bind ViewModel.AddTransactionModel.DeadlineDate, Mode=TwoWay }"/>
-                <CheckBox Content="Are you callbarator?"
+                <CheckBox extensions:XamlElementExtensions.Resource="IS_COLLABORATOR_CHECKBOX_CONTENT"
                           IsChecked="{x:Bind ViewModel.IsSelfCollabarator, Mode=TwoWay}"
                           IsThreeState="False"
                           />
@@ -44,7 +47,7 @@
                     <TextBlock Text="{x:Bind  ViewModel.LabelForTransactionImage, Mode=OneWay}"
                            Margin="0,0,5,0"
                            VerticalAlignment="Center"/>
-                    <Button Content="browse" 
+                    <Button extensions:XamlElementExtensions.Resource="BROWSE_BUTTON_CONTENT" 
                             HorizontalAlignment="Right"
                             Click="OnBrowseImageButtonClick"/>
                 </StackPanel>
@@ -62,7 +65,8 @@
                     <RowDefinition Height="20"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="Select friend" HorizontalAlignment="Center"/>
+                <TextBlock extensions:XamlElementExtensions.Resource="FRIENDS_TEXTBLOCK_TEXT"
+                           HorizontalAlignment="Center"/>
                 <ListView Grid.Row="1"
                           ItemsSource="{x:Bind ViewModel.Friends, Mode=OneWay}"
                           IsItemClickEnabled="True"
@@ -84,7 +88,8 @@
                     <RowDefinition Height="20"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="Callaborators" HorizontalAlignment="Center"/>
+                <TextBlock extensions:XamlElementExtensions.Resource="COLLABORATORS_TEXTBLOCK_TEXT"
+                           HorizontalAlignment="Center"/>
                 <ListView Grid.Row="1"
                           x:Name="FriendsList"
                           ItemsSource="{x:Bind ViewModel.Collabarators, Mode=OneWay}"
@@ -104,12 +109,12 @@
                    Foreground="#2C404B"
                    FontSize="18"
                    Grid.Row="1"
-                   Text="{x:Bind ViewModel.NOT_COLLABARATORS, Mode=OneWay}"
+                   extensions:XamlElementExtensions.Resource="NOT_COLLABORATORS_TEXTBLOCK_TEXT"
                    Visibility="{x:Bind ViewModel.IsNotCollaboratorsTextVisibility, Mode=OneWay}"/>
             </Grid>
         </Grid>
         <Grid Grid.Row="2">
-            <Button Content="Confirm"
+            <Button extensions:XamlElementExtensions.Resource="CONFIRM_BUTTON_CONTENT"
                     HorizontalAlignment="Center"
                     Click="AddTransactionAsync"/>
         </Grid>

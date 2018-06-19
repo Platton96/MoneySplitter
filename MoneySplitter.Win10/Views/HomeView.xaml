@@ -7,6 +7,8 @@
       xmlns:customControls="using:MoneySplitter.Win10.CustomControls"
       xmlns:viewmodels="using:MoneySplitter.Win10.ViewModels"
       xmlns:converters="using:MoneySplitter.Win10.Converters"
+      xmlns:extensions="using:MoneySplitter.Win10.Extensions"
+      xmlns:viewmodels1="using:MoneySplitter.Models.App"
       mc:Ignorable="d">
     <Page.Resources>
         <converters:OppositeBoolToVisibilityConverter x:Key="OppositeBoolToVisibility"/>
@@ -92,7 +94,7 @@
                             <FontIcon Glyph="&#xE70F;"
                                       Foreground="{StaticResource GrayColorBrush}"
                                       FontSize="14"/>
-                            <TextBlock Text="EDIT PROFILE"
+                            <TextBlock extensions:XamlElementExtensions.Resource="EDIT_PROFILE_TEXTBLOCK_TEXT"
                                        Margin="12,0,0,0"
                                        FontSize="14"
                                        Foreground="{StaticResource DarkGrayColorBrush}"/>
@@ -111,7 +113,7 @@
                             <FontIcon Glyph="&#xEC92;"
                                       Foreground="{StaticResource DarkGrayColorBrush}"
                                       FontSize="16"/>
-                            <TextBlock Text="Don't forget"
+                            <TextBlock extensions:XamlElementExtensions.Resource="DONT_FORGET_TEXTBLOCK_TEXT"
                                        Margin="4,0,0,0"
                                        FontSize="16"
                                        Foreground="{StaticResource DarkColorBrush}"/>
@@ -128,7 +130,7 @@
                             <FontIcon Glyph="&#xE9D9;"
                                       Foreground="{StaticResource DarkGrayColorBrush}"
                                       FontSize="16"/>
-                            <TextBlock Text="Statistics"
+                            <TextBlock extensions:XamlElementExtensions.Resource="STATISTICS_TEXTBLOCK_TEXT"
                                        Margin="4,0,0,0"
                                        FontSize="16"
                                        Foreground="{StaticResource DarkColorBrush}"/>
@@ -136,7 +138,7 @@
                         <StackPanel Margin="0,8,0,0">
                             <StackPanel Orientation="Horizontal">
                                 <Grid Height="76"
-                                      Width="76"
+                                      Width="86"
                                       Margin="0,0,24,0">
                                     <Border Height="52"
                                             VerticalAlignment="Top"
@@ -150,12 +152,12 @@
                                                    HorizontalAlignment="Center"
                                                    Text="8$"/>
                                     </Border>
-                                    <TextBlock Text="Total debt"
+                                    <TextBlock extensions:XamlElementExtensions.Resource="TOTAL_DEBT_TEXTBLOCK_TEXT"
                                                VerticalAlignment="Bottom"
                                                HorizontalAlignment="Center"/>
                                 </Grid>
                                 <Grid Height="76"
-                                      Width="76">
+                                      Width="86">
                                     <Border Height="52"
                                             VerticalAlignment="Top"
                                             Width="52"
@@ -168,7 +170,7 @@
                                                    HorizontalAlignment="Center"
                                                    Text="1.2$"/>
                                     </Border>
-                                    <TextBlock Text="Total owe"
+                                    <TextBlock extensions:XamlElementExtensions.Resource="TOTAL_OWE_TEXTBLOCK_TEXT"
                                                VerticalAlignment="Bottom"
                                                HorizontalAlignment="Center"/>
                                 </Grid>
@@ -176,7 +178,7 @@
                             <StackPanel Orientation="Horizontal"
                                         Margin="0,12,0,0">
                                 <Grid Height="76"
-                                      Width="76"
+                                      Width="86"
                                       Margin="0,0,24,0">
                                     <Border Height="52"
                                             VerticalAlignment="Top"
@@ -190,12 +192,12 @@
                                                    HorizontalAlignment="Center"
                                                    Text="12.5$"/>
                                     </Border>
-                                    <TextBlock Text="In progress"
+                                    <TextBlock extensions:XamlElementExtensions.Resource="INPROGRESS_TEXTBLOCK_TEXT"
                                                VerticalAlignment="Bottom"
                                                HorizontalAlignment="Center"/>
                                 </Grid>
                                 <Grid Height="76"
-                                      Width="76">
+                                      Width="86">
                                     <Border Height="52"
                                             VerticalAlignment="Top"
                                             Width="52"
@@ -208,7 +210,7 @@
                                                    HorizontalAlignment="Center"
                                                    Text="0$"/>
                                     </Border>
-                                    <TextBlock Text="Incoming"
+                                    <TextBlock extensions:XamlElementExtensions.Resource="INCOMING_TEXTBLOCK_TEXT"
                                                VerticalAlignment="Bottom"
                                                HorizontalAlignment="Center"/>
                                 </Grid>
@@ -223,7 +225,7 @@
                         <FontIcon Glyph="&#xE946;"
                                   Foreground="{StaticResource DarkGrayColorBrush}"
                                   FontSize="16"/>
-                        <TextBlock Text="Notifications"
+                        <TextBlock extensions:XamlElementExtensions.Resource="NOTIFACTIONS_TEXTBLOCK_TEXT"
                                    Margin="4,0,0,0"
                                    FontSize="16"
                                    Foreground="{StaticResource DarkColorBrush}"/>
@@ -238,7 +240,7 @@
                             </Style>
                         </ListView.ItemContainerStyle>
                         <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="viewmodels:NotificationModel">
+                            <DataTemplate x:DataType="viewmodels1:NotificationModel">
                                 <Grid Height="76">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
@@ -275,7 +277,7 @@
                                             <FontIcon Glyph="&#xE947;"
                                                       Foreground="{StaticResource GrayColorBrush}"
                                                       FontSize="14"/>
-                                            <TextBlock Text="REMOVE"
+                                            <TextBlock extensions:XamlElementExtensions.Resource="REMOVE_TEXTBLOCK_TEXT"
                                                        Margin="12,0,0,0"
                                                        FontSize="14"
                                                        Foreground="{StaticResource DarkGrayColorBrush}"/>

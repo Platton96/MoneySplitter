@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:customControls="using:MoneySplitter.Win10.CustomControls"
     xmlns:models="using:MoneySplitter.Models"
+    xmlns:extensions="using:MoneySplitter.Win10.Extensions"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -44,7 +45,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:UserModel">
                     <customControls:MobileUserControl ViewModel="{x:Bind Mode=OneWay}"
-                                                      ButtonContent="-"
+                                                      IsRemove="True"
                                                       IsButtonVisible="True"
                                                       HorizontalAlignment="Stretch"
                                                       OnAddOrRemoveItemClick="OnRemoveItemClick"/>
@@ -66,7 +67,7 @@
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="models:UserModel">
                     <customControls:DesktopUserContol ViewModel="{x:Bind Mode=OneWay}"
-                                                      ButtonContent="remove"
+                                                      IsRemove="True"
                                                       OnAddOrRemoveItemClick="OnRemoveItemClick"/>
                 </DataTemplate>
             </GridView.ItemTemplate>
@@ -75,7 +76,7 @@
                    HorizontalAlignment="Center"
                    Foreground="#2C404B"
                    FontSize="18"
-                   Text="You daon't have friends("
+                   extensions:XamlElementExtensions.Resource="NOT_FRIENDS_TEXTBLOCK_TEXT"
                    Visibility="{x:Bind ViewModel.IsNotFriendsTextVisibility, Mode=OneWay}"/>
         <customControls:ErrorDetailsControl IsErrorVisable="{x:Bind ViewModel.IsErrorVisible, Mode=OneWay}"
                                             ErrorDetails="{x:Bind ViewModel.ErrorDetailsModel, Mode=OneWay}"/>

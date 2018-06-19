@@ -18,12 +18,12 @@
 
         <StackPanel VerticalAlignment="Center"
                     HorizontalAlignment="Center">
-            
-            <TextBox PlaceholderText="Enter email"
+
+            <TextBox extensions:XamlElementExtensions.Resource="EMAIL_PLACEHOLDER_TEXT"
                      Text="{x:Bind ViewModel.Email, Mode=TwoWay }"
                      Style="{StaticResource DefaultTextBoxStyle}"/>
 
-            <PasswordBox PlaceholderText="Enter Password"
+            <PasswordBox extensions:XamlElementExtensions.Resource="PASSWORD_PLACEHOLDER_TEXT"
                          Password="{x:Bind ViewModel.Password, Mode=TwoWay}"
                          Style="{StaticResource DefaultPasswordBoxStyle}"/>
 

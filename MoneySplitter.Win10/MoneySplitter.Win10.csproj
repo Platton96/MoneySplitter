@@ -148,7 +148,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AddTransactionViewModel.cs" />
     <Compile Include="ViewModels\FriendDetailsViewModel.cs" />
-    <Compile Include="ViewModels\IncomingAndOutcomingViewModel.cs" />
+    <Compile Include="ViewModels\IncomingAndOutgoingViewModel.cs" />
     <Compile Include="ViewModels\SearchUsersViewModel.cs" />
     <Compile Include="ViewModels\FriendsViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
@@ -163,8 +163,8 @@
     <Compile Include="Views\FriendDetailsView.xaml.cs">
       <DependentUpon>FriendDetailsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\IncomingAndOutcomingView.xaml.cs">
-      <DependentUpon>IncomingAndOutcomingView.xaml</DependentUpon>
+    <Compile Include="Views\IncomingAndOutgoingView.xaml.cs">
+      <DependentUpon>IncomingAndOutgoingView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SearchUsersView.xaml.cs">
       <DependentUpon>SearchUsersView.xaml</DependentUpon>
@@ -278,7 +278,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\IncomingAndOutcomingView.xaml">
+    <Page Include="Views\IncomingAndOutgoingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

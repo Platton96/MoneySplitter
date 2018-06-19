@@ -50,6 +50,7 @@ namespace MoneySplitter.Win10.ViewModels
         private readonly ITransactionsManager _transactionsManager;
         private readonly INavigationManager _navigationManager;
         private readonly TransactionEventModelFactory _transactionEventModelFactory;
+        private readonly ILocalizationService _localizationService;
 
         private SortModel _selectSortType;
         private bool _isNotTransactionsTextVisibility;
@@ -131,11 +132,13 @@ namespace MoneySplitter.Win10.ViewModels
         public TransactionsViewModel(
             ITransactionsManager transactionsManager,
             INavigationManager navigationManager,
-            TransactionEventModelFactory transactionEventModelFactory)
+            TransactionEventModelFactory transactionEventModelFactory,
+            ILocalizationService localizationService)
         {
             _transactionsManager = transactionsManager;
             _navigationManager = navigationManager;
             _transactionEventModelFactory = transactionEventModelFactory;
+            _localizationService = localizationService;
             InializeSortModels();
             SelectTypeSort = SortModels.FirstOrDefault();
         }
@@ -158,8 +161,8 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
-                    ErrorTitle = Defines.ErrorDetails.DEFAULT_ERROR_TITLE,
-                    ErrorDescription = Defines.ErrorDetails.PROBLEM_SERVER
+                    ErrorTitle =_localizationService.GetValue("DEFAULT_ERROR_TITLE"),
+                    ErrorDescription = _localizationService.GetValue("PROBLEM_SERVER_ERROR")
                 };
 
                 IsErrorVisible = true;
@@ -218,27 +221,27 @@ namespace MoneySplitter.Win10.ViewModels
                 new SortModel
                 {
                     SortParameter = SortParameter.CREATION_DATE,
-                    Title = Defines.SortModel.Title.CREATING_DATE
+                    Title = _localizationService.GetValue("SORT_PARAMETER_CREATION_DATE")
                 },
                 new SortModel
                 {
                     SortParameter = SortParameter.TRANSACTION_NAME,
-                    Title = Defines.SortModel.Title.NAME_TRANSACTION
+                    Title = _localizationService.GetValue("SORT_PARAMETER_NAME_TRANSACTION")
                 },
                 new SortModel
                 {
                     SortParameter = SortParameter.SINGLE_COST,
-                    Title = Defines.SortModel.Title.SINGLE_COST
+                    Title = _localizationService.GetValue("SORT_PARAMETER_SINGLE_COST")
                 },
                 new SortModel
                 {
                     SortParameter = SortParameter.TRANSACTION_DATE,
-                    Title = Defines.SortModel.Title.TRANSACTION_DATE
+                    Title = _localizationService.GetValue("SORT_PARAMETER_TRANSACTION_DATE")
                 },
                 new SortModel
                 {
                     SortParameter = SortParameter.USER_ROLE,
-                    Title = Defines.SortModel.Title.USER_ROLE
+                    Title = _localizationService.GetValue("SORT_PARAMETER_CREATION_USER_ROLE")
                 }
 
             };

@@ -1,4 +1,5 @@
-﻿using MoneySplitter.Win10.ViewModels;
+﻿using MoneySplitter.Models.App;
+using MoneySplitter.Win10.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 

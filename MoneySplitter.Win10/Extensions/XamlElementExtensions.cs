@@ -13,11 +13,19 @@ namespace MoneySplitter.Win10.Extensions
 
         private static void OnResourceChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
-            var control = (FrameworkElement)dependencyObject;
+            
             var localizationService = Dependecies.Dependecies.LocalizationService;
             localizationService.InitializeStrings(Defines.Localization.RESOURCE_RU_FILE_PATCH);
 
             var elementContent = localizationService.GetValue(e.NewValue.ToString());
+
+            if (dependencyObject is Run run)
+            {
+                run.Text = elementContent;
+                return;
+            }
+
+            var control = (FrameworkElement)dependencyObject;
 
             if (control is TextBlock textBlock)
             {
@@ -37,15 +45,15 @@ namespace MoneySplitter.Win10.Extensions
                 return;
             }
 
-            if (control is PasswordBox passwordBox)
+            if (control is CheckBox checkBox)
             {
-                passwordBox.PlaceholderText = elementContent;
+                checkBox.Content = elementContent;
                 return;
             }
 
-            if (dependencyObject is Run run)
+            if (control is PasswordBox passwordBox)
             {
-                run.Text = elementContent;
+                passwordBox.PlaceholderText = elementContent;
             }
 
         }

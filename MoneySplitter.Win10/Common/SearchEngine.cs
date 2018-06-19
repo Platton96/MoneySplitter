@@ -14,6 +14,8 @@ namespace MoneySplitter.Win10.Common
         private readonly DispatcherTimer _timer;
 
         private readonly ISearchApiService _searchApiService;
+        private readonly ILocalizationService _localizationService;
+
         private bool _isSearchInProgress;
         private string _previousQuery;
         private string _query;
@@ -29,7 +31,7 @@ namespace MoneySplitter.Win10.Common
 
         public ObservableCollection<UserModel> Results
         {
-            get { return _results; }
+            get => _results; 
             set
             {
                 _results = value;
@@ -39,7 +41,7 @@ namespace MoneySplitter.Win10.Common
 
         public string StatusMessage
         {
-            get { return _statusMessage; }
+            get => _statusMessage; 
             set
             {
                 _statusMessage = value;
@@ -49,7 +51,7 @@ namespace MoneySplitter.Win10.Common
 
         public bool IsSearchInProgress
         { 
-            get { return _isSearchInProgress; }
+            get => _isSearchInProgress; 
             set
             {
                 _isSearchInProgress = value;
@@ -59,7 +61,7 @@ namespace MoneySplitter.Win10.Common
 
         public bool IsStatusMessageVisible
         {
-            get { return _isStatusMessageVisible; }
+            get => _isStatusMessageVisible; 
             set
             {
                 _isStatusMessageVisible = value;
@@ -69,7 +71,7 @@ namespace MoneySplitter.Win10.Common
         #endregion
 
         #region Constructor
-        public SearchEngine(ISearchApiService searchApiService )
+        public SearchEngine(ISearchApiService searchApiService, ILocalizationService localizationService)
         {
             _timer = new DispatcherTimer
             {
@@ -79,6 +81,8 @@ namespace MoneySplitter.Win10.Common
             _timer.Tick += OnTimerTick;
 
             _searchApiService = searchApiService;
+
+            _localizationService = localizationService;
         }
         #endregion
 
@@ -88,7 +92,7 @@ namespace MoneySplitter.Win10.Common
             _previousQuery = string.Empty;
             _query = string.Empty;
             IsStatusMessageVisible = true;
-            StatusMessage = Defines.Search.TEXTBOX_EMPTY;
+            StatusMessage = _localizationService.GetValue("SEURCH_NOT_RESULTS_TEXTBLOCK_TEXT");
             _timer.Start();
         }
 
@@ -109,7 +113,7 @@ namespace MoneySplitter.Win10.Common
             if (string.IsNullOrEmpty(_query))
             {
                 Results?.Clear();
-                StatusMessage = Defines.Search.TEXTBOX_EMPTY;
+                StatusMessage = _localizationService.GetValue("SEURCH_TEXTBOX_EMPTY_PLACEHOLDER_TEXT");
                 IsStatusMessageVisible = true;
                 _previousQuery = _query;
                 return;
@@ -124,7 +128,7 @@ namespace MoneySplitter.Win10.Common
             if (!executionResult.IsSuccess)
             {
                 Results?.Clear();
-                StatusMessage = Defines.ErrorDetails.PROBLEM_SERVER;
+                StatusMessage = _localizationService.GetValue("PROBLEM_SERVER_ERROR");
                 IsStatusMessageVisible = true;
                 return;
             }
@@ -132,7 +136,7 @@ namespace MoneySplitter.Win10.Common
             Results = new ObservableCollection<UserModel>(executionResult.Result);
             if(Results.Count==0)
             {
-                StatusMessage = Defines.Search.NOT_RESULTS;
+                StatusMessage = _localizationService.GetValue("SEURCH_NOT_RESULTS_TEXTBLOCK_TEXT");
                 IsStatusMessageVisible = true;
             }
             else

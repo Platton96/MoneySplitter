@@ -1,6 +1,7 @@
 ﻿using Caliburn.Micro;
 using MoneySplitter.Infrastructure;
 using MoneySplitter.Models;
+using MoneySplitter.Models.App;
 using MoneySplitter.Win10.Common;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -137,8 +138,6 @@ namespace MoneySplitter.Win10.ViewModels
 
 			IsLoading = false;
 
-            var localisarionService = new LocalizationServise();
-            localisarionService.InitializeStrings("\\Strings\\Ru.resw");
 		}
 
 		private void ConfigureNotifications()
@@ -177,10 +176,4 @@ namespace MoneySplitter.Win10.ViewModels
 		}
 	}
 
-	public class NotificationModel
-	{
-		public string ImageUrl { get; set; }
-		public string Title { get; set; }
-		public string Text { get; set; }
-	}
 }
