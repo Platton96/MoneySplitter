@@ -39,9 +39,9 @@ namespace MoneySplitter.Win10.Common
         {
             Strings.TryGetValue(key, out string value);
 
-            if (value=="")
+            if (value == "")
             {
-                UdnStrings.TryGetValue(key, out  value);
+                UdnStrings.TryGetValue(key, out value);
             }
 
             return value;
