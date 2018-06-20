@@ -16,6 +16,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         private readonly ITransactionsManager _transactionsManager;
         private readonly TransactionEventModelFactory _transactionEventModelFactory;
+        private readonly ILocalizationService _localizationService;
 
         private UserModel _friend;
 
@@ -138,7 +139,8 @@ namespace MoneySplitter.Win10.ViewModels
         #region Constructor
         public FriendDetailsViewModel(
             ITransactionsManager transactionsManager,
-            TransactionEventModelFactory transactionEventModelFactory)
+            TransactionEventModelFactory transactionEventModelFactory,
+            ILocalizationService localizationService)
 
         {
             _transactionsManager = transactionsManager;
@@ -160,8 +162,8 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
-                    ErrorTitle = Defines.ErrorDetails.Login.ERROR_TITLE,
-                    ErrorDescription = Defines.ErrorDetails.PROBLEM_SERVER
+                    ErrorTitle = _localizationService.GetValue("REGISTER_ERROR_TITLE"),
+                    ErrorDescription = _localizationService.GetValue("REGISTER_ERROR_PASSWORD")
                 };
 
                 IsErrorVisible = true;

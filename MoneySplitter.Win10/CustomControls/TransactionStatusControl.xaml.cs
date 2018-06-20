@@ -1,95 +1,87 @@
-﻿using MoneySplitter.Models;
+﻿using MoneySplitter.Infrastructure;
+using MoneySplitter.Models;
 using MoneySplitter.Win10.CustomControls.Models;
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 namespace MoneySplitter.Win10.CustomControls
 {
-	public sealed partial class TransactionStatusControl : UserControl
-	{
-		public static readonly DependencyProperty RoleProperty = DependencyProperty.Register(
-		  "Role",
-		  typeof(UserRole),
-		  typeof(TransactionStatusControl),
-		  new PropertyMetadata(default(UserRole), new PropertyChangedCallback(OnRoleChanged)));
+    public sealed partial class TransactionStatusControl : UserControl
+    {
+        private ILocalizationService _localizationService = Dependecies.Dependecies.LocalizationService;
 
-		public UserRole Role
-		{
-			get => (UserRole)GetValue(RoleProperty);
-			set => SetValue(RoleProperty, value);
-		}
+        public static readonly DependencyProperty RoleProperty = DependencyProperty.Register(
+          "Role",
+          typeof(UserRole),
+          typeof(TransactionStatusControl),
+          new PropertyMetadata(default(UserRole), new PropertyChangedCallback(OnRoleChanged)));
 
-		private IDictionary<UserRole, UserRoleLabelModel> _userRoleLabels;
+        public UserRole Role
+        {
+            get => (UserRole)GetValue(RoleProperty);
+            set => SetValue(RoleProperty, value);
+        }
 
-		public TransactionStatusControl()
-		{
-			InitializeComponent();
-			InitializeUserRoleLabels();
-		}
+        private IDictionary<UserRole, UserRoleLabelModel> _userRoleLabels;
 
-		public static void OnRoleChanged(DependencyObject sender, DependencyPropertyChangedEventArgs eventArgs)
-		{
-			var control = (TransactionStatusControl)sender;
-			control.UpdateUserRole();
-		}
+        public TransactionStatusControl()
+        {
+            InitializeComponent();
+            InitializeUserRoleLabels();
+        }
 
-		public void UpdateUserRole()
-		{
-			UserRoleLabelBorder.Background = _userRoleLabels[Role].Color;
-			UserRoleLabel.Text = _userRoleLabels[Role].Content;
-		}
+        public static void OnRoleChanged(DependencyObject sender, DependencyPropertyChangedEventArgs eventArgs)
+        {
+            var control = (TransactionStatusControl)sender;
+            control.UpdateUserRole();
+        }
 
-		private void InitializeUserRoleLabels()
-		{
-			_userRoleLabels = new Dictionary<UserRole, UserRoleLabelModel>()
-			{
-				{
-					UserRole.IN_BEGIN,
-					new UserRoleLabelModel
-					{
-						Content=Defines.UserRoleLabel.Content.IN_BEGIN,
-						Color = RedBrush
-					}
-				},
+        public void UpdateUserRole()
+        {
+            UserRoleLabelBorder.Background = _userRoleLabels[Role].Color;
+            UserRoleLabel.Text = _userRoleLabels[Role].Content;
+        }
 
-				{
-					UserRole.IN_PROGRESS,
-					new UserRoleLabelModel
-					{
-						Content=Defines.UserRoleLabel.Content.IN_PROGRESS,
-						Color = YellowBrush
-					}
-				},
-				{
-					UserRole.FINISHED,
-					new UserRoleLabelModel
-					{
-						Content=Defines.UserRoleLabel.Content.FINISHED,
-						Color = GreenBrush
-					}
-				},
-				{
-					UserRole.MY_TRANSACTION,
-					new UserRoleLabelModel
-					{
-						Content=Defines.UserRoleLabel.Content.USER_TRANSACTION,
-						Color = DarkBlueBrush
-					}
-				}
-			};
+        private void InitializeUserRoleLabels()
+        {
+            _userRoleLabels = new Dictionary<UserRole, UserRoleLabelModel>()
+            {
+                {
+                    UserRole.IN_BEGIN,
+                    new UserRoleLabelModel
+                    {
+                        Content = _localizationService.GetValue("USER_ROLE_LABEL_IN_BEGIN_TEXT"),
+                        Color = RedBrush
+                    }
+                },
 
-		}
-	}
+                {
+                    UserRole.IN_PROGRESS,
+                    new UserRoleLabelModel
+                    {
+                        Content = _localizationService.GetValue("USER_ROLE_LABEL_IN_PROGRESS_TEXT"),
+                        Color = YellowBrush
+                    }
+                },
+                {
+                    UserRole.FINISHED,
+                    new UserRoleLabelModel
+                    {
+                        Content = _localizationService.GetValue("USER_ROLE_LABEL_FINISHED_TEXT"),
+                        Color = GreenBrush
+                    }
+                },
+                {
+                    UserRole.MY_TRANSACTION,
+                    new UserRoleLabelModel
+                    {
+                        Content = _localizationService.GetValue("USER_ROLE_LABEL_USER_TRANSACTION_TEXT"),
+                        Color = DarkBlueBrush
+                    }
+                }
+            };
+
+        }
+    }
 }

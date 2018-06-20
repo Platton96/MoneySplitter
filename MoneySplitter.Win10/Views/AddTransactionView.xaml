@@ -37,7 +37,7 @@
                 <TextBox extensions:XamlElementExtensions.Resource="COST_TRANSACTION_PLACEHOLDER_TEXT"
                          Text="{x:Bind ViewModel.AddTransactionModel.Cost, Mode=TwoWay}"
                          Style="{StaticResource DefaultTextBoxStyle}"/>
-                <DatePicker Header="Debt's diedline date"
+                <DatePicker 
                             Date="{x:Bind ViewModel.AddTransactionModel.DeadlineDate, Mode=TwoWay }"/>
                 <CheckBox extensions:XamlElementExtensions.Resource="IS_COLLABORATOR_CHECKBOX_CONTENT"
                           IsChecked="{x:Bind ViewModel.IsSelfCollabarator, Mode=TwoWay}"

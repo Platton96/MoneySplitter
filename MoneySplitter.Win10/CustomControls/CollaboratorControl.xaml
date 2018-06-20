@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converters="using:MoneySplitter.Win10.Converters"
+    xmlns:extensions="using:MoneySplitter.Win10.Extensions"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -62,16 +63,19 @@
                 Grid.Column="4"
                 Style="{StaticResource CollabaratorButtonStyle}"
                 Visibility="{x:Bind ViewModel.IsGiveButtonVisibil, Mode=OneWay}"
-                Click="OnGiveButtonClick"/>
+                Click="OnGiveButtonClick"
+               extensions:XamlElementExtensions.Resource="REMIND_LOWER_CASE_TEXT_BLOCK_TEXT"/>
         <Button x:Name="RemindCollaboratorButton"
                 Click="OnRemindButtonClick"
                 Grid.Column="4"
                 Visibility="{x:Bind ViewModel.IsRemindButtonVisibil, Mode=OneWay}"
-                Style="{StaticResource CollabaratorButtonStyle}"/>
+                Style="{StaticResource CollabaratorButtonStyle}"
+                extensions:XamlElementExtensions.Resource="REMIND_LOWER_CASE_TEXT_BLOCK_TEXT"/>
         <Button x:Name="ApproveCollaboratorButton"
                 Click="OnApproveButtonClick" 
                 Grid.Column="4"
                 Style="{StaticResource CollabaratorButtonStyle}"
-                Visibility="{x:Bind ViewModel.IsApproveButtonVisibil, Mode=OneWay}"/>
+                Visibility="{x:Bind ViewModel.IsApproveButtonVisibil, Mode=OneWay}"
+                extensions:XamlElementExtensions.Resource="APRROVE_LOWER_CASE_TEXT_BLOCK_TEXT"/>
     </Grid>
 </UserControl>

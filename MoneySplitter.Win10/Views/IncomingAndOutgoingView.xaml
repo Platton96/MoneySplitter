@@ -8,7 +8,6 @@
     xmlns:models="using:MoneySplitter.Models"
     xmlns:customControls="using:MoneySplitter.Win10.CustomControls"
     xmlns:extensions="using:MoneySplitter.Win10.Extensions"
-    
     mc:Ignorable="d">
     <Grid>
         <ScrollViewer>

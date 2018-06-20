@@ -13,9 +13,7 @@ namespace MoneySplitter.Win10.Extensions
 
         private static void OnResourceChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
-            
             var localizationService = Dependecies.Dependecies.LocalizationService;
-            localizationService.InitializeStrings(Defines.Localization.RESOURCE_RU_FILE_PATCH);
 
             var elementContent = localizationService.GetValue(e.NewValue.ToString());
 

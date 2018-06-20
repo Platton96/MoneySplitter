@@ -14,8 +14,8 @@ namespace MoneySplitter.Win10.ViewModels
         private readonly IFilePickerService _filePickerService;
         private readonly ILocalizationService _localizationService;
 
-        private string _laberlForAvatarImage; 
-        private string _labelForBackgroundIamge = Defines.Register.BrowseImage.BACKGROUND;
+        private string _laberlForAvatarImage;
+        private string _labelForBackgroundIamge;
 
         private string _confirmPassword;
         private RegisterModel _registerModel;

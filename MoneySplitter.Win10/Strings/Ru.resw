@@ -129,6 +129,9 @@
     <value>ПОТВЕРДИТЬ ВСЁ</value>
     <comment>friendDetails</comment>
   </data>
+  <data name="APRROVE_LOWER_CASE_TEXT_BLOCK_TEXT" xml:space="preserve">
+    <value>Потвердить</value>
+  </data>
   <data name="AVATAR_IMAGE_TEXTBLOCK_TEXT" xml:space="preserve">
     <value>Загрузить изоброжение на профель</value>
     <comment>registerView</comment>
@@ -212,6 +215,9 @@
   <data name="FRIENDS_TEXTBLOCK_TEXT" xml:space="preserve">
     <value>Друзья</value>
     <comment>AddTransaction</comment>
+  </data>
+  <data name="GIVE_LOWER_CASE_TEXT_BLOCK_TEXT" xml:space="preserve">
+    <value>Отдать</value>
   </data>
   <data name="GIVE_RUN_TEXT" xml:space="preserve">
     <value>Отдать (</value>
@@ -321,6 +327,10 @@
     <value>НАПОМНИТЬ ВСЕМ</value>
     <comment>TransactionDetails</comment>
   </data>
+  <data name="REMIND_LOWER_CASE_TEXT_BLOCK_TEXT" xml:space="preserve">
+    <value>Напомнить</value>
+    <comment>TransactionEventControl</comment>
+  </data>
   <data name="REMIND__BUTTON_CONTENT" xml:space="preserve">
     <value>НАПОМНИТЬ</value>
     <comment>TransactionDetails</comment>
@@ -392,5 +402,21 @@
   <data name="TRANSACTION_OWNER_TEXTBLOCK_TEXT" xml:space="preserve">
     <value>Владелец транзакции</value>
     <comment>TransactionDetails</comment>
+  </data>
+  <data name="USER_ROLE_LABEL_FINISHED_TEXT" xml:space="preserve">
+    <value>ПОТВЕРЖДЕНО</value>
+    <comment>USER_ROLE_LABEL</comment>
+  </data>
+  <data name="USER_ROLE_LABEL_IN_BEGIN_TEXT" xml:space="preserve">
+    <value>ОЖИДАЕТСЯ</value>
+    <comment>USER_ROLE_LABEL</comment>
+  </data>
+  <data name="USER_ROLE_LABEL_IN_PROGRESS_TEXT" xml:space="preserve">
+    <value>НЕ ПОТВЕРЖДЕНО</value>
+    <comment>USER_ROLE_LABEL</comment>
+  </data>
+  <data name="USER_ROLE_LABEL_USER_TRANSACTION_TEXT" xml:space="preserve">
+    <value>МОЯ ТРАНЗАКЦИЯ</value>
+    <comment>USER_ROLE_LABEL</comment>
   </data>
 </root>
