@@ -114,6 +114,7 @@ namespace MoneySplitter.Win10.ViewModels
             var isSuccessExecution = await _friendsManager.LoadUserFriendsAsync();
 
             IsLoading = false;
+
             if (!isSuccessExecution)
             {
                 ErrorDetailsModel = new ErrorDetailsModel
@@ -125,6 +126,7 @@ namespace MoneySplitter.Win10.ViewModels
                 IsErrorVisible = true;
                 return;
             }
+
             if (!_friendsManager.UserFriends.Any())
             {
                 IsNotFriendsTextVisibility = true;

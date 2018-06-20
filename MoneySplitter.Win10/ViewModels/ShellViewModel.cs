@@ -159,15 +159,16 @@ namespace MoneySplitter.Win10.ViewModels
                 {
                     string.Format(
                         MAIN_MENU_BUTTON_TEMPLATE,
-                    Defines.MenuItem.IconButton.TRANSACTIONS,
-                    _localizationService.GetValue("TRANSACTIONS_FRAME_TITLE")),
+                        Defines.MenuItem.IconButton.TRANSACTIONS,
+                        _localizationService.GetValue("TRANSACTIONS_FRAME_TITLE")),
 
                     typeof(TransactionsViewModel)
                 },
                 {
-                    string.Format(MAIN_MENU_BUTTON_TEMPLATE,
-                  Defines.MenuItem.IconButton.INCOMING_AND_OUTCOMING,
-                    _localizationService.GetValue("INCOMING_AND_OUTGOING_FRAME_TITLE")),
+                    string.Format(
+                        MAIN_MENU_BUTTON_TEMPLATE,
+                        Defines.MenuItem.IconButton.INCOMING_AND_OUTCOMING,
+                       _localizationService.GetValue("INCOMING_AND_OUTGOING_FRAME_TITLE")),
 
                     typeof(IncomingAndOutgoingViewModel)
                 }

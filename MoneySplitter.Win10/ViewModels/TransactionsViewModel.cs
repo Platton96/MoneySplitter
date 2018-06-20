@@ -157,6 +157,7 @@ namespace MoneySplitter.Win10.ViewModels
             var isSuccessExecution = await _transactionsManager.LoadUserTransactionsAsync();
 
             IsLoading = false;
+
             if (!isSuccessExecution)
             {
                 ErrorDetailsModel = new ErrorDetailsModel
@@ -168,6 +169,7 @@ namespace MoneySplitter.Win10.ViewModels
                 IsErrorVisible = true;
                 return;
             }
+
             if (_transactionsManager.UserTransactions.Count() == 0)
             {
                 IsNotTransactionsTextVisibility = true;
@@ -185,11 +187,13 @@ namespace MoneySplitter.Win10.ViewModels
                 await _transactionsManager.LoadUserTransactionsAsync();
 
             IsLoading = false;
+
             if (!isSuccessExecution)
             {
                 IsErrorVisible = true;
                 return;
             }
+
             Transactions = new ObservableCollection<TransactionEventModel>(_transactionEventModelFactory.GetTransactionEvents(_transactionsManager.UserTransactions));
 
         }
@@ -210,6 +214,7 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 return;
             }
+
             var getParameter = _getParameterFunctions[sortParameter];
             Transactions= new ObservableCollection <TransactionEventModel>( Transactions.OrderBy(x => getParameter(x)));
         }

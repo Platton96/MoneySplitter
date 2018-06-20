@@ -144,6 +144,7 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 DeadlineDate = DateTime.Now
             };
+
             IsSelfCollabarator = true;
         }
 
@@ -151,6 +152,7 @@ namespace MoneySplitter.Win10.ViewModels
         protected override async void OnActivate()
         {
             base.OnActivate();
+
             if (_friendsManager.UserFriends == null)
             {
                 IsLoading = true;
