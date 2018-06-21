@@ -149,55 +149,55 @@
     <comment>TransactionDetails</comment>
   </data>
   <data name="COMMON_TRANSACTIONS_TEXTBLOCK_TEXT" xml:space="preserve">
-    <value>Общие транзакции</value>
+    <value>Common transaction</value>
     <comment>friendDetails</comment>
   </data>
   <data name="CONFIRM_BUTTON_CONTENT" xml:space="preserve">
-    <value>Потвердить</value>
+    <value>Confirm</value>
     <comment>AddTransaction</comment>
   </data>
   <data name="CONFIRM_PASSWORD_PLACEHOLDER_TEXT" xml:space="preserve">
-    <value>Повторите пароль</value>
+    <value>Confirm password</value>
     <comment>registerView</comment>
   </data>
   <data name="COST_TRANSACTION_PLACEHOLDER_TEXT" xml:space="preserve">
-    <value>Введите стоимость транзакции</value>
+    <value>Enter cost</value>
     <comment>AddTransaction</comment>
   </data>
   <data name="CREDIT_CARD_RUN_TEXT" xml:space="preserve">
-    <value>Кредитная карта: </value>
+    <value>Credit card</value>
     <comment>TransactionDetails</comment>
   </data>
   <data name="DEADLINE_RUN_TEXT" xml:space="preserve">
-    <value>Дедлайн: </value>
+    <value>Diedline</value>
     <comment>TransactionDetails</comment>
   </data>
   <data name="DEBTERS_TEXTBLOCK_TEXT" xml:space="preserve">
-    <value>Должники</value>
+    <value>Debters</value>
     <comment>IncomingAndOutgoingView</comment>
   </data>
   <data name="DEBTS_TEXTBLOCK_TEXT" xml:space="preserve">
-    <value>Долги</value>
+    <value>Debts</value>
     <comment>friendDetails</comment>
   </data>
   <data name="DEFAULT_ERROR_TITLE" xml:space="preserve">
-    <value>Ошибка</value>
+    <value>Wrong</value>
     <comment>error</comment>
   </data>
   <data name="DESCRIPTION_TRANSACTION_PLACEHOLDER_TEXT" xml:space="preserve">
-    <value>Введите описание транзакции</value>
+    <value>Enter description transaction</value>
     <comment>AddTransaction</comment>
   </data>
   <data name="DONT_FORGET_TEXTBLOCK_TEXT" xml:space="preserve">
-    <value>Не забудь</value>
+    <value>Don't forget</value>
     <comment>homeView</comment>
   </data>
   <data name="EDIT_PROFILE_TEXTBLOCK_TEXT" xml:space="preserve">
-    <value>РЕДОКТИРОВАТЬ</value>
+    <value>EDIT</value>
     <comment>homeView</comment>
   </data>
   <data name="EMAIL_PLACEHOLDER_TEXT" xml:space="preserve">
-    <value>Введите електронную почту</value>
+    <value>Enter email</value>
     <comment>loginView</comment>
   </data>
   <data name="EMAIL_RUN_TEXT" xml:space="preserve">
@@ -205,218 +205,218 @@
     <comment>TransactionDetails</comment>
   </data>
   <data name="FINISHED_TEXTBLOCK_TEXT" xml:space="preserve">
-    <value>Завершили</value>
+    <value>Finished</value>
     <comment>TransactionDetails</comment>
   </data>
   <data name="FRIENDS_FRAME_TITLE" xml:space="preserve">
-    <value>Друзья</value>
+    <value>Friends</value>
     <comment>titleFrame</comment>
   </data>
   <data name="FRIENDS_TEXTBLOCK_TEXT" xml:space="preserve">
-    <value>Друзья</value>
+    <value>Friends</value>
     <comment>AddTransaction</comment>
   </data>
   <data name="GIVE_LOWER_CASE_TEXT_BLOCK_TEXT" xml:space="preserve">
-    <value>Отдать</value>
+    <value>Give!</value>
   </data>
   <data name="GIVE_RUN_TEXT" xml:space="preserve">
-    <value>Отдать (</value>
+    <value>Give (</value>
     <comment>TransactionDetails</comment>
   </data>
   <data name="HOME_FRAME_TITLE" xml:space="preserve">
-    <value>Главная</value>
+    <value>Home</value>
     <comment>titleFrame</comment>
   </data>
   <data name="INCOMING_AND_OUTGOING_FRAME_TITLE" xml:space="preserve">
-    <value>Входящие и Исходящие</value>
+    <value>Incoming and Outgoing</value>
     <comment>titleFrame</comment>
   </data>
   <data name="INCOMING_TEXTBLOCK_TEXT" xml:space="preserve">
-    <value>Входящие</value>
+    <value>Incoming</value>
     <comment>homeView</comment>
   </data>
   <data name="INPROGRESS_TEXTBLOCK_TEXT" xml:space="preserve">
-    <value>В процессе</value>
+    <value>In progress</value>
     <comment>homeView</comment>
   </data>
   <data name="IS_COLLABORATOR_CHECKBOX_CONTENT" xml:space="preserve">
-    <value>Вы участник транзакции?</value>
+    <value>Do you collaborator</value>
     <comment>AddTransaction</comment>
   </data>
   <data name="LENDS_TEXTBLOCK_TEXT" xml:space="preserve">
-    <value>Займы</value>
+    <value>Lends</value>
     <comment>friendDetails</comment>
   </data>
   <data name="LEND_PERSONS_TEXTBLOCK_TEXT" xml:space="preserve">
-    <value>Отдолживишие</value>
+    <value>Lend persons</value>
     <comment>IncomingAndOutgoingView</comment>
   </data>
   <data name="LOGIN_BUTTON_CONTENT" xml:space="preserve">
-    <value>ЛОГИН</value>
+    <value>LOGIN</value>
     <comment>loginView</comment>
   </data>
   <data name="LOGIN_ERROR_DESCRIPTION" xml:space="preserve">
-    <value>Подалуйста проверьте логин и пароль</value>
+    <value>Please check that you have entered your login and password</value>
     <comment>error</comment>
   </data>
   <data name="LOGIN_ERROR_TITLE" xml:space="preserve">
-    <value>Невозмжно войти</value>
+    <value>Unable to log in.</value>
     <comment>error</comment>
   </data>
   <data name="NAME_PLACEHOLDER_TEXT" xml:space="preserve">
-    <value>Введите имя</value>
+    <value>Enter name</value>
     <comment>registerView</comment>
   </data>
   <data name="NOTIFACTIONS_TEXTBLOCK_TEXT" xml:space="preserve">
-    <value>Уведомления</value>
+    <value>Notifactions</value>
     <comment>homeView</comment>
   </data>
   <data name="NOT_COLLABORATORS_TEXTBLOCK_TEXT" xml:space="preserve">
-    <value>Выбирите участников</value>
+    <value>Select collaborators</value>
     <comment>AddTransaction</comment>
   </data>
   <data name="NOT_FRIENDS_TEXTBLOCK_TEXT" xml:space="preserve">
-    <value>У вас нет друзей</value>
+    <value>Yoo don't have friend(</value>
     <comment>friendsView</comment>
   </data>
   <data name="NOT_TRANSACTIONS_TEXTBLOCK_TEXT" xml:space="preserve">
-    <value>У вас нет транзакций(</value>
+    <value>You don't have transaction(</value>
     <comment>Transactions</comment>
   </data>
   <data name="NUMBER_CREDIT_CARD_PLACEHOLDER_TEXT" xml:space="preserve">
-    <value>Введите номер кредитной карточки</value>
+    <value>Enter credit card</value>
     <comment>registerView</comment>
   </data>
   <data name="NUMBER_PHONE_PLACEHOLDER_TEXT" xml:space="preserve">
-    <value>Введите номер телефона</value>
+    <value>Enter phone</value>
     <comment>registerView</comment>
   </data>
   <data name="PASSWORD_PLACEHOLDER_TEXT" xml:space="preserve">
-    <value>Введите пароль</value>
+    <value>Enter password</value>
     <comment>loginView</comment>
   </data>
   <data name="PEOPLE_TEXTBLOCK_TEXT" xml:space="preserve">
-    <value>Людей</value>
+    <value>People</value>
     <comment>TransactionDetails</comment>
   </data>
   <data name="PHONE_RUN_TEXT" xml:space="preserve">
-    <value>Телефон: </value>
+    <value>Phone: </value>
     <comment>TransactionDetails</comment>
   </data>
   <data name="PROBLEM_SERVER_ERROR" xml:space="preserve">
-    <value>Извиниет, проблемы с сервером</value>
+    <value>Sory, problems with server!</value>
     <comment>error</comment>
   </data>
   <data name="REGISTER_BUTTON_CONTENT" xml:space="preserve">
-    <value>ЗАРЕГИСТРИРОВАТЬСЯ</value>
+    <value>REGISTER</value>
     <comment>loginView</comment>
   </data>
   <data name="REGISTER_ERROR_DESCRIPTION" xml:space="preserve">
-    <value>Возникли проблемы с регистрацией, проверти валидность данных</value>
+    <value>You have problem whith register</value>
     <comment>error</comment>
   </data>
   <data name="REGISTER_ERROR_PASSWORD" xml:space="preserve">
-    <value>Повтрный пароль неверный</value>
+    <value>Confirmpassword isn't some password</value>
     <comment>error</comment>
   </data>
   <data name="REGISTER_ERROR_TITLE" xml:space="preserve">
-    <value>Невозможно зарегестрироваться</value>
+    <value>Unable to Register</value>
     <comment>error</comment>
   </data>
   <data name="REMIND_ALL_BUTTON_CONTENT" xml:space="preserve">
-    <value>НАПОМНИТЬ ВСЕМ</value>
+    <value>REMIND ALL</value>
     <comment>TransactionDetails</comment>
   </data>
   <data name="REMIND_LOWER_CASE_TEXT_BLOCK_TEXT" xml:space="preserve">
-    <value>Напомнить</value>
+    <value>Remind</value>
     <comment>TransactionEventControl</comment>
   </data>
   <data name="REMIND__BUTTON_CONTENT" xml:space="preserve">
-    <value>НАПОМНИТЬ</value>
+    <value>REMIND</value>
     <comment>TransactionDetails</comment>
   </data>
   <data name="REMOVE_BUTTON_CONTENT" xml:space="preserve">
-    <value>Удалить</value>
+    <value>Remove</value>
     <comment>UserControl</comment>
   </data>
   <data name="REMOVE_TEXTBLOCK_TEXT" xml:space="preserve">
-    <value>УДАЛИТЬ</value>
+    <value>REMAOVE</value>
     <comment>homeView</comment>
   </data>
   <data name="SEARCH_FRAME_TITLE" xml:space="preserve">
-    <value>Поиск</value>
+    <value>Search</value>
     <comment>titleFrame</comment>
   </data>
   <data name="SEURCH_NOT_RESULTS_TEXTBLOCK_TEXT" xml:space="preserve">
-    <value>Пользователей не найденно</value>
+    <value>Not results</value>
     <comment>search</comment>
   </data>
   <data name="SEURCH_TEXTBOX_EMPTY_PLACEHOLDER_TEXT" xml:space="preserve">
-    <value>Введите запрос для поиска</value>
+    <value>Enter, please query for search!</value>
     <comment>search</comment>
   </data>
   <data name="SORT_PARAMETER_CREATION_DATE" xml:space="preserve">
-    <value>Дата создания</value>
+    <value>Creating date</value>
     <comment>Transactions</comment>
   </data>
   <data name="SORT_PARAMETER_CREATION_USER_ROLE" xml:space="preserve">
-    <value>Пользоваетля роль</value>
+    <value>User role</value>
     <comment>Transactions</comment>
   </data>
   <data name="SORT_PARAMETER_NAME_TRANSACTION" xml:space="preserve">
-    <value>Имя</value>
+    <value>Name transaction</value>
     <comment>Transactions</comment>
   </data>
   <data name="SORT_PARAMETER_SINGLE_COST" xml:space="preserve">
-    <value>Цена</value>
+    <value>Cost</value>
     <comment>Transactions</comment>
   </data>
   <data name="SORT_PARAMETER_TRANSACTION_DATE" xml:space="preserve">
-    <value>Дедлайн</value>
+    <value>Transaction date</value>
     <comment>Transactions</comment>
   </data>
   <data name="STATISTICS_TEXTBLOCK_TEXT" xml:space="preserve">
-    <value>Статистика</value>
+    <value>Statistics</value>
     <comment>homeView</comment>
   </data>
   <data name="SURNAME_PLACEHOLDER_TEXT" xml:space="preserve">
-    <value>Введите фамилию</value>
+    <value>Enter surname</value>
     <comment>registerView</comment>
   </data>
   <data name="TITLE_TRANSACTION_PLACEHOLDER_TEXT" xml:space="preserve">
-    <value>Введите навание транзакции</value>
+    <value>Enter name transactions</value>
     <comment>AddTransaction</comment>
   </data>
   <data name="TOTAL_DEBT_TEXTBLOCK_TEXT" xml:space="preserve">
-    <value>Общий долг</value>
+    <value>Total debt</value>
     <comment>homeView</comment>
   </data>
   <data name="TOTAL_OWE_TEXTBLOCK_TEXT" xml:space="preserve">
-    <value>Общий займ</value>
+    <value>Total owe</value>
     <comment>homeView</comment>
   </data>
   <data name="TRANSACTIONS_FRAME_TITLE" xml:space="preserve">
-    <value>Транзакции</value>
+    <value>Transactions</value>
     <comment>titleFrame</comment>
   </data>
   <data name="TRANSACTION_OWNER_TEXTBLOCK_TEXT" xml:space="preserve">
-    <value>Владелец транзакции</value>
+    <value>Owner transaction</value>
     <comment>TransactionDetails</comment>
   </data>
   <data name="USER_ROLE_LABEL_FINISHED_TEXT" xml:space="preserve">
-    <value>ПОТВЕРЖДЕНО</value>
+    <value>COMFIRTED</value>
     <comment>USER_ROLE_LABEL</comment>
   </data>
   <data name="USER_ROLE_LABEL_IN_BEGIN_TEXT" xml:space="preserve">
-    <value>ОЖИДАЕТСЯ</value>
+    <value>AWAIT</value>
     <comment>USER_ROLE_LABEL</comment>
   </data>
   <data name="USER_ROLE_LABEL_IN_PROGRESS_TEXT" xml:space="preserve">
-    <value>НЕ ПОТВЕРЖДЕНО</value>
+    <value>UNCOMFIRMED</value>
     <comment>USER_ROLE_LABEL</comment>
   </data>
   <data name="USER_ROLE_LABEL_USER_TRANSACTION_TEXT" xml:space="preserve">
-    <value>МОЯ ТРАНЗАКЦИЯ</value>
+    <value>MY TRANSACTION</value>
     <comment>USER_ROLE_LABEL</comment>
   </data>
 </root>
