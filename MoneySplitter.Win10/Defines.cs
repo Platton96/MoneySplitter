@@ -94,32 +94,32 @@
             }
         }
 
-        //public static class ErrorDetails
-        //{
-        //    public const string PROBLEM_SERVER = "Sory, problems with server!";
-        //    public const string DEFAULT_ERROR_TITLE = "Wrong";
+        public static class ErrorDetails
+        {
+            public const string PROBLEM_SERVER = "Sory, problems with server!";
+            public const string DEFAULT_ERROR_TITLE = "Wrong";
 
-        //    public static class Login
-        //    {
-        //        public const string ERROR_TITLE = "Unable to log in.";
-        //        public const string ERROR_DESCRIPTION = "Please check that you have entered your login and password";
-        //    }
-        //    public static class Register
-        //    {
-        //        public const string ERROR_TITLE = "Unable to Register";
-        //        public const string ERROR_DESCRIPTION = "You have problem whith register";
-        //        public const string ERROR_PASSWORD = "Confirmpassword isn't some password";
-        //    }
-        //}
-        //public static class Search
-        //{
-        //    public const string TEXTBOX_EMPTY = "Enter, please query for search!";
-        //    public const string NOT_RESULTS = "Not results!";
-        //}
-        //public static class AddTransaction
-        //{
-        //    public const string NOT_COLLABARATORS = "Select friend!";
-        //}
+            public static class Login
+            {
+                public const string ERROR_TITLE = "Unable to log in.";
+                public const string ERROR_DESCRIPTION = "Please check that you have entered your login and password";
+            }
+            public static class Register
+            {
+                public const string ERROR_TITLE = "Unable to Register";
+                public const string ERROR_DESCRIPTION = "You have problem whith register";
+                public const string ERROR_PASSWORD = "Confirmpassword isn't some password";
+            }
+        }
+        public static class Search
+        {
+            public const string TEXTBOX_EMPTY = "Enter, please query for search!";
+            public const string NOT_RESULTS = "Not results!";
+        }
+        public static class AddTransaction
+        {
+            public const string NOT_COLLABARATORS = "Select friend!";
+        }
     }
 
 }
