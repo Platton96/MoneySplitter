@@ -23,7 +23,7 @@ namespace MoneySplitter.Win10.ViewModels
         private readonly IMembershipService _membershipService;
         private readonly ILocalizationService _localizationService;
 
-        private string _laberlForTransactionImage;
+        private string _labelForTransactionImage;
         private bool _isNoCollaboratorsTextVisibility;
         private bool _isLoading;
         private bool _isSelfCollabarator;
@@ -64,10 +64,10 @@ namespace MoneySplitter.Win10.ViewModels
 
         public string LabelForTransactionImage
         {
-            get => _laberlForTransactionImage; 
+            get => _labelForTransactionImage; 
             set
             {
-                _laberlForTransactionImage = value;
+                _labelForTransactionImage = value;
                 NotifyOfPropertyChange(nameof(LabelForTransactionImage));
             }
         }
@@ -138,7 +138,7 @@ namespace MoneySplitter.Win10.ViewModels
             _membershipService = membershipService;
             _localizationService = localizationService;
 
-            _laberlForTransactionImage = _localizationService.GetValue("AVATAR_IMAGE_TEXTBLOCK_TEXT");
+            _labelForTransactionImage = _localizationService.GetString(Texts.AVATAR_IMAGE_TEXTBLOCK_TEXT);
 
             AddTransactionModel = new AddTransactionModel
             {
@@ -205,8 +205,8 @@ namespace MoneySplitter.Win10.ViewModels
                 IsErrorVisible = true;
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
-                    ErrorTitle = _localizationService.GetValue("DEFAULT_ERROR_TITLE"),
-                    ErrorDescription = _localizationService.GetValue("PROBLEM_SERVER_ERROR")
+                    ErrorTitle = _localizationService.GetString(Texts.DEFAULT_ERROR_TITLE),
+                    ErrorDescription = _localizationService.GetString(Texts.PROBLEM_SERVER_ERROR)
                 };
                 return;
             }

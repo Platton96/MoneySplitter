@@ -40,37 +40,39 @@
             </Ellipse.Fill>
         </Ellipse>
         <StackPanel VerticalAlignment = "Center" Margin="7"
-                        Grid.Column = "2"
-                        HorizontalAlignment = "Stretch">
+                    Grid.Column = "2"
+                    HorizontalAlignment = "Stretch">
             <TextBlock IsTextSelectionEnabled = "True"
                        TextTrimming="WordEllipsis"
                        Text="{x:Bind ViewModel.FullName, Mode=OneWay}">
 
             </TextBlock>
             <TextBlock Text="{x:Bind ViewModel.Email, Mode=OneWay}"
-                           HorizontalAlignment="Stretch"
-                           TextTrimming="CharacterEllipsis"/>
-            <!--<TextBlock extensions:XamlElementExtensions.Resource="BUTTON_HOME"/>-->
+                       HorizontalAlignment="Stretch"
+                       TextTrimming="CharacterEllipsis"/>
         </StackPanel >
         <TextBlock  Grid.Column="3"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center">
             <Run
-            Text="{x:Bind ViewModel.Cost, Mode=OneWay}"/>
+                Text="{x:Bind ViewModel.Cost, Mode=OneWay}"/>
             <Run Text="$" />
         </TextBlock>
+        
         <Button x:Name="GiveCollaboratorButton"
                 Grid.Column="4"
                 Style="{StaticResource CollabaratorButtonStyle}"
                 Visibility="{x:Bind ViewModel.IsGiveButtonVisibil, Mode=OneWay}"
                 Click="OnGiveButtonClick"
-               extensions:XamlElementExtensions.Resource="REMIND_LOWER_CASE_TEXT_BLOCK_TEXT"/>
+                extensions:XamlElementExtensions.Resource="REMIND_LOWER_CASE_TEXT_BLOCK_TEXT"/>
+        
         <Button x:Name="RemindCollaboratorButton"
                 Click="OnRemindButtonClick"
                 Grid.Column="4"
                 Visibility="{x:Bind ViewModel.IsRemindButtonVisibil, Mode=OneWay}"
                 Style="{StaticResource CollabaratorButtonStyle}"
                 extensions:XamlElementExtensions.Resource="REMIND_LOWER_CASE_TEXT_BLOCK_TEXT"/>
+
         <Button x:Name="ApproveCollaboratorButton"
                 Click="OnApproveButtonClick" 
                 Grid.Column="4"

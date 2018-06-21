@@ -119,8 +119,8 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
-                    ErrorTitle = _localizationService.GetValue("DEFAULT_ERROR_TITLE"),
-                    ErrorDescription = _localizationService.GetValue("PROBLEM_SERVER_ERROR")
+                    ErrorTitle = _localizationService.GetString(Texts.DEFAULT_ERROR_TITLE),
+                    ErrorDescription = _localizationService.GetString(Texts.PROBLEM_SERVER_ERROR)
                 };
 
                 IsErrorVisible = true;

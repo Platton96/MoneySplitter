@@ -51,7 +51,7 @@ namespace MoneySplitter.Win10.CustomControls
                     UserRole.IN_BEGIN,
                     new UserRoleLabelModel
                     {
-                        Content = _localizationService.GetValue("USER_ROLE_LABEL_IN_BEGIN_TEXT"),
+                        Content = _localizationService.GetString(Texts.USER_ROLE_LABEL_IN_BEGIN_TEXT),
                         Color = RedBrush
                     }
                 },
@@ -60,7 +60,7 @@ namespace MoneySplitter.Win10.CustomControls
                     UserRole.IN_PROGRESS,
                     new UserRoleLabelModel
                     {
-                        Content = _localizationService.GetValue("USER_ROLE_LABEL_IN_PROGRESS_TEXT"),
+                        Content = _localizationService.GetString(Texts.USER_ROLE_LABEL_IN_PROGRESS_TEXT),
                         Color = YellowBrush
                     }
                 },
@@ -68,7 +68,7 @@ namespace MoneySplitter.Win10.CustomControls
                     UserRole.FINISHED,
                     new UserRoleLabelModel
                     {
-                        Content = _localizationService.GetValue("USER_ROLE_LABEL_FINISHED_TEXT"),
+                        Content = _localizationService.GetString(Texts.USER_ROLE_LABEL_FINISHED_TEXT),
                         Color = GreenBrush
                     }
                 },
@@ -76,7 +76,7 @@ namespace MoneySplitter.Win10.CustomControls
                     UserRole.MY_TRANSACTION,
                     new UserRoleLabelModel
                     {
-                        Content = _localizationService.GetValue("USER_ROLE_LABEL_USER_TRANSACTION_TEXT"),
+                        Content = _localizationService.GetString(Texts.USER_ROLE_LABEL_USER_TRANSACTION_TEXT),
                         Color = DarkBlueBrush
                     }
                 }

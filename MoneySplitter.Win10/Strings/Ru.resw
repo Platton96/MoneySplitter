@@ -347,11 +347,11 @@
     <value>Поиск</value>
     <comment>titleFrame</comment>
   </data>
-  <data name="SEURCH_NOT_RESULTS_TEXTBLOCK_TEXT" xml:space="preserve">
+  <data name="SEARCH_NOT_RESULTS_TEXTBLOCK_TEXT" xml:space="preserve">
     <value>Пользователей не найденно</value>
     <comment>search</comment>
   </data>
-  <data name="SEURCH_TEXTBOX_EMPTY_PLACEHOLDER_TEXT" xml:space="preserve">
+  <data name="SEARCH_TEXTBOX_EMPTY_PLACEHOLDER_TEXT" xml:space="preserve">
     <value>Введите запрос для поиска</value>
     <comment>search</comment>
   </data>

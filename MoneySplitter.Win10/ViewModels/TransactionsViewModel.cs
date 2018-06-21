@@ -162,8 +162,8 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
-                    ErrorTitle =_localizationService.GetValue("DEFAULT_ERROR_TITLE"),
-                    ErrorDescription = _localizationService.GetValue("PROBLEM_SERVER_ERROR")
+                    ErrorTitle =_localizationService.GetString(Texts.DEFAULT_ERROR_TITLE),
+                    ErrorDescription = _localizationService.GetString(Texts.PROBLEM_SERVER_ERROR)
                 };
 
                 IsErrorVisible = true;
@@ -226,27 +226,27 @@ namespace MoneySplitter.Win10.ViewModels
                 new SortModel
                 {
                     SortParameter = SortParameter.CREATION_DATE,
-                    Title = _localizationService.GetValue("SORT_PARAMETER_CREATION_DATE")
+                    Title = _localizationService.GetString(Texts.SORT_PARAMETER_CREATION_DATE)
                 },
                 new SortModel
                 {
                     SortParameter = SortParameter.TRANSACTION_NAME,
-                    Title = _localizationService.GetValue("SORT_PARAMETER_NAME_TRANSACTION")
+                    Title = _localizationService.GetString(Texts.SORT_PARAMETER_NAME_TRANSACTION)
                 },
                 new SortModel
                 {
                     SortParameter = SortParameter.SINGLE_COST,
-                    Title = _localizationService.GetValue("SORT_PARAMETER_SINGLE_COST")
+                    Title = _localizationService.GetString(Texts.SORT_PARAMETER_SINGLE_COST)
                 },
                 new SortModel
                 {
                     SortParameter = SortParameter.TRANSACTION_DATE,
-                    Title = _localizationService.GetValue("SORT_PARAMETER_TRANSACTION_DATE")
+                    Title = _localizationService.GetString(Texts.SORT_PARAMETER_TRANSACTION_DATE)
                 },
                 new SortModel
                 {
                     SortParameter = SortParameter.USER_ROLE,
-                    Title = _localizationService.GetValue("SORT_PARAMETER_CREATION_USER_ROLE")
+                    Title = _localizationService.GetString(Texts.SORT_PARAMETER_CREATION_USER_ROLE)
                 }
 
             };

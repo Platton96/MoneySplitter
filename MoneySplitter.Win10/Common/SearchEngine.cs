@@ -92,7 +92,7 @@ namespace MoneySplitter.Win10.Common
             _previousQuery = string.Empty;
             _query = string.Empty;
             IsStatusMessageVisible = true;
-            StatusMessage = _localizationService.GetValue("SEURCH_NOT_RESULTS_TEXTBLOCK_TEXT");
+            StatusMessage = _localizationService.GetString(Texts.SEARCH_NOT_RESULTS_TEXTBLOCK_TEXT);
             _timer.Start();
         }
 
@@ -113,7 +113,7 @@ namespace MoneySplitter.Win10.Common
             if (string.IsNullOrEmpty(_query))
             {
                 Results?.Clear();
-                StatusMessage = _localizationService.GetValue("SEURCH_TEXTBOX_EMPTY_PLACEHOLDER_TEXT");
+                StatusMessage = _localizationService.GetString(Texts.SEARCH_TEXTBOX_EMPTY_PLACEHOLDER_TEXT);
                 IsStatusMessageVisible = true;
                 _previousQuery = _query;
                 return;
@@ -128,7 +128,7 @@ namespace MoneySplitter.Win10.Common
             if (!executionResult.IsSuccess)
             {
                 Results?.Clear();
-                StatusMessage = _localizationService.GetValue("PROBLEM_SERVER_ERROR");
+                StatusMessage = _localizationService.GetString(Texts.PROBLEM_SERVER_ERROR);
                 IsStatusMessageVisible = true;
                 return;
             }
@@ -136,7 +136,7 @@ namespace MoneySplitter.Win10.Common
             Results = new ObservableCollection<UserModel>(executionResult.Result);
             if(Results.Count==0)
             {
-                StatusMessage = _localizationService.GetValue("SEURCH_NOT_RESULTS_TEXTBLOCK_TEXT");
+                StatusMessage = _localizationService.GetString(Texts.SEARCH_NOT_RESULTS_TEXTBLOCK_TEXT);
                 IsStatusMessageVisible = true;
             }
             else

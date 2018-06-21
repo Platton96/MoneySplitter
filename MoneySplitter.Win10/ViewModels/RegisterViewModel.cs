@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using MoneySplitter.Infrastructure;
+using MoneySplitter.Models;
 using MoneySplitter.Models.App;
 using MoneySplitter.Models.Session;
 using System.Threading.Tasks;
@@ -125,8 +126,8 @@ namespace MoneySplitter.Win10.ViewModels
                 IsErrorVisible = true;
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
-                    ErrorTitle = _localizationService.GetValue("REGISTER_ERROR_TITLE"),
-                    ErrorDescription = _localizationService.GetValue("REGISTER_ERROR_PASSWORD")
+                    ErrorTitle = _localizationService.GetString(Texts.REGISTER_ERROR_TITLE),
+                    ErrorDescription = _localizationService.GetString(Texts.REGISTER_ERROR_PASSWORD)
                 };
                 return;
             }
@@ -140,8 +141,8 @@ namespace MoneySplitter.Win10.ViewModels
                 IsErrorVisible = true;
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
-                    ErrorTitle = _localizationService.GetValue("REGISTER_ERROR_TITLE"),
-                    ErrorDescription = _localizationService.GetValue("REGISTER_ERROR_TITLE")
+                    ErrorTitle = _localizationService.GetString(Texts.REGISTER_ERROR_TITLE),
+                    ErrorDescription = _localizationService.GetString(Texts.REGISTER_ERROR_TITLE)
                 };
                 return;
             }
@@ -151,8 +152,8 @@ namespace MoneySplitter.Win10.ViewModels
 
         private void InitializeField()
         {
-            _laberlForAvatarImage = _localizationService.GetValue("AVATAR_IMAGE_TEXTBLOCK_TEXT");
-            _labelForBackgroundIamge = _localizationService.GetValue("REGISTER_ERROR_DESCRIPTION");
+            _laberlForAvatarImage = _localizationService.GetString(Texts.AVATAR_IMAGE_TEXTBLOCK_TEXT);
+            _labelForBackgroundIamge = _localizationService.GetString(Texts.REGISTER_ERROR_DESCRIPTION);
         }
 
         public async Task BrowseAvatarImageAsync()

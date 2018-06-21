@@ -13,7 +13,7 @@ namespace MoneySplitter.Win10.CustomControls
 
         public CollaboratorModel ViewModel
         {
-            get { return (CollaboratorModel)GetValue(ViewModelProperty); }
+            get => (CollaboratorModel)GetValue(ViewModelProperty);
             set { SetValue(ViewModelProperty, value); }
         }
 

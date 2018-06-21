@@ -143,10 +143,12 @@
                 Visibility="{x:Bind IsButtonVisible, Mode=OneWay}">
             <Button.Content>
                 <Grid>
-                    <TextBlock Text="-"       
-                               Visibility="{x:Bind IsRemove, Mode=OneWay}"/>
-                    <TextBlock Text="+"
-                               Visibility="{x:Bind IsRemove, Converter={StaticResource OppositeBoolToVisibility}, Mode=OneWay}" />
+                    <FontIcon Glyph="&#xE738;"
+                              FontSize="8"
+                              Visibility="{x:Bind IsRemove, Mode=OneWay}"/>
+                    <FontIcon Glyph="&#xE710;"
+                              FontSize="8"
+                              Visibility="{x:Bind IsRemove, Converter={StaticResource OppositeBoolToVisibility}, Mode=OneWay}" />
                 </Grid>
             </Button.Content>
         </Button>

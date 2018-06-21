@@ -163,8 +163,8 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
-                    ErrorTitle = _localizationService.GetValue("REGISTER_ERROR_TITLE"),
-                    ErrorDescription = _localizationService.GetValue("REGISTER_ERROR_PASSWORD")
+                    ErrorTitle = _localizationService.GetString(Texts.REGISTER_ERROR_TITLE),
+                    ErrorDescription = _localizationService.GetString(Texts.REGISTER_ERROR_PASSWORD)
                 };
 
                 IsErrorVisible = true;

@@ -1,4 +1,5 @@
 ﻿using MoneySplitter.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,21 +11,21 @@ namespace MoneySplitter.Win10.Common
 {
     public class LocalizationServise : ILocalizationService
     {
-        public IDictionary<string, string> Strings { get; private set; }
-        public IDictionary<string, string> UdnStrings { get; private set; }
+        private IDictionary<string, string> _strings;
+        private IDictionary<string, string> _udnStrings;
 
         public LocalizationServise()
         {
             InitializeStrings(Defines.Localization.RESOURCE_RU_FILE_PATCH);
-            UdnStrings = LoadStringsForLocale(Defines.Localization.RESOURCE_UDN_FILE_PATCH);
+            _udnStrings = LoadStringsForLocale(Defines.Localization.RESOURCE_UDN_FILE_PATCH);
         }
 
         public void InitializeStrings(string path)
         {
-            Strings = LoadStringsForLocale(path);
+            _strings = LoadStringsForLocale(path);
         }
 
-        public Dictionary<string, string> LoadStringsForLocale(string path)
+        private Dictionary<string, string> LoadStringsForLocale(string path)
         {
             var folder = ApplicationData.Current.LocalFolder;
             var xmlRepresentation = File.ReadAllText(Package.Current.InstalledLocation.Path + path);
@@ -35,13 +36,23 @@ namespace MoneySplitter.Win10.Common
                 .ToDictionary(key => key.FirstAttribute.Value, value => (string)value.Element("value"));
         }
 
-        public string GetValue(string key)
+        public string GetString(string key)
         {
-            Strings.TryGetValue(key, out string value);
-
-            if (value == "")
+            
+            if (!_strings.TryGetValue(key, out string value))
             {
-                UdnStrings.TryGetValue(key, out value);
+                _udnStrings.TryGetValue(key, out value);
+            }
+
+            return value;
+        }
+
+        public string GetString(Enum key)
+        {
+            
+            if (!_strings.TryGetValue(key.ToString(), out string value))
+            {
+                _udnStrings.TryGetValue(key.ToString(), out value);
             }
 
             return value;

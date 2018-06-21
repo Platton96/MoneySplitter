@@ -11,19 +11,19 @@ namespace MoneySplitter.Win10.CustomControls
 
         public UserModel ViewModel
         {
-            get { return (UserModel)GetValue(ViewModelProperty); }
+            get => (UserModel)GetValue(ViewModelProperty); 
             set { SetValue(ViewModelProperty, value); }
         }
 
         public bool IsRemove
         {
-            get { return (bool)GetValue(IsRemoveProperty); }
+            get => (bool)GetValue(IsRemoveProperty); 
             set { SetValue(IsRemoveProperty, value); }
         }
 
         public bool IsButtonVisible
         {
-            get { return (bool)GetValue(IsButtonVisibleProperty); }
+            get => (bool)GetValue(IsButtonVisibleProperty); 
             set { SetValue(IsButtonVisibleProperty, value); }
         }
 

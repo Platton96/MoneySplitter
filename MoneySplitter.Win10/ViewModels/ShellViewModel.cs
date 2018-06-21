@@ -75,7 +75,7 @@ namespace MoneySplitter.Win10.ViewModels
             _navigationManager = navigationManager;
             _localizationService = localizationService;
 
-            _titleFrameText = _localizationService.GetValue("HOME_FRAME_TITLE");
+            _titleFrameText = _localizationService.GetString(Texts.HOME_FRAME_TITLE);
             InitializeMenuItems();
         }
         #endregion
@@ -136,7 +136,7 @@ namespace MoneySplitter.Win10.ViewModels
                     string.Format(
                         MAIN_MENU_BUTTON_TEMPLATE,
                         Defines.MenuItem.IconButton.HOME,
-                        _localizationService.GetValue("HOME_FRAME_TITLE")),
+                        _localizationService.GetString(Texts.HOME_FRAME_TITLE)),
 
                     typeof(HomeViewModel)
                 },
@@ -144,7 +144,7 @@ namespace MoneySplitter.Win10.ViewModels
                 string.Format(
                     MAIN_MENU_BUTTON_TEMPLATE,
                     Defines.MenuItem.IconButton.FRIENDS,
-                    _localizationService.GetValue("FRIENDS_FRAME_TITLE")),
+                    _localizationService.GetString(Texts.FRIENDS_FRAME_TITLE)),
 
                 typeof(FriendsViewModel)
                 },
@@ -152,7 +152,7 @@ namespace MoneySplitter.Win10.ViewModels
                     string.Format(
                         MAIN_MENU_BUTTON_TEMPLATE,
                         Defines.MenuItem.IconButton.SEARCH,
-                        _localizationService.GetValue("SEARCH_FRAME_TITLE")),
+                        _localizationService.GetString(Texts.SEARCH_FRAME_TITLE)),
 
                     typeof(SearchUsersViewModel)
                 },
@@ -160,7 +160,7 @@ namespace MoneySplitter.Win10.ViewModels
                     string.Format(
                         MAIN_MENU_BUTTON_TEMPLATE,
                         Defines.MenuItem.IconButton.TRANSACTIONS,
-                        _localizationService.GetValue("TRANSACTIONS_FRAME_TITLE")),
+                        _localizationService.GetString(Texts.TRANSACTIONS_FRAME_TITLE)),
 
                     typeof(TransactionsViewModel)
                 },
@@ -168,7 +168,7 @@ namespace MoneySplitter.Win10.ViewModels
                     string.Format(
                         MAIN_MENU_BUTTON_TEMPLATE,
                         Defines.MenuItem.IconButton.INCOMING_AND_OUTCOMING,
-                       _localizationService.GetValue("INCOMING_AND_OUTGOING_FRAME_TITLE")),
+                       _localizationService.GetString(Texts.INCOMING_AND_OUTGOING_FRAME_TITLE)),
 
                     typeof(IncomingAndOutgoingViewModel)
                 }

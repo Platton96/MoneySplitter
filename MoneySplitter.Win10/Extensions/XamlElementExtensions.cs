@@ -15,7 +15,7 @@ namespace MoneySplitter.Win10.Extensions
         {
             var localizationService = Dependecies.Dependecies.LocalizationService;
 
-            var elementContent = localizationService.GetValue(e.NewValue.ToString());
+            var elementContent = localizationService.GetString(e.NewValue.ToString());
 
             if (dependencyObject is Run run)
             {

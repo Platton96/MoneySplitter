@@ -28,11 +28,12 @@
                          Style="{StaticResource DefaultPasswordBoxStyle}"/>
 
             <Button extensions:XamlElementExtensions.Resource="LOGIN_BUTTON_CONTENT"
-                    Click="OnLoginClick"
-                    Margin="5"/>
-            
+                    Style="{StaticResource DefaultButtonStyle}"
+                    Click="OnLoginClick"/>
+
             <Button extensions:XamlElementExtensions.Resource="REGISTER_BUTTON_CONTENT"
-                    Click="OnRegistredClick"/>
+                    Click="OnRegistredClick"
+                    Style="{StaticResource DefaultButtonStyle}"/>
         </StackPanel>
 
         <customControls:LoadRingControl IsActiveRing="{x:Bind ViewModel.IsLoading, Mode=OneWay}"/>

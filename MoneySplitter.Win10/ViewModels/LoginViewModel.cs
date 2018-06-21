@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using MoneySplitter.Infrastructure;
+using MoneySplitter.Models;
 using MoneySplitter.Models.App;
 using System.Threading.Tasks;
 
@@ -100,8 +101,8 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
-                    ErrorTitle = _localizationService.GetValue("LOGIN_ERROR_TITLE"),
-                    ErrorDescription = _localizationService.GetValue("LOGIN_ERROR_DESCRIPTION")
+                    ErrorTitle = _localizationService.GetString(Texts.LOGIN_ERROR_TITLE),
+                    ErrorDescription = _localizationService.GetString(Texts.LOGIN_ERROR_DESCRIPTION)
                 };
 
                 IsErrorVisible = true;
