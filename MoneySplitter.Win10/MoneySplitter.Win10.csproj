@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="Common\CollaboratorModelFactory.cs" />
     <Compile Include="Common\FilePickerService.cs" />
+    <Compile Include="Common\LocalizationServise.cs" />
     <Compile Include="Common\NavigateManager.cs" />
     <Compile Include="Common\SearchEngine.cs" />
     <Compile Include="Common\TransactionEventModelFactory.cs" />
@@ -142,11 +143,12 @@
       <DependentUpon>UserDetailsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Defines.cs" />
+    <Compile Include="Dependecies\Dependecies.cs" />
     <Compile Include="Extensions\XamlElementExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AddTransactionViewModel.cs" />
     <Compile Include="ViewModels\FriendDetailsViewModel.cs" />
-    <Compile Include="ViewModels\IncomingAndOutcomingViewModel.cs" />
+    <Compile Include="ViewModels\IncomingAndOutgoingViewModel.cs" />
     <Compile Include="ViewModels\SearchUsersViewModel.cs" />
     <Compile Include="ViewModels\FriendsViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
@@ -161,8 +163,8 @@
     <Compile Include="Views\FriendDetailsView.xaml.cs">
       <DependentUpon>FriendDetailsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\IncomingAndOutcomingView.xaml.cs">
-      <DependentUpon>IncomingAndOutcomingView.xaml</DependentUpon>
+    <Compile Include="Views\IncomingAndOutgoingView.xaml.cs">
+      <DependentUpon>IncomingAndOutgoingView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SearchUsersView.xaml.cs">
       <DependentUpon>SearchUsersView.xaml</DependentUpon>
@@ -195,6 +197,9 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="MoneySplitter.Win10_TemporaryKey.pfx" />
+    <Content Include="Strings\En.resw" />
+    <Content Include="Strings\Ru.resw" />
+    <Content Include="Strings\udn.resw" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Default.rd.xml" />
@@ -266,6 +271,11 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
+    <Page Include="Styles\Views\LoginViewStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
     <Page Include="Views\AddTransactionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -274,7 +284,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\IncomingAndOutcomingView.xaml">
+    <Page Include="Views\IncomingAndOutgoingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

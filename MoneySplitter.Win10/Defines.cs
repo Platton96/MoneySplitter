@@ -2,6 +2,12 @@
 {
     public static class Defines
     {
+        public static class Localization
+        {
+            public const string RESOURCE_RU_FILE_PATCH = @".\Strings\Ru.resw";
+            public const string RESOURCE_UDN_FILE_PATCH = @".\Strings\udn.resw";
+
+        }
         public static class TransactionModel
         {
             public const int MAX_COUNT_IMAGE = 4;
@@ -105,7 +111,6 @@
                 public const string ERROR_PASSWORD = "Confirmpassword isn't some password";
             }
         }
-
         public static class Search
         {
             public const string TEXTBOX_EMPTY = "Enter, please query for search!";
@@ -116,4 +121,5 @@
             public const string NOT_COLLABARATORS = "Select friend!";
         }
     }
+
 }

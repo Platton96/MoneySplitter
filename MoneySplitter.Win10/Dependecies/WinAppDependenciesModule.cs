@@ -31,7 +31,7 @@ namespace MoneySplitter.Win10.Dependencies
             _container.PerRequest<SearchUsersViewModel>();
             _container.PerRequest<TransactionsViewModel>();
             _container.PerRequest<AddTransactionViewModel>();
-            _container.PerRequest<IncomingAndOutcomingViewModel>();
+            _container.PerRequest<IncomingAndOutgoingViewModel>();
             _container.PerRequest<FriendDetailsViewModel>();
         }
 
@@ -40,12 +40,13 @@ namespace MoneySplitter.Win10.Dependencies
             _container.Singleton<INavigationManager, NavigationManager>();
 
             _container.Singleton<IApiUrlBuilder, ApiUrlBuilder>();
-            _container.Singleton<IQueryApiService, QueryApiService>();
 
+            _container.Singleton<IQueryApiService, QueryApiService>();
             _container.Singleton<ISessionApiService, SessionApiService>();
             _container.Singleton<ISearchApiService, SearchApiService>();
             _container.Singleton<IFriendsApiService, FriendsApiService>();
             _container.Singleton<ITransactionsApiService, TransactionsApiService>();
+
             _container.Singleton<IMembershipService, MembershipService>();
             _container.Singleton<IFriendsManager, FriendsManager>();
             _container.Singleton<ITransactionsManager, TransactionsManager>();
@@ -53,6 +54,8 @@ namespace MoneySplitter.Win10.Dependencies
             _container.Singleton<IExecutor, Executor>();
 
             _container.Singleton<IFilePickerService, FilePickerService>();
+            _container.Singleton<ILocalizationService, LocalizationServise>();
+
             _container.Singleton<CollaboratorModelFactory>();
             _container.Singleton<TransactionEventModelFactory>();
             _container.Singleton<SearchEngine>();

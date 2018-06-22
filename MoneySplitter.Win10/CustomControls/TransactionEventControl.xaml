@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converters="using:MoneySplitter.Win10.Converters"
+    xmlns:extensions="using:MoneySplitter.Win10.Extensions"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -104,12 +105,11 @@
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                FontSize="14">
-                        <Run Text="+"/><Run Text="{x:Bind ViewModel.NotVisibilCollabarratorsCount , Mode=OneWay}"/>
+                               <Run Text="+"/><Run Text="{x:Bind ViewModel.NotVisibilCollabarratorsCount , Mode=OneWay}"/>
                             </TextBlock>
 
                         </Border>
                     </StackPanel>
-                    <!--<TextBlock extensions:XamlElementExtensions.Resource="BUTTON_HOME"/>-->
                 </StackPanel >
                 <Button x:Name="GiveCollaboratorButton"
                         Grid.Column="2"
@@ -122,7 +122,7 @@
                             <FontIcon Glyph="&#xF0AD;"
                                       FontSize="12"/>
                             <TextBlock  Margin="4,0,0,0">
-                                <Run Text="GIVE ("/><Run Text="{x:Bind ViewModel.SingleCost, Mode=OneWay}"/><Run Text="$)"/>
+                                <Run extensions:XamlElementExtensions.Resource="GIVE_RUN_TEXT"/><Run Text="{x:Bind ViewModel.SingleCost, Mode=OneWay}"/><Run Text="$)"/>
                             </TextBlock>
 
                         </StackPanel>
@@ -137,7 +137,7 @@
                         <StackPanel Orientation="Horizontal">
                             <FontIcon Glyph="&#xEA8F;"
                                       FontSize="16"/>
-                            <TextBlock  Text="REMIND"
+                    <TextBlock  extensions:XamlElementExtensions.Resource="REMIND_LOWER_CASE_TEXT_BLOCK_TEXT"
                                         Margin="4,0,0,0"/>
 
                         </StackPanel>

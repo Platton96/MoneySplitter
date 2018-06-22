@@ -8,13 +8,13 @@ namespace MoneySplitter.Win10.CustomControls
     {
         public bool IsErrorVisable
         {
-            get { return (bool)GetValue(IsErrorVisableProperty); }
+            get => (bool)GetValue(IsErrorVisableProperty); 
             set { SetValue(IsErrorVisableProperty, value); }
         }
 
         public ErrorDetailsModel ErrorDetails
         {
-            get { return (ErrorDetailsModel)GetValue(ErrorDetailsProperty); }
+            get => (ErrorDetailsModel)GetValue(ErrorDetailsProperty); 
             set { SetValue(ErrorDetailsProperty, value); }
         }
 

@@ -13,7 +13,7 @@ namespace MoneySplitter.Win10.CustomControls
 
         public CollaboratorModel ViewModel
         {
-            get { return (CollaboratorModel)GetValue(ViewModelProperty); }
+            get => (CollaboratorModel)GetValue(ViewModelProperty);
             set { SetValue(ViewModelProperty, value); }
         }
 
@@ -27,9 +27,6 @@ namespace MoneySplitter.Win10.CustomControls
         public CollaboratorControl()
         {
             InitializeComponent();
-            GiveCollaboratorButton.Content = Defines.Collaborator.ButtonContent.GIVE;
-            RemindCollaboratorButton.Content = Defines.Collaborator.ButtonContent.REMIND;
-            ApproveCollaboratorButton.Content = Defines.Collaborator.ButtonContent.APPROVE;
         }
 
         private void OnGiveButtonClick(object sender, RoutedEventArgs e)

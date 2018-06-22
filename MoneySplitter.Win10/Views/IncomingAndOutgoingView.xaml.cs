@@ -4,13 +4,13 @@ using MoneySplitter.Models;
 
 namespace MoneySplitter.Win10.Views
 {
-    public sealed partial class IncomingAndOutcomingView : Page
+    public sealed partial class IncomingAndOutgoingView : Page
     {
-        IncomingAndOutcomingViewModel ViewModel { get; set; }
-        public IncomingAndOutcomingView()
+        IncomingAndOutgoingViewModel ViewModel { get; set; }
+        public IncomingAndOutgoingView()
         {
             InitializeComponent();
-            DataContextChanged += (s, e) => { ViewModel = DataContext as IncomingAndOutcomingViewModel; };
+            DataContextChanged += (s, e) => { ViewModel = DataContext as IncomingAndOutgoingViewModel; };
         }
 
         private void OnRemindCollaboratorButtonClick(object sender, CollaboratorModel e)

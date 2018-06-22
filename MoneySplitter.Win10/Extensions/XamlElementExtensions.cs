@@ -1,5 +1,6 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Documents;
 
 namespace MoneySplitter.Win10.Extensions
 {
@@ -12,12 +13,45 @@ namespace MoneySplitter.Win10.Extensions
 
         private static void OnResourceChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
+            var localizationService = Dependecies.Dependecies.LocalizationService;
+
+            var elementContent = localizationService.GetString(e.NewValue.ToString());
+
+            if (dependencyObject is Run run)
+            {
+                run.Text = elementContent;
+                return;
+            }
+
             var control = (FrameworkElement)dependencyObject;
 
             if (control is TextBlock textBlock)
             {
-                // TODO get string from service
-                textBlock.Text = e.NewValue.ToString();
+                textBlock.Text = elementContent;
+                return;
+            }
+
+            if (control is Button button)
+            {
+                button.Content = elementContent;
+                return;
+            }
+
+            if (control is TextBox textBox)
+            {
+                textBox.PlaceholderText = elementContent;
+                return;
+            }
+
+            if (control is CheckBox checkBox)
+            {
+                checkBox.Content = elementContent;
+                return;
+            }
+
+            if (control is PasswordBox passwordBox)
+            {
+                passwordBox.PlaceholderText = elementContent;
             }
 
         }

@@ -15,7 +15,7 @@ namespace MoneySplitter.Win10.CustomControls
 
 		public TransactionEventModel ViewModel
 		{
-			get { return (TransactionEventModel)GetValue(ViewModelProperty); }
+			get => (TransactionEventModel)GetValue(ViewModelProperty); 
 			set { SetValue(ViewModelProperty, value); }
 		}
 

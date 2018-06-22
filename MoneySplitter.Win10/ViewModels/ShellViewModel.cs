@@ -15,27 +15,22 @@ namespace MoneySplitter.Win10.ViewModels
 
         private readonly IMembershipService _membershipService;
         private readonly INavigationManager _navigationManager;
-        private const string DEFAULT_TITLE = "Home";
 
-        private string _titleFrameText = DEFAULT_TITLE;
+        private string _titleFrameText;
         private UserModel _userModel;
-        private string _searchQuery;
         private string _selectedMenuItem;
+        private ILocalizationService _localizationService;
+
+        private IDictionary<string, Type> _mainMenuPages;
+
         #endregion
 
         #region Properties
-        private IDictionary<string, Type> _mainMenuPages = new Dictionary<string, Type>()
-        {
-            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.HOME, Defines.MenuItem.Title.HOME),  typeof(HomeViewModel) },
-            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.FRIENDS, Defines.MenuItem.Title.FRIENDS), typeof(FriendsViewModel) },
-            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.SEARCH, Defines.MenuItem.Title.SEARCH),typeof(SearchUsersViewModel) },
-            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.TRANSACTIONS,Defines.MenuItem.Title.TRANSACTIONS),typeof(TransactionsViewModel) },
-            { string.Format(MAIN_MENU_BUTTON_TEMPLATE, Defines.MenuItem.IconButton.INCOMING_AND_OUTCOMING,Defines.MenuItem.Title.INCOMING_AND_OUTCOMING), typeof(IncomingAndOutcomingViewModel) }
-        };
+
 
         public string SelectedMenuItem
         {
-            get { return _selectedMenuItem; }
+            get => _selectedMenuItem;
             set
             {
                 if (value == SelectedMenuItem)
@@ -53,7 +48,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public UserModel UserModel
         {
-            get { return _userModel; }
+            get => _userModel; 
             set
             {
                 _userModel = value;
@@ -63,7 +58,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public string TitleFrameText
         {
-            get { return _titleFrameText; }
+            get => _titleFrameText; 
             set
             {
                 _titleFrameText = value;
@@ -71,22 +66,17 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
 
-        public string SearchQuery
-        {
-            get { return _searchQuery; }
-            set
-            {
-                _searchQuery = value;
-                NotifyOfPropertyChange(nameof(SearchQuery));
-            }
-        }
         #endregion
 
         #region Constructor
-        public ShellViewModel(IMembershipService membershipService, INavigationManager navigationManager)
+        public ShellViewModel(IMembershipService membershipService, INavigationManager navigationManager, ILocalizationService localizationService)
         {
             _membershipService = membershipService;
             _navigationManager = navigationManager;
+            _localizationService = localizationService;
+
+            _titleFrameText = _localizationService.GetString(Texts.HOME_FRAME_TITLE);
+            InitializeMenuItems();
         }
         #endregion
 
@@ -137,6 +127,54 @@ namespace MoneySplitter.Win10.ViewModels
 
             SelectedMenuItem = MenuItems.FirstOrDefault(w => w == TitleFrameText);
         }
+        
+        private void InitializeMenuItems()
+        {
+            _mainMenuPages = new Dictionary<string, Type>()
+            {
+                {
+                    string.Format(
+                        MAIN_MENU_BUTTON_TEMPLATE,
+                        Defines.MenuItem.IconButton.HOME,
+                        _localizationService.GetString(Texts.HOME_FRAME_TITLE)),
+
+                    typeof(HomeViewModel)
+                },
+                {
+                string.Format(
+                    MAIN_MENU_BUTTON_TEMPLATE,
+                    Defines.MenuItem.IconButton.FRIENDS,
+                    _localizationService.GetString(Texts.FRIENDS_FRAME_TITLE)),
+
+                typeof(FriendsViewModel)
+                },
+                {
+                    string.Format(
+                        MAIN_MENU_BUTTON_TEMPLATE,
+                        Defines.MenuItem.IconButton.SEARCH,
+                        _localizationService.GetString(Texts.SEARCH_FRAME_TITLE)),
+
+                    typeof(SearchUsersViewModel)
+                },
+                {
+                    string.Format(
+                        MAIN_MENU_BUTTON_TEMPLATE,
+                        Defines.MenuItem.IconButton.TRANSACTIONS,
+                        _localizationService.GetString(Texts.TRANSACTIONS_FRAME_TITLE)),
+
+                    typeof(TransactionsViewModel)
+                },
+                {
+                    string.Format(
+                        MAIN_MENU_BUTTON_TEMPLATE,
+                        Defines.MenuItem.IconButton.INCOMING_AND_OUTCOMING,
+                       _localizationService.GetString(Texts.INCOMING_AND_OUTGOING_FRAME_TITLE)),
+
+                    typeof(IncomingAndOutgoingViewModel)
+                }
+            };
+        }
+
         #endregion
     }
 }

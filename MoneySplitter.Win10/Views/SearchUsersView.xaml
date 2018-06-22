@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:customControls="using:MoneySplitter.Win10.CustomControls"
     xmlns:models="using:MoneySplitter.Models"
+    xmlns:extensions="using:MoneySplitter.Win10.Extensions"
     mc:Ignorable="d">
     
 
@@ -37,7 +38,7 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <TextBox PlaceholderText="Enter search query" 
+        <TextBox extensions:XamlElementExtensions.Resource="SEARCH_TEXTBOX_EMPTY_PLACEHOLDER_TEXT"
                  TextChanged="OnTextBoxTextChanged"/>
         <ListView x:Name="UsersList"
                   Grid.Row="1"
@@ -52,7 +53,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:UserModel">
                     <customControls:MobileUserControl ViewModel="{x:Bind Mode=OneWay}"
-                                                      ButtonContent="+"
+                                                      IsRemove="False"
                                                       IsButtonVisible="True"
                                                       OnAddOrRemoveItemClick="OnMobileUserControlAddUserItemClick"/>
                 </DataTemplate>
@@ -66,7 +67,7 @@
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="models:UserModel">
                     <customControls:DesktopUserContol ViewModel="{x:Bind Mode=OneWay}"
-                                                      ButtonContent="add"
+                                                      IsRemove="False"
                                                       OnAddOrRemoveItemClick="OnMobileUserControlAddUserItemClick"/>
                 </DataTemplate>
             </GridView.ItemTemplate>

@@ -21,8 +21,9 @@ namespace MoneySplitter.Win10.ViewModels
         private readonly IFilePickerService _filePickerService;
         private readonly INavigationManager _navigationManager;
         private readonly IMembershipService _membershipService;
+        private readonly ILocalizationService _localizationService;
 
-        private string _laberlForTransactionImage = Defines.Register.BrowseImage.AVATAR;
+        private string _labelForTransactionImage;
         private bool _isNoCollaboratorsTextVisibility;
         private bool _isLoading;
         private bool _isSelfCollabarator;
@@ -63,10 +64,10 @@ namespace MoneySplitter.Win10.ViewModels
 
         public string LabelForTransactionImage
         {
-            get => _laberlForTransactionImage; 
+            get => _labelForTransactionImage; 
             set
             {
-                _laberlForTransactionImage = value;
+                _labelForTransactionImage = value;
                 NotifyOfPropertyChange(nameof(LabelForTransactionImage));
             }
         }
@@ -120,7 +121,6 @@ namespace MoneySplitter.Win10.ViewModels
                 NotifyOfPropertyChange(nameof(ErrorDetailsModel));
             }
         }
-        public string NOT_COLLABARATORS = Defines.AddTransaction.NOT_COLLABARATORS;
         #endregion
 
         public AddTransactionViewModel(
@@ -128,18 +128,23 @@ namespace MoneySplitter.Win10.ViewModels
             IFriendsManager friendsManager,
             IFilePickerService filePickerService,
             INavigationManager navigationManager,
-            IMembershipService membershipService)
+            IMembershipService membershipService,
+            ILocalizationService localizationService)
         {
             _friendsManager = friendsManager;
             _transactionsManager = transactionsManager;
             _filePickerService = filePickerService;
             _navigationManager = navigationManager;
             _membershipService = membershipService;
+            _localizationService = localizationService;
+
+            _labelForTransactionImage = _localizationService.GetString(Texts.AVATAR_IMAGE_TEXTBLOCK_TEXT);
 
             AddTransactionModel = new AddTransactionModel
             {
                 DeadlineDate = DateTime.Now
             };
+
             IsSelfCollabarator = true;
         }
 
@@ -147,6 +152,7 @@ namespace MoneySplitter.Win10.ViewModels
         protected override async void OnActivate()
         {
             base.OnActivate();
+
             if (_friendsManager.UserFriends == null)
             {
                 IsLoading = true;
@@ -199,8 +205,8 @@ namespace MoneySplitter.Win10.ViewModels
                 IsErrorVisible = true;
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
-                    ErrorTitle = Defines.ErrorDetails.DEFAULT_ERROR_TITLE,
-                    ErrorDescription = Defines.ErrorDetails.PROBLEM_SERVER
+                    ErrorTitle = _localizationService.GetString(Texts.DEFAULT_ERROR_TITLE),
+                    ErrorDescription = _localizationService.GetString(Texts.PROBLEM_SERVER_ERROR)
                 };
                 return;
             }

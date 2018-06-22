@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using MoneySplitter.Infrastructure;
+using MoneySplitter.Models;
 using MoneySplitter.Models.App;
 using System.Threading.Tasks;
 
@@ -10,6 +11,7 @@ namespace MoneySplitter.Win10.ViewModels
         #region Fields
         private readonly INavigationManager _navigationManager;
         private readonly IMembershipService _membershipService;
+        private readonly ILocalizationService _localizationService;
 
         private const string DEFAULT_USER_LOGIN = "vlad_nagibator12@mail.ru";
         private const string DEFAULT_USER_PASSWORD = "1234abcd";
@@ -77,10 +79,11 @@ namespace MoneySplitter.Win10.ViewModels
         #endregion
 
         #region Constructor
-        public LoginViewModel(INavigationManager navigationManager, IMembershipService membershipService)
+        public LoginViewModel(INavigationManager navigationManager, IMembershipService membershipService, ILocalizationService localizationService)
         {
             _navigationManager = navigationManager;
             _membershipService = membershipService;
+            _localizationService = localizationService;
         }
         #endregion
 
@@ -98,8 +101,8 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
-                    ErrorTitle = Defines.ErrorDetails.DEFAULT_ERROR_TITLE,
-                    ErrorDescription = Defines.ErrorDetails.Login.ERROR_DESCRIPTION
+                    ErrorTitle = _localizationService.GetString(Texts.LOGIN_ERROR_TITLE),
+                    ErrorDescription = _localizationService.GetString(Texts.LOGIN_ERROR_DESCRIPTION)
                 };
 
                 IsErrorVisible = true;

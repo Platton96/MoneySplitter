@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ADD_BUTTON_CONTENT" xml:space="preserve">
+    <value>Add</value>
+    <comment>UserControl</comment>
+  </data>
+  <data name="ADD_HIGH_REGISTR_BUTTON_CONTENT" xml:space="preserve">
+    <value>ADD</value>
+    <comment>Transactions</comment>
+  </data>
+  <data name="APROVE_ALL_BUTTON_CONTENT" xml:space="preserve">
+    <value>APPROVE ALL</value>
+    <comment>friendDetails</comment>
+  </data>
+  <data name="APRROVE_LOWER_CASE_TEXT_BLOCK_TEXT" xml:space="preserve">
+    <value>Aprove</value>
+  </data>
+  <data name="AVATAR_IMAGE_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Browse avatar image</value>
+    <comment>registerView</comment>
+  </data>
+  <data name="BACKGROUND_IMAGE_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Browse background image</value>
+    <comment>registerView</comment>
+  </data>
+  <data name="BROWSE_BUTTON_CONTENT" xml:space="preserve">
+    <value>Browse</value>
+    <comment>registerView</comment>
+  </data>
+  <data name="COLLABORATORS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Collaborators</value>
+    <comment>TransactionDetails</comment>
+  </data>
+  <data name="COMMON_TRANSACTIONS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Common transaction</value>
+    <comment>friendDetails</comment>
+  </data>
+  <data name="CONFIRM_BUTTON_CONTENT" xml:space="preserve">
+    <value>Confirm</value>
+    <comment>AddTransaction</comment>
+  </data>
+  <data name="CONFIRM_PASSWORD_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Confirm password</value>
+    <comment>registerView</comment>
+  </data>
+  <data name="COST_TRANSACTION_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Enter cost</value>
+    <comment>AddTransaction</comment>
+  </data>
+  <data name="CREDIT_CARD_RUN_TEXT" xml:space="preserve">
+    <value>Credit card</value>
+    <comment>TransactionDetails</comment>
+  </data>
+  <data name="DEADLINE_RUN_TEXT" xml:space="preserve">
+    <value>Diedline</value>
+    <comment>TransactionDetails</comment>
+  </data>
+  <data name="DEBTERS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Debters</value>
+    <comment>IncomingAndOutgoingView</comment>
+  </data>
+  <data name="DEBTS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Debts</value>
+    <comment>friendDetails</comment>
+  </data>
+  <data name="DEFAULT_ERROR_TITLE" xml:space="preserve">
+    <value>Wrong</value>
+    <comment>error</comment>
+  </data>
+  <data name="DESCRIPTION_TRANSACTION_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Enter description transaction</value>
+    <comment>AddTransaction</comment>
+  </data>
+  <data name="DONT_FORGET_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Don't forget</value>
+    <comment>homeView</comment>
+  </data>
+  <data name="EDIT_PROFILE_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>EDIT</value>
+    <comment>homeView</comment>
+  </data>
+  <data name="EMAIL_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Enter email</value>
+    <comment>loginView</comment>
+  </data>
+  <data name="EMAIL_RUN_TEXT" xml:space="preserve">
+    <value>Email: </value>
+    <comment>TransactionDetails</comment>
+  </data>
+  <data name="FINISHED_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Finished</value>
+    <comment>TransactionDetails</comment>
+  </data>
+  <data name="FRIENDS_FRAME_TITLE" xml:space="preserve">
+    <value>Friends</value>
+    <comment>titleFrame</comment>
+  </data>
+  <data name="FRIENDS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Friends</value>
+    <comment>AddTransaction</comment>
+  </data>
+  <data name="GIVE_LOWER_CASE_TEXT_BLOCK_TEXT" xml:space="preserve">
+    <value>Give!</value>
+  </data>
+  <data name="GIVE_RUN_TEXT" xml:space="preserve">
+    <value>Give (</value>
+    <comment>TransactionDetails</comment>
+  </data>
+  <data name="HOME_FRAME_TITLE" xml:space="preserve">
+    <value>Home</value>
+    <comment>titleFrame</comment>
+  </data>
+  <data name="INCOMING_AND_OUTGOING_FRAME_TITLE" xml:space="preserve">
+    <value>Incoming and Outgoing</value>
+    <comment>titleFrame</comment>
+  </data>
+  <data name="INCOMING_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Incoming</value>
+    <comment>homeView</comment>
+  </data>
+  <data name="INPROGRESS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>In progress</value>
+    <comment>homeView</comment>
+  </data>
+  <data name="IS_COLLABORATOR_CHECKBOX_CONTENT" xml:space="preserve">
+    <value>Do you collaborator</value>
+    <comment>AddTransaction</comment>
+  </data>
+  <data name="LENDS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Lends</value>
+    <comment>friendDetails</comment>
+  </data>
+  <data name="LEND_PERSONS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Lend persons</value>
+    <comment>IncomingAndOutgoingView</comment>
+  </data>
+  <data name="LOGIN_BUTTON_CONTENT" xml:space="preserve">
+    <value>LOGIN</value>
+    <comment>loginView</comment>
+  </data>
+  <data name="LOGIN_ERROR_DESCRIPTION" xml:space="preserve">
+    <value>Please check that you have entered your login and password</value>
+    <comment>error</comment>
+  </data>
+  <data name="LOGIN_ERROR_TITLE" xml:space="preserve">
+    <value>Unable to log in.</value>
+    <comment>error</comment>
+  </data>
+  <data name="NAME_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Enter name</value>
+    <comment>registerView</comment>
+  </data>
+  <data name="NOTIFACTIONS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Notifactions</value>
+    <comment>homeView</comment>
+  </data>
+  <data name="NOT_COLLABORATORS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Select collaborators</value>
+    <comment>AddTransaction</comment>
+  </data>
+  <data name="NOT_FRIENDS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Yoo don't have friend(</value>
+    <comment>friendsView</comment>
+  </data>
+  <data name="NOT_TRANSACTIONS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>You don't have transaction(</value>
+    <comment>Transactions</comment>
+  </data>
+  <data name="NUMBER_CREDIT_CARD_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Enter credit card</value>
+    <comment>registerView</comment>
+  </data>
+  <data name="NUMBER_PHONE_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Enter phone</value>
+    <comment>registerView</comment>
+  </data>
+  <data name="PASSWORD_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Enter password</value>
+    <comment>loginView</comment>
+  </data>
+  <data name="PEOPLE_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>People</value>
+    <comment>TransactionDetails</comment>
+  </data>
+  <data name="PHONE_RUN_TEXT" xml:space="preserve">
+    <value>Phone: </value>
+    <comment>TransactionDetails</comment>
+  </data>
+  <data name="PROBLEM_SERVER_ERROR" xml:space="preserve">
+    <value>Sory, problems with server!</value>
+    <comment>error</comment>
+  </data>
+  <data name="REGISTER_BUTTON_CONTENT" xml:space="preserve">
+    <value>REGISTER</value>
+    <comment>loginView</comment>
+  </data>
+  <data name="REGISTER_ERROR_DESCRIPTION" xml:space="preserve">
+    <value>You have problem whith register</value>
+    <comment>error</comment>
+  </data>
+  <data name="REGISTER_ERROR_PASSWORD" xml:space="preserve">
+    <value>Confirmpassword isn't some password</value>
+    <comment>error</comment>
+  </data>
+  <data name="REGISTER_ERROR_TITLE" xml:space="preserve">
+    <value>Unable to Register</value>
+    <comment>error</comment>
+  </data>
+  <data name="REMIND_ALL_BUTTON_CONTENT" xml:space="preserve">
+    <value>REMIND ALL</value>
+    <comment>TransactionDetails</comment>
+  </data>
+  <data name="REMIND_LOWER_CASE_TEXT_BLOCK_TEXT" xml:space="preserve">
+    <value>Remind</value>
+    <comment>TransactionEventControl</comment>
+  </data>
+  <data name="REMIND__BUTTON_CONTENT" xml:space="preserve">
+    <value>REMIND</value>
+    <comment>TransactionDetails</comment>
+  </data>
+  <data name="REMOVE_BUTTON_CONTENT" xml:space="preserve">
+    <value>Remove</value>
+    <comment>UserControl</comment>
+  </data>
+  <data name="REMOVE_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>REMAOVE</value>
+    <comment>homeView</comment>
+  </data>
+  <data name="SEARCH_FRAME_TITLE" xml:space="preserve">
+    <value>Search</value>
+    <comment>titleFrame</comment>
+  </data>
+  <data name="SEURCH_NOT_RESULTS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Not results</value>
+    <comment>search</comment>
+  </data>
+  <data name="SEURCH_TEXTBOX_EMPTY_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Enter, please query for search!</value>
+    <comment>search</comment>
+  </data>
+  <data name="SORT_PARAMETER_CREATION_DATE" xml:space="preserve">
+    <value>Creating date</value>
+    <comment>Transactions</comment>
+  </data>
+  <data name="SORT_PARAMETER_CREATION_USER_ROLE" xml:space="preserve">
+    <value>User role</value>
+    <comment>Transactions</comment>
+  </data>
+  <data name="SORT_PARAMETER_NAME_TRANSACTION" xml:space="preserve">
+    <value>Name transaction</value>
+    <comment>Transactions</comment>
+  </data>
+  <data name="SORT_PARAMETER_SINGLE_COST" xml:space="preserve">
+    <value>Cost</value>
+    <comment>Transactions</comment>
+  </data>
+  <data name="SORT_PARAMETER_TRANSACTION_DATE" xml:space="preserve">
+    <value>Transaction date</value>
+    <comment>Transactions</comment>
+  </data>
+  <data name="STATISTICS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Statistics</value>
+    <comment>homeView</comment>
+  </data>
+  <data name="SURNAME_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Enter surname</value>
+    <comment>registerView</comment>
+  </data>
+  <data name="TITLE_TRANSACTION_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Enter name transactions</value>
+    <comment>AddTransaction</comment>
+  </data>
+  <data name="TOTAL_DEBT_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Total debt</value>
+    <comment>homeView</comment>
+  </data>
+  <data name="TOTAL_OWE_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Total owe</value>
+    <comment>homeView</comment>
+  </data>
+  <data name="TRANSACTIONS_FRAME_TITLE" xml:space="preserve">
+    <value>Transactions</value>
+    <comment>titleFrame</comment>
+  </data>
+  <data name="TRANSACTION_OWNER_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Owner transaction</value>
+    <comment>TransactionDetails</comment>
+  </data>
+  <data name="USER_ROLE_LABEL_FINISHED_TEXT" xml:space="preserve">
+    <value>COMFIRTED</value>
+    <comment>USER_ROLE_LABEL</comment>
+  </data>
+  <data name="USER_ROLE_LABEL_IN_BEGIN_TEXT" xml:space="preserve">
+    <value>AWAIT</value>
+    <comment>USER_ROLE_LABEL</comment>
+  </data>
+  <data name="USER_ROLE_LABEL_IN_PROGRESS_TEXT" xml:space="preserve">
+    <value>UNCOMFIRMED</value>
+    <comment>USER_ROLE_LABEL</comment>
+  </data>
+  <data name="USER_ROLE_LABEL_USER_TRANSACTION_TEXT" xml:space="preserve">
+    <value>MY TRANSACTION</value>
+    <comment>USER_ROLE_LABEL</comment>
+  </data>
+</root>

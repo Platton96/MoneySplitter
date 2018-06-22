@@ -8,7 +8,7 @@ namespace MoneySplitter.Win10.CustomControls
     {
         public UserModel ViewModel
         {
-            get { return (UserModel)GetValue(ViewModelProperty); }
+            get => (UserModel)GetValue(ViewModelProperty); 
             set { SetValue(ViewModelProperty, value); }
         }
 

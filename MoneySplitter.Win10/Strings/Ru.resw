@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ADD_BUTTON_CONTENT" xml:space="preserve">
+    <value>Добавить</value>
+    <comment>UserControl</comment>
+  </data>
+  <data name="ADD_HIGH_REGISTR_BUTTON_CONTENT" xml:space="preserve">
+    <value>ДОБАВИТЬ</value>
+    <comment>Transactions</comment>
+  </data>
+  <data name="APROVE_ALL_BUTTON_CONTENT" xml:space="preserve">
+    <value>ПОТВЕРДИТЬ ВСЁ</value>
+    <comment>friendDetails</comment>
+  </data>
+  <data name="APRROVE_LOWER_CASE_TEXT_BLOCK_TEXT" xml:space="preserve">
+    <value>Потвердить</value>
+  </data>
+  <data name="AVATAR_IMAGE_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Загрузить изоброжение на профель</value>
+    <comment>registerView</comment>
+  </data>
+  <data name="BACKGROUND_IMAGE_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Загрузить фоновое изоброжение </value>
+    <comment>registerView</comment>
+  </data>
+  <data name="BROWSE_BUTTON_CONTENT" xml:space="preserve">
+    <value>Загрузить</value>
+    <comment>registerView</comment>
+  </data>
+  <data name="COLLABORATORS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Участники</value>
+    <comment>TransactionDetails</comment>
+  </data>
+  <data name="COMMON_TRANSACTIONS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Общие транзакции</value>
+    <comment>friendDetails</comment>
+  </data>
+  <data name="CONFIRM_BUTTON_CONTENT" xml:space="preserve">
+    <value>Потвердить</value>
+    <comment>AddTransaction</comment>
+  </data>
+  <data name="CONFIRM_PASSWORD_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Повторите пароль</value>
+    <comment>registerView</comment>
+  </data>
+  <data name="COST_TRANSACTION_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Введите стоимость транзакции</value>
+    <comment>AddTransaction</comment>
+  </data>
+  <data name="CREDIT_CARD_RUN_TEXT" xml:space="preserve">
+    <value>Кредитная карта: </value>
+    <comment>TransactionDetails</comment>
+  </data>
+  <data name="DEADLINE_RUN_TEXT" xml:space="preserve">
+    <value>Дедлайн: </value>
+    <comment>TransactionDetails</comment>
+  </data>
+  <data name="DEBTERS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Должники</value>
+    <comment>IncomingAndOutgoingView</comment>
+  </data>
+  <data name="DEBTS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Долги</value>
+    <comment>friendDetails</comment>
+  </data>
+  <data name="DEFAULT_ERROR_TITLE" xml:space="preserve">
+    <value>Ошибка</value>
+    <comment>error</comment>
+  </data>
+  <data name="DESCRIPTION_TRANSACTION_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Введите описание транзакции</value>
+    <comment>AddTransaction</comment>
+  </data>
+  <data name="DONT_FORGET_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Не забудь</value>
+    <comment>homeView</comment>
+  </data>
+  <data name="EDIT_PROFILE_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>РЕДОКТИРОВАТЬ</value>
+    <comment>homeView</comment>
+  </data>
+  <data name="EMAIL_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Введите електронную почту</value>
+    <comment>loginView</comment>
+  </data>
+  <data name="EMAIL_RUN_TEXT" xml:space="preserve">
+    <value>Email: </value>
+    <comment>TransactionDetails</comment>
+  </data>
+  <data name="FINISHED_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Завершили</value>
+    <comment>TransactionDetails</comment>
+  </data>
+  <data name="FRIENDS_FRAME_TITLE" xml:space="preserve">
+    <value>Друзья</value>
+    <comment>titleFrame</comment>
+  </data>
+  <data name="FRIENDS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Друзья</value>
+    <comment>AddTransaction</comment>
+  </data>
+  <data name="GIVE_LOWER_CASE_TEXT_BLOCK_TEXT" xml:space="preserve">
+    <value>Отдать</value>
+  </data>
+  <data name="GIVE_RUN_TEXT" xml:space="preserve">
+    <value>Отдать (</value>
+    <comment>TransactionDetails</comment>
+  </data>
+  <data name="HOME_FRAME_TITLE" xml:space="preserve">
+    <value>Главная</value>
+    <comment>titleFrame</comment>
+  </data>
+  <data name="INCOMING_AND_OUTGOING_FRAME_TITLE" xml:space="preserve">
+    <value>Входящие и Исходящие</value>
+    <comment>titleFrame</comment>
+  </data>
+  <data name="INCOMING_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Входящие</value>
+    <comment>homeView</comment>
+  </data>
+  <data name="INPROGRESS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>В процессе</value>
+    <comment>homeView</comment>
+  </data>
+  <data name="IS_COLLABORATOR_CHECKBOX_CONTENT" xml:space="preserve">
+    <value>Вы участник транзакции?</value>
+    <comment>AddTransaction</comment>
+  </data>
+  <data name="LENDS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Займы</value>
+    <comment>friendDetails</comment>
+  </data>
+  <data name="LEND_PERSONS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Отдолживишие</value>
+    <comment>IncomingAndOutgoingView</comment>
+  </data>
+  <data name="LOGIN_BUTTON_CONTENT" xml:space="preserve">
+    <value>ЛОГИН</value>
+    <comment>loginView</comment>
+  </data>
+  <data name="LOGIN_ERROR_DESCRIPTION" xml:space="preserve">
+    <value>Подалуйста проверьте логин и пароль</value>
+    <comment>error</comment>
+  </data>
+  <data name="LOGIN_ERROR_TITLE" xml:space="preserve">
+    <value>Невозмжно войти</value>
+    <comment>error</comment>
+  </data>
+  <data name="NAME_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Введите имя</value>
+    <comment>registerView</comment>
+  </data>
+  <data name="NOTIFACTIONS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Уведомления</value>
+    <comment>homeView</comment>
+  </data>
+  <data name="NOT_COLLABORATORS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Выбирите участников</value>
+    <comment>AddTransaction</comment>
+  </data>
+  <data name="NOT_FRIENDS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>У вас нет друзей</value>
+    <comment>friendsView</comment>
+  </data>
+  <data name="NOT_TRANSACTIONS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>У вас нет транзакций(</value>
+    <comment>Transactions</comment>
+  </data>
+  <data name="NUMBER_CREDIT_CARD_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Введите номер кредитной карточки</value>
+    <comment>registerView</comment>
+  </data>
+  <data name="NUMBER_PHONE_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Введите номер телефона</value>
+    <comment>registerView</comment>
+  </data>
+  <data name="PASSWORD_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Введите пароль</value>
+    <comment>loginView</comment>
+  </data>
+  <data name="PEOPLE_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Людей</value>
+    <comment>TransactionDetails</comment>
+  </data>
+  <data name="PHONE_RUN_TEXT" xml:space="preserve">
+    <value>Телефон: </value>
+    <comment>TransactionDetails</comment>
+  </data>
+  <data name="PROBLEM_SERVER_ERROR" xml:space="preserve">
+    <value>Извиниет, проблемы с сервером</value>
+    <comment>error</comment>
+  </data>
+  <data name="REGISTER_BUTTON_CONTENT" xml:space="preserve">
+    <value>ЗАРЕГИСТРИРОВАТЬСЯ</value>
+    <comment>loginView</comment>
+  </data>
+  <data name="REGISTER_ERROR_DESCRIPTION" xml:space="preserve">
+    <value>Возникли проблемы с регистрацией, проверти валидность данных</value>
+    <comment>error</comment>
+  </data>
+  <data name="REGISTER_ERROR_PASSWORD" xml:space="preserve">
+    <value>Повтрный пароль неверный</value>
+    <comment>error</comment>
+  </data>
+  <data name="REGISTER_ERROR_TITLE" xml:space="preserve">
+    <value>Невозможно зарегестрироваться</value>
+    <comment>error</comment>
+  </data>
+  <data name="REMIND_ALL_BUTTON_CONTENT" xml:space="preserve">
+    <value>НАПОМНИТЬ ВСЕМ</value>
+    <comment>TransactionDetails</comment>
+  </data>
+  <data name="REMIND_LOWER_CASE_TEXT_BLOCK_TEXT" xml:space="preserve">
+    <value>Напомнить</value>
+    <comment>TransactionEventControl</comment>
+  </data>
+  <data name="REMIND__BUTTON_CONTENT" xml:space="preserve">
+    <value>НАПОМНИТЬ</value>
+    <comment>TransactionDetails</comment>
+  </data>
+  <data name="REMOVE_BUTTON_CONTENT" xml:space="preserve">
+    <value>Удалить</value>
+    <comment>UserControl</comment>
+  </data>
+  <data name="REMOVE_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>УДАЛИТЬ</value>
+    <comment>homeView</comment>
+  </data>
+  <data name="SEARCH_FRAME_TITLE" xml:space="preserve">
+    <value>Поиск</value>
+    <comment>titleFrame</comment>
+  </data>
+  <data name="SEARCH_NOT_RESULTS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Пользователей не найденно</value>
+    <comment>search</comment>
+  </data>
+  <data name="SEARCH_TEXTBOX_EMPTY_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Введите запрос для поиска</value>
+    <comment>search</comment>
+  </data>
+  <data name="SORT_PARAMETER_CREATION_DATE" xml:space="preserve">
+    <value>Дата создания</value>
+    <comment>Transactions</comment>
+  </data>
+  <data name="SORT_PARAMETER_CREATION_USER_ROLE" xml:space="preserve">
+    <value>Пользоваетля роль</value>
+    <comment>Transactions</comment>
+  </data>
+  <data name="SORT_PARAMETER_NAME_TRANSACTION" xml:space="preserve">
+    <value>Имя</value>
+    <comment>Transactions</comment>
+  </data>
+  <data name="SORT_PARAMETER_SINGLE_COST" xml:space="preserve">
+    <value>Цена</value>
+    <comment>Transactions</comment>
+  </data>
+  <data name="SORT_PARAMETER_TRANSACTION_DATE" xml:space="preserve">
+    <value>Дедлайн</value>
+    <comment>Transactions</comment>
+  </data>
+  <data name="STATISTICS_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Статистика</value>
+    <comment>homeView</comment>
+  </data>
+  <data name="SURNAME_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Введите фамилию</value>
+    <comment>registerView</comment>
+  </data>
+  <data name="TITLE_TRANSACTION_PLACEHOLDER_TEXT" xml:space="preserve">
+    <value>Введите навание транзакции</value>
+    <comment>AddTransaction</comment>
+  </data>
+  <data name="TOTAL_DEBT_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Общий долг</value>
+    <comment>homeView</comment>
+  </data>
+  <data name="TOTAL_OWE_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Общий займ</value>
+    <comment>homeView</comment>
+  </data>
+  <data name="TRANSACTIONS_FRAME_TITLE" xml:space="preserve">
+    <value>Транзакции</value>
+    <comment>titleFrame</comment>
+  </data>
+  <data name="TRANSACTION_OWNER_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Владелец транзакции</value>
+    <comment>TransactionDetails</comment>
+  </data>
+  <data name="USER_ROLE_LABEL_FINISHED_TEXT" xml:space="preserve">
+    <value>ПОТВЕРЖДЕНО</value>
+    <comment>USER_ROLE_LABEL</comment>
+  </data>
+  <data name="USER_ROLE_LABEL_IN_BEGIN_TEXT" xml:space="preserve">
+    <value>ОЖИДАЕТСЯ</value>
+    <comment>USER_ROLE_LABEL</comment>
+  </data>
+  <data name="USER_ROLE_LABEL_IN_PROGRESS_TEXT" xml:space="preserve">
+    <value>НЕ ПОТВЕРЖДЕНО</value>
+    <comment>USER_ROLE_LABEL</comment>
+  </data>
+  <data name="USER_ROLE_LABEL_USER_TRANSACTION_TEXT" xml:space="preserve">
+    <value>МОЯ ТРАНЗАКЦИЯ</value>
+    <comment>USER_ROLE_LABEL</comment>
+  </data>
+</root>

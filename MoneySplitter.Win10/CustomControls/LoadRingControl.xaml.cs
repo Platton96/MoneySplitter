@@ -7,7 +7,7 @@ namespace MoneySplitter.Win10.CustomControls
     {
         public bool IsActiveRing
         {
-            get { return (bool)GetValue(IsActiveRingProperty); }
+            get => (bool)GetValue(IsActiveRingProperty); 
             set { SetValue(IsActiveRingProperty, value); }
         }
 

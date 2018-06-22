@@ -11,14 +11,14 @@ namespace MoneySplitter.Win10.CustomControls
 
         public UserModel ViewModel
         {
-            get { return (UserModel)GetValue(ViewModelProperty); }
+            get => (UserModel)GetValue(ViewModelProperty); 
             set { SetValue(ViewModelProperty, value); }
         }
 
-        public string ButtonContent
+        public bool IsRemove
         {
-            get { return (string)GetValue(ButtonContentProperty); }
-            set { SetValue(ButtonContentProperty, value); }
+            get => (bool)GetValue(IsRemoveProperty); 
+            set { SetValue(IsRemoveProperty, value); }
         }
 
         public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(
@@ -27,9 +27,9 @@ namespace MoneySplitter.Win10.CustomControls
             typeof(DesktopUserContol),
             null);
 
-        public static readonly DependencyProperty ButtonContentProperty = DependencyProperty.Register(
+        public static readonly DependencyProperty IsRemoveProperty = DependencyProperty.Register(
             "ButtonContent",
-            typeof(string),
+            typeof(bool),
             typeof(DesktopUserContol),
             null);
 

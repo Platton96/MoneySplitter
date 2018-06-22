@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MoneySplitter.Win10.ViewModels
 {
-    public class IncomingAndOutcomingViewModel : Screen
+    public class IncomingAndOutgoingViewModel : Screen
     {
         #region Fields
         private ObservableCollection<CollaboratorModel> _debtors;
@@ -51,7 +51,7 @@ namespace MoneySplitter.Win10.ViewModels
             }
         }
         #endregion
-        public IncomingAndOutcomingViewModel(
+        public IncomingAndOutgoingViewModel(
             CollaboratorModelFactory collaboratorModelFactory, 
             INavigationManager navigationManager,
             ITransactionsManager transactionsManager)

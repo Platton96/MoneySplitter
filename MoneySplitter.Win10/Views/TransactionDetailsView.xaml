@@ -6,6 +6,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:customControls="using:MoneySplitter.Win10.CustomControls"
       xmlns:converters="using:MoneySplitter.Win10.Converters"
+      xmlns:extensions="using:MoneySplitter.Win10.Extensions"
       xmlns:models="using:MoneySplitter.Models"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -88,16 +89,16 @@
                                    Visibility="{x:Bind ViewModel.IsOngoingDateAvailable, Mode=OneWay}"
                                    Foreground="{StaticResource DarkGrayColorBrush}"
                                    TextWrapping="Wrap">
-                        <Run Text="{x:Bind ViewModel.Data.RootTransaction.OngoingDate, Converter={StaticResource DateConverter}, Mode=OneWay}"/>
-                        <Run Text="("/><Run Text="{x:Bind ViewModel.Data.RootTransaction.OngoingDate, Converter={StaticResource DateTimeToTimeLeft}, Mode=OneWay}"/><Run Text=")"/>
+                            <Run Text="{x:Bind ViewModel.Data.RootTransaction.OngoingDate, Converter={StaticResource DateConverter}, Mode=OneWay}"/>
+                            <Run Text="("/><Run Text="{x:Bind ViewModel.Data.RootTransaction.OngoingDate, Converter={StaticResource DateTimeToTimeLeft}, Mode=OneWay}"/><Run Text=")"/>
                         </TextBlock>
                         <TextBlock FontSize="16"
                                    Margin="0,4,0,0"
                                    Visibility="{x:Bind ViewModel.IsOngoingDateAvailable, Converter={StaticResource OppositeBoolToVisibility}, Mode=OneWay}"
                                    Foreground="{StaticResource DarkGrayColorBrush}"
                                    TextWrapping="Wrap">
-                        <Run Text="Deadline: "/>
-                        <Run Text="{x:Bind ViewModel.Data.RootTransaction.DeadlineDate, Converter={StaticResource DateTimeToTimeLeft}, Mode=OneWay}"/>
+                            <Run extensions:XamlElementExtensions.Resource="DEADLINE_RUN_TEXT"/>
+                            <Run Text="{x:Bind ViewModel.Data.RootTransaction.DeadlineDate, Converter={StaticResource DateTimeToTimeLeft}, Mode=OneWay}"/>
                         </TextBlock>
                         <customControls:TransactionStatusControl Role="{x:Bind ViewModel.Data.UserRole, Mode=OneWay}"
                                                              Margin="0,4,0,0"/>
@@ -114,7 +115,7 @@
                                     <FontIcon Glyph="&#xE73E;"
                                               Foreground="{StaticResource DarkGrayColorBrush}"
                                               FontSize="20"/>
-                                    <TextBlock Text="APPROVE ALL"
+                                    <TextBlock extensions:XamlElementExtensions.Resource="APROVE_ALL_BUTTON_CONTENT"
                                                Margin="4,0,0,0"
                                                FontSize="14"
                                                Foreground="{StaticResource DarkGrayColorBrush}"/>
@@ -126,7 +127,7 @@
                                     <FontIcon Glyph="&#xEA8F;"
                                               Foreground="{StaticResource DarkGrayColorBrush}"
                                               FontSize="18"/>
-                                    <TextBlock Text="REMIND ALL"
+                                    <TextBlock extensions:XamlElementExtensions.Resource="REMIND_ALL_BUTTON_CONTENT"
                                                Margin="4,0,0,0"
                                                FontSize="14"
                                                Foreground="{StaticResource DarkGrayColorBrush}"/>
@@ -142,7 +143,7 @@
                                     <TextBlock Margin="8,0,0,0"
                                                FontSize="14"
                                                Foreground="{StaticResource DarkGrayColorBrush}">
-                                        <Run Text="GIVE ("/><Run Text="{x:Bind ViewModel.Data.SingleCost, Mode=OneWay}"/><Run Text="$)"/>
+                                        <Run extensions:XamlElementExtensions.Resource="GIVE_RUN_TEXT"/><Run Text="{x:Bind ViewModel.Data.SingleCost, Mode=OneWay}"/><Run Text="$)"/>
                                     </TextBlock>
                                 </StackPanel>
                             </Button>
@@ -152,7 +153,7 @@
                                     <FontIcon Glyph="&#xEA8F;"
                                           Foreground="{StaticResource DarkGrayColorBrush}"
                                           FontSize="20"/>
-                                    <TextBlock Text="REMIND"
+                                    <TextBlock extensions:XamlElementExtensions.Resource="REMIND__BUTTON_CONTENT"
                                            Margin="4,0,0,0"
                                            FontSize="14"
                                            Foreground="{StaticResource DarkGrayColorBrush}"/>
@@ -172,7 +173,7 @@
                             <FontIcon Glyph="&#xE76E;"
                                   Foreground="{StaticResource DarkColorBrush}"
                                   FontSize="16"/>
-                            <TextBlock Text="Transaction owner"
+                            <TextBlock extensions:XamlElementExtensions.Resource="TRANSACTION_OWNER_TEXTBLOCK_TEXT"
                                    FontSize="16"
                                    Foreground="{StaticResource DarkColorBrush}"
                                    Margin="4,0,0,0"/>
@@ -198,17 +199,17 @@
                                 </TextBlock>
                                 <TextBlock FontSize="14"
                                        Foreground="{StaticResource DarkGrayColorBrush}">
-                                <Run Text="Email: "/>
+                                <Run extensions:XamlElementExtensions.Resource="EMAIL_RUN_TEXT"/>
                                 <Run Text="{x:Bind ViewModel.Data.RootTransaction.Owner.Email, Mode=OneWay}"/>
                                 </TextBlock>
                                 <TextBlock FontSize="14"
                                        Foreground="{StaticResource DarkGrayColorBrush}">
-                                <Run Text="Credit card: "/>
+                                <Run extensions:XamlElementExtensions.Resource="CREDIT_CARD_RUN_TEXT"/>
                                 <Run Text="{x:Bind ViewModel.Data.RootTransaction.Owner.CreditCardNumber, Converter={StaticResource BlankCardConverter}, Mode=OneWay}"/>
                                 </TextBlock>
                                 <TextBlock FontSize="14"
                                        Foreground="{StaticResource DarkGrayColorBrush}">
-                                <Run Text="Phone: "/>
+                                <Run extensions:XamlElementExtensions.Resource="PHONE_RUN_TEXT"/>
                                 <Run Text="{x:Bind ViewModel.Data.RootTransaction.Owner.PhoneNumber,Converter={StaticResource PhoneNumberConverter}, Mode=OneWay}"/>
                                 </TextBlock>
                             </StackPanel>
@@ -219,7 +220,7 @@
                             <FontIcon Glyph="&#xE9D9;"
                                       Foreground="{StaticResource DarkColorBrush}"
                                       FontSize="16"/>
-                            <TextBlock Text="Statistics"
+                            <TextBlock extensions:XamlElementExtensions.Resource="STATISTICS_TEXTBLOCK_TEXT"
                                        FontSize="16"
                                        Foreground="{StaticResource DarkColorBrush}"
                                        Margin="4,0,0,0"/>
@@ -239,7 +240,7 @@
                                                HorizontalAlignment="Center"
                                                Text="{x:Bind ViewModel.CollaboratorsCount, Mode=OneWay}"/>
                                 </Border>
-                                <TextBlock Text="People"
+                                <TextBlock extensions:XamlElementExtensions.Resource="PEOPLE_TEXTBLOCK_TEXT"
                                            VerticalAlignment="Bottom"
                                            HorizontalAlignment="Center"/>
                             </Grid>
@@ -257,7 +258,7 @@
                                                HorizontalAlignment="Center"
                                                Text="{x:Bind ViewModel.InProgressCount, Mode=OneWay}"/>
                                 </Border>
-                                <TextBlock Text="In progress"
+                                <TextBlock extensions:XamlElementExtensions.Resource="INPROGRESS_TEXTBLOCK_TEXT"
                                            VerticalAlignment="Bottom"
                                            HorizontalAlignment="Center"/>
                             </Grid>
@@ -275,7 +276,7 @@
                                                HorizontalAlignment="Center"
                                                Text="{x:Bind ViewModel.FinishedCount, Mode=OneWay}"/>
                                 </Border>
-                                <TextBlock Text="Finished"
+                                <TextBlock extensions:XamlElementExtensions.Resource="FINISHED_TEXTBLOCK_TEXT"
                                            VerticalAlignment="Bottom"
                                            HorizontalAlignment="Center"/>
                             </Grid>
@@ -289,7 +290,7 @@
                         <FontIcon Glyph="&#xE716;"
                                   Foreground="{StaticResource DarkColorBrush}"
                                   FontSize="16"/>
-                        <TextBlock Text="Collaborators"
+                        <TextBlock extensions:XamlElementExtensions.Resource="COLLABORATORS_TEXTBLOCK_TEXT"
                                    FontSize="16"
                                    Foreground="{StaticResource DarkColorBrush}"
                                    Margin="4,0,0,0"/>

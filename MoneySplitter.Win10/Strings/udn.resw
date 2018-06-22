@@ -117,10 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="MAIN_MENU_FRIENDS" xml:space="preserve">
-    <value>Friends</value>
-  </data>
-  <data name="MAIN_MENU_SEARCH" xml:space="preserve">
-    <value>Search</value>
+  <data name="TEST" xml:space="preserve">
+    <value>~test</value>
+    <comment>test</comment>
   </data>
 </root>
