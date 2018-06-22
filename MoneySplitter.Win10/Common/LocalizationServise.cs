@@ -12,12 +12,12 @@ namespace MoneySplitter.Win10.Common
     public class LocalizationServise : ILocalizationService
     {
         private IDictionary<string, string> _strings;
-        private IDictionary<string, string> _udnStrings;
+        private IDictionary<string, string> _udefinedStrings;
 
         public LocalizationServise()
         {
             InitializeStrings(Defines.Localization.RESOURCE_RU_FILE_PATCH);
-            _udnStrings = LoadStringsForLocale(Defines.Localization.RESOURCE_UDN_FILE_PATCH);
+            _udefinedStrings = LoadStringsForLocale(Defines.Localization.RESOURCE_UDN_FILE_PATCH);
         }
 
         public void InitializeStrings(string path)
@@ -38,10 +38,9 @@ namespace MoneySplitter.Win10.Common
 
         public string GetString(string key)
         {
-            
             if (!_strings.TryGetValue(key, out string value))
             {
-                _udnStrings.TryGetValue(key, out value);
+                _udefinedStrings.TryGetValue(key, out value);
             }
 
             return value;
@@ -49,13 +48,7 @@ namespace MoneySplitter.Win10.Common
 
         public string GetString(Enum key)
         {
-            
-            if (!_strings.TryGetValue(key.ToString(), out string value))
-            {
-                _udnStrings.TryGetValue(key.ToString(), out value);
-            }
-
-            return value;
+            return GetString(key.ToString());
         }
 
     }
