@@ -9,7 +9,6 @@
              mc:Ignorable="d"
              d:DesignHeight="300"
              d:DesignWidth="400">
-
     <Grid Background="Transparent">
         <Grid Name="PaneBackgroundGrid"
               Canvas.ZIndex="-1"
@@ -18,7 +17,7 @@
                 <behaviors:Blur Value="{x:Bind Value, Mode=OneWay}"
                                 Duration="0"
                                 Delay="0"
-                                AutomaticallyStart="True" />
+                                AutomaticallyStart="True"/>
             </interactivity:Interaction.Behaviors>
         </Grid>
     </Grid>
