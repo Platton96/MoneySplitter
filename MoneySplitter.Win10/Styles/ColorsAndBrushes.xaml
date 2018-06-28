@@ -11,5 +11,6 @@
     <SolidColorBrush x:Key="MainBrush" Color="#2C404B"/>
     <SolidColorBrush x:Name="RedBrush" Color="Red"/>
     <SolidColorBrush x:Name="GreenBrush" Color="Green"/>
+    <SolidColorBrush x:Name="ErrorBackgroundCollor" Color="#feefe8"/>
 
 </ResourceDictionary>

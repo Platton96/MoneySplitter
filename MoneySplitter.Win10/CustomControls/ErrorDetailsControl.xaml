@@ -10,20 +10,27 @@
     d:DesignWidth="400">
     
     <UserControl.Resources>
-        <Style TargetType="StackPanel" x:Key="IssueStackPanelStyle">
-            <Setter Property="Background" Value="#feefe8"/>
-            <Setter Property="VerticalAlignment" Value="Top"/>
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-        </Style>
+        <ResourceDictionary>
+            <Style TargetType="StackPanel" x:Key="IssueStackPanelStyle">
+                <Setter Property="Background" Value="#feefe8"/>
+                <Setter Property="VerticalAlignment" Value="Top"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            </Style>
+            <Style TargetType="TextBlock" x:Key="ErrorTitleTextBlockStyle">
+                <Setter Property="FontSize" Value="18"/>
+            </Style>
+        </ResourceDictionary>
     </UserControl.Resources>
     
     <StackPanel Style="{StaticResource IssueStackPanelStyle}"
                 Visibility="{x:Bind IsErrorVisable, Mode=OneWay}">
         <TextBlock Text="{x:Bind ErrorDetails. ErrorTitle, Mode=OneWay}"
-                   FontWeight="Bold"/>
+                   FontWeight="Bold"
+                   FontSize="18"/>
 
         <TextBlock FontStyle="Italic"
-                   Text="{x:Bind ErrorDetails.ErrorDescription, Mode=OneWay}"/>
+                   Text="{x:Bind ErrorDetails.ErrorDescription, Mode=OneWay}"
+                   FontSize="16"/>
 
     </StackPanel>
 </UserControl>

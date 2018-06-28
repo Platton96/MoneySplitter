@@ -12,6 +12,22 @@
     d:DesignWidth="400">
     <UserControl.Resources>
         <converters:OppositeBoolToVisibilityConverter x:Key="OppositeBoolToVisibilityConverter"/>
+        <Style TargetType="StackPanel" x:Key="CollaboratorStackPanelStyle">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="7"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="BaseCollaboratorTextStyle">
+            <Setter Property="IsTextSelectionEnabled" Value="True" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+        </Style>
+        
+        <Style TargetType="Ellipse" x:Key="EllipseUserImageStyle">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="120"/>
+        </Style>
+        
     </UserControl.Resources>
     <Grid Margin="5"
           HorizontalAlignment="Stretch">
