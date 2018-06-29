@@ -43,7 +43,6 @@
                 </ResourceDictionary>
                 <ResourceDictionary Source="../Styles/GlobalStyles.xaml"/>
 
-       
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 

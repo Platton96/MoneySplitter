@@ -8,22 +8,28 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
     <UserControl.Resources>
-        <Style TargetType="ProgressRing" x:Key="ProgressRingStyle">
-            <Setter Property="Foreground" Value="#2C404B"/>
-            <Setter Property="Width" Value="68"/>
-            <Setter Property="Height" Value="68"/>
-        </Style>
-        <Style TargetType="Grid" x:Key="ProgressRingGridStyle">
-            <Setter Property="VerticalAlignment" Value="Stretch"/>
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <Style TargetType="ProgressRing" x:Key="ProgressRingStyle">
+                        <Setter Property="Foreground" Value="{StaticResource ProgressRingColor}"/>
+                        <Setter Property="Width" Value="68"/>
+                        <Setter Property="Height" Value="68"/>
+                    </Style>
+                    <Style TargetType="Grid" x:Key="ProgressRingGridStyle">
+                        <Setter Property="VerticalAlignment" Value="Stretch"/>
+                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                        <Setter Property="Background" Value="{StaticResource TransparentColor}"/>
+                    </Style>
+                </ResourceDictionary>
+                <ResourceDictionary Source="../Styles/ColorsAndBrushes.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
     </UserControl.Resources>
 
     <Grid Style="{StaticResource ProgressRingGridStyle}"
           Visibility="{x:Bind IsActiveRing, Mode=OneWay}">
-        <Grid.Background>
-            <SolidColorBrush Color="#FFFFFF" Opacity="0.9" />
-        </Grid.Background>
         <ProgressRing Style="{StaticResource ProgressRingStyle}"
                       IsActive="{x:Bind IsActiveRing, Mode=OneWay}"/>
     </Grid>

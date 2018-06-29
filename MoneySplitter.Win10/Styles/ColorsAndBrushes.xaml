@@ -12,5 +12,7 @@
     <SolidColorBrush x:Name="RedBrush" Color="Red"/>
     <SolidColorBrush x:Name="GreenBrush" Color="Green"/>
     <SolidColorBrush x:Name="ErrorBackgroundCollor" Color="#feefe8"/>
+    <SolidColorBrush x:Name="TransparentColor" Color="#FFFFFF" Opacity="0.9" />
+    <SolidColorBrush x:Name="ProgressRingColor" Color="#2C404B"/>
 
 </ResourceDictionary>
