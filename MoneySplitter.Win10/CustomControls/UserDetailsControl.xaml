@@ -6,17 +6,16 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converters="using:MoneySplitter.Win10.Converters"
+    xmlns:extensions="using:MoneySplitter.Win10.Extensions"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
     <UserControl.Resources>
-        <ResourceDictionary>
-            <converters:BankCardConverter x:Key="BankCardConverter" />
-            <converters:PhoneNumberConverter x:Key="PhoneNumberConverter" />
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Styles/GlobalStyles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+        <converters:BankCardConverter x:Key="BankCardConverter" />
+        <converters:PhoneNumberConverter x:Key="PhoneNumberConverter" />
+        <Style TargetType="StackPanel" x:Name="UserInformationStackPanelStyle">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
     </UserControl.Resources>
 
     <Grid>
@@ -32,32 +31,22 @@
             </Ellipse.Fill>
         </Ellipse>
         <StackPanel Grid.Column="1"
-                    VerticalAlignment="Center">
-            <TextBlock IsTextSelectionEnabled="True" 
-                       TextTrimming="CharacterEllipsis"
-                       HorizontalAlignment="Stretch"
-                       Style="{StaticResource ControlMainTextStyle}">
+                    Style="{StaticResource UserInformationStackPanelStyle}">
+            <TextBlock Style="{StaticResource UserControlFullNameTextStyle}">
                     <Run Text="{x:Bind ViewModel.Name, Mode=OneWay}" />
-                    <Run Text=" "/>
                     <Run Text="{x:Bind ViewModel.Surname, Mode=OneWay}"/>
             </TextBlock>
-            <TextBlock HorizontalAlignment="Stretch"
-                       TextTrimming="CharacterEllipsis"
-                       Style="{StaticResource ControlAdditionTextStyle}">
-                <Run Text="Email: "/>
+            <TextBlock Style="{StaticResource UserControlAditionInformationTextStyle}">
+                <Run extensions:XamlElementExtensions.Resource="EMAIL_RUN_TEXT"/>
                 <Run Text="{x:Bind ViewModel.Email, Mode=OneWay}"/>
 
             </TextBlock>
-            <TextBlock HorizontalAlignment="Stretch"
-                       TextTrimming="CharacterEllipsis"
-                       Style="{StaticResource ControlAdditionTextStyle}">
-                <Run Text="Phone number: "/>
+            <TextBlock Style="{StaticResource UserControlAditionInformationTextStyle}">
+                <Run extensions:XamlElementExtensions.Resource="PHONE_RUN_TEXT"/>
                 <Run Text="{x:Bind ViewModel.PhoneNumber, Converter={StaticResource PhoneNumberConverter}, Mode=OneWay}"/>
             </TextBlock>
-            <TextBlock HorizontalAlignment="Stretch"
-                       TextTrimming="CharacterEllipsis"
-                       Style="{StaticResource ControlAdditionTextStyle}">
-                <Run Text="Bank card: "/>
+            <TextBlock Style="{StaticResource UserControlAditionInformationTextStyle}">
+                <Run extensions:XamlElementExtensions.Resource="BANK_CARD_RUN_TEXT"/>
                 <Run Text="{x:Bind ViewModel.CreditCardNumber, Converter={StaticResource BankCardConverter}, Mode=OneWay}"/>
             </TextBlock>
         </StackPanel>

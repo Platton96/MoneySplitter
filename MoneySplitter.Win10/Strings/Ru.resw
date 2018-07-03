@@ -140,6 +140,10 @@
     <value>Загрузить фоновое изоброжение </value>
     <comment>registerView</comment>
   </data>
+  <data name="BANK_CARD_RUN_TEXT" xml:space="preserve">
+    <value>Банковская карта: </value>
+    <comment>userDetails</comment>
+  </data>
   <data name="BROWSE_BUTTON_CONTENT" xml:space="preserve">
     <value>Загрузить</value>
     <comment>registerView</comment>

@@ -8,30 +8,23 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
-    
+
     <UserControl.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <Style TargetType="StackPanel" x:Key="IssueStackPanelStyle">
-                        <Setter Property="Background" Value="{StaticResource ErrorBackgroundCollor}"/>
-                        <Setter Property="VerticalAlignment" Value="Top"/>
-                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                    </Style>
-                    <Style TargetType="TextBlock" x:Key="ErrorTitleTextBlockStyle">
-                        <Setter Property="FontSize" Value="18"/>
-                        <Setter Property="Foreground" Value="{StaticResource DarkColorBrush}"/>
-                        <Setter Property="FontWeight" Value="Medium"/>
-                    </Style>
-                    <Style TargetType="TextBlock" x:Key="ErrorDescriptionTextBlockStyle">
-                        <Setter Property="FontSize" Value="16"/>
-                        <Setter Property="Foreground" Value="{StaticResource DarkGrayColorBrush}"/>
-                        <Setter Property="FontStyle" Value="Italic"/>
-                    </Style>
-                </ResourceDictionary>
-                <ResourceDictionary Source="../Styles/ColorsAndBrushes.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+        <Style TargetType="StackPanel" x:Key="IssueStackPanelStyle">
+            <Setter Property="Background" Value="{StaticResource ErrorBackgroundCollor}"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="ErrorTitleTextBlockStyle">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="{StaticResource DarkColorBrush}"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="ErrorDescriptionTextBlockStyle">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="{StaticResource DarkGrayColorBrush}"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+        </Style>
     </UserControl.Resources>
     
     <StackPanel Style="{StaticResource IssueStackPanelStyle}"

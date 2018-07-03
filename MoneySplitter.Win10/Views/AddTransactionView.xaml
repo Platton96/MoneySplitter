@@ -9,9 +9,7 @@
     xmlns:extensions="using:MoneySplitter.Win10.Extensions"
     xmlns:customControls="using:MoneySplitter.Win10.CustomControls"
     mc:Ignorable="d">
-    <Page.Resources>
-        <ResourceDictionary Source="../Styles/GlobalStyles.xaml"/>
-    </Page.Resources>
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

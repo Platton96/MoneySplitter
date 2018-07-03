@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MoneySplitter.Win10.Styles">
 
-    <SolidColorBrush x:Key="NotVisibilCallobartorCountColor" Color="#5c5c5c"/>
+    <SolidColorBrush x:Key="AdditionCallobartorCountColor" Color="#5c5c5c"/>
     <SolidColorBrush x:Key="Border" Color="#c5c5c5"/>
     <SolidColorBrush x:Key="DarkColorBrush" Color="#242424"/>
     <SolidColorBrush x:Key="DarkGrayColorBrush" Color="#464646"/>
@@ -13,6 +13,5 @@
     <SolidColorBrush x:Name="GreenBrush" Color="Green"/>
     <SolidColorBrush x:Name="ErrorBackgroundCollor" Color="#feefe8"/>
     <SolidColorBrush x:Name="TransparentColor" Color="#FFFFFF" Opacity="0.9" />
-    <SolidColorBrush x:Name="ProgressRingColor" Color="#2C404B"/>
-
+    <SolidColorBrush x:Name="ProgressRingColor" Color="#2C404B" />
 </ResourceDictionary>

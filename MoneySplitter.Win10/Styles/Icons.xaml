@@ -5,5 +5,8 @@
     <x:String x:Key="RingerIcon">&#xEA8F;</x:String>
     <x:String x:Key="ArrowUpIcon">&#xF0AD;</x:String>
     <x:String x:Key="ArrowDownIcon">&#xF0AE;</x:String>
-    
+    <x:String x:Key="AddIcon">&#xE710;</x:String>
+    <x:String x:Key="RemoveIcon">&#xE738;</x:String>
+    <x:String x:Key="GiveIcon">&#xF0AD;</x:String>
+
 </ResourceDictionary>

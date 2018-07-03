@@ -63,12 +63,12 @@
         <Setter Property="Margin" Value="5"/>
     </Style>
 
-    <Style x:Key="FullNameTextStyle" TargetType="TextBlock">
+    <Style x:Key="UserControlFullNameTextStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="Foreground" Value="{StaticResource DarkColorBrush}"/>
         <Setter Property="TextTrimming" Value="WordEllipsis"/>
     </Style>
-    <Style x:Key="EmailNameTextStyle" TargetType="TextBlock">
+    <Style x:Key="UserControlAditionInformationTextStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Foreground" Value="{StaticResource DarkGrayColorBrush}"/>
         <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
@@ -77,5 +77,16 @@
     <Style x:Key="ListHeaderTextStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="Foreground" Value="{StaticResource MainBrush}"/>
+    </Style>
+    <Style TargetType="Ellipse" x:Key="MobileUserImageEllipseStyle">
+        <Setter Property="Width" Value="60"/>
+        <Setter Property="Height" Value="60"/>
+    </Style>
+    <Style TargetType="Border" x:Key="BorderImageStyle">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderImageBrush}"/>
+    </Style>
+    <Style TargetType="FontIcon" x:Key="ButtonContentFontIconStyle">
+        <Setter Property="FontSize" Value="12"/>
     </Style>
 </ResourceDictionary>
