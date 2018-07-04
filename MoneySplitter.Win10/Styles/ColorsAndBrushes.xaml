@@ -1,17 +1,18 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:MoneySplitter.Win10.Styles">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="using:MoneySplitter.Win10.Styles">
 
     <SolidColorBrush x:Key="AdditionCallobartorCountColor" Color="#5c5c5c"/>
     <SolidColorBrush x:Key="Border" Color="#c5c5c5"/>
     <SolidColorBrush x:Key="DarkColorBrush" Color="#242424"/>
     <SolidColorBrush x:Key="DarkGrayColorBrush" Color="#464646"/>
     <SolidColorBrush x:Key="BorderImageBrush" Color="#c7c1c1"/>
-    <SolidColorBrush x:Key="MainBrush" Color="#2C404B"/>
     <SolidColorBrush x:Name="RedBrush" Color="Red"/>
     <SolidColorBrush x:Name="GreenBrush" Color="Green"/>
-    <SolidColorBrush x:Name="ErrorBackgroundCollor" Color="#feefe8"/>
+    <SolidColorBrush x:Name="ErrorBackgroundColor" Color="#feefe8"/>
     <SolidColorBrush x:Name="TransparentColor" Color="#FFFFFF" Opacity="0.9" />
+    <SolidColorBrush x:Name="DefaultAppColor" Color="#2C404B" />
+    <SolidColorBrush x:Key="MainBrush" Color="#2C404B"/>
     <SolidColorBrush x:Name="ProgressRingColor" Color="#2C404B" />
+
 </ResourceDictionary>

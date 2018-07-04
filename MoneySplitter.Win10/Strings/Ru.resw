@@ -216,6 +216,10 @@
     <value>Друзья</value>
     <comment>titleFrame</comment>
   </data>
+  <data name="FRIENDS_HEADER_TEXT_BLOCK" xml:space="preserve">
+    <value>Друзья</value>
+    <comment>friendsView</comment>
+  </data>
   <data name="FRIENDS_TEXTBLOCK_TEXT" xml:space="preserve">
     <value>Друзья</value>
     <comment>AddTransaction</comment>
@@ -256,7 +260,7 @@
     <comment>IncomingAndOutgoingView</comment>
   </data>
   <data name="LOGIN_BUTTON_CONTENT" xml:space="preserve">
-    <value>ЛОГИН</value>
+    <value>Войти</value>
     <comment>loginView</comment>
   </data>
   <data name="LOGIN_ERROR_DESCRIPTION" xml:space="preserve">
@@ -312,7 +316,7 @@
     <comment>error</comment>
   </data>
   <data name="REGISTER_BUTTON_CONTENT" xml:space="preserve">
-    <value>ЗАРЕГИСТРИРОВАТЬСЯ</value>
+    <value>Регистрация</value>
     <comment>loginView</comment>
   </data>
   <data name="REGISTER_ERROR_DESCRIPTION" xml:space="preserve">
@@ -350,6 +354,10 @@
   <data name="SEARCH_FRAME_TITLE" xml:space="preserve">
     <value>Поиск</value>
     <comment>titleFrame</comment>
+  </data>
+  <data name="SEARCH_HEADER_TEXT_BLOCK" xml:space="preserve">
+    <value>Поиск</value>
+    <comment>search</comment>
   </data>
   <data name="SEARCH_NOT_RESULTS_TEXTBLOCK_TEXT" xml:space="preserve">
     <value>Пользователей не найденно</value>

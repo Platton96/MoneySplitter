@@ -11,7 +11,7 @@
 
     <UserControl.Resources>
         <Style TargetType="StackPanel" x:Key="IssueStackPanelStyle">
-            <Setter Property="Background" Value="{StaticResource ErrorBackgroundCollor}"/>
+            <Setter Property="Background" Value="{StaticResource ErrorBackgroundColor}"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
         </Style>

@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:customControls="using:MoneySplitter.Win10.CustomControls">
+    <Style TargetType="TextBox" x:Key="SearchTextBoxStyle">
+        <Setter Property="Margin" Value="4"/>
+    </Style>
+    <Style TargetType="customControls:MobileUserControl" x:Key="MobileUserControlStyle">
+        <Setter Property="IsRemove" Value="False"/>
+        <Setter Property="IsButtonVisible" Value="True"/>
+    </Style>
+    <Style TargetType="customControls:DesktopUserContol" x:Key="DesktopUserContolStyle">
+        <Setter Property="IsRemove" Value="False"/>
+    </Style>
+</ResourceDictionary>
