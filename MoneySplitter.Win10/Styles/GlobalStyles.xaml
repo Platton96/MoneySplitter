@@ -13,10 +13,10 @@
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="BorderBrush" Value="{StaticResource Border}"/>
         <Setter Property="VerticalAlignment" Value="Top" />
-        <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
         <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="Height" Value="36"/>
         <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
+        <Setter Property="Foreground" Value="{StaticResource DarkColorBrush}"/>
         <Setter Property="UseSystemFocusVisuals" Value="True" />
     </Style>
     
@@ -104,5 +104,26 @@
         <Setter Property="Margin" Value="40,4,8,0"/>
         <Setter Property="FontSize" Value="26"/>
         <Setter Property="Foreground" Value="{StaticResource DefaultAppColor}"/>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="DefaultHeaderListStyle">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Foreground" Value="{StaticResource DefaultAppColor}"/>
+    </Style>
+    <Style TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}" x:Key="BrowseButtonStyle">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Padding" Value="2"/>
+        <Setter Property="Margin" Value="0,2,4,4"/>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="BrowseLabelTextBlockStyle">
+        <Setter Property="Margin" Value="4,0"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+    </Style>
+    <Style TargetType="Border" x:Key="DefaultTransactionBorderStyle">
+        <Setter Property="Padding" Value="0,0,0,12"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Border}"/>
     </Style>
 </ResourceDictionary>

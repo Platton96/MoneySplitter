@@ -10,11 +10,10 @@
     xmlns:models="using:MoneySplitter.Models"
     mc:Ignorable="d">
     <Page.Resources>
-        <ResourceDictionary Source="../Styles/GlobalStyles.xaml"/>
+        <ResourceDictionary Source="../Styles/Views/FriendDetailsViewStyle.xaml"/>
     </Page.Resources>
     <ScrollViewer>
-        <Grid VerticalAlignment="Stretch"
-          HorizontalAlignment="Stretch">
+        <Grid Style="{StaticResource RootGridStyle}">
             <Image Source="{x:Bind ViewModel.Friend.BackgroundImageUrl, Mode=OneWay}"
                HorizontalAlignment="Stretch"
                Stretch="UniformToFill"
@@ -187,12 +186,9 @@
                         </ListView.ItemContainerStyle>
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="models:TransactionEventModel">
-                                <Grid Margin="8,12,12,0">
-                                    <Border BorderThickness="0,0,0,1"
-                                        BorderBrush="{StaticResource Border}">
-                                        <Grid Padding="0,0,0,12">
-                                            <customControls:TransactionEventControl ViewModel="{x:Bind Mode=OneWay}"/>
-                                        </Grid>
+                                <Grid Style="{StaticResource TransactionGridStyle}">
+                                    <Border Style="{StaticResource DefaultTransactionBorderStyle}">
+                                        <customControls:TransactionEventControl ViewModel="{x:Bind Mode=OneWay}"/>
                                     </Border>
                                 </Grid>
 

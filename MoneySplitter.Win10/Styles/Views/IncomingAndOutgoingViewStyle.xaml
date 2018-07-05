@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}" x:Key="RegisterButtonStyle">
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        
+
+    <Style TargetType="ListView" x:Key="DebtersAndLendPersonsListStyle">
+        <Setter Property="IsItemClickEnabled" Value="True"/>
     </Style>
 </ResourceDictionary>

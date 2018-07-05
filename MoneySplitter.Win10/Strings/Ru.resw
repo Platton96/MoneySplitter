@@ -411,6 +411,10 @@
     <value>Транзакции</value>
     <comment>titleFrame</comment>
   </data>
+  <data name="TRANSACTION_IMAGE_TEXTBLOCK_TEXT" xml:space="preserve">
+    <value>Загрузить трвнзакции изоброжение</value>
+    <comment>AddTransaction</comment>
+  </data>
   <data name="TRANSACTION_OWNER_TEXTBLOCK_TEXT" xml:space="preserve">
     <value>Владелец транзакции</value>
     <comment>TransactionDetails</comment>
