@@ -22,7 +22,7 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Ellipse Width="120" Height="120"
+        <Ellipse Width="100" Height="100"
                   Margin="5">
             <Ellipse.Fill>
                 <ImageBrush ImageSource="{x:Bind ViewModel.ImageUrl, Mode=OneWay}"

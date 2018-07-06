@@ -59,7 +59,7 @@
         <Setter Property="Margin" Value="8,12,12,0"/>
     </Style>
     <Style TargetType="FontIcon" x:Key="ApproveAllFontIconStyle">
-        <Setter Property="Glyph" Value="{StaticResource Approve}"/>
+        <Setter Property="Glyph" Value="{StaticResource ApproveIcon}"/>
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="Foreground" Value="{StaticResource DarkColorBrush}"/>
     </Style>

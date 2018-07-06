@@ -7,5 +7,11 @@
     <x:String x:Key="AddIcon">&#xE710;</x:String>
     <x:String x:Key="RemoveIcon">&#xE738;</x:String>
     <x:String x:Key="GiveIcon">&#xF0AD;</x:String>
-    <x:String x:Key="Approve">&#xE73E;</x:String>
+    <x:String x:Key="ApproveIcon">&#xE73E;</x:String>
+    <x:String x:Key="FriendsIcon">&#xE716;</x:String>
+    <x:String x:Key="TransactionsIcon">&#xE8CB;</x:String>
+    <x:String x:Key="EditIcon">&#xE70F;</x:String>
+    <x:String x:Key="DontForgetIcon">&#xEC92;</x:String>
+    <x:String x:Key="StatisticsIcon">&#xE9D9;</x:String>
+    <x:String x:Key="NotesIcon">&#xE946;</x:String>
 </ResourceDictionary>

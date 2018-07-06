@@ -6,103 +6,61 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:customControls="using:MoneySplitter.Win10.CustomControls"
       xmlns:viewmodels="using:MoneySplitter.Win10.ViewModels"
-      xmlns:converters="using:MoneySplitter.Win10.Converters"
       xmlns:extensions="using:MoneySplitter.Win10.Extensions"
       xmlns:viewmodels1="using:MoneySplitter.Models.App"
       mc:Ignorable="d">
     <Page.Resources>
-        <converters:OppositeBoolToVisibilityConverter x:Key="OppositeBoolToVisibility"/>
-
-        <SolidColorBrush x:Key="White50OpacityBrush" Color="#88FBFBFB"/>
-        <SolidColorBrush x:Key="DarkColorBrush" Color="#242424"/>
-        <SolidColorBrush x:Key="DarkGrayColorBrush" Color="#464646"/>
-        <SolidColorBrush x:Key="GrayColorBrush" Color="#666666"/>
-        <SolidColorBrush x:Key="LightGrayColorBrush" Color="#AAAAAA"/>
+        <ResourceDictionary Source="../Styles/Views/HomeViewStyle.xaml"/>
     </Page.Resources>
     <ScrollViewer>
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <Image HorizontalAlignment="Stretch"
-                   VerticalAlignment="Top"
-                   Stretch="UniformToFill"
-                   Height="340"
+            <Image Style="{StaticResource BackgroundImageStyle}"
                    Source="{x:Bind ViewModel.CurrentUserModel.BackgroundImageUrl, Mode=OneWay}"/>
-            <Grid HorizontalAlignment="Stretch"
-                  VerticalAlignment="Top"
-                  Height="360">
-                <Grid.Background>
-                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                        <GradientStop Color="#00FFFFFF" Offset="0.0" />
-                        <GradientStop Color="#FFFFFFFF" Offset="0.9" />
-                        <GradientStop Color="#FFFFFFFF" Offset="1" />
-                    </LinearGradientBrush>
-                </Grid.Background>
-            </Grid>
-            <StackPanel Background="{StaticResource White50OpacityBrush}"
-                        Visibility="{x:Bind ViewModel.IsLoading, Converter={StaticResource OppositeBoolToVisibility}, Mode=OneWay}"
-                        HorizontalAlignment="Stretch"
-                        Margin="0,180,0,0">
-                <Grid Margin="24,12,24,0">
+            <Grid Style="{StaticResource BackgroundGridStyle}"/>
+            <StackPanel Style="{StaticResource RootStackPanelStyle}"
+                        Visibility="{x:Bind ViewModel.IsLoading, Converter={StaticResource OppositeBoolToVisibility}, Mode=OneWay}">
+                <Grid Style="{StaticResource UserDetailsGridStyle}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <Ellipse Width="68"
-                             Height="68">
+                    <Ellipse Style="{StaticResource UserImageEllipseStyle}">
                         <Ellipse.Fill>
                             <ImageBrush ImageSource="{x:Bind ViewModel.CurrentUserModel.ImageUrl, Mode=OneWay}"/>
                         </Ellipse.Fill>
                     </Ellipse>
                     <StackPanel Grid.Column="1"
-                                Margin="12,0,0,0">
-                        <TextBlock FontSize="18">
+                                Style="{StaticResource UserInformationStackPanelStyle}">
+                        <TextBlock Style="{StaticResource FullnameTextBlockStyle}">
                             <Run Text="{x:Bind ViewModel.CurrentUserModel.Name, Mode=OneWay}"/>
                             <Run Text="{x:Bind ViewModel.CurrentUserModel.Surname, Mode=OneWay}"/>
                         </TextBlock>
                         <TextBlock Text="{x:Bind ViewModel.CurrentUserModel.Email, Mode=OneWay}"
-                                   FontSize="14"
-                                   Margin="0,2,0,0"
-                                   Foreground="{StaticResource DarkGrayColorBrush}"/>
+                                    Style="{StaticResource EmailTextBlockStyle}"/>
                         <StackPanel Orientation="Horizontal"
-                                    Margin="0,2,0,0">
-                            <FontIcon Glyph="&#xE716;"
-                                      Foreground="{StaticResource DarkGrayColorBrush}"
+                                    Style="{StaticResource ShortUserInformationStackPanelStyle}">
+                            <FontIcon Style="{StaticResource FriendsFontIconStyle}"
                                       FontSize="14"/>
                             <TextBlock Text="{x:Bind ViewModel.FriendsCount, Mode=OneWay}"
-                                       Margin="4,0,0,0"
-                                       FontSize="14"
-                                       Foreground="{StaticResource DarkGrayColorBrush}"/>
-                            <FontIcon Glyph="&#xE8CB;"
-                                      Margin="12,0,0,0"
-                                      Foreground="{StaticResource DarkGrayColorBrush}"
+                                       Style="{StaticResource FontIconsNameTextStyle}"/>
+                            <FontIcon Style="{StaticResource TransactionsFontIconStyle}"
                                       FontSize="12"/>
                             <TextBlock Text="{x:Bind ViewModel.TransactionsCount, Mode=OneWay}"
-                                       Margin="4,0,0,0"
-                                       FontSize="14"
-                                       Foreground="{StaticResource DarkGrayColorBrush}"/>
+                                       Style="{StaticResource FontIconsNameTextStyle}"/>
                         </StackPanel>
                     </StackPanel>
-                    <Button Grid.Column="2"
-                            Padding="12,0,12,0"
-                            Background="Transparent"
-                            BorderThickness="1"
-                            VerticalAlignment="Top"
-                            HorizontalAlignment="Right"
-                            BorderBrush="{StaticResource GrayColorBrush}"
-                            Height="36">
+                    <Button Style="{StaticResource EditButtonStyle}"
+                            Grid.Column="2">
                         <StackPanel Orientation="Horizontal">
-                            <FontIcon Glyph="&#xE70F;"
-                                      Foreground="{StaticResource GrayColorBrush}"
+                            <FontIcon Style="{StaticResource EditFontIconStyle}"
                                       FontSize="14"/>
                             <TextBlock extensions:XamlElementExtensions.Resource="EDIT_PROFILE_TEXTBLOCK_TEXT"
-                                       Margin="12,0,0,0"
-                                       FontSize="14"
-                                       Foreground="{StaticResource DarkGrayColorBrush}"/>
+                                       Style="{StaticResource EditTextBlockStyle}"/>
                         </StackPanel>
-
                     </Button>
                 </Grid>
-                <Grid Margin="24,24,24,0">
+                <Grid Style="{StaticResource MainInformationGridStyle}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="24"/>
@@ -110,109 +68,61 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <FontIcon Glyph="&#xEC92;"
-                                      Foreground="{StaticResource DarkGrayColorBrush}"
+                            <FontIcon Style="{StaticResource DontForgetFontIconStyle}"
                                       FontSize="16"/>
                             <TextBlock extensions:XamlElementExtensions.Resource="DONT_FORGET_TEXTBLOCK_TEXT"
-                                       Margin="4,0,0,0"
-                                       FontSize="16"
+                                       Style="{StaticResource DefaultBlockHeaderTextBlockStyle}"
                                        Foreground="{StaticResource DarkColorBrush}"/>
                         </StackPanel>
-                        <Button BorderThickness="0"
-                                Margin="0,8,0,0"
-                                Background="Transparent"
-                                Padding="0">
+                        <Button Style="{StaticResource DontForgetTransactionButtonStyle}">
                             <customControls:TransactionEventControl ViewModel="{x:Bind ViewModel.LatestTransaction, Mode=OneWay}"/>
                         </Button>
                     </StackPanel>
                     <StackPanel Grid.Column="2">
                         <StackPanel Orientation="Horizontal">
-                            <FontIcon Glyph="&#xE9D9;"
-                                      Foreground="{StaticResource DarkGrayColorBrush}"
+                            <FontIcon Style="{StaticResource StatisticsFontIconStyle}"
                                       FontSize="16"/>
                             <TextBlock extensions:XamlElementExtensions.Resource="STATISTICS_TEXTBLOCK_TEXT"
-                                       Margin="4,0,0,0"
-                                       FontSize="16"
-                                       Foreground="{StaticResource DarkColorBrush}"/>
+                                       Style="{StaticResource DefaultBlockHeaderTextBlockStyle}"/>
                         </StackPanel>
-                        <StackPanel Margin="0,8,0,0">
+                        <StackPanel Style="{StaticResource StatisticsStackPanelStyle}">
                             <StackPanel Orientation="Horizontal">
-                                <Grid Height="76"
-                                      Width="86"
-                                      Margin="0,0,24,0">
-                                    <Border Height="52"
-                                            VerticalAlignment="Top"
-                                            Width="52"
-                                            BorderThickness="1"
-                                            HorizontalAlignment="Center"
-                                            BorderBrush="{StaticResource DarkGrayColorBrush}"
-                                            CornerRadius="26">
+                                <Grid Style="{StaticResource StatisticsItemGridStyle}">
+                                    <Border Style="{StaticResource StatisticsItemLabelBorderStyle}">
                                         <TextBlock Foreground="{StaticResource DarkGrayColorBrush}"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalAlignment="Center"
+                                                   Style="{StaticResource StatisticsItemContentTextBlockStyle}"
                                                    Text="8$"/>
                                     </Border>
                                     <TextBlock extensions:XamlElementExtensions.Resource="TOTAL_DEBT_TEXTBLOCK_TEXT"
-                                               VerticalAlignment="Bottom"
-                                               HorizontalAlignment="Center"/>
+                                               Style="{StaticResource StatisticsItemHeaderTextBlockStyle}"/>
                                 </Grid>
-                                <Grid Height="76"
-                                      Width="86">
-                                    <Border Height="52"
-                                            VerticalAlignment="Top"
-                                            Width="52"
-                                            BorderThickness="1"
-                                            HorizontalAlignment="Center"
-                                            BorderBrush="{StaticResource DarkGrayColorBrush}"
-                                            CornerRadius="26">
-                                        <TextBlock Foreground="{StaticResource DarkGrayColorBrush}"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalAlignment="Center"
+                                <Grid Style="{StaticResource StatisticsItemGridStyle}">
+                                    <Border Style="{StaticResource StatisticsItemLabelBorderStyle}">
+                                        <TextBlock Style="{StaticResource StatisticsItemContentTextBlockStyle}"
                                                    Text="1.2$"/>
                                     </Border>
                                     <TextBlock extensions:XamlElementExtensions.Resource="TOTAL_OWE_TEXTBLOCK_TEXT"
-                                               VerticalAlignment="Bottom"
-                                               HorizontalAlignment="Center"/>
+                                               Style="{StaticResource StatisticsItemHeaderTextBlockStyle}"/>
                                 </Grid>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal"
-                                        Margin="0,12,0,0">
-                                <Grid Height="76"
-                                      Width="86"
-                                      Margin="0,0,24,0">
-                                    <Border Height="52"
-                                            VerticalAlignment="Top"
-                                            Width="52"
-                                            BorderThickness="1"
-                                            HorizontalAlignment="Center"
-                                            BorderBrush="{StaticResource DarkGrayColorBrush}"
-                                            CornerRadius="26">
-                                        <TextBlock Foreground="{StaticResource DarkGrayColorBrush}"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalAlignment="Center"
+                                        Style="{StaticResource StatisticsStackPanelStyle}">
+                                <Grid Style="{StaticResource StatisticsItemGridStyle}">
+                                    <Border Style="{StaticResource StatisticsItemLabelBorderStyle}">
+                                        <TextBlock Style="{StaticResource StatisticsItemContentTextBlockStyle}"
                                                    Text="12.5$"/>
                                     </Border>
                                     <TextBlock extensions:XamlElementExtensions.Resource="INPROGRESS_TEXTBLOCK_TEXT"
-                                               VerticalAlignment="Bottom"
-                                               HorizontalAlignment="Center"/>
+                                               Style="{StaticResource StatisticsItemHeaderTextBlockStyle}"/>
                                 </Grid>
-                                <Grid Height="76"
-                                      Width="86">
-                                    <Border Height="52"
-                                            VerticalAlignment="Top"
-                                            Width="52"
-                                            BorderThickness="1"
-                                            HorizontalAlignment="Center"
-                                            BorderBrush="{StaticResource DarkGrayColorBrush}"
-                                            CornerRadius="26">
+                                <Grid Style="{StaticResource StatisticsItemGridStyle}">
+                                    <Border Style="{StaticResource StatisticsItemLabelBorderStyle}">
                                         <TextBlock Foreground="{StaticResource DarkGrayColorBrush}"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalAlignment="Center"
+                                                   Style="{StaticResource StatisticsItemContentTextBlockStyle}"
                                                    Text="0$"/>
                                     </Border>
                                     <TextBlock extensions:XamlElementExtensions.Resource="INCOMING_TEXTBLOCK_TEXT"
-                                               VerticalAlignment="Bottom"
-                                               HorizontalAlignment="Center"/>
+                                               Style="{StaticResource StatisticsItemHeaderTextBlockStyle}"/>
                                 </Grid>
                             </StackPanel>
                         </StackPanel>
@@ -221,18 +131,14 @@
                 <StackPanel HorizontalAlignment="Stretch"
                             Visibility="{x:Bind ViewModel.IsNotificationsSectionAvailable, Mode=OneWay}">
                     <StackPanel Orientation="Horizontal"
-                                Margin="24,0,24,0">
-                        <FontIcon Glyph="&#xE946;"
-                                  Foreground="{StaticResource DarkGrayColorBrush}"
+                                Style="{StaticResource NotesHeaderStackPanelStyle}">
+                        <FontIcon Style="{StaticResource NotesFontIconStyle}"
                                   FontSize="16"/>
                         <TextBlock extensions:XamlElementExtensions.Resource="NOTIFACTIONS_TEXTBLOCK_TEXT"
-                                   Margin="4,0,0,0"
-                                   FontSize="16"
-                                   Foreground="{StaticResource DarkColorBrush}"/>
+                                   Style="{StaticResource DefaultBlockHeaderTextBlockStyle}"/>
                     </StackPanel>
                     <ListView ItemsSource="{x:Bind ViewModel.Notifications, Mode=OneWay}"
-                              SelectionMode="None"
-                              Margin="0,8,0,0">
+                              Style="{StaticResource NotesListViewStyle}">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="Padding" Value="24,0,24,0"/>
@@ -241,14 +147,13 @@
                         </ListView.ItemContainerStyle>
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="viewmodels1:NotificationModel">
-                                <Grid Height="76">
+                                <Grid Style="{StaticResource NoteGridSyle}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <Ellipse Width="60"
-                                             Height="60">
+                                    <Ellipse Style="{StaticResource UserImageEllipseStyle}">
                                         <Ellipse.Fill>
                                             <ImageBrush ImageSource="{x:Bind ImageUrl, Mode=OneWay}"/>
                                         </Ellipse.Fill>
