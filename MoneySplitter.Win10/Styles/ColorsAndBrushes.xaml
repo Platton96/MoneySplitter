@@ -9,9 +9,17 @@
     <SolidColorBrush x:Name="RedBrush" Color="Red"/>
     <SolidColorBrush x:Name="GreenBrush" Color="Green"/>
     <SolidColorBrush x:Name="ErrorBackgroundColor" Color="#feefe8"/>
-    <SolidColorBrush x:Name="TransparentColor" Color="#FFFFFF" Opacity="0.9" />
+    <SolidColorBrush x:Name="TransparentColor" Color="#FFFFFF" Opacity="0.8" />
     <SolidColorBrush x:Name="DefaultAppColor" Color="#2C404B" />
     <SolidColorBrush x:Key="MainBrush" Color="#2C404B"/>
     <SolidColorBrush x:Name="ProgressRingColor" Color="#2C404B" />
+    <SolidColorBrush x:Key="White50OpacityBrush" Color="#88FBFBFB"/>
+    <SolidColorBrush x:Key="GrayColorBrush" Color="#666666"/>
+    <SolidColorBrush x:Key="LightGrayColorBrush" Color="#AAAAAA"/>
+    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1" x:Key="BackgroundGradienntBrush">
+        <GradientStop Color="#00FFFFFF" Offset="0.0" />
+        <GradientStop Color="#FFFFFFFF" Offset="0.9" />
+        <GradientStop Color="#FFFFFFFF" Offset="1" />
+    </LinearGradientBrush>
 
 </ResourceDictionary>

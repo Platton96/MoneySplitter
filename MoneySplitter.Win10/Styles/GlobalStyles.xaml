@@ -126,4 +126,8 @@
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
         <Setter Property="BorderBrush" Value="{StaticResource Border}"/>
     </Style>
+    <Style TargetType="ListView" x:Key="TransactionsListViewStyle">
+        <Setter Property="SelectionMode" Value="None"/>
+        <Setter Property="IsItemClickEnabled" Value="True"/>
+    </Style>
 </ResourceDictionary>

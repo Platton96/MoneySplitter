@@ -29,10 +29,6 @@
     <Style TargetType="TextBlock" x:Key="SortedParameterTextStyle">
         <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
     </Style>
-    <Style TargetType="ListView" x:Key="TransactionsListViewStyle">
-        <Setter Property="SelectionMode" Value="None"/>
-        <Setter Property="IsItemClickEnabled" Value="True"/>
-    </Style>
     <Style TargetType="Grid" x:Key="TransactionGridStyle">
         <Setter Property="Margin" Value="12,12,12,0"/>
     </Style>
