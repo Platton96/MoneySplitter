@@ -15,4 +15,5 @@
     <x:String x:Key="StatisticsIcon">&#xE9D9;</x:String>
     <x:String x:Key="NotesIcon">&#xE946;</x:String>
     <x:String x:Key="RemoveNoteIcon">&#xE947;</x:String>
+    <x:String x:Key="OwnerTransactionIcon">&#xE76E;</x:String>
 </ResourceDictionary>

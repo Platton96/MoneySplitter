@@ -27,7 +27,8 @@
                     </Grid.ColumnDefinitions>
                     <Ellipse Style="{StaticResource UserImageEllipseStyle}">
                         <Ellipse.Fill>
-                            <ImageBrush ImageSource="{x:Bind ViewModel.CurrentUserModel.ImageUrl, Mode=OneWay}"/>
+                            <ImageBrush ImageSource="{x:Bind ViewModel.CurrentUserModel.ImageUrl, Mode=OneWay}"
+                                        Stretch="UniformToFill"/>
                         </Ellipse.Fill>
                     </Ellipse>
                     <StackPanel Grid.Column="1"
@@ -50,7 +51,7 @@
                                        Style="{StaticResource FontIconsNameTextStyle}"/>
                         </StackPanel>
                     </StackPanel>
-                    <Button Style="{StaticResource EditButtonStyle}"
+                    <Button Style="{StaticResource DefaultButtonStyle}"
                             Grid.Column="2">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon Style="{StaticResource EditFontIconStyle}"
@@ -155,7 +156,8 @@
                                     </Grid.ColumnDefinitions>
                                     <Ellipse Style="{StaticResource UserImageEllipseStyle}">
                                         <Ellipse.Fill>
-                                            <ImageBrush ImageSource="{x:Bind ImageUrl, Mode=OneWay}"/>
+                                            <ImageBrush ImageSource="{x:Bind ImageUrl, Mode=OneWay}"
+                                                        Stretch="UniformToFill"/>
                                         </Ellipse.Fill>
                                     </Ellipse>
                                     <StackPanel Grid.Column="1"
@@ -167,7 +169,7 @@
                                     </StackPanel>
                                     <Button Grid.Column="2"
                                             Click="OnRemoveButtonClick"
-                                            Style="{StaticResource DefaultButtonStyle}">
+                                            Style="{StaticResource RemoveButtonStyle}">
                                         <StackPanel Orientation="Horizontal">
                                             <FontIcon Style="{StaticResource RemoveFontIconStyle}"
                                                       FontSize="14"/>
