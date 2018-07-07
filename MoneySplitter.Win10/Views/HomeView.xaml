@@ -159,40 +159,24 @@
                                         </Ellipse.Fill>
                                     </Ellipse>
                                     <StackPanel Grid.Column="1"
-                                                VerticalAlignment="Center"
-                                                Margin="8,0,12,0">
+                                                Style="{StaticResource NoteStackPanelSyle}">
                                         <TextBlock Text="{x:Bind Title, Mode=OneWay}"
-                                                   FontSize="16"
-                                                   Foreground="{StaticResource DarkColorBrush}"/>
+                                                   Style="{StaticResource NoteTitleTextStyle}"/>
                                         <TextBlock Text="{x:Bind Text, Mode=OneWay}"
-                                                   FontSize="14"
-                                                   Foreground="{StaticResource GrayColorBrush}"
-                                                   TextWrapping="Wrap"
-                                                   MaxLines="2"/>
+                                                   Style="{StaticResource NoteTextStyle}"/>
                                     </StackPanel>
                                     <Button Grid.Column="2"
-                                            Padding="12,0,12,0"
-                                            Background="Transparent"
-                                            BorderThickness="1"
                                             Click="OnRemoveButtonClick"
-                                            VerticalAlignment="Center"
-                                            BorderBrush="{StaticResource GrayColorBrush}"
-                                            Height="36">
+                                            Style="{StaticResource DefaultButtonStyle}">
                                         <StackPanel Orientation="Horizontal">
-                                            <FontIcon Glyph="&#xE947;"
-                                                      Foreground="{StaticResource GrayColorBrush}"
+                                            <FontIcon Style="{StaticResource RemoveFontIconStyle}"
                                                       FontSize="14"/>
                                             <TextBlock extensions:XamlElementExtensions.Resource="REMOVE_TEXTBLOCK_TEXT"
-                                                       Margin="12,0,0,0"
-                                                       FontSize="14"
-                                                       Foreground="{StaticResource DarkGrayColorBrush}"/>
+                                                       Style="{StaticResource RemoveTextStyle}"/>
                                         </StackPanel>
                                     </Button>
-                                    <Border BorderBrush="{StaticResource LightGrayColorBrush}"
-                                            HorizontalAlignment="Stretch"
-                                            BorderThickness="0,0,0,1"
-                                            Grid.ColumnSpan="3"
-                                            VerticalAlignment="Stretch"/>
+                                    <Border Style="{StaticResource NoteBorderStyle}"
+                                            Grid.ColumnSpan="3"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
