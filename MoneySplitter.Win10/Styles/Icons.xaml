@@ -16,4 +16,5 @@
     <x:String x:Key="NotesIcon">&#xE946;</x:String>
     <x:String x:Key="RemoveNoteIcon">&#xE947;</x:String>
     <x:String x:Key="OwnerTransactionIcon">&#xE76E;</x:String>
+    <x:String x:Key="LogOutIcon">&#xE8BB;</x:String>
 </ResourceDictionary>

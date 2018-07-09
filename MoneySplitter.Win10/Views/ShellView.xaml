@@ -26,7 +26,7 @@
                         AlwaysShowHeader="False">
             <NavigationView.HeaderTemplate>
                 <DataTemplate x:DataType="viewmodels:ShellViewModel" >
-                    <Grid Margin="0,0,0,0" Visibility="Collapsed">
+                    <Grid  Visibility="Collapsed">
                     </Grid>
                 </DataTemplate>
             </NavigationView.HeaderTemplate>

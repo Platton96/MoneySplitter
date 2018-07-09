@@ -88,20 +88,22 @@ namespace MoneySplitter.Win10.ViewModels
             SelectedMenuItem = MenuItems.First();
         }
 
-        public void NavigateToClikedItemMenu(string value)
-        {
-            if (value == null)
+        public void NavigateToClikedItemMenu(string key)
+        { 
+            if (!_mainMenuPages.TryGetValue(key, out Type viewModel))
             {
                 return;
             }
+        
+            if (viewModel == typeof(LoginViewModel))
+            {
+                _navigationManager.NavigateToLoginViewModel();
+            }
 
-            _navigationManager.NavigateToShellViewModel(_mainMenuPages[value]);
+            _navigationManager.NavigateToShellViewModel(viewModel);
         }
 
-        public void NovigaateToFoundUsers()
-        {
-            _navigationManager.NavigateToSearchUsersViewModel();
-        }
+
         #endregion
 
         #region Protected methods
@@ -171,6 +173,14 @@ namespace MoneySplitter.Win10.ViewModels
                        _localizationService.GetString(Texts.INCOMING_AND_OUTGOING_FRAME_TITLE)),
 
                     typeof(IncomingAndOutgoingViewModel)
+                },
+                {
+                    string.Format(
+                        MAIN_MENU_BUTTON_TEMPLATE,
+                        Defines.MenuItem.IconButton.LOG_OUT,
+                       _localizationService.GetString(Texts.LOG_OUT)),
+
+                    typeof(LoginViewModel)
                 }
             };
         }
