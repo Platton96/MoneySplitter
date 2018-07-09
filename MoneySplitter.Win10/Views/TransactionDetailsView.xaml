@@ -5,7 +5,6 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:customControls="using:MoneySplitter.Win10.CustomControls"
-      xmlns:converters="using:MoneySplitter.Win10.Converters"
       xmlns:extensions="using:MoneySplitter.Win10.Extensions"
       xmlns:models="using:MoneySplitter.Models"
       mc:Ignorable="d"
@@ -129,7 +128,7 @@
                                 </TextBlock>
                                 <TextBlock Style="{StaticResource UserControlAditionInformationTextStyle}">
                                 <Run extensions:XamlElementExtensions.Resource="CREDIT_CARD_RUN_TEXT"/>
-                                <Run Text="{x:Bind ViewModel.Data.RootTransaction.Owner.CreditCardNumber, Converter={StaticResource BlankCardConverter}, Mode=OneWay}"/>
+                                <Run Text="{x:Bind ViewModel.Data.RootTransaction.Owner.CreditCardNumber, Converter={StaticResource BankCardConverter}, Mode=OneWay}"/>
                                 </TextBlock>
                                 <TextBlock Style="{StaticResource UserControlAditionInformationTextStyle}">
                                 <Run extensions:XamlElementExtensions.Resource="PHONE_RUN_TEXT"/>
