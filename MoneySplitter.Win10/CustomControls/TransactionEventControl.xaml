@@ -4,7 +4,6 @@
             xmlns:local="using:MoneySplitter.Win10.CustomControls"
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-            xmlns:converters="using:MoneySplitter.Win10.Converters"
             xmlns:extensions="using:MoneySplitter.Win10.Extensions"
             mc:Ignorable="d"
             d:DesignHeight="300"
@@ -58,7 +57,7 @@
             <Setter Property="Margin" Value="4,0,0,0"/>
         </Style>
     </UserControl.Resources>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -68,7 +67,7 @@
         </Grid.ColumnDefinitions>
 
         <Border Style="{StaticResource BorderImageStyle}">
-                <Rectangle Style="{StaticResource TransactionImageRectangleStyle}">
+            <Rectangle Style="{StaticResource TransactionImageRectangleStyle}">
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="{x:Bind ViewModel.ImageUrl, Mode=OneWay}"
                         Stretch="UniformToFill"/>
@@ -147,6 +146,4 @@
             </Button.Content>
         </Button>
     </Grid>
-
-
 </UserControl>

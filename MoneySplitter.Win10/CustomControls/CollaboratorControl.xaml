@@ -12,7 +12,7 @@
     d:DesignWidth="400">
     <UserControl.Resources>
    
-                <Style TargetType="Grid" x:Key="GridCollaboratorStyle">
+                <Style TargetType="Grid" x:Key="RootGridStyle">
                     <Setter Property="Margin" Value="2,0,0,5"/>
                 </Style>
                 <Style TargetType="Button" x:Key="CollabaratorButtonStyle">
@@ -39,7 +39,7 @@
             <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
     </UserControl.Resources>
-    <Grid Style="{StaticResource GridCollaboratorStyle}">
+    <Grid Style="{StaticResource RootGridStyle}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width = "auto"/>
             <ColumnDefinition Width = "auto"/>
@@ -52,7 +52,7 @@
                  Grid.Column="1">
             <Ellipse.Fill>
                 <ImageBrush ImageSource = "{x:Bind ViewModel.ImageUrl, Mode=OneWay}"
-                                Stretch="UniformToFill"/>
+                             Stretch="UniformToFill"/>
             </Ellipse.Fill>
         </Ellipse>
         <StackPanel Style="{StaticResource CollaboratorStackPanelStyle}"
