@@ -6,6 +6,8 @@ using MoneySplitter.Win10.ViewModels;
 using MoneySplitter.Win10.Common;
 using MoneySplitter.Services.Inerfaces;
 using MoneySplitter.Managers;
+using MoneySplitter.Sqlite.Repositories;
+using MoneySplitter.Sqlite;
 
 namespace MoneySplitter.Win10.Dependencies
 {
@@ -55,6 +57,9 @@ namespace MoneySplitter.Win10.Dependencies
 
             _container.Singleton<IFilePickerService, FilePickerService>();
             _container.Singleton<ILocalizationService, LocalizationServise>();
+
+            _container.Singleton<ISessionRepository, SessionRepository>();
+            _container.Singleton<DbContext>();
 
             _container.Singleton<CollaboratorModelFactory>();
             _container.Singleton<TransactionEventModelFactory>();

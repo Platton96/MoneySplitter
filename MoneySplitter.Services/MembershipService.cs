@@ -9,7 +9,7 @@ namespace MoneySplitter.Services
     {
         private readonly ISessionApiService _sessionApiServices;
 
-        public UserModel CurrentUser { get; private set; }
+        public UserModel CurrentUser { get;  set; }
 
         public MembershipService(ISessionApiService sessionApiService)
         {

@@ -399,6 +399,10 @@
       <Project>{fff144a6-5428-426b-9a8b-7b3e6506cf74}</Project>
       <Name>MoneySplitter.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MoneySplitter.Sqlite\MoneySplitter.Sqlite.csproj">
+      <Project>{ba7866c9-8d25-4b0e-bfe7-fc39c3ae1f6f}</Project>
+      <Name>MoneySplitter.Sqlite</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
