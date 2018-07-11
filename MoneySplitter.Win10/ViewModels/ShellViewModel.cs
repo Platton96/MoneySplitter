@@ -5,6 +5,7 @@ using Windows.UI.Xaml.Controls;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using MoneySplitter.Sqlite;
 
 namespace MoneySplitter.Win10.ViewModels
 {
@@ -69,7 +70,10 @@ namespace MoneySplitter.Win10.ViewModels
         #endregion
 
         #region Constructor
-        public ShellViewModel(IMembershipService membershipService, INavigationManager navigationManager, ILocalizationService localizationService)
+        public ShellViewModel(
+            IMembershipService membershipService,
+            INavigationManager navigationManager, 
+            ILocalizationService localizationService)
         {
             _membershipService = membershipService;
             _navigationManager = navigationManager;
@@ -88,7 +92,7 @@ namespace MoneySplitter.Win10.ViewModels
             SelectedMenuItem = MenuItems.First();
         }
 
-        public void NavigateToClikedItemMenu(string key)
+        public async void NavigateToClikedItemMenu(string key)
         { 
             if (!_mainMenuPages.TryGetValue(key, out Type viewModel))
             {
@@ -97,6 +101,7 @@ namespace MoneySplitter.Win10.ViewModels
         
             if (viewModel == typeof(LoginViewModel))
             {
+                await _membershipService.LogoutAsync();
                 _navigationManager.NavigateToLoginViewModel();
             }
 

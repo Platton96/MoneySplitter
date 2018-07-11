@@ -18,12 +18,11 @@ namespace MoneySplitter.Sqlite
             await CreateUsersTableAsync();
         }
 
-        private async Task CreateUsersTableAsync()
+        public async Task CreateUsersTableAsync()
         {
             await DbConection.OpenAsync();
 
             SqliteCommand deleteUsersCommand = new SqliteCommand("DROP TABLE Users;", DbConection);
-            deleteUsersCommand.Connection = DbConection;
 
             try
             {
@@ -36,22 +35,19 @@ namespace MoneySplitter.Sqlite
 
             SqliteCommand createUsersCommand = new SqliteCommand(@"
 				CREATE TABLE Users (
-				Id int,
+				Id int PRIMARY KEY,
 				Name nvarchar(255),
 				Surname nvarchar(255),
 				Email nvarchar(255),
 				PhoneNumber bigint,
 				CreditCardNumber bigint,
-				Ballance decimal,
 				Token nvarchar(255),
 				ImageUrl nvarchar(255),
 				BackgroundImageUrl nvarchar(255));",
                 DbConection);
 
-            createUsersCommand.Connection = DbConection;
             await createUsersCommand.ExecuteNonQueryAsync();
             DbConection.Close();
         }
-
     }
 }

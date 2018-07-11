@@ -2,7 +2,6 @@
 using MoneySplitter.Infrastructure;
 using MoneySplitter.Models;
 using MoneySplitter.Models.App;
-using MoneySplitter.Sqlite;
 using System.Threading.Tasks;
 
 namespace MoneySplitter.Win10.ViewModels
@@ -13,9 +12,6 @@ namespace MoneySplitter.Win10.ViewModels
         private readonly INavigationManager _navigationManager;
         private readonly IMembershipService _membershipService;
         private readonly ILocalizationService _localizationService;
-
-        private readonly ISessionRepository _sessionRepository;
-        private readonly DbContext _dbContext;
 
         private const string DEFAULT_USER_LOGIN = "vlad_nagibator12@mail.ru";
         private const string DEFAULT_USER_PASSWORD = "1234abcd";
@@ -86,15 +82,11 @@ namespace MoneySplitter.Win10.ViewModels
         public LoginViewModel(
             INavigationManager navigationManager, 
             IMembershipService membershipService, 
-            ILocalizationService localizationService,
-            ISessionRepository sessionRepository,
-            DbContext dbContext)
+            ILocalizationService localizationService)
         {
             _navigationManager = navigationManager;
             _membershipService = membershipService;
             _localizationService = localizationService;
-            _sessionRepository = sessionRepository;
-            _dbContext = dbContext;
         }
         #endregion
 
@@ -120,10 +112,6 @@ namespace MoneySplitter.Win10.ViewModels
                 return;
             }
 
-            var userModel = _membershipService.CurrentUser;
-
-            await _dbContext.InitializeAsyns();
-            await _sessionRepository.AddUserAsync(userModel);
             _navigationManager.NavigateToShellViewModel();
         }
 
@@ -133,16 +121,14 @@ namespace MoneySplitter.Win10.ViewModels
         }
         #endregion
 
-        protected override async void  OnActivate()
+        protected override async void  OnViewReady(object view)
         {
             base.OnActivate();
-            //var userModel = await _sessionRepository.GetUserAsync();
 
-            //if(userModel!=null)
-            //{
-            //    _membershipService.CurrentUser = userModel;
-            //    _navigationManager.NavigateToShellViewModel();
-            //}
+            if (await _membershipService.TryLoadUserFromDbAsync())
+            {
+                _navigationManager.NavigateToShellViewModel();
+            }
         }
     }
 }

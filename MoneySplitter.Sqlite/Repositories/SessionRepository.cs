@@ -19,16 +19,21 @@ namespace MoneySplitter.Sqlite.Repositories
         {
             await _sqliteConnection.OpenAsync();
 
-            SqliteCommand selectCommand = new SqliteCommand($"SELECT TOP 1 * FROM Users", _sqliteConnection);
+            SqliteCommand selectCommand = new SqliteCommand($"SELECT * FROM Users LIMIT 1", _sqliteConnection);
 
             var myReader = await selectCommand.ExecuteReaderAsync();
 
             await myReader.ReadAsync();
 
+            if(!myReader.HasRows)
+            {
+                _sqliteConnection.Close();
+                return null;
+            }
             var userModel = new UserModel
             {
                 Id = Int32.Parse(myReader["Id"].ToString()),
-                Name = myReader["UserName"].ToString(),
+                Name = myReader["Name"].ToString(),
                 Surname = myReader["Surname"].ToString(),
                 Email = myReader["Email"].ToString(),
                 PhoneNumber = Int64.Parse(myReader["PhoneNumber"].ToString()),
@@ -46,7 +51,7 @@ namespace MoneySplitter.Sqlite.Repositories
         {
             await _sqliteConnection.OpenAsync();
 
-            SqliteCommand deleteCommand = new SqliteCommand($"DELETE * FROM Users", _sqliteConnection);
+            SqliteCommand deleteCommand = new SqliteCommand($"DELETE FROM Users", _sqliteConnection);
 
             await deleteCommand.ExecuteReaderAsync();
 
@@ -55,18 +60,15 @@ namespace MoneySplitter.Sqlite.Repositories
 
         public async Task AddUserAsync(UserModel userModel)
         {
-          //  await ClearUssersTableAsync();
+            await ClearUssersTableAsync();
 
             await _sqliteConnection.OpenAsync();
-
-            SqliteCommand insertCommand = new SqliteCommand("INSERT INTO Users (Id, Name, Surname, Email, PhoneNumber, CreditCardNumber, ImageUrl, BackgroundImageUrl) " +
-                                                  $"Values ({userModel.Id}, N'{userModel.Name}', N'{userModel.Surname}', N'{userModel.Email}',  '{userModel.PhoneNumber}', '{userModel.CreditCardNumber}', '{userModel.ImageUrl}', '{userModel.BackgroundImageUrl}')", _sqliteConnection);
+            SqliteCommand insertCommand = new SqliteCommand("INSERT INTO Users (Id, Name, Surname, Email, PhoneNumber, CreditCardNumber, Token,  ImageUrl, BackgroundImageUrl) " +
+                                                  $"Values ('{userModel.Id}', '{userModel.Name}', '{userModel.Surname}', '{userModel.Email}', '{userModel.PhoneNumber}', '{userModel.CreditCardNumber}', '{userModel.Token}', '{userModel.ImageUrl}', '{userModel.BackgroundImageUrl}')", _sqliteConnection);
 
             await insertCommand.ExecuteReaderAsync();
 
             _sqliteConnection.Close();
         }
-
     }
-
 }

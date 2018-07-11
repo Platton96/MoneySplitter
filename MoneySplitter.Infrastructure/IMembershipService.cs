@@ -8,6 +8,8 @@ namespace MoneySplitter.Infrastructure
     {
         Task<bool> SingInAndLoadUserDataAsync(string email, string password);
         Task<bool> ReisterAndLoadUserDataAsync(RegisterModel registerModel);
-        UserModel CurrentUser { get; set; }
+        UserModel CurrentUser { get; }
+        Task LogoutAsync();
+        Task<bool> TryLoadUserFromDbAsync();
     }
 }
