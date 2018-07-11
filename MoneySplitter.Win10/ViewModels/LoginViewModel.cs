@@ -79,7 +79,10 @@ namespace MoneySplitter.Win10.ViewModels
         #endregion
 
         #region Constructor
-        public LoginViewModel(INavigationManager navigationManager, IMembershipService membershipService, ILocalizationService localizationService)
+        public LoginViewModel(
+            INavigationManager navigationManager, 
+            IMembershipService membershipService, 
+            ILocalizationService localizationService)
         {
             _navigationManager = navigationManager;
             _membershipService = membershipService;
@@ -109,7 +112,6 @@ namespace MoneySplitter.Win10.ViewModels
                 return;
             }
 
-            var userModel = _membershipService.CurrentUser;
             _navigationManager.NavigateToShellViewModel();
         }
 
@@ -118,5 +120,15 @@ namespace MoneySplitter.Win10.ViewModels
             _navigationManager.NavigateToRegisterViewModel();
         }
         #endregion
+
+        protected override async void  OnViewReady(object view)
+        {
+            base.OnActivate();
+
+            if (await _membershipService.TryLoadUserFromDbAsync())
+            {
+                _navigationManager.NavigateToShellViewModel();
+            }
+        }
     }
 }

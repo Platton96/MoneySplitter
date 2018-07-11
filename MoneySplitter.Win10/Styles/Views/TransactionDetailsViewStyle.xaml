@@ -1,0 +1,156 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:customControls="using:MoneySplitter.Win10.CustomControls">
+    
+    <Style x:Key="DefaultTransactionDetailsButtonStyle" TargetType="Button">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Margin" Value="0,0,8,0"/>
+        <Setter Property="BorderBrush" Value="{StaticResource DarkGrayColorBrush}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Height" Value="36"/>
+        <Setter Property="Padding" Value="12,0,12,0"/>
+    </Style>
+    <Style TargetType="ScrollViewer" x:Key="ScrollViewerStyle">
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalScrollMode" Value="Auto"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+    </Style>
+
+    <Style TargetType="customControls:Blur" x:Key="BlurStyle">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Height" Value="340"/>
+        <Setter Property="Value" Value="20"/>
+    </Style>
+    <Style TargetType="Image" x:Key="BackgroundImageStyle">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Height" Value="340"/>
+        <Setter Property="Stretch" Value="UniformToFill"/>
+    </Style>
+    <Style TargetType="Grid" x:Key="BackgroundGridStyle">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Height" Value="360"/>
+        <Setter Property="Background" Value="{StaticResource BackgroundGradienntBrush}"/>
+    </Style>
+    <Style TargetType="Grid" x:Key="RootGridStyle">
+        <Setter Property="Margin" Value="0,128,0,0"/>
+    </Style>
+    <Style TargetType="Grid" x:Key="TransactionGridStyle">
+        <Setter Property="Margin" Value="24,0"/>
+    </Style>
+    <Style TargetType="Image" x:Key="TransactionImageStyle">
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Height" Value="216"/>
+        <Setter Property="Width" Value="124"/>
+        <Setter Property="Stretch" Value="UniformToFill"/>
+    </Style>
+    <Style TargetType="Border" x:Key="TransactionImageBorderStyle">
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Height" Value="216"/>
+        <Setter Property="Width" Value="124"/>
+        <Setter Property="BorderBrush" Value="{StaticResource LightGrayColorBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+    
+    <Style TargetType="StackPanel" x:Key="TransactionInformationStackPanelStyle">
+        <Setter Property="Margin" Value="16,40,0,0"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    </Style>
+    
+    <Style TargetType="TextBlock" x:Key="TransactionTitleTextBlockStyle" >
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkColorBrush}"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    
+    <Style TargetType="TextBlock" x:Key="TransactionInformationTextBlockStyle">
+        <Setter Property="Margin" Value="0,4,0,0"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkColorBrush}"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style TargetType="customControls:TransactionStatusControl" x:Key="TransactionStatusControlStyle">
+        <Setter Property="Margin" Value="0,4,0,0"/>
+    </Style>
+
+    <Style TargetType="StackPanel" x:Key="TransactionButtonsStackPanelStyle">
+        <Setter Property="Margin" Value="0,8,0,0"/>
+    </Style>
+    <Style TargetType="FontIcon" x:Key="ApproveFontIconStyle">
+        <Setter Property="Glyph" Value="{StaticResource ApproveIcon}"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkGrayColorBrush}"/>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="TransactionButtonContentTextBlockStyle">
+        <Setter Property="Margin" Value="4,0,0,0"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkColorBrush}"/>
+    </Style>
+    <Style TargetType="FontIcon" x:Key="RemindFontIconStyle">
+        <Setter Property="Glyph" Value="{StaticResource RingerIcon}"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkGrayColorBrush}"/>
+    </Style>
+    <Style TargetType="FontIcon" x:Key="GiveFontIconStyle">
+        <Setter Property="Glyph" Value="{StaticResource GiveIcon}"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkGrayColorBrush}"/>
+    </Style>
+    <Style TargetType="Grid" x:Key="AdditionInformationGridStyle">
+        <Setter Property="Margin" Value="24,24,24,0"/>
+    </Style>
+    <Style TargetType="FontIcon" x:Key="OwnerTransactionFontIconStyle">
+        <Setter Property="Glyph" Value="{StaticResource OwnerTransactionIcon}"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkGrayColorBrush}"/>
+    </Style>
+    <Style TargetType="Grid" x:Key="OwnerTransactionGridStyle">
+        <Setter Property="Margin" Value="0,4,0,0"/>
+    </Style>
+    <Style TargetType="Ellipse" x:Key="OwnerTransactionImageElipseStyle">
+        <Setter Property="Height" Value="76"/>
+        <Setter Property="Width" Value="76"/>
+    </Style>
+    <Style TargetType="StackPanel" x:Key="OwnerInformationStackPanelStyle">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="12,0,0,0" />
+    </Style>
+    <Style TargetType="StackPanel" x:Key="StatisticsStackPanelStyle">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="0,4,0,0" />
+    </Style>
+    <Style TargetType="StackPanel" x:Key="CollaboratorsStackPanelStyle">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="0,24,0,0" />
+    </Style>
+    <Style TargetType="StackPanel" x:Key="CollaboratorsTitleStackPanelStyle">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="24,0" />
+    </Style>
+    <Style TargetType="FontIcon" x:Key="CollaboratorsFontIconStyle">
+        <Setter Property="Glyph" Value="{StaticResource FriendsIcon}"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkColorBrush}"/>
+    </Style>
+
+    <Style TargetType="ListView" x:Key="CollaboratorsListViewStyle" >
+        <Setter Property="SelectionMode" Value="None"/>
+    </Style>
+    <Style TargetType="Grid" x:Key="CollaboratorGridSyle">
+        <Setter Property="Height" Value="80"/>
+    </Style>
+    <Style TargetType="StackPanel" x:Key="CollaboratorStackPanelSyle">
+        <Setter Property="Margin" Value="12,0,0,0"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    </Style>
+    <Style TargetType="Ellipse" x:Key="CollaboratorImageElipseStyle" BasedOn="{StaticResource MobileUserImageEllipseStyle}">
+        <Setter Property="Margin" Value="24,0,0,0"/>
+    </Style>
+    <Style TargetType="Border" x:Key="CollaboratorBorderStyle">
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        <Setter Property="BorderBrush" Value="{StaticResource LightGrayColorBrush}"/>
+        <Setter Property="Margin" Value="24,0"/>
+    </Style>
+</ResourceDictionary>

@@ -65,6 +65,7 @@
                 public const string SEARCH = "Search";
                 public const string TRANSACTIONS = "Transactions";
                 public const string INCOMING_AND_OUTCOMING = "Incoming and Outcoming";
+                public const string LOG_OUT = "Log out";
 
             }
 
@@ -75,6 +76,7 @@
                 public const string SEARCH = "&#xE721;";
                 public const string TRANSACTIONS = "&#xE8A5;";
                 public const string INCOMING_AND_OUTCOMING = "&#xE8CB;";
+                public const string LOG_OUT= "&#xE711;";
             }
         }
 

@@ -1,7 +1,6 @@
 ﻿<UserControl x:Class="MoneySplitter.Win10.CustomControls.Blur"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="using:MoneySplitter.Win10.CustomControls"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
              xmlns:behaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
@@ -9,7 +8,11 @@
              mc:Ignorable="d"
              d:DesignHeight="300"
              d:DesignWidth="400">
-
+    <UserControl.Resources>
+        <Style TargetType="Grid" x:Key="RootGridStyle">
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+    </UserControl.Resources>
     <Grid Background="Transparent">
         <Grid Name="PaneBackgroundGrid"
               Canvas.ZIndex="-1"
@@ -18,7 +21,7 @@
                 <behaviors:Blur Value="{x:Bind Value, Mode=OneWay}"
                                 Duration="0"
                                 Delay="0"
-                                AutomaticallyStart="True" />
+                                AutomaticallyStart="True"/>
             </interactivity:Interaction.Behaviors>
         </Grid>
     </Grid>

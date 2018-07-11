@@ -5,6 +5,7 @@ using Windows.UI.Xaml.Controls;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using MoneySplitter.Sqlite;
 
 namespace MoneySplitter.Win10.ViewModels
 {
@@ -69,7 +70,10 @@ namespace MoneySplitter.Win10.ViewModels
         #endregion
 
         #region Constructor
-        public ShellViewModel(IMembershipService membershipService, INavigationManager navigationManager, ILocalizationService localizationService)
+        public ShellViewModel(
+            IMembershipService membershipService,
+            INavigationManager navigationManager, 
+            ILocalizationService localizationService)
         {
             _membershipService = membershipService;
             _navigationManager = navigationManager;
@@ -88,20 +92,23 @@ namespace MoneySplitter.Win10.ViewModels
             SelectedMenuItem = MenuItems.First();
         }
 
-        public void NavigateToClikedItemMenu(string value)
-        {
-            if (value == null)
+        public async void NavigateToClikedItemMenu(string key)
+        { 
+            if (!_mainMenuPages.TryGetValue(key, out Type viewModel))
             {
                 return;
             }
+        
+            if (viewModel == typeof(LoginViewModel))
+            {
+                await _membershipService.LogoutAsync();
+                _navigationManager.NavigateToLoginViewModel();
+            }
 
-            _navigationManager.NavigateToShellViewModel(_mainMenuPages[value]);
+            _navigationManager.NavigateToShellViewModel(viewModel);
         }
 
-        public void NovigaateToFoundUsers()
-        {
-            _navigationManager.NavigateToSearchUsersViewModel();
-        }
+
         #endregion
 
         #region Protected methods
@@ -171,6 +178,14 @@ namespace MoneySplitter.Win10.ViewModels
                        _localizationService.GetString(Texts.INCOMING_AND_OUTGOING_FRAME_TITLE)),
 
                     typeof(IncomingAndOutgoingViewModel)
+                },
+                {
+                    string.Format(
+                        MAIN_MENU_BUTTON_TEMPLATE,
+                        Defines.MenuItem.IconButton.LOG_OUT,
+                       _localizationService.GetString(Texts.LOG_OUT)),
+
+                    typeof(LoginViewModel)
                 }
             };
         }

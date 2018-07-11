@@ -11,49 +11,61 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
     <UserControl.Resources>
-        <Style TargetType="Button" x:Key="CollabaratorButtonStyle">
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="VerticalAlignment"  Value="Center"/>
-        </Style>
-        <Style TargetType="Grid" x:Key="ProgressRingGridStyle">
-            <Setter Property="VerticalAlignment" Value="Stretch"/>
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-        </Style>
-        <SolidColorBrush x:Name="RedBrush" Color="Red"/>
-        <SolidColorBrush x:Name="GreenBrush" Color="Green"/>
+   
+                <Style TargetType="Grid" x:Key="RootGridStyle">
+                    <Setter Property="Margin" Value="2,0,0,5"/>
+                </Style>
+                <Style TargetType="Button" x:Key="CollabaratorButtonStyle">
+                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                    <Setter Property="VerticalAlignment"  Value="Center"/>
+                </Style>
+                <Style TargetType="Grid" x:Key="ProgressRingGridStyle">
+                    <Setter Property="VerticalAlignment" Value="Stretch"/>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                </Style>
+                <Style TargetType="StackPanel" x:Key="CollaboratorStackPanelStyle">
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Margin" Value="7"/>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                </Style>
 
+                <Style TargetType="Ellipse" x:Key="EllipseCollaborattorImageStyle">
+                    <Setter Property="Width" Value="60"/>
+                    <Setter Property="Height" Value="60"/>
+                </Style>
+
+        <Style TargetType="TextBlock" x:Key="CollaboratorCostTextStyle">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
     </UserControl.Resources>
-    <Grid>
+    <Grid Style="{StaticResource RootGridStyle}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width = "*"/>
+            <ColumnDefinition Width = "auto"/>
             <ColumnDefinition Width = "auto"/>
             <ColumnDefinition Width = "5*"/>
             <ColumnDefinition Width = "2*"/>
             <ColumnDefinition Width = "2*"/>
         </Grid.ColumnDefinitions>
         <local:ArrowsControl Value = "{x:Bind ViewModel.CollaboratorStatus, Mode=OneWay}"/>
-        <Ellipse Width = "60" Height = "60"
-                 Grid.Column = "1">
+        <Ellipse Style="{StaticResource MobileUserImageEllipseStyle}"
+                 Grid.Column="1">
             <Ellipse.Fill>
                 <ImageBrush ImageSource = "{x:Bind ViewModel.ImageUrl, Mode=OneWay}"
-                            Stretch="UniformToFill"/>
+                             Stretch="UniformToFill"/>
             </Ellipse.Fill>
         </Ellipse>
-        <StackPanel VerticalAlignment = "Center" Margin="7"
-                    Grid.Column = "2"
-                    HorizontalAlignment = "Stretch">
-            <TextBlock IsTextSelectionEnabled = "True"
-                       TextTrimming="WordEllipsis"
+        <StackPanel Style="{StaticResource CollaboratorStackPanelStyle}"
+                    Grid.Column = "2">
+            <TextBlock Style="{StaticResource UserControlFullNameTextStyle}"
                        Text="{x:Bind ViewModel.FullName, Mode=OneWay}">
 
             </TextBlock>
             <TextBlock Text="{x:Bind ViewModel.Email, Mode=OneWay}"
-                       HorizontalAlignment="Stretch"
-                       TextTrimming="CharacterEllipsis"/>
+                       Style="{StaticResource UserControlAditionInformationTextStyle}"/>
         </StackPanel >
         <TextBlock  Grid.Column="3"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center">
+                    Style="{StaticResource CollaboratorCostTextStyle}">
             <Run
                 Text="{x:Bind ViewModel.Cost, Mode=OneWay}"/>
             <Run Text="$" />

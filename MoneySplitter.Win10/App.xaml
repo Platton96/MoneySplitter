@@ -6,7 +6,12 @@
     xmlns:cm="using:Caliburn.Micro"
     RequestedTheme="Light">
     <cm:CaliburnApplication.Resources>
-        <ResourceDictionary Source="Converters.xaml"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Converters.xaml"/>
+                <ResourceDictionary Source="Styles/GlobalStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </cm:CaliburnApplication.Resources>
 
 </cm:CaliburnApplication>

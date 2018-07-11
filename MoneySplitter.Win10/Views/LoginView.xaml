@@ -9,16 +9,14 @@
         mc:Ignorable="d">
     
     <Page.Resources>
-        <ResourceDictionary Source="../Styles/GlobalStyles.xaml"/>
+        <ResourceDictionary Source="../Styles/Views/LoginViewStyle.xaml"/>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <customControls:ErrorDetailsControl IsErrorVisable="{x:Bind ViewModel.IsErrorVisible, Mode=OneWay}"
                                             ErrorDetails="{x:Bind ViewModel.ErrorDetailsModel, Mode=OneWay}"/>
 
-        <StackPanel VerticalAlignment="Center"
-                    HorizontalAlignment="Center">
-
+        <StackPanel Style="{StaticResource DefaultFormsStackPanelStyle}">
             <TextBox extensions:XamlElementExtensions.Resource="EMAIL_PLACEHOLDER_TEXT"
                      Text="{x:Bind ViewModel.Email, Mode=TwoWay }"
                      Style="{StaticResource DefaultTextBoxStyle}"/>
@@ -26,14 +24,17 @@
             <PasswordBox extensions:XamlElementExtensions.Resource="PASSWORD_PLACEHOLDER_TEXT"
                          Password="{x:Bind ViewModel.Password, Mode=TwoWay}"
                          Style="{StaticResource DefaultPasswordBoxStyle}"/>
-
-            <Button extensions:XamlElementExtensions.Resource="LOGIN_BUTTON_CONTENT"
-                    Style="{StaticResource DefaultButtonStyle}"
-                    Click="OnLoginClick"/>
-
-            <Button extensions:XamlElementExtensions.Resource="REGISTER_BUTTON_CONTENT"
-                    Click="OnRegistredClick"
-                    Style="{StaticResource DefaultButtonStyle}"/>
+            
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource ButtonsStackPanelStyle}">
+                <Button extensions:XamlElementExtensions.Resource="LOGIN_BUTTON_CONTENT"
+                        Style="{StaticResource LoginViewButtonStyle}"
+                        Click="OnLoginClick"/>
+                <Button extensions:XamlElementExtensions.Resource="REGISTER_BUTTON_CONTENT"
+                        Click="OnRegistredClick"
+                        Style="{StaticResource LoginViewButtonStyle}"/>
+            </StackPanel>
+            
         </StackPanel>
 
         <customControls:LoadRingControl IsActiveRing="{x:Bind ViewModel.IsLoading, Mode=OneWay}"/>
