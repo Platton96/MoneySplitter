@@ -5,7 +5,6 @@ using Windows.UI.Xaml.Controls;
 using System.Collections.Generic;
 using System;
 using System.Linq;
-using MoneySplitter.Sqlite;
 
 namespace MoneySplitter.Win10.ViewModels
 {
@@ -94,6 +93,11 @@ namespace MoneySplitter.Win10.ViewModels
 
         public async void NavigateToClikedItemMenu(string key)
         { 
+            if(key==null)
+            {
+                return;
+            }
+
             if (!_mainMenuPages.TryGetValue(key, out Type viewModel))
             {
                 return;
@@ -130,7 +134,15 @@ namespace MoneySplitter.Win10.ViewModels
         #region Private methods
         private void OnNavigated(object sender, Type e)
         {
-            TitleFrameText = _mainMenuPages.FirstOrDefault(w => w.Value == e).Key;
+            try
+            {
+                TitleFrameText = _mainMenuPages.FirstOrDefault(w => w.Value == e).Key;
+            }
+            catch(ArgumentException)
+            {
+                SelectedMenuItem = null;
+                return;
+            }
 
             SelectedMenuItem = MenuItems.FirstOrDefault(w => w == TitleFrameText);
         }

@@ -2,6 +2,7 @@
 {
     public static class Defines
     {
+        public const string LOGIN_VIEW = "LoginView";
         public static class Localization
         {
             public const string RESOURCE_RU_FILE_PATCH = @".\Strings\Ru.resw";

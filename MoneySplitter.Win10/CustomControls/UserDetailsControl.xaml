@@ -46,7 +46,7 @@
             </TextBlock>
             <TextBlock Style="{StaticResource UserControlAditionInformationTextStyle}">
                 <Run extensions:XamlElementExtensions.Resource="BANK_CARD_RUN_TEXT"/>
-                <Run Text="{x:Bind ViewModel.CreditCardNumber, Converter={StaticResource BankCardConverter}, Mode=OneWay}"/>
+                <Run Text="{x:Bind ViewModel.CreditCardNumber, Converter={StaticResource BlankCardConverter}, Mode=OneWay}"/>
             </TextBlock>
         </StackPanel>
     </Grid>

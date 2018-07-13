@@ -1,4 +1,5 @@
-﻿using MoneySplitter.Models.App;
+﻿using MoneySplitter.Models;
+using MoneySplitter.Models.App;
 using MoneySplitter.Win10.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -24,5 +25,10 @@ namespace MoneySplitter.Win10.Views
 			var button = sender as Button;
 			ViewModel.RemoveNotification(button.DataContext as NotificationModel);
 		}
-	}
+
+        private void OnTransactionClick(object sender, RoutedEventArgs e)
+        {
+            ViewModel.NavigateToTransactionDetails();
+        }
+    }
 }

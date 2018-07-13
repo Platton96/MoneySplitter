@@ -15,6 +15,7 @@ namespace MoneySplitter.Win10.ViewModels
 		private readonly IFriendsManager _friendsManager;
 		private readonly ITransactionsManager _transactionsManager;
 		private readonly TransactionEventModelFactory _transactionsFactory;
+        private readonly INavigationManager _navigationManager;
 
 		private UserModel _currentUserModel;
 		private int _friendsCount;
@@ -86,7 +87,27 @@ namespace MoneySplitter.Win10.ViewModels
 			}
 		}
 
-		public TransactionEventModel LatestTransaction
+        public int TransactionsCount1
+        {
+            get => _transactionsCount;
+            set
+            {
+                _transactionsCount = value;
+                NotifyOfPropertyChange(nameof(TransactionsCount));
+            }
+        }
+
+        public int FriendsCount1
+        {
+            get => _friendsCount;
+            set
+            {
+                _friendsCount = value;
+                NotifyOfPropertyChange(nameof(FriendsCount));
+            }
+        }
+
+        public TransactionEventModel LatestTransaction
 		{
 			get => _latestTransaction;
 			set
@@ -100,12 +121,14 @@ namespace MoneySplitter.Win10.ViewModels
 			IMembershipService membershipService,
 			IFriendsManager friendsManager,
 			ITransactionsManager transactionsManager,
-			TransactionEventModelFactory transactionsFactory)
+			TransactionEventModelFactory transactionsFactory,
+            INavigationManager navigationManager)
 		{
 			_membershipService = membershipService;
 			_friendsManager = friendsManager;
 			_transactionsManager = transactionsManager;
 			_transactionsFactory = transactionsFactory;
+            _navigationManager = navigationManager;
 		}
 
 		public void RemoveNotification(NotificationModel notification)
@@ -140,7 +163,12 @@ namespace MoneySplitter.Win10.ViewModels
 
 		}
 
-		private void ConfigureNotifications()
+        public void NavigateToTransactionDetails()
+        {
+            _navigationManager.NavigateToTransactionDetailsViewModel(LatestTransaction);
+        }
+
+        private void ConfigureNotifications()
 		{
 			Notifications = new ObservableCollection<NotificationModel>(
 			new[]

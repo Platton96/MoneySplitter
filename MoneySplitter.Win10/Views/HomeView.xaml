@@ -75,7 +75,8 @@
                                        Style="{StaticResource DefaultBlockHeaderTextBlockStyle}"
                                        Foreground="{StaticResource DarkColorBrush}"/>
                         </StackPanel>
-                        <Button Style="{StaticResource DontForgetTransactionButtonStyle}">
+                        <Button Style="{StaticResource DontForgetTransactionButtonStyle}"
+                                Click="OnTransactionClick">
                             <customControls:TransactionEventControl ViewModel="{x:Bind ViewModel.LatestTransaction, Mode=OneWay}"/>
                         </Button>
                     </StackPanel>
