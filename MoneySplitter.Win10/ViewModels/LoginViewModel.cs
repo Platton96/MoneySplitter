@@ -124,10 +124,16 @@ namespace MoneySplitter.Win10.ViewModels
         protected override async void  OnViewReady(object view)
         {
             base.OnActivate();
-
-            if (await _membershipService.TryLoadUserFromDbAsync())
+            try
             {
-                _navigationManager.NavigateToShellViewModel();
+                if (await _membershipService.TryLoadUserFromDbAsync())
+                {
+                    _navigationManager.NavigateToShellViewModel();
+                }
+            }
+            catch
+            {
+                await _membershipService.InitializeDbAsyns();
             }
         }
     }

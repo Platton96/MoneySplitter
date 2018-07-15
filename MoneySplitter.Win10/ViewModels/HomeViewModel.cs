@@ -3,6 +3,7 @@ using MoneySplitter.Infrastructure;
 using MoneySplitter.Models;
 using MoneySplitter.Models.App;
 using MoneySplitter.Win10.Common;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -24,6 +25,10 @@ namespace MoneySplitter.Win10.ViewModels
 		private ObservableCollection<NotificationModel> _notifications;
 		private int _notificationsCount;
 		private bool _isLoading;
+        private double _debt;
+        private double _lend;
+        private double _inProgress;
+        private double _inComming;
 
 		public bool IsNotificationsSectionAvailable => Notifications?.Count > 0;
 
@@ -87,26 +92,44 @@ namespace MoneySplitter.Win10.ViewModels
 			}
 		}
 
-        public int TransactionsCount1
+        public double Debt
         {
-            get => _transactionsCount;
+            get => _debt;
             set
             {
-                _transactionsCount = value;
-                NotifyOfPropertyChange(nameof(TransactionsCount));
+                _debt = value;
+                NotifyOfPropertyChange(nameof(Debt));
             }
         }
 
-        public int FriendsCount1
+        public double Lend
         {
-            get => _friendsCount;
+            get => _lend;
             set
             {
-                _friendsCount = value;
-                NotifyOfPropertyChange(nameof(FriendsCount));
+                _lend = value;
+                NotifyOfPropertyChange(nameof(Lend));
+            }
+        }
+        public double InProgress
+        {
+            get => _inProgress;
+            set
+            {
+                _inProgress = value;
+                NotifyOfPropertyChange(nameof(InProgress));
             }
         }
 
+        public double InComming
+        {
+            get => _inComming;
+            set
+            {
+                _inComming = value;
+                NotifyOfPropertyChange(nameof(InComming));
+            }
+        }
         public TransactionEventModel LatestTransaction
 		{
 			get => _latestTransaction;
@@ -129,7 +152,7 @@ namespace MoneySplitter.Win10.ViewModels
 			_transactionsManager = transactionsManager;
 			_transactionsFactory = transactionsFactory;
             _navigationManager = navigationManager;
-		}
+        }
 
 		public void RemoveNotification(NotificationModel notification)
 		{
@@ -156,8 +179,8 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 LatestTransaction = _transactionsFactory.GetTransactionEvent(userTransactions.First(), null, true);
             }
-		
-			ConfigureNotifications();
+            CalculateStatistic();
+            ConfigureNotifications();
 
 			IsLoading = false;
 
@@ -168,6 +191,26 @@ namespace MoneySplitter.Win10.ViewModels
             _navigationManager.NavigateToTransactionDetailsViewModel(LatestTransaction);
         }
 
+        private void CalculateStatistic()
+        {
+            Debt = _transactionsManager.UserTransactions
+                .Where(tr => tr.Owner.Id != _membershipService.CurrentUser.Id)
+                .Sum(tr => tr.SingleCost);
+            Debt=Math.Round(Debt, Defines.Collaborator.COUNT_NUMBER_AFTER_POINT);
+            Lend = _transactionsManager.UserTransactions
+                .Where(tr => tr.Owner.Id == _membershipService.CurrentUser.Id)
+                .Sum(tr => tr.SingleCost);
+            Lend = Math.Round(Lend, Defines.Collaborator.COUNT_NUMBER_AFTER_POINT);
+            InProgress = _transactionsManager.UserTransactions
+                .Where(tr => tr.Owner.Id != _membershipService.CurrentUser.Id
+                             && tr.InProgressIds.Contains(_membershipService.CurrentUser.Id))
+                .Sum(tr => tr.SingleCost);
+            InProgress = Math.Round(InProgress, Defines.Collaborator.COUNT_NUMBER_AFTER_POINT);
+            InComming = _transactionsManager.UserTransactions
+                    .Where(tr => tr.Owner.Id == _membershipService.CurrentUser.Id)
+                    .Sum(tr =>tr.InProgressIds.Count()* tr.SingleCost);
+            InComming = Math.Round(InComming, Defines.Collaborator.COUNT_NUMBER_AFTER_POINT);
+        }
         private void ConfigureNotifications()
 		{
 			Notifications = new ObservableCollection<NotificationModel>(

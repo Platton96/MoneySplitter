@@ -16,5 +16,5 @@ namespace MoneySplitter.Win10.Views
 				ViewModel = DataContext as TransactionDetailsViewModel;
 			};
 		}
-	}
+    }
 }

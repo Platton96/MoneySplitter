@@ -153,6 +153,7 @@
     <Style TargetType="TextBlock" x:Key="StatisticsItemContentTextBlockStyle">
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
         <Setter Property="Foreground" Value="{StaticResource DarkColorBrush}"/>
     </Style>
     <Style TargetType="TextBlock" x:Key="StatisticsItemHeaderTextBlockStyle">

@@ -134,11 +134,9 @@ namespace MoneySplitter.Win10.ViewModels
         #region Private methods
         private void OnNavigated(object sender, Type e)
         {
-            try
-            {
-                TitleFrameText = _mainMenuPages.FirstOrDefault(w => w.Value == e).Key;
-            }
-            catch(ArgumentException)
+ 
+            TitleFrameText = _mainMenuPages.FirstOrDefault(w => w.Value == e).Key;
+            if (TitleFrameText == null)
             {
                 SelectedMenuItem = null;
                 return;

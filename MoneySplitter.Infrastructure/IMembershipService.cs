@@ -11,5 +11,6 @@ namespace MoneySplitter.Infrastructure
         UserModel CurrentUser { get; }
         Task LogoutAsync();
         Task<bool> TryLoadUserFromDbAsync();
+        Task InitializeDbAsyns();
     }
 }

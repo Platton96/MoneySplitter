@@ -30,9 +30,10 @@
                     <TextBlock Style="{StaticResource DefaultHeaderListStyle}"
                                extensions:XamlElementExtensions.Resource="DEBTERS_TEXTBLOCK_TEXT"/>
                     <ListView x:Name="DebtorsList"
-                          ItemsSource="{x:Bind ViewModel.Debtors, Mode=OneWay}"
-                          Style="{StaticResource DebtersAndLendPersonsListStyle}"
-                          Grid.Row="1">
+                              ItemsSource="{x:Bind ViewModel.Debtors, Mode=OneWay}"
+                              Style="{StaticResource DebtersAndLendPersonsListStyle}"
+                              Grid.Row="1"
+                              ItemClick="OnFriendClick">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

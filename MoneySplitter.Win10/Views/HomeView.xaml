@@ -93,7 +93,7 @@
                                     <Border Style="{StaticResource StatisticsItemLabelBorderStyle}">
                                         <TextBlock Foreground="{StaticResource DarkGrayColorBrush}"
                                                    Style="{StaticResource StatisticsItemContentTextBlockStyle}"
-                                                   Text="8$"/>
+                                                   Text="{x:Bind ViewModel.Debt, Mode=OneWay}"/>
                                     </Border>
                                     <TextBlock extensions:XamlElementExtensions.Resource="TOTAL_DEBT_TEXTBLOCK_TEXT"
                                                Style="{StaticResource StatisticsItemHeaderTextBlockStyle}"/>
@@ -101,7 +101,7 @@
                                 <Grid Style="{StaticResource StatisticsItemGridStyle}">
                                     <Border Style="{StaticResource StatisticsItemLabelBorderStyle}">
                                         <TextBlock Style="{StaticResource StatisticsItemContentTextBlockStyle}"
-                                                   Text="1.2$"/>
+                                                   Text="{x:Bind ViewModel.Lend, Mode=OneWay}"/>
                                     </Border>
                                     <TextBlock extensions:XamlElementExtensions.Resource="TOTAL_OWE_TEXTBLOCK_TEXT"
                                                Style="{StaticResource StatisticsItemHeaderTextBlockStyle}"/>
@@ -112,7 +112,7 @@
                                 <Grid Style="{StaticResource StatisticsItemGridStyle}">
                                     <Border Style="{StaticResource StatisticsItemLabelBorderStyle}">
                                         <TextBlock Style="{StaticResource StatisticsItemContentTextBlockStyle}"
-                                                   Text="12.5$"/>
+                                                   Text="{x:Bind ViewModel.InProgress, Mode=OneWay}"/>
                                     </Border>
                                     <TextBlock extensions:XamlElementExtensions.Resource="INPROGRESS_TEXTBLOCK_TEXT"
                                                Style="{StaticResource StatisticsItemHeaderTextBlockStyle}"/>
@@ -121,7 +121,7 @@
                                     <Border Style="{StaticResource StatisticsItemLabelBorderStyle}">
                                         <TextBlock Foreground="{StaticResource DarkGrayColorBrush}"
                                                    Style="{StaticResource StatisticsItemContentTextBlockStyle}"
-                                                   Text="0$"/>
+                                                   Text="{x:Bind ViewModel.InComming, Mode=OneWay}"/>
                                     </Border>
                                     <TextBlock extensions:XamlElementExtensions.Resource="INCOMING_TEXTBLOCK_TEXT"
                                                Style="{StaticResource StatisticsItemHeaderTextBlockStyle}"/>

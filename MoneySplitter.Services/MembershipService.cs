@@ -49,6 +49,11 @@ namespace MoneySplitter.Services
 
         public async Task LogoutAsync()
         {
+            await InitializeDbAsyns();
+        }
+
+        public async Task InitializeDbAsyns()
+        {
             await _dbContext.InitializeAsyns();
         }
 

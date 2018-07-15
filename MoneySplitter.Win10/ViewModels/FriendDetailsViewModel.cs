@@ -17,6 +17,7 @@ namespace MoneySplitter.Win10.ViewModels
         private readonly ITransactionsManager _transactionsManager;
         private readonly TransactionEventModelFactory _transactionEventModelFactory;
         private readonly ILocalizationService _localizationService;
+        private readonly INavigationManager _navigationManager;
 
         private UserModel _friend;
 
@@ -140,12 +141,14 @@ namespace MoneySplitter.Win10.ViewModels
         public FriendDetailsViewModel(
             ITransactionsManager transactionsManager,
             TransactionEventModelFactory transactionEventModelFactory,
-            ILocalizationService localizationService)
+            ILocalizationService localizationService,
+            INavigationManager navigationManager)
 
         {
             _transactionsManager = transactionsManager;
             _transactionEventModelFactory = transactionEventModelFactory;
             _localizationService = localizationService;
+            _navigationManager = navigationManager;
         }
         #endregion
         public UserModel Parameter { get; set; }
@@ -177,6 +180,10 @@ namespace MoneySplitter.Win10.ViewModels
             Debt = Debts.Sum(x => x.SingleCost) - Lends.Sum(x => x.SingleCost);
             IsDebt = _debt > 0 ? true : false;
             TransactionEvents = new ObservableCollection<TransactionEventModel>(_transactionEventModelFactory.GetCommonTransationsByFriend(_friendTransactions, Friend.Id));
+        }
+        public void NavigateToTransactionDetails(TransactionEventModel transaction)
+        {
+            _navigationManager.NavigateToTransactionDetailsViewModel(transaction);
         }
     }
 }

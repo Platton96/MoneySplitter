@@ -34,16 +34,8 @@
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center">
                     <StackPanel>
-                        <Border Height="52"
-                            VerticalAlignment="Top"
-                            Width="52"
-                            BorderThickness="1"
-                            HorizontalAlignment="Center"
-                            BorderBrush="{StaticResource DarkGrayColorBrush}"
-                            CornerRadius="30">
-                            <TextBlock Foreground="{StaticResource DarkGrayColorBrush}"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center">
+                        <Border Style="{StaticResource DebtLabelBorderStyle}">
+                            <TextBlock Style="{StaticResource StatisticsItemContentTextBlockStyle}">
                             <Run Text="{x:Bind ViewModel.Debt, Mode=OneWay}"/><Run Text="$"/>
                             </TextBlock>
                         </Border>
@@ -71,9 +63,10 @@
                     <TextBlock extensions:XamlElementExtensions.Resource="DEBTS_TEXTBLOCK_TEXT"
                                Style="{StaticResource DebtsListHeaderTextStyle}"/>
                     <ListView x:Name="DebtsList"
-                          ItemsSource="{x:Bind ViewModel.Debts, Mode=OneWay}"
-                          Style="{StaticResource TransactionsListViewStyle}"
-                          Grid.Row="1">
+                              ItemsSource="{x:Bind ViewModel.Debts, Mode=OneWay}"
+                              Style="{StaticResource TransactionsListViewStyle}"
+                              Grid.Row="1"
+                              ItemClick="OnTransactionItemClick">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -101,9 +94,10 @@
                     <TextBlock extensions:XamlElementExtensions.Resource="LENDS_TEXTBLOCK_TEXT"
                                Style="{StaticResource DebtsListHeaderTextStyle}"/>
                     <ListView x:Name="LendsList"
-                          ItemsSource="{x:Bind ViewModel.Lends, Mode=OneWay}"
-                          Style="{StaticResource TransactionsListViewStyle}"
-                          Grid.Row="1">
+                              ItemsSource="{x:Bind ViewModel.Lends, Mode=OneWay}"
+                              Style="{StaticResource TransactionsListViewStyle}"
+                              Grid.Row="1"
+                              ItemClick="OnTransactionItemClick">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -132,9 +126,10 @@
                     <TextBlock extensions:XamlElementExtensions.Resource="COMMON_TRANSACTIONS_TEXTBLOCK_TEXT"
                                Style="{StaticResource CommonDebtsListHeaderTextStyle}"/>
                     <ListView x:Name="CommonTransactionsList"
-                          ItemsSource="{x:Bind ViewModel.TransactionEvents, Mode=OneWay}"
-                          Style="{StaticResource TransactionsListViewStyle}"
-                          Grid.Row="1">
+                              ItemsSource="{x:Bind ViewModel.TransactionEvents, Mode=OneWay}"
+                              Style="{StaticResource TransactionsListViewStyle}"
+                              Grid.Row="1"
+                              ItemClick="OnTransactionItemClick">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
