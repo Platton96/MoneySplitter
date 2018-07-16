@@ -138,7 +138,7 @@ namespace MoneySplitter.Win10.ViewModels
             _membershipService = membershipService;
             _localizationService = localizationService;
 
-            _labelForTransactionImage = _localizationService.GetString(Texts.AVATAR_IMAGE_TEXTBLOCK_TEXT);
+            _labelForTransactionImage = _localizationService.GetString(Texts.TRANSACTION_IMAGE_TEXTBLOCK_TEXT);
 
             AddTransactionModel = new AddTransactionModel
             {

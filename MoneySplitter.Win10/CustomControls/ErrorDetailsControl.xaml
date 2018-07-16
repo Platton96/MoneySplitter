@@ -1,29 +1,37 @@
-﻿<UserControl
-    x:Class="MoneySplitter.Win10.CustomControls.ErrorDetailsControl"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:MoneySplitter.Win10.CustomControls"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    d:DesignHeight="300"
-    d:DesignWidth="400">
-    
+﻿<UserControl x:Class="MoneySplitter.Win10.CustomControls.ErrorDetailsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"        
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="400">
+
     <UserControl.Resources>
-        <Style TargetType="StackPanel" x:Key="IssueStackPanelStyle">
-            <Setter Property="Background" Value="#feefe8"/>
+        <Style TargetType="StackPanel" x:Key="ErrorStackPanelStyle">
+            <Setter Property="Background" Value="{StaticResource ErrorBackgroundColor}"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
         </Style>
+        <Style TargetType="TextBlock" x:Key="ErrorTitleTextBlockStyle">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="{StaticResource DarkColorBrush}"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="ErrorDescriptionTextBlockStyle">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="{StaticResource DarkGrayColorBrush}"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+        </Style>
     </UserControl.Resources>
     
-    <StackPanel Style="{StaticResource IssueStackPanelStyle}"
+    <StackPanel Style="{StaticResource ErrorStackPanelStyle}"
                 Visibility="{x:Bind IsErrorVisable, Mode=OneWay}">
         <TextBlock Text="{x:Bind ErrorDetails. ErrorTitle, Mode=OneWay}"
-                   FontWeight="Bold"/>
+                   Style="{StaticResource ErrorTitleTextBlockStyle}"/>
 
-        <TextBlock FontStyle="Italic"
-                   Text="{x:Bind ErrorDetails.ErrorDescription, Mode=OneWay}"/>
+        <TextBlock Text="{x:Bind ErrorDetails.ErrorDescription, Mode=OneWay}"
+                   Style="{StaticResource ErrorDescriptionTextBlockStyle}"/>
 
     </StackPanel>
 </UserControl>

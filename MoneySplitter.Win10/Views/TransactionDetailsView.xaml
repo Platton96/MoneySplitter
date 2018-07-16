@@ -5,144 +5,78 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:customControls="using:MoneySplitter.Win10.CustomControls"
-      xmlns:converters="using:MoneySplitter.Win10.Converters"
       xmlns:extensions="using:MoneySplitter.Win10.Extensions"
       xmlns:models="using:MoneySplitter.Models"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
-        <converters:DateTimeToTimeLeftConverter x:Key="DateTimeToTimeLeft"/>
-        <converters:DateCoverter x:Key="DateConverter"/>
-        <converters:BankCardConverter x:Key="BlankCardConverter"/>
-        <converters:PhoneNumberConverter x:Key="PhoneNumberConverter"/>
-        <converters:OppositeBoolToVisibilityConverter x:Key="OppositeBoolToVisibility"/>
-
-        <SolidColorBrush x:Key="DarkColorBrush" Color="#242424"/>
-        <SolidColorBrush x:Key="DarkGrayColorBrush" Color="#464646"/>
-        <SolidColorBrush x:Key="GrayColorBrush" Color="#666666"/>
-        <SolidColorBrush x:Key="LightGrayColorBrush" Color="#AAAAAA"/>
-
-        <Style x:Key="DefaultButtonStyle" TargetType="Button">
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Margin" Value="0,0,8,0"/>
-            <Setter Property="BorderBrush" Value="{StaticResource DarkGrayColorBrush}"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Height" Value="36"/>
-            <Setter Property="Padding" Value="12,0,12,0"/>
-        </Style>
+        <ResourceDictionary Source="../Styles/Views/TransactionDetailsViewStyle.xaml"/>
     </Page.Resources>
-    <ScrollViewer VerticalScrollMode="Auto"
-                  VerticalAlignment="Stretch"
-                  HorizontalAlignment="Stretch"
-                  VerticalScrollBarVisibility="Auto">
+    <ScrollViewer Style="{StaticResource ScrollViewerStyle}">
         <Grid>
-            <Image HorizontalAlignment="Stretch"
-                   VerticalAlignment="Top"
-                   Stretch="UniformToFill"
-                   Height="340"
+            <Image Style="{StaticResource BackgroundImageStyle}"
                    Source="{x:Bind ViewModel.Data.ImageUrl, Mode=OneWay}"/>
-            <customControls:Blur HorizontalAlignment="Stretch"
-                                 VerticalAlignment="Top"
-                                 Height="340"
-                                 Value="20"/>
-            <Grid HorizontalAlignment="Stretch"
-                  VerticalAlignment="Top"
-                  Height="360">
-                <Grid.Background>
-                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                        <GradientStop Color="#00FFFFFF" Offset="0.0" />
-                        <GradientStop Color="#FFFFFFFF" Offset="0.9" />
-                        <GradientStop Color="#FFFFFFFF" Offset="1" />
-                    </LinearGradientBrush>
-                </Grid.Background>
-            </Grid>
-            <Grid Margin="0,128,0,0">
+            <customControls:Blur Style="{StaticResource BlurStyle}"/>
+            <Grid Style="{StaticResource BackgroundGridStyle}"/>
+            <Grid Style="{StaticResource RootGridStyle}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Grid Margin="24,0,24,0">
+                <Grid Style="{StaticResource TransactionGridStyle}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Width="124"
-                           Height="216"
-                           VerticalAlignment="Top"
-                           Stretch="UniformToFill"
+                    <Image Style="{StaticResource TransactionImageStyle}"
                            Source="{x:Bind ViewModel.Data.ImageUrl, Mode=OneWay}"/>
-                    <Border VerticalAlignment="Top"
-                            BorderThickness="1"
-                            Height="216"
-                            Width="124"
-                            BorderBrush="{StaticResource LightGrayColorBrush}"/>
-                    <StackPanel HorizontalAlignment="Stretch"
-                                Margin="16,40,0,0"
+                    <Border Style="{StaticResource TransactionImageBorderStyle}"/>
+                    <StackPanel Style="{StaticResource TransactionInformationStackPanelStyle}"
                                 Grid.Column="1">
                         <TextBlock Text="{x:Bind ViewModel.Data.Title}"
-                                   Foreground="{StaticResource DarkColorBrush}"
-                                   FontSize="24"
-                                   TextWrapping="Wrap"/>
-                        <TextBlock FontSize="16"
-                                   Margin="0,4,0,0"
-                                   Visibility="{x:Bind ViewModel.IsOngoingDateAvailable, Mode=OneWay}"
-                                   Foreground="{StaticResource DarkGrayColorBrush}"
-                                   TextWrapping="Wrap">
+                                   Style="{StaticResource TransactionTitleTextBlockStyle}"/>
+                        <TextBlock Visibility="{x:Bind ViewModel.IsOngoingDateAvailable, Mode=OneWay}"
+                                   Style="{StaticResource TransactionInformationTextBlockStyle}">
                             <Run Text="{x:Bind ViewModel.Data.RootTransaction.OngoingDate, Converter={StaticResource DateConverter}, Mode=OneWay}"/>
                             <Run Text="("/><Run Text="{x:Bind ViewModel.Data.RootTransaction.OngoingDate, Converter={StaticResource DateTimeToTimeLeft}, Mode=OneWay}"/><Run Text=")"/>
                         </TextBlock>
-                        <TextBlock FontSize="16"
-                                   Margin="0,4,0,0"
-                                   Visibility="{x:Bind ViewModel.IsOngoingDateAvailable, Converter={StaticResource OppositeBoolToVisibility}, Mode=OneWay}"
-                                   Foreground="{StaticResource DarkGrayColorBrush}"
-                                   TextWrapping="Wrap">
+                        <TextBlock Style="{StaticResource TransactionInformationTextBlockStyle}"
+                                   Visibility="{x:Bind ViewModel.IsOngoingDateAvailable, Converter={StaticResource OppositeBoolToVisibility}, Mode=OneWay}" >
                             <Run extensions:XamlElementExtensions.Resource="DEADLINE_RUN_TEXT"/>
                             <Run Text="{x:Bind ViewModel.Data.RootTransaction.DeadlineDate, Converter={StaticResource DateTimeToTimeLeft}, Mode=OneWay}"/>
                         </TextBlock>
                         <customControls:TransactionStatusControl Role="{x:Bind ViewModel.Data.UserRole, Mode=OneWay}"
-                                                             Margin="0,4,0,0"/>
+                                                                 Style="{StaticResource TransactionStatusControlStyle}"/>
                         <TextBlock Text="{x:Bind ViewModel.Data.RootTransaction.Description, Mode=OneWay}"
-                                   TextWrapping="Wrap"
-                                   Margin="0,4,0,0"
-                                   Foreground="{StaticResource DarkGrayColorBrush}"
-                                   FontSize="16"/>
+                                   Style="{StaticResource TransactionInformationTextBlockStyle}"/>
                         <StackPanel Orientation="Horizontal"
-                                    Margin="0,8,0,0">
+                                    Style="{StaticResource TransactionButtonsStackPanelStyle}">
                             <Button Style="{StaticResource DefaultButtonStyle}"
                                     Visibility="{x:Bind ViewModel.IsMyTransaction, Mode=OneWay}">
                                 <StackPanel Orientation="Horizontal">
-                                    <FontIcon Glyph="&#xE73E;"
-                                              Foreground="{StaticResource DarkGrayColorBrush}"
+                                    <FontIcon Style="{StaticResource ApproveFontIconStyle}"
                                               FontSize="20"/>
                                     <TextBlock extensions:XamlElementExtensions.Resource="APROVE_ALL_BUTTON_CONTENT"
-                                               Margin="4,0,0,0"
-                                               FontSize="14"
-                                               Foreground="{StaticResource DarkGrayColorBrush}"/>
+                                               Style="{StaticResource TransactionButtonContentTextBlockStyle}"/>
                                 </StackPanel>
                             </Button>
                             <Button Style="{StaticResource DefaultButtonStyle}"
                                     Visibility="{x:Bind ViewModel.IsMyTransaction, Mode=OneWay}">
                                 <StackPanel Orientation="Horizontal">
-                                    <FontIcon Glyph="&#xEA8F;"
-                                              Foreground="{StaticResource DarkGrayColorBrush}"
+                                    <FontIcon Style="{StaticResource RemindFontIconStyle}"
                                               FontSize="18"/>
                                     <TextBlock extensions:XamlElementExtensions.Resource="REMIND_ALL_BUTTON_CONTENT"
-                                               Margin="4,0,0,0"
-                                               FontSize="14"
-                                               Foreground="{StaticResource DarkGrayColorBrush}"/>
+                                              Style="{StaticResource TransactionButtonContentTextBlockStyle}"/>
                                 </StackPanel>
 
                             </Button>
                             <Button Style="{StaticResource DefaultButtonStyle}"
                                     Visibility="{x:Bind ViewModel.Data.IsGiveButtonVisibil, Mode=OneWay}">
                                 <StackPanel Orientation="Horizontal">
-                                    <FontIcon Glyph="&#xE70E;"
-                                              Foreground="{StaticResource DarkGrayColorBrush}"
+                                    <FontIcon Style="{StaticResource GiveFontIconStyle}"
                                               FontSize="18"/>
-                                    <TextBlock Margin="8,0,0,0"
-                                               FontSize="14"
-                                               Foreground="{StaticResource DarkGrayColorBrush}">
+                                    <TextBlock Style="{StaticResource TransactionButtonContentTextBlockStyle}">
                                         <Run extensions:XamlElementExtensions.Resource="GIVE_RUN_TEXT"/><Run Text="{x:Bind ViewModel.Data.SingleCost, Mode=OneWay}"/><Run Text="$)"/>
                                     </TextBlock>
                                 </StackPanel>
@@ -150,13 +84,10 @@
                             <Button Style="{StaticResource DefaultButtonStyle}"
                                 Visibility="{x:Bind ViewModel.Data.IsRemindButtonVisibil, Mode=OneWay}">
                                 <StackPanel Orientation="Horizontal">
-                                    <FontIcon Glyph="&#xEA8F;"
-                                          Foreground="{StaticResource DarkGrayColorBrush}"
-                                          FontSize="20"/>
+                                    <FontIcon Style="{StaticResource RemindFontIconStyle}"
+                                              FontSize="20"/>
                                     <TextBlock extensions:XamlElementExtensions.Resource="REMIND__BUTTON_CONTENT"
-                                           Margin="4,0,0,0"
-                                           FontSize="14"
-                                           Foreground="{StaticResource DarkGrayColorBrush}"/>
+                                          Style="{StaticResource TransactionButtonContentTextBlockStyle}"/>
                                 </StackPanel>
                             </Button>
                         </StackPanel>
@@ -170,45 +101,36 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <FontIcon Glyph="&#xE76E;"
-                                  Foreground="{StaticResource DarkColorBrush}"
-                                  FontSize="16"/>
+                            <FontIcon Style="{StaticResource OwnerTransactionFontIconStyle}"
+                                      FontSize="16"/>
                             <TextBlock extensions:XamlElementExtensions.Resource="TRANSACTION_OWNER_TEXTBLOCK_TEXT"
-                                   FontSize="16"
-                                   Foreground="{StaticResource DarkColorBrush}"
-                                   Margin="4,0,0,0"/>
+                                       Style="{StaticResource DefaultBlockHeaderTextBlockStyle}"/>
                         </StackPanel>
                         <Grid Margin="0,4,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Ellipse Width="76"
-                                 Height="76">
+                            <Ellipse Style="{StaticResource OwnerTransactionImageElipseStyle}">
                                 <Ellipse.Fill>
                                     <ImageBrush ImageSource="{x:Bind ViewModel.Data.RootTransaction.Owner.ImageUrl, Mode=OneWay}"/>
                                 </Ellipse.Fill>
                             </Ellipse>
                             <StackPanel Grid.Column="1"
-                                    Margin="12,0,0,0"
-                                    HorizontalAlignment="Stretch">
-                                <TextBlock FontSize="16"
-                                       Foreground="{StaticResource DarkColorBrush}">
+                                        Style="{StaticResource OwnerInformationStackPanelStyle}">
+                                <TextBlock Style="{StaticResource UserControlFullNameTextStyle}">
                                 <Run Text="{x:Bind ViewModel.Data.RootTransaction.Owner.Name, Mode=OneWay}"/>
                                 <Run Text="{x:Bind ViewModel.Data.RootTransaction.Owner.Surname, Mode=OneWay}"/>
                                 </TextBlock>
-                                <TextBlock FontSize="14"
-                                       Foreground="{StaticResource DarkGrayColorBrush}">
+                                <TextBlock  Style="{StaticResource UserControlAditionInformationTextStyle}">
                                 <Run extensions:XamlElementExtensions.Resource="EMAIL_RUN_TEXT"/>
                                 <Run Text="{x:Bind ViewModel.Data.RootTransaction.Owner.Email, Mode=OneWay}"/>
                                 </TextBlock>
-                                <TextBlock FontSize="14"
-                                       Foreground="{StaticResource DarkGrayColorBrush}">
+                                <TextBlock Style="{StaticResource UserControlAditionInformationTextStyle}">
                                 <Run extensions:XamlElementExtensions.Resource="CREDIT_CARD_RUN_TEXT"/>
-                                <Run Text="{x:Bind ViewModel.Data.RootTransaction.Owner.CreditCardNumber, Converter={StaticResource BlankCardConverter}, Mode=OneWay}"/>
+                                <Run Text="{x:Bind ViewModel.Data.RootTransaction.Owner.CreditCardNumber, Converter={StaticResource BankCardConverter}, Mode=OneWay}"/>
                                 </TextBlock>
-                                <TextBlock FontSize="14"
-                                       Foreground="{StaticResource DarkGrayColorBrush}">
+                                <TextBlock Style="{StaticResource UserControlAditionInformationTextStyle}">
                                 <Run extensions:XamlElementExtensions.Resource="PHONE_RUN_TEXT"/>
                                 <Run Text="{x:Bind ViewModel.Data.RootTransaction.Owner.PhoneNumber,Converter={StaticResource PhoneNumberConverter}, Mode=OneWay}"/>
                                 </TextBlock>
@@ -217,86 +139,52 @@
                     </StackPanel>
                     <StackPanel Grid.Column="1">
                         <StackPanel Orientation="Horizontal">
-                            <FontIcon Glyph="&#xE9D9;"
-                                      Foreground="{StaticResource DarkColorBrush}"
+                            <FontIcon Style="{StaticResource StatisticsFontIconStyle}"
                                       FontSize="16"/>
                             <TextBlock extensions:XamlElementExtensions.Resource="STATISTICS_TEXTBLOCK_TEXT"
-                                       FontSize="16"
-                                       Foreground="{StaticResource DarkColorBrush}"
-                                       Margin="4,0,0,0"/>
+                                       Style="{StaticResource DefaultBlockHeaderTextBlockStyle}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal"
                                     Margin="0,4,0,0">
-                            <Grid Height="76">
-                                <Border Height="52"
-                                        VerticalAlignment="Top"
-                                        Width="52"
-                                        BorderThickness="1"
-                                        HorizontalAlignment="Center"
-                                        BorderBrush="{StaticResource DarkGrayColorBrush}"
-                                        CornerRadius="26">
-                                    <TextBlock Foreground="{StaticResource DarkGrayColorBrush}"
-                                               VerticalAlignment="Center"
-                                               HorizontalAlignment="Center"
+                            <Grid Style="{StaticResource StatisticsItemGridStyle}">
+                                <Border Style="{StaticResource StatisticsItemLabelBorderStyle}">
+                                    <TextBlock Style="{StaticResource StatisticsItemContentTextBlockStyle}"
                                                Text="{x:Bind ViewModel.CollaboratorsCount, Mode=OneWay}"/>
                                 </Border>
                                 <TextBlock extensions:XamlElementExtensions.Resource="PEOPLE_TEXTBLOCK_TEXT"
-                                           VerticalAlignment="Bottom"
-                                           HorizontalAlignment="Center"/>
+                                           Style="{StaticResource StatisticsItemHeaderTextBlockStyle}"/>
                             </Grid>
-                            <Grid Height="76"
-                                  Margin="16,0,0,0">
-                                <Border Height="52"
-                                        VerticalAlignment="Top"
-                                        Width="52"
-                                        BorderThickness="1"
-                                        HorizontalAlignment="Center"
-                                        BorderBrush="{StaticResource DarkGrayColorBrush}"
-                                        CornerRadius="26">
-                                    <TextBlock Foreground="{StaticResource DarkGrayColorBrush}"
-                                               VerticalAlignment="Center"
-                                               HorizontalAlignment="Center"
+                            <Grid Style="{StaticResource StatisticsItemGridStyle}">
+                                <Border Style="{StaticResource StatisticsItemLabelBorderStyle}">
+                                    <TextBlock Style="{StaticResource StatisticsItemContentTextBlockStyle}"
                                                Text="{x:Bind ViewModel.InProgressCount, Mode=OneWay}"/>
                                 </Border>
                                 <TextBlock extensions:XamlElementExtensions.Resource="INPROGRESS_TEXTBLOCK_TEXT"
-                                           VerticalAlignment="Bottom"
-                                           HorizontalAlignment="Center"/>
+                                           Style="{StaticResource StatisticsItemHeaderTextBlockStyle}"/>
                             </Grid>
-                            <Grid Height="76"
-                                  Margin="16,0,0,0">
-                                <Border Height="52"
-                                        VerticalAlignment="Top"
-                                        Width="52"
-                                        BorderThickness="1"
-                                        HorizontalAlignment="Center"
-                                        BorderBrush="{StaticResource DarkGrayColorBrush}"
-                                        CornerRadius="26">
-                                    <TextBlock Foreground="{StaticResource DarkGrayColorBrush}"
-                                               VerticalAlignment="Center"
-                                               HorizontalAlignment="Center"
+                            <Grid Style="{StaticResource StatisticsItemGridStyle}">
+                                <Border Style="{StaticResource StatisticsItemLabelBorderStyle}">
+                                    <TextBlock Style="{StaticResource StatisticsItemContentTextBlockStyle}"
                                                Text="{x:Bind ViewModel.FinishedCount, Mode=OneWay}"/>
                                 </Border>
                                 <TextBlock extensions:XamlElementExtensions.Resource="FINISHED_TEXTBLOCK_TEXT"
-                                           VerticalAlignment="Bottom"
-                                           HorizontalAlignment="Center"/>
+                                           Style="{StaticResource StatisticsItemHeaderTextBlockStyle}"/>
                             </Grid>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
+                
                 <StackPanel Grid.Row="2"
-                            Margin="0,24,0,0">
+                            Style="{StaticResource CollaboratorsStackPanelStyle}">
                     <StackPanel Orientation="Horizontal"
-                                Margin="24,0,24,0">
-                        <FontIcon Glyph="&#xE716;"
-                                  Foreground="{StaticResource DarkColorBrush}"
+                                Style="{StaticResource CollaboratorsTitleStackPanelStyle}">
+                        <FontIcon Style="{StaticResource CollaboratorsFontIconStyle}"
                                   FontSize="16"/>
                         <TextBlock extensions:XamlElementExtensions.Resource="COLLABORATORS_TEXTBLOCK_TEXT"
-                                   FontSize="16"
-                                   Foreground="{StaticResource DarkColorBrush}"
-                                   Margin="4,0,0,0"/>
+                                   Style="{StaticResource DefaultBlockHeaderTextBlockStyle}"/>
                     </StackPanel>
                     <ListView ItemsSource="{x:Bind ViewModel.Data.RootTransaction.Collaborators, Mode=OneWay}"
-                              SelectionMode="None">
+                              Style="{StaticResource CollaboratorsListViewStyle}">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="Padding" Value="0"/>
@@ -305,41 +193,27 @@
                         </ListView.ItemContainerStyle>
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="models:UserModel">
-                                <Grid Height="80">
+                                <Grid Style="{StaticResource CollaboratorGridSyle}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Ellipse Width="60"
-                                             Margin="24,0,0,0"
-                                             Height="60">
+                                    <Ellipse Style="{StaticResource CollaboratorImageElipseStyle}">
                                         <Ellipse.Fill>
                                             <ImageBrush ImageSource="{x:Bind ImageUrl, Mode=OneWay}"/>
                                         </Ellipse.Fill>
                                     </Ellipse>
                                     <StackPanel Grid.Column="1"
-                                                Margin="12,0,0,0"
-                                                VerticalAlignment="Center"
-                                                HorizontalAlignment="Stretch">
-                                        <TextBlock FontSize="16"
-                                                   Foreground="{StaticResource DarkColorBrush}"
-                                                   HorizontalAlignment="Stretch"
-                                                   TextTrimming="CharacterEllipsis">
+                                                Style="{StaticResource CollaboratorStackPanelSyle}">
+                                        <TextBlock Style="{StaticResource UserControlFullNameTextStyle}">
                                     <Run Text="{x:Bind Name, Mode=OneWay}"/>
                                     <Run Text="{x:Bind Surname, Mode=OneWay}"/>
                                         </TextBlock>
                                         <TextBlock Text="{x:Bind Email, Mode=OneWay}"
-                                                   HorizontalAlignment="Stretch"
-                                                   Foreground="{StaticResource DarkGrayColorBrush}"
-                                                   TextTrimming="CharacterEllipsis"
-                                                   FontSize="14"/>
+                                                    Style="{StaticResource UserControlAditionInformationTextStyle}"/>
                                     </StackPanel>
-                                    <Border BorderThickness="0,0,0,1"
-                                            Grid.ColumnSpan="2"
-                                            HorizontalAlignment="Stretch"
-                                            VerticalAlignment="Stretch"
-                                            Margin="24,0,24,0"
-                                            BorderBrush="{StaticResource LightGrayColorBrush}"/>
+                                    <Border Style="{StaticResource CollaboratorBorderStyle}"
+                                            Grid.ColumnSpan="2"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>

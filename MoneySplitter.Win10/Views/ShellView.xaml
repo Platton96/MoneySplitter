@@ -6,12 +6,10 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:viewmodels="using:MoneySplitter.Win10.ViewModels"
       xmlns:viewmodels1="using:MoneySplitter.Models.App"
-      xmlns:converters="using:MoneySplitter.Win10.Converters"
       mc:Ignorable="d">
+    
     <Page.Resources>
         <ResourceDictionary>
-            <converters:MenuItemTitleConverter x:Key="MenuItemToTitle" />
-
             <DataTemplate x:Key="MenuItemTemplate" x:DataType="x:String">
                 <StackPanel Orientation="Horizontal">
                     <FontIcon Glyph="{x:Bind Converter={StaticResource MenuItemToTitle}, ConverterParameter='0', Mode=OneWay}" />
@@ -25,16 +23,13 @@
                         SelectedItem="{x:Bind ViewModel.SelectedMenuItem, Mode=TwoWay}"
                         MenuItemsSource="{x:Bind ViewModel.MenuItems, Mode=OneWay}"
                         MenuItemTemplate="{StaticResource MenuItemTemplate}"
-                        AlwaysShowHeader="False"
-                        >
-            <NavigationView.HeaderTemplate
-                >
+                        AlwaysShowHeader="False">
+            <NavigationView.HeaderTemplate>
                 <DataTemplate x:DataType="viewmodels:ShellViewModel" >
                     <Grid Margin="0,0,0,0" Visibility="Collapsed">
                     </Grid>
                 </DataTemplate>
             </NavigationView.HeaderTemplate>
-
 
             <Frame x:Name="ContentFrame" 
                    Loaded="OnShellFrameLoaded"
@@ -47,6 +42,7 @@
                 </Frame.ContentTransitions>
             </Frame>
         </NavigationView>
+        
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
                 <VisualState x:Name="Normal">
@@ -59,7 +55,7 @@
                 </VisualState>
                 <VisualState x:Name="Mobile">
                     <VisualState.Setters>
-                        <Setter Target="ContentFrame.Margin" Value="0,-52,0,0"/>
+                        <Setter Target="ContentFrame.Margin" Value="0,-48,0,0"/>
                     </VisualState.Setters>
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0"></AdaptiveTrigger>
@@ -67,5 +63,6 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+        
     </Grid>
 </Page>
