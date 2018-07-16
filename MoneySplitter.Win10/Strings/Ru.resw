@@ -316,7 +316,7 @@
     <comment>TransactionDetails</comment>
   </data>
   <data name="PROBLEM_SERVER_ERROR" xml:space="preserve">
-    <value>Извиниет, проблемы с сервером</value>
+    <value>Извините, проблемы с сервером</value>
     <comment>error</comment>
   </data>
   <data name="REGISTER_BUTTON_CONTENT" xml:space="preserve">
