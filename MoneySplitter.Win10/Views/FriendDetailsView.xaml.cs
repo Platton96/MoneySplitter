@@ -33,5 +33,10 @@ namespace MoneySplitter.Win10.Views
         {
             await ViewModel.MoveUserToInProgressAsync(e.TransactionId);
         }
+
+        private async void OnApproveAllButtonClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            await ViewModel.CloseAllTransactionAsync();
+        }
     }
 }

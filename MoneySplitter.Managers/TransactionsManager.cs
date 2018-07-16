@@ -38,5 +38,10 @@ namespace MoneySplitter.Managers
         {
             return await _transactionsApiService.MoveUserToFineshedAsync(transactionId, userId);
         }
+        
+        public async Task<bool> ApproveAllAsync(int friendId)
+        {
+            return await _transactionsApiService.ApproveAllAsync(friendId);
+        }
     }
 }

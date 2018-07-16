@@ -45,7 +45,8 @@
                                Visibility="{x:Bind ViewModel.IsDebt,Converter={StaticResource OppositeBoolToVisibility},Mode=OneWay}"/>
                     </StackPanel>
                     <Button Style="{StaticResource ApproveAllButtonStyle}"
-                            Visibility="{x:Bind ViewModel.IsDebt, Mode=OneWay}">
+                            Visibility="{x:Bind ViewModel.IsDebt, Mode=OneWay}"
+                            Click="OnApproveAllButtonClick">
                         <StackPanel Orientation="Horizontal">
                             <FontIcon Style="{StaticResource ApproveAllFontIconStyle}"
                                       FontSize="20"/>
