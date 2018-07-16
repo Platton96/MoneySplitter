@@ -56,6 +56,15 @@
         <Style TargetType="TextBlock" x:Key="ButtonContentTextStyle">
             <Setter Property="Margin" Value="4,0,0,0"/>
         </Style>
+        <Style TargetType="StackPanel" x:Key="ApproveStackPanelStyle">
+
+        </Style>
+        <Style TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}" x:Key="SmallRingerButtonStyle">
+            <Setter Property="Width" Value="36"/>
+            <Setter Property="Margin" Value="0,0,8,0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="2"/>
+        </Style>
     </UserControl.Resources>
 
     <Grid>
@@ -145,5 +154,31 @@
                 </StackPanel>
             </Button.Content>
         </Button>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Column="2"
+                    Visibility="{x:Bind ViewModel.IsAproveButtonVisibil, Mode=OneWay}">
+            <Button x:Name="SmallRingerCollaboratorButton"
+                    Click="OnSmallRingerButtonClick"
+                    Style="{StaticResource SmallRingerButtonStyle}"
+                    Visibility="{x:Bind ViewModel.IsSmallRemindButtonVisibil, Mode=OneWay}">
+                <Button.Content>
+                    <FontIcon Glyph="{StaticResource RingerIcon}"
+                              FontSize="20"/>
+                </Button.Content>
+            </Button>
+            <Button x:Name="ApproveCollaboratorButton"
+                    Click="OnApproveButtonClick"
+                    Style="{StaticResource DefaultButtonStyle}"
+                    >
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <FontIcon Glyph="{StaticResource ApproveIcon}"
+                                  FontSize="16"/>
+                        <TextBlock  extensions:XamlElementExtensions.Resource="APRROVE_LOWER_CASE_TEXT_BLOCK_TEXT"
+                                    Style="{StaticResource ButtonContentTextStyle}"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </StackPanel>
     </Grid>
 </UserControl>

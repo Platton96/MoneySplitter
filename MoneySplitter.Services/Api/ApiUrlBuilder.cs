@@ -137,7 +137,7 @@ namespace MoneySplitter.Services.Api
 
         private string CreateQueryParameters(params QueryParameterModel[] parameters)
         {
-            return "?" + string.Join("&", parameters.Select(pr => pr.ParameterName + pr.ParameterValue));
+            return "?" + string.Join("&", parameters.Select(pr => pr.ParameterName +"="+ pr.ParameterValue));
         }
     }
 }

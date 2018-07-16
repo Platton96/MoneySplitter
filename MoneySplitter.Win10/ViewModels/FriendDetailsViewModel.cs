@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MoneySplitter.Win10.ViewModels
 {
@@ -181,6 +182,51 @@ namespace MoneySplitter.Win10.ViewModels
             IsDebt = _debt > 0 ? true : false;
             TransactionEvents = new ObservableCollection<TransactionEventModel>(_transactionEventModelFactory.GetCommonTransationsByFriend(_friendTransactions, Friend.Id));
         }
+
+        public async Task MoveUserToInProgressAsync(int transactionId)
+        {
+            IsLoading = true;
+            var isSuccessExecution = await _transactionsManager.MoveUserToInProgressAsync(transactionId);
+            var executionResult = await _transactionsManager.GetFriendTransactionsAsync(Friend.Id);
+            IsLoading = false;
+            if (!isSuccessExecution || !executionResult.IsSuccess)
+            {
+                ErrorDetailsModel = new ErrorDetailsModel
+                {
+                    ErrorTitle = _localizationService.GetString(Texts.DEFAULT_ERROR_TITLE),
+                    ErrorDescription = _localizationService.GetString(Texts.PROBLEM_SERVER_ERROR)
+                };
+
+                IsErrorVisible = true;
+                return;
+            }
+
+            _friendTransactions = executionResult.Result;
+            Lends = new ObservableCollection<TransactionEventModel>(_transactionEventModelFactory.GetFriendLends(_friendTransactions, Friend.Id));
+            TransactionEvents = new ObservableCollection<TransactionEventModel>(_transactionEventModelFactory.GetCommonTransationsByFriend(_friendTransactions, Friend.Id));
+        }
+        public async Task MoveUserToInFinishedAsync(int transactionId)
+        {
+            IsLoading = true;
+            var isSuccessExecution = await _transactionsManager.MoveUserToFinishedAsync(transactionId, Friend.Id);
+            var executionResult = await _transactionsManager.GetFriendTransactionsAsync(Friend.Id);
+            IsLoading = false;
+
+            if (!isSuccessExecution || !executionResult.IsSuccess)
+            {
+                ErrorDetailsModel = new ErrorDetailsModel
+                {
+                    ErrorTitle = _localizationService.GetString(Texts.DEFAULT_ERROR_TITLE),
+                    ErrorDescription = _localizationService.GetString(Texts.PROBLEM_SERVER_ERROR)
+                };
+
+                IsErrorVisible = true;
+                return;
+            }
+            _friendTransactions = executionResult.Result;
+            Debts = new ObservableCollection<TransactionEventModel>(_transactionEventModelFactory.GetFriendDebts(_friendTransactions, Friend.Id));
+        }
+
         public void NavigateToTransactionDetails(TransactionEventModel transaction)
         {
             _navigationManager.NavigateToTransactionDetailsViewModel(transaction);

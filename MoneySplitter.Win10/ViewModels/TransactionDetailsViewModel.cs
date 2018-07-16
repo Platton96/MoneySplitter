@@ -143,9 +143,8 @@ namespace MoneySplitter.Win10.ViewModels
                 IsErrorVisible = true;
                 return;
             }
-
-
         }
+
         protected override void OnActivate()
 		{
 			base.OnActivate();

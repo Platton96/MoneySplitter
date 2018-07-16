@@ -76,7 +76,9 @@
                             <DataTemplate x:DataType="models:TransactionEventModel">
                                 <Grid Style="{StaticResource TransactionGridStyle}">
                                     <Border Style="{StaticResource DefaultTransactionBorderStyle}">
-                                        <customControls:TransactionEventControl ViewModel="{x:Bind Mode=OneWay}" />
+                                        <customControls:TransactionEventControl ViewModel="{x:Bind Mode=OneWay}"
+                                                                                OnSmallRingerTransactionButtonClick="OnSmallRingerButtonClick"
+                                                                                OnApproveTransactionButtonClick="OnApproveButtonClick"/>
                                     </Border>
                                 </Grid>
 
@@ -107,7 +109,9 @@
                             <DataTemplate x:DataType="models:TransactionEventModel">
                                 <Grid Style="{StaticResource TransactionGridStyle}">
                                     <Border Style="{StaticResource DefaultTransactionBorderStyle}">
-                                        <customControls:TransactionEventControl ViewModel="{x:Bind Mode=OneWay}"/>
+                                        <customControls:TransactionEventControl ViewModel="{x:Bind Mode=OneWay}"
+                                                                                OnRemindTransactionButtonClick="OnRemindButtonClick"
+                                                                                OnGiveTransactionButtonClick="OnGiveButtonClick"/>
                                     </Border>
                                 </Grid>
 
@@ -139,7 +143,9 @@
                             <DataTemplate x:DataType="models:TransactionEventModel">
                                 <Grid Style="{StaticResource TransactionGridStyle}">
                                     <Border Style="{StaticResource DefaultTransactionBorderStyle}">
-                                        <customControls:TransactionEventControl ViewModel="{x:Bind Mode=OneWay}"/>
+                                        <customControls:TransactionEventControl ViewModel="{x:Bind Mode=OneWay}"
+                                                                                OnRemindTransactionButtonClick="OnRemindButtonClick"
+                                                                                OnGiveTransactionButtonClick="OnGiveButtonClick"/>
                                     </Border>
                                 </Grid>
                             </DataTemplate>
@@ -147,6 +153,9 @@
                     </ListView>
                 </Grid>
             </Grid>
+            <customControls:ErrorDetailsControl IsErrorVisable="{x:Bind ViewModel.IsErrorVisible, Mode=OneWay}"
+                                                ErrorDetails="{x:Bind ViewModel.ErrorDetailsModel, Mode=OneWay}"/>
+            <customControls:LoadRingControl IsActiveRing="{x:Bind ViewModel.IsLoading, Mode=OneWay}"/>
         </Grid>
     </ScrollViewer>
 </Page>
