@@ -30,7 +30,10 @@ namespace MoneySplitter.Managers
 
             return executionResult.IsSuccess;
         }
-
+        public async Task<ExecutionResult<IEnumerable<UserModel>>> GetUserFriendsAsync()
+        {
+            return await _friendsApiService.GetAllUserFriendsAsync();
+        }
         public async Task<bool> RemoveFriendAsync(int friendId)
         {
             return await _friendsApiService.RemoveFriendAsync(friendId);

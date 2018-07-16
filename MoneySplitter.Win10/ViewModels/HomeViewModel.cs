@@ -194,12 +194,11 @@ namespace MoneySplitter.Win10.ViewModels
 
             CurrentUserModel = _membershipService.CurrentUser;
 
-            await _friendsManager.LoadUserFriendsAsync();
-            FriendsCount = _friendsManager.UserFriends.Count();
+            var executionResultFriendsManager = await _friendsManager.GetUserFriendsAsync();
 
-            var executionResult = await _transactionsManager.GetUserTransactionsAsync();
+            var executionResultTransactionManager = await _transactionsManager.GetUserTransactionsAsync();
 
-            if (!executionResult.IsSuccess)
+            if (!executionResultTransactionManager.IsSuccess || !executionResultFriendsManager.IsSuccess)
             {
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
@@ -210,8 +209,9 @@ namespace MoneySplitter.Win10.ViewModels
                 IsErrorVisible = true;
                 return;
             }
+            FriendsCount = executionResultFriendsManager.Result.Count();
 
-            _userTransactions = executionResult.Result;
+            _userTransactions = executionResultTransactionManager.Result;
 
             TransactionsCount = _userTransactions.Count();
             if (TransactionsCount > 0)

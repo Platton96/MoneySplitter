@@ -30,7 +30,7 @@ namespace MoneySplitter.Win10.ViewModels
         #region Properties
         public ObservableCollection<CollaboratorModel> Debtors
         {
-            get => _debtors; 
+            get => _debtors;
             set
             {
                 _debtors = value;
@@ -40,7 +40,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public ObservableCollection<CollaboratorModel> LendPersons
         {
-            get => _lendPersons; 
+            get => _lendPersons;
             set
             {
                 _lendPersons = value;
@@ -50,7 +50,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public bool IsLoading
         {
-            get => _isLoading; 
+            get => _isLoading;
             set
             {
                 _isLoading = value;
@@ -80,7 +80,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         #endregion
         public IncomingAndOutgoingViewModel(
-            CollaboratorModelFactory collaboratorModelFactory, 
+            CollaboratorModelFactory collaboratorModelFactory,
             INavigationManager navigationManager,
             ITransactionsManager transactionsManager,
             IFriendsManager friendsManager,
@@ -113,7 +113,7 @@ namespace MoneySplitter.Win10.ViewModels
                 return;
             }
 
-            Debtors = new ObservableCollection<CollaboratorModel>( await _collabaratorModelFactory.GetDebtors());
+            Debtors = new ObservableCollection<CollaboratorModel>(await _collabaratorModelFactory.GetDebtors());
             LendPersons = new ObservableCollection<CollaboratorModel>(await _collabaratorModelFactory.GetLendPersons());
         }
 
@@ -127,9 +127,9 @@ namespace MoneySplitter.Win10.ViewModels
             await _transactionsManager.MoveUserToFinishedAsync(transactionId, userId);
         }
 
-        public void NavigateToFriendDetails(int friendId)
+        public async void NavigateToFriendDetails(int friendId)
         {
-            var friend = _friendsManager.UserFriends.FirstOrDefault(fr => fr.Id == friendId);
+            var friend = (await _friendsManager.GetUserFriendsAsync()).Result.FirstOrDefault(fr => fr.Id == friendId);
             _navigationManager.NavigateToFriendDetails(friend);
         }
 

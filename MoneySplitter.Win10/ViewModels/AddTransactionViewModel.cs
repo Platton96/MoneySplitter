@@ -153,14 +153,22 @@ namespace MoneySplitter.Win10.ViewModels
         {
             base.OnActivate();
 
-            if (_friendsManager.UserFriends == null)
+    
+            IsLoading = true;
+            var executionResultFriendsManager = await _friendsManager.GetUserFriendsAsync();
+            IsLoading = false;
+            if (!executionResultFriendsManager.IsSuccess)
             {
-                IsLoading = true;
-                await _friendsManager.LoadUserFriendsAsync();
-                IsLoading = false;
-            }
+                ErrorDetailsModel = new ErrorDetailsModel
+                {
+                    ErrorTitle = _localizationService.GetString(Texts.DEFAULT_ERROR_TITLE),
+                    ErrorDescription = _localizationService.GetString(Texts.PROBLEM_SERVER_ERROR)
+                };
 
-            Friends = new ObservableCollection<UserModel>(_friendsManager.UserFriends);
+                IsErrorVisible = true;
+                return;
+            }
+            Friends = new ObservableCollection<UserModel>(executionResultFriendsManager.Result);
             Collabarators = new ObservableCollection<UserModel>();
             IsNotCollaboratorsTextVisibility = true;
         }
