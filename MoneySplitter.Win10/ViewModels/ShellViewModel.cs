@@ -48,7 +48,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public UserModel UserModel
         {
-            get => _userModel; 
+            get => _userModel;
             set
             {
                 _userModel = value;
@@ -58,7 +58,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public string TitleFrameText
         {
-            get => _titleFrameText; 
+            get => _titleFrameText;
             set
             {
                 _titleFrameText = value;
@@ -71,7 +71,7 @@ namespace MoneySplitter.Win10.ViewModels
         #region Constructor
         public ShellViewModel(
             IMembershipService membershipService,
-            INavigationManager navigationManager, 
+            INavigationManager navigationManager,
             ILocalizationService localizationService)
         {
             _membershipService = membershipService;
@@ -92,8 +92,8 @@ namespace MoneySplitter.Win10.ViewModels
         }
 
         public async void NavigateToClikedItemMenu(string key)
-        { 
-            if(key==null)
+        {
+            if (key == null)
             {
                 return;
             }
@@ -102,7 +102,7 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 return;
             }
-        
+
             if (viewModel == typeof(LoginViewModel))
             {
                 await _membershipService.LogoutAsync();
@@ -134,7 +134,7 @@ namespace MoneySplitter.Win10.ViewModels
         #region Private methods
         private void OnNavigated(object sender, Type e)
         {
- 
+
             TitleFrameText = _mainMenuPages.FirstOrDefault(w => w.Value == e).Key;
             if (TitleFrameText == null)
             {
@@ -144,7 +144,7 @@ namespace MoneySplitter.Win10.ViewModels
 
             SelectedMenuItem = MenuItems.FirstOrDefault(w => w == TitleFrameText);
         }
-        
+
         private void InitializeMenuItems()
         {
             _mainMenuPages = new Dictionary<string, Type>()

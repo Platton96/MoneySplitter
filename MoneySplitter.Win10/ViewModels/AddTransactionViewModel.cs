@@ -34,7 +34,7 @@ namespace MoneySplitter.Win10.ViewModels
         #region Properties
         public ObservableCollection<UserModel> Friends
         {
-            get => _friends; 
+            get => _friends;
             set
             {
                 _friends = value;
@@ -44,7 +44,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public ObservableCollection<UserModel> Collabarators
         {
-            get => _collabarators; 
+            get => _collabarators;
             set
             {
                 _collabarators = value;
@@ -54,7 +54,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public AddTransactionModel AddTransactionModel
         {
-            get => _addTransactionModel; 
+            get => _addTransactionModel;
             set
             {
                 _addTransactionModel = value;
@@ -64,7 +64,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public string LabelForTransactionImage
         {
-            get => _labelForTransactionImage; 
+            get => _labelForTransactionImage;
             set
             {
                 _labelForTransactionImage = value;
@@ -74,7 +74,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public bool IsNotCollaboratorsTextVisibility
         {
-            get => _isNoCollaboratorsTextVisibility; 
+            get => _isNoCollaboratorsTextVisibility;
             set
             {
                 _isNoCollaboratorsTextVisibility = value;
@@ -84,7 +84,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public bool IsLoading
         {
-            get => _isLoading; 
+            get => _isLoading;
             set
             {
                 _isLoading = value;
@@ -94,7 +94,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public bool IsErrorVisible
         {
-            get  => _isErrorVisible; 
+            get => _isErrorVisible;
             set
             {
                 _isErrorVisible = value;
@@ -104,7 +104,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public bool IsSelfCollabarator
         {
-            get => _isSelfCollabarator; 
+            get => _isSelfCollabarator;
             set
             {
                 _isSelfCollabarator = value;
@@ -153,7 +153,7 @@ namespace MoneySplitter.Win10.ViewModels
         {
             base.OnActivate();
 
-    
+
             IsLoading = true;
             var executionResultFriendsManager = await _friendsManager.GetUserFriendsAsync();
             IsLoading = false;

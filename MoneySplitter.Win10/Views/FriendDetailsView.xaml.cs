@@ -12,18 +12,22 @@ namespace MoneySplitter.Win10.Views
             InitializeComponent();
             DataContextChanged += (s, e) => { ViewModel = DataContext as FriendDetailsViewModel; };
         }
+
         private void OnTransactionItemClick(object sender, ItemClickEventArgs e)
         {
             ViewModel.NavigateToTransactionDetails(e.ClickedItem as TransactionEventModel);
         }
+
         private void OnRemindButtonClick(object sender, TransactionEventModel e)
         {
             //code for remind
         }
+
         private void OnSmallRingerButtonClick(object sender, TransactionEventModel e)
         {
             //code for remind
         }
+
         private async void OnApproveButtonClick(object sender, TransactionEventModel e)
         {
             await ViewModel.MoveUserToInFinishedAsync(e.TransactionId);

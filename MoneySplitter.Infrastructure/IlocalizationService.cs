@@ -7,6 +7,5 @@ namespace MoneySplitter.Infrastructure
         void InitializeStrings(string path);
         string GetString(string key);
         string GetString(Enum key);
-
     }
 }

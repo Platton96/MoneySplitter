@@ -80,8 +80,8 @@ namespace MoneySplitter.Win10.ViewModels
 
         #region Constructor
         public LoginViewModel(
-            INavigationManager navigationManager, 
-            IMembershipService membershipService, 
+            INavigationManager navigationManager,
+            IMembershipService membershipService,
             ILocalizationService localizationService)
         {
             _navigationManager = navigationManager;
@@ -121,7 +121,7 @@ namespace MoneySplitter.Win10.ViewModels
         }
         #endregion
 
-        protected override async void  OnViewReady(object view)
+        protected override async void OnViewReady(object view)
         {
             base.OnActivate();
             try
@@ -131,6 +131,7 @@ namespace MoneySplitter.Win10.ViewModels
                     _navigationManager.NavigateToShellViewModel();
                 }
             }
+
             catch
             {
                 await _membershipService.InitializeDbAsyns();

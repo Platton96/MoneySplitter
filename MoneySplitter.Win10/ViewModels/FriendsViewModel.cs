@@ -26,7 +26,7 @@ namespace MoneySplitter.Win10.ViewModels
         #region Properties
         public ObservableCollection<UserModel> Friends
         {
-            get => _friends; 
+            get => _friends;
             set
             {
                 _friends = value;
@@ -36,7 +36,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public bool IsNotFriendsTextVisibility
         {
-            get => _isNotFriendsTextVisibility; 
+            get => _isNotFriendsTextVisibility;
             set
             {
                 _isNotFriendsTextVisibility = value;
@@ -46,7 +46,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public bool IsLoading
         {
-            get => _isLoading; 
+            get => _isLoading;
             set
             {
                 _isLoading = value;
@@ -56,7 +56,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public bool IsErrorVisible
         {
-            get => _isErrorVisible; 
+            get => _isErrorVisible;
             set
             {
                 _isErrorVisible = value;
@@ -66,7 +66,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public ErrorDetailsModel ErrorDetailsModel
         {
-            get => _errorDetailsModel; 
+            get => _errorDetailsModel;
             set
             {
                 _errorDetailsModel = value;

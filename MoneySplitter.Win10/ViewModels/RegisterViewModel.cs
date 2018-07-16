@@ -101,7 +101,7 @@ namespace MoneySplitter.Win10.ViewModels
         #region Constructor
         public RegisterViewModel(
             INavigationManager navigationManager,
-            IMembershipService membershipService, 
+            IMembershipService membershipService,
             IFilePickerService filePickerService,
             ILocalizationService localizationService)
         {

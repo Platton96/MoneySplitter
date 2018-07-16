@@ -18,6 +18,5 @@ namespace MoneySplitter.Win10.Views
         {
             ViewModel.InitializeShellNavigationService(ContentFrame);
         }
-
     }
 }

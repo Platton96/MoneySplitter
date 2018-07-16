@@ -202,6 +202,7 @@ namespace MoneySplitter.Win10.ViewModels
             }
             OnActivate();
         }
+
         public async Task MoveUserToInFinishedAsync(int transactionId)
         {
             IsLoading = true;
@@ -243,6 +244,7 @@ namespace MoneySplitter.Win10.ViewModels
             OnActivate();
 
         }
+
         public void NavigateToTransactionDetails(TransactionEventModel transaction)
         {
             _navigationManager.NavigateToTransactionDetailsViewModel(transaction);

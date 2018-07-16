@@ -116,7 +116,7 @@ namespace MoneySplitter.Win10.ViewModels
             get => _selectSortType;
             set
             {
-                if(value == _selectSortType)
+                if (value == _selectSortType)
                 {
                     return;
                 }
@@ -162,7 +162,7 @@ namespace MoneySplitter.Win10.ViewModels
             {
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
-                    ErrorTitle =_localizationService.GetString(Texts.DEFAULT_ERROR_TITLE),
+                    ErrorTitle = _localizationService.GetString(Texts.DEFAULT_ERROR_TITLE),
                     ErrorDescription = _localizationService.GetString(Texts.PROBLEM_SERVER_ERROR)
                 };
 
@@ -195,14 +195,13 @@ namespace MoneySplitter.Win10.ViewModels
             }
 
             Transactions = new ObservableCollection<TransactionEventModel>(_transactionEventModelFactory.GetTransactionEvents((await _transactionsManager.GetUserTransactionsAsync()).Result));
-
         }
 
         public void NavigateToAddTransaction()
         {
             _navigationManager.NavigateToAddTransactionViewModel();
         }
-        
+
         public void SortTransactionEventModel()
         {
             SortTransactionEventModel(SelectTypeSort.SortParameter);
@@ -210,13 +209,13 @@ namespace MoneySplitter.Win10.ViewModels
 
         private void SortTransactionEventModel(SortParameter sortParameter)
         {
-            if(Transactions==null)
+            if (Transactions == null)
             {
                 return;
             }
 
             var getParameter = _getParameterFunctions[sortParameter];
-            Transactions= new ObservableCollection <TransactionEventModel>( Transactions.OrderBy(x => getParameter(x)));
+            Transactions = new ObservableCollection<TransactionEventModel>(Transactions.OrderBy(x => getParameter(x)));
         }
 
         private void InializeSortModels()
@@ -252,10 +251,10 @@ namespace MoneySplitter.Win10.ViewModels
             };
         }
 
-		public void NavigateToTransactionDetails(TransactionEventModel transaction)
-		{
-			_navigationManager.NavigateToTransactionDetailsViewModel(transaction);
-		}
+        public void NavigateToTransactionDetails(TransactionEventModel transaction)
+        {
+            _navigationManager.NavigateToTransactionDetailsViewModel(transaction);
+        }
         #endregion
     }
 }

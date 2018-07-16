@@ -250,6 +250,7 @@ namespace MoneySplitter.Win10.ViewModels
                     .Sum(tr => tr.InProgressIds.Count() * tr.SingleCost);
             InComming = Math.Round(InComming, Defines.Collaborator.COUNT_NUMBER_AFTER_POINT);
         }
+
         private void ConfigureNotifications()
         {
             Notifications = new ObservableCollection<NotificationModel>(
