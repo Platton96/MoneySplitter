@@ -97,8 +97,7 @@
     </Style>
     <Style TargetType="TextBlock" x:Key="DefaultHeaderViewStyle">
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="HorizontalAlignment" Value="Left"/>
-        <Setter Property="Margin" Value="40,4,8,0"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="FontSize" Value="26"/>
         <Setter Property="Foreground" Value="{StaticResource DefaultAppColor}"/>
     </Style>

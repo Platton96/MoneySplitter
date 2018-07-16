@@ -34,7 +34,7 @@
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center">
                     <StackPanel>
-                        <Border Style="{StaticResource DebtLabelBorderStyle}">
+                        <Border Style="{StaticResource StatisticsItemLabelBorderStyle}">
                             <TextBlock Style="{StaticResource StatisticsItemContentTextBlockStyle}">
                             <Run Text="{x:Bind ViewModel.Debt, Mode=OneWay}"/><Run Text="$"/>
                             </TextBlock>
