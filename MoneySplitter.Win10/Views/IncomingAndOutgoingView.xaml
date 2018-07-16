@@ -76,6 +76,8 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </Grid>
+                <customControls:ErrorDetailsControl IsErrorVisable="{x:Bind ViewModel.IsErrorVisible, Mode=OneWay}"
+                                                ErrorDetails="{x:Bind ViewModel.ErrorDetailsModel, Mode=OneWay}"/>
                 <customControls:LoadRingControl IsActiveRing="{x:Bind ViewModel.IsLoading, Mode=OneWay}"/>
             </Grid>
         </ScrollViewer>

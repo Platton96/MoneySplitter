@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using MoneySplitter.Win10.Common;
 using System.Threading.Tasks;
 using System.Linq;
+using MoneySplitter.Models.App;
 
 namespace MoneySplitter.Win10.ViewModels
 {
@@ -20,6 +21,10 @@ namespace MoneySplitter.Win10.ViewModels
         private readonly IFriendsManager _friendsManager;
         private readonly CollaboratorModelFactory _collabaratorModelFactory;
         private readonly ITransactionsManager _transactionsManager;
+        private readonly ILocalizationService _localizationService;
+
+        private bool _isErrorVisible;
+        private ErrorDetailsModel _errorDetailsModel;
         #endregion
 
         #region Properties
@@ -52,33 +57,64 @@ namespace MoneySplitter.Win10.ViewModels
                 NotifyOfPropertyChange(nameof(IsLoading));
             }
         }
+
+        public bool IsErrorVisible
+        {
+            get => _isErrorVisible;
+            set
+            {
+                _isErrorVisible = value;
+                NotifyOfPropertyChange(nameof(IsErrorVisible));
+            }
+        }
+
+        public ErrorDetailsModel ErrorDetailsModel
+        {
+            get => _errorDetailsModel;
+            set
+            {
+                _errorDetailsModel = value;
+                NotifyOfPropertyChange(nameof(ErrorDetailsModel));
+            }
+        }
+
         #endregion
         public IncomingAndOutgoingViewModel(
             CollaboratorModelFactory collaboratorModelFactory, 
             INavigationManager navigationManager,
             ITransactionsManager transactionsManager,
-            IFriendsManager friendsManager)
+            IFriendsManager friendsManager,
+            ILocalizationService localizationService)
         {
             _collabaratorModelFactory = collaboratorModelFactory;
             _navigationManager = navigationManager;
             _transactionsManager = transactionsManager;
             _friendsManager = friendsManager;
+            _localizationService = localizationService;
         }
 
         protected override async void OnActivate()
         {
             base.OnActivate();
 
-            if (_transactionsManager.UserTransactions == null)
+            IsLoading = true;
+            var executionResult = await _transactionsManager.GetUserTransactionsAsync();
+            IsLoading = false;
+
+            if (!executionResult.IsSuccess)
             {
-                IsLoading = true;
-                await _transactionsManager.LoadUserTransactionsAsync();
-                IsLoading = false;
+                ErrorDetailsModel = new ErrorDetailsModel
+                {
+                    ErrorTitle = _localizationService.GetString(Texts.DEFAULT_ERROR_TITLE),
+                    ErrorDescription = _localizationService.GetString(Texts.PROBLEM_SERVER_ERROR)
+                };
+
+                IsErrorVisible = true;
+                return;
             }
 
-            Debtors = new ObservableCollection<CollaboratorModel>(_collabaratorModelFactory.GetDebtors());
-            LendPersons = new ObservableCollection<CollaboratorModel>(_collabaratorModelFactory.GetLendPersons());
-
+            Debtors = new ObservableCollection<CollaboratorModel>( await _collabaratorModelFactory.GetDebtors());
+            LendPersons = new ObservableCollection<CollaboratorModel>(await _collabaratorModelFactory.GetLendPersons());
         }
 
         public async Task MoveUserToInProgressAsync(int transactionId)

@@ -154,11 +154,11 @@ namespace MoneySplitter.Win10.ViewModels
             IsErrorVisible = false;
             IsNotTransactionsTextVisibility = false;
 
-            var isSuccessExecution = await _transactionsManager.LoadUserTransactionsAsync();
+            var executionResult = await _transactionsManager.GetUserTransactionsAsync();
 
             IsLoading = false;
 
-            if (!isSuccessExecution)
+            if (!executionResult.IsSuccess)
             {
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
@@ -170,13 +170,13 @@ namespace MoneySplitter.Win10.ViewModels
                 return;
             }
 
-            if (_transactionsManager.UserTransactions.Count() == 0)
+            if (executionResult.Result.Count() == 0)
             {
                 IsNotTransactionsTextVisibility = true;
                 return;
             }
 
-            Transactions = new ObservableCollection<TransactionEventModel>(_transactionEventModelFactory.GetTransactionEvents(_transactionsManager.UserTransactions));
+            Transactions = new ObservableCollection<TransactionEventModel>(_transactionEventModelFactory.GetTransactionEvents(executionResult.Result));
         }
 
         public async Task MoveUserToInProgressAsync(int transactionId)
@@ -184,7 +184,7 @@ namespace MoneySplitter.Win10.ViewModels
             IsLoading = true;
 
             var isSuccessExecution = await _transactionsManager.MoveUserToInProgressAsync(transactionId) &&
-                await _transactionsManager.LoadUserTransactionsAsync();
+            (await _transactionsManager.GetUserTransactionsAsync()).IsSuccess;
 
             IsLoading = false;
 
@@ -194,7 +194,7 @@ namespace MoneySplitter.Win10.ViewModels
                 return;
             }
 
-            Transactions = new ObservableCollection<TransactionEventModel>(_transactionEventModelFactory.GetTransactionEvents(_transactionsManager.UserTransactions));
+            Transactions = new ObservableCollection<TransactionEventModel>(_transactionEventModelFactory.GetTransactionEvents((await _transactionsManager.GetUserTransactionsAsync()).Result));
 
         }
 
