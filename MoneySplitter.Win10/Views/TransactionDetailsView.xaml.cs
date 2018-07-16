@@ -1,4 +1,5 @@
 ﻿using MoneySplitter.Win10.ViewModels;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace MoneySplitter.Win10.Views
@@ -16,5 +17,15 @@ namespace MoneySplitter.Win10.Views
 				ViewModel = DataContext as TransactionDetailsViewModel;
 			};
 		}
-	}
+
+        private async void OnGiveButtonClick(object sender, RoutedEventArgs e)
+        {
+            await ViewModel.MoveUserToInProgressAsync();
+        }
+
+        private async void OnRemindButtonClick(object sender, RoutedEventArgs e)
+        {
+            //code for remind
+        }
+    }
 }

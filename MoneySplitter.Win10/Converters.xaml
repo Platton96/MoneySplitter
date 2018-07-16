@@ -9,5 +9,8 @@
     <converters:BankCardConverter x:Key="BlankCardConverter"/>
     <converters:PhoneNumberConverter x:Key="PhoneNumberConverter"/>
     <converters:OppositeBoolToVisibilityConverter x:Key="OppositeBoolToVisibility"/>
+    <converters:DateCoverter x:Key="DateConverter2" />
+    <converters:TypeDateCoverter x:Key="TypeDateCoverter" />
+    <converters:NotVisibilCollabarratorsCountVisibilityConverter x:Key="NotVisibilCollabarratorsCountVisibilityConverter"/>
 
 </ResourceDictionary>

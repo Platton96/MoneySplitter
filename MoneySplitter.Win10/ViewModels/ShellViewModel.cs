@@ -48,7 +48,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public UserModel UserModel
         {
-            get => _userModel; 
+            get => _userModel;
             set
             {
                 _userModel = value;
@@ -58,7 +58,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public string TitleFrameText
         {
-            get => _titleFrameText; 
+            get => _titleFrameText;
             set
             {
                 _titleFrameText = value;
@@ -69,7 +69,10 @@ namespace MoneySplitter.Win10.ViewModels
         #endregion
 
         #region Constructor
-        public ShellViewModel(IMembershipService membershipService, INavigationManager navigationManager, ILocalizationService localizationService)
+        public ShellViewModel(
+            IMembershipService membershipService,
+            INavigationManager navigationManager,
+            ILocalizationService localizationService)
         {
             _membershipService = membershipService;
             _navigationManager = navigationManager;
@@ -88,20 +91,28 @@ namespace MoneySplitter.Win10.ViewModels
             SelectedMenuItem = MenuItems.First();
         }
 
-        public void NavigateToClikedItemMenu(string value)
+        public async void NavigateToClikedItemMenu(string key)
         {
-            if (value == null)
+            if (key == null)
             {
                 return;
             }
 
-            _navigationManager.NavigateToShellViewModel(_mainMenuPages[value]);
+            if (!_mainMenuPages.TryGetValue(key, out Type viewModel))
+            {
+                return;
+            }
+
+            if (viewModel == typeof(LoginViewModel))
+            {
+                await _membershipService.LogoutAsync();
+                _navigationManager.NavigateToLoginViewModel();
+            }
+
+            _navigationManager.NavigateToShellViewModel(viewModel);
         }
 
-        public void NovigaateToFoundUsers()
-        {
-            _navigationManager.NavigateToSearchUsersViewModel();
-        }
+
         #endregion
 
         #region Protected methods
@@ -123,11 +134,17 @@ namespace MoneySplitter.Win10.ViewModels
         #region Private methods
         private void OnNavigated(object sender, Type e)
         {
+
             TitleFrameText = _mainMenuPages.FirstOrDefault(w => w.Value == e).Key;
+            if (TitleFrameText == null)
+            {
+                SelectedMenuItem = null;
+                return;
+            }
 
             SelectedMenuItem = MenuItems.FirstOrDefault(w => w == TitleFrameText);
         }
-        
+
         private void InitializeMenuItems()
         {
             _mainMenuPages = new Dictionary<string, Type>()
@@ -171,6 +188,14 @@ namespace MoneySplitter.Win10.ViewModels
                        _localizationService.GetString(Texts.INCOMING_AND_OUTGOING_FRAME_TITLE)),
 
                     typeof(IncomingAndOutgoingViewModel)
+                },
+                {
+                    string.Format(
+                        MAIN_MENU_BUTTON_TEMPLATE,
+                        Defines.MenuItem.IconButton.LOG_OUT,
+                       _localizationService.GetString(Texts.LOG_OUT)),
+
+                    typeof(LoginViewModel)
                 }
             };
         }

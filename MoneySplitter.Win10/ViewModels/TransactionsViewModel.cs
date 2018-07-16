@@ -116,7 +116,7 @@ namespace MoneySplitter.Win10.ViewModels
             get => _selectSortType;
             set
             {
-                if(value == _selectSortType)
+                if (value == _selectSortType)
                 {
                     return;
                 }
@@ -154,15 +154,15 @@ namespace MoneySplitter.Win10.ViewModels
             IsErrorVisible = false;
             IsNotTransactionsTextVisibility = false;
 
-            var isSuccessExecution = await _transactionsManager.LoadUserTransactionsAsync();
+            var executionResult = await _transactionsManager.GetUserTransactionsAsync();
 
             IsLoading = false;
 
-            if (!isSuccessExecution)
+            if (!executionResult.IsSuccess)
             {
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
-                    ErrorTitle =_localizationService.GetString(Texts.DEFAULT_ERROR_TITLE),
+                    ErrorTitle = _localizationService.GetString(Texts.DEFAULT_ERROR_TITLE),
                     ErrorDescription = _localizationService.GetString(Texts.PROBLEM_SERVER_ERROR)
                 };
 
@@ -170,13 +170,13 @@ namespace MoneySplitter.Win10.ViewModels
                 return;
             }
 
-            if (_transactionsManager.UserTransactions.Count() == 0)
+            if (executionResult.Result.Count() == 0)
             {
                 IsNotTransactionsTextVisibility = true;
                 return;
             }
 
-            Transactions = new ObservableCollection<TransactionEventModel>(_transactionEventModelFactory.GetTransactionEvents(_transactionsManager.UserTransactions));
+            Transactions = new ObservableCollection<TransactionEventModel>(_transactionEventModelFactory.GetTransactionEvents(executionResult.Result));
         }
 
         public async Task MoveUserToInProgressAsync(int transactionId)
@@ -184,7 +184,7 @@ namespace MoneySplitter.Win10.ViewModels
             IsLoading = true;
 
             var isSuccessExecution = await _transactionsManager.MoveUserToInProgressAsync(transactionId) &&
-                await _transactionsManager.LoadUserTransactionsAsync();
+            (await _transactionsManager.GetUserTransactionsAsync()).IsSuccess;
 
             IsLoading = false;
 
@@ -194,15 +194,14 @@ namespace MoneySplitter.Win10.ViewModels
                 return;
             }
 
-            Transactions = new ObservableCollection<TransactionEventModel>(_transactionEventModelFactory.GetTransactionEvents(_transactionsManager.UserTransactions));
-
+            Transactions = new ObservableCollection<TransactionEventModel>(_transactionEventModelFactory.GetTransactionEvents((await _transactionsManager.GetUserTransactionsAsync()).Result));
         }
 
         public void NavigateToAddTransaction()
         {
             _navigationManager.NavigateToAddTransactionViewModel();
         }
-        
+
         public void SortTransactionEventModel()
         {
             SortTransactionEventModel(SelectTypeSort.SortParameter);
@@ -210,13 +209,13 @@ namespace MoneySplitter.Win10.ViewModels
 
         private void SortTransactionEventModel(SortParameter sortParameter)
         {
-            if(Transactions==null)
+            if (Transactions == null)
             {
                 return;
             }
 
             var getParameter = _getParameterFunctions[sortParameter];
-            Transactions= new ObservableCollection <TransactionEventModel>( Transactions.OrderBy(x => getParameter(x)));
+            Transactions = new ObservableCollection<TransactionEventModel>(Transactions.OrderBy(x => getParameter(x)));
         }
 
         private void InializeSortModels()
@@ -252,10 +251,10 @@ namespace MoneySplitter.Win10.ViewModels
             };
         }
 
-		public void NavigateToTransactionDetails(TransactionEventModel transaction)
-		{
-			_navigationManager.NavigateToTransactionDetailsViewModel(transaction);
-		}
+        public void NavigateToTransactionDetails(TransactionEventModel transaction)
+        {
+            _navigationManager.NavigateToTransactionDetailsViewModel(transaction);
+        }
         #endregion
     }
 }

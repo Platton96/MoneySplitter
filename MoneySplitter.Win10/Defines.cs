@@ -2,6 +2,7 @@
 {
     public static class Defines
     {
+        public const string LOGIN_VIEW = "LoginView";
         public static class Localization
         {
             public const string RESOURCE_RU_FILE_PATCH = @".\Strings\Ru.resw";
@@ -65,6 +66,7 @@
                 public const string SEARCH = "Search";
                 public const string TRANSACTIONS = "Transactions";
                 public const string INCOMING_AND_OUTCOMING = "Incoming and Outcoming";
+                public const string LOG_OUT = "Log out";
 
             }
 
@@ -75,6 +77,7 @@
                 public const string SEARCH = "&#xE721;";
                 public const string TRANSACTIONS = "&#xE8A5;";
                 public const string INCOMING_AND_OUTCOMING = "&#xE8CB;";
+                public const string LOG_OUT= "&#xE711;";
             }
         }
 

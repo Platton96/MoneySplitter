@@ -9,19 +9,14 @@ namespace MoneySplitter.Managers
     {
         private readonly ITransactionsApiService _transactionsApiService;
 
-        public IEnumerable<TransactionModel> UserTransactions { get; private set; }
-
         public TransactionsManager(ITransactionsApiService transactionsApiService)
         {
             _transactionsApiService = transactionsApiService;
         }
 
-        public async Task<bool> LoadUserTransactionsAsync()
+        public async Task<ExecutionResult<IEnumerable<TransactionModel>>> GetUserTransactionsAsync()
         {
-            var executionResult = await _transactionsApiService.GetAllUserTransactionsAsync();
-            UserTransactions = executionResult.Result;
-
-            return executionResult.IsSuccess;
+            return await _transactionsApiService.GetAllUserTransactionsAsync();
         }
 
         public async Task<ExecutionResult<IEnumerable<TransactionModel>>> GetFriendTransactionsAsync(int friendId)
@@ -42,6 +37,11 @@ namespace MoneySplitter.Managers
         public async Task<bool> MoveUserToFinishedAsync(int transactionId, int userId)
         {
             return await _transactionsApiService.MoveUserToFineshedAsync(transactionId, userId);
+        }
+        
+        public async Task<bool> ApproveAllAsync(int friendId)
+        {
+            return await _transactionsApiService.ApproveAllAsync(friendId);
         }
     }
 }

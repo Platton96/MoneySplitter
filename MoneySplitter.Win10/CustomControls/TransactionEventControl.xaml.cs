@@ -12,8 +12,9 @@ namespace MoneySplitter.Win10.CustomControls
 		public event EventHandler<TransactionEventModel> OnGiveTransactionButtonClick;
 		public event EventHandler<TransactionEventModel> OnRemindTransactionButtonClick;
 		public event EventHandler<TransactionEventModel> OnApproveTransactionButtonClick;
+        public event EventHandler<TransactionEventModel> OnSmallRingerTransactionButtonClick;
 
-		public TransactionEventModel ViewModel
+        public TransactionEventModel ViewModel
 		{
 			get => (TransactionEventModel)GetValue(ViewModelProperty); 
 			set { SetValue(ViewModelProperty, value); }
@@ -39,8 +40,11 @@ namespace MoneySplitter.Win10.CustomControls
 		{
 			OnRemindTransactionButtonClick?.Invoke(this, ViewModel);
 		}
-
-		private void OnApproveButtonClick(object sender, RoutedEventArgs e)
+        private void OnSmallRingerButtonClick(object sender, RoutedEventArgs e)
+        {
+            OnSmallRingerTransactionButtonClick?.Invoke(this, ViewModel);
+        }
+        private void OnApproveButtonClick(object sender, RoutedEventArgs e)
 		{
 			OnApproveTransactionButtonClick?.Invoke(this, ViewModel);
 		}

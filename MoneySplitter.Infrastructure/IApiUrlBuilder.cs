@@ -16,5 +16,6 @@ namespace MoneySplitter.Infrastructure
         Uri AllTransactions();
         Uri Collaborate(int transactionId);
         Uri Approve(int transactionId, int userId);
+        Uri ApproveAll(int friendId);
     }
 }

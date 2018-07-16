@@ -26,7 +26,7 @@ namespace MoneySplitter.Win10.ViewModels
         #region Properties
         public ObservableCollection<UserModel> Friends
         {
-            get => _friends; 
+            get => _friends;
             set
             {
                 _friends = value;
@@ -36,7 +36,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public bool IsNotFriendsTextVisibility
         {
-            get => _isNotFriendsTextVisibility; 
+            get => _isNotFriendsTextVisibility;
             set
             {
                 _isNotFriendsTextVisibility = value;
@@ -46,7 +46,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public bool IsLoading
         {
-            get => _isLoading; 
+            get => _isLoading;
             set
             {
                 _isLoading = value;
@@ -56,7 +56,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public bool IsErrorVisible
         {
-            get => _isErrorVisible; 
+            get => _isErrorVisible;
             set
             {
                 _isErrorVisible = value;
@@ -66,7 +66,7 @@ namespace MoneySplitter.Win10.ViewModels
 
         public ErrorDetailsModel ErrorDetailsModel
         {
-            get => _errorDetailsModel; 
+            get => _errorDetailsModel;
             set
             {
                 _errorDetailsModel = value;
@@ -91,11 +91,6 @@ namespace MoneySplitter.Win10.ViewModels
             Friends.Remove(friend);
 
             var isSuccessResponce = await _friendsManager.RemoveFriendAsync(friendId);
-
-            if (isSuccessResponce)
-            {
-                await _friendsManager.LoadUserFriendsAsync();
-            }
         }
 
         public void NavigateToFriendDetails(UserModel friend)
@@ -111,11 +106,11 @@ namespace MoneySplitter.Win10.ViewModels
             IsErrorVisible = false;
             IsNotFriendsTextVisibility = false;
 
-            var isSuccessExecution = await _friendsManager.LoadUserFriendsAsync();
+            var executionResult = await _friendsManager.GetUserFriendsAsync();
 
             IsLoading = false;
 
-            if (!isSuccessExecution)
+            if (!executionResult.IsSuccess)
             {
                 ErrorDetailsModel = new ErrorDetailsModel
                 {
@@ -127,13 +122,13 @@ namespace MoneySplitter.Win10.ViewModels
                 return;
             }
 
-            if (!_friendsManager.UserFriends.Any())
+            if (!executionResult.Result.Any())
             {
                 IsNotFriendsTextVisibility = true;
                 return;
             }
 
-            Friends = new ObservableCollection<UserModel>(_friendsManager.UserFriends);
+            Friends = new ObservableCollection<UserModel>(executionResult.Result);
         }
         #endregion
     }

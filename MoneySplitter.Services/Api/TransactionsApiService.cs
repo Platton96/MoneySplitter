@@ -59,6 +59,13 @@ namespace MoneySplitter.Services.Api
             return await _queryApiService.PostAsync(approveTransactionUrl);
         }
 
+        public async Task<bool> ApproveAllAsync(int friendId)
+        {
+            var approveAllTransactionUrl = _apiUrlBuilder.ApproveAll(friendId);
+
+            return await _queryApiService.PostAsync(approveAllTransactionUrl);
+        }
+
         private async Task<ExecutionResult<IEnumerable<TransactionModel>>> GetAllUserTransactions(Uri allUserTransactionsUrl)
         {
             var result = new ExecutionResult<IEnumerable<TransactionModel>>

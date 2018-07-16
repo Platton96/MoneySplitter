@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MoneySplitter.Models;
 using System;
+using System.Threading.Tasks;
 
 namespace MoneySplitter.Win10.Common
 {
@@ -17,9 +18,9 @@ namespace MoneySplitter.Win10.Common
             _membershipService = membershipService;
         }
 
-        public IEnumerable<CollaboratorModel> GetDebtors()
+        public async Task<IEnumerable<CollaboratorModel>> GetDebtors()
         {
-            return _transactionsManager.UserTransactions.Where(tr => tr.Owner.Id == _membershipService.CurrentUser.Id)
+            return (await _transactionsManager.GetUserTransactionsAsync()).Result.Where(tr => tr.Owner.Id == _membershipService.CurrentUser.Id)
                 .SelectMany(tr => ConvertTransactionModelToCollabaratorModel(tr, CollaboratorStatus.ONE_DEBT))
                 .GroupBy
                 (
@@ -30,9 +31,9 @@ namespace MoneySplitter.Win10.Common
                 .Select(cl => ConvertCollaboratorRecordsToOneRecord(cl.CollaboratorRecords, CollaboratorStatus.MANY_DEBT));
         }
 
-        public IEnumerable<CollaboratorModel> GetLendPersons()
+        public async Task<IEnumerable<CollaboratorModel>> GetLendPersons()
         {
-            return _transactionsManager.UserTransactions.Where(tr => tr.Owner.Id != _membershipService.CurrentUser.Id)
+            return (await _transactionsManager.GetUserTransactionsAsync()).Result.Where(tr => tr.Owner.Id != _membershipService.CurrentUser.Id)
                 .Select(
                             tr => ConvertDataToCollabatorModel(tr.Owner, tr, CollaboratorStatus.ONE_LEND,
                             GetTransactionStatus(_membershipService.CurrentUser, tr))

@@ -1,7 +1,6 @@
 ﻿<UserControl x:Class="MoneySplitter.Win10.CustomControls.TransactionStatusControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="using:MoneySplitter.Win10.CustomControls"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
@@ -13,17 +12,24 @@
         <SolidColorBrush x:Name="GreenBrush" Color="#47a439"/>
         <SolidColorBrush x:Name="YellowBrush" Color="#e69f2d"/>
         <SolidColorBrush x:Name="DarkBlueBrush" Color="#458ce4"/>
+        
+        <Style TargetType="Border" x:Name="UserRoleLabelBorderStyle">
+            <Setter Property="Height" Value="22"/>
+            <Setter Property="Padding" Value="8,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Name="UserRoleLabelTextBlockStyle">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Foreground" Value="White"/> 
+        </Style>
     </UserControl.Resources>
     <Grid>
         <Border x:Name="UserRoleLabelBorder"
-                Height="22"
-                Padding="8,0,8,0"
-                VerticalAlignment="Center">
+                Style="{StaticResource UserRoleLabelBorderStyle}">
             <TextBlock x:Name="UserRoleLabel"
-                       FontSize="14"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Left"
-                       Foreground="White"/>
+                       Style="{StaticResource UserRoleLabelTextBlockStyle}"/>
         </Border>
     </Grid>
 </UserControl>

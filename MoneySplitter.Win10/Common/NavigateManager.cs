@@ -2,6 +2,7 @@
 using MoneySplitter.Infrastructure;
 using MoneySplitter.Models;
 using MoneySplitter.Win10.ViewModels;
+using MoneySplitter.Win10.Views;
 using System;
 using System.Linq;
 using Windows.UI.Core;
@@ -39,8 +40,12 @@ namespace MoneySplitter.Win10.Common
 		{
 			_windowNavigationService.NavigateToViewModel<RegisterViewModel>();
 		}
+        public void NavigateToLoginViewModel()
+        {
+            _windowNavigationService.NavigateToViewModel<LoginViewModel>();
+        }
 
-		public void NavigateToHomeViewModel()
+        public void NavigateToHomeViewModel()
 		{
 			_shellNavigationService.NavigateToViewModel<HomeViewModel>();
 		}
@@ -101,9 +106,12 @@ namespace MoneySplitter.Win10.Common
 				_shellNavigationService.BackStack.Remove(sameViewModel);
 			}
 
-			SetBackButtonVisibility(_shellNavigationService.CanGoBack);
+			SetBackButtonVisibility(_shellNavigationService.CanGoBack && CheckLoginView(sender as Frame));
 			OnShellNavigationManagerNavigated?.Invoke(this, (e.Content as Page).DataContext.GetType());
 		}
-
+        private bool CheckLoginView(Frame frame)
+        {
+            return frame.Content.GetType().Name != Defines.LOGIN_VIEW;
+        }
 	}
 }

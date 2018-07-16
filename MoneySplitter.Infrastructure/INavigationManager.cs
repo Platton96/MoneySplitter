@@ -7,7 +7,8 @@ namespace MoneySplitter.Infrastructure
 	{
 		void NavigateToShellViewModel();
 		void NavigateToRegisterViewModel();
-		void InitializeShellNavigationService(object navigationService);
+        void NavigateToLoginViewModel();
+        void InitializeShellNavigationService(object navigationService);
 		void NavigateToHomeViewModel();
 		void NavigateToFriendsViewModel();
 		void NavigateToFriendDetails(UserModel userModel);

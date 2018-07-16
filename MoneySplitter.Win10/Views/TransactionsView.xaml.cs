@@ -18,6 +18,7 @@ namespace MoneySplitter.Win10.Views
 		{
 			ViewModel.NavigateToAddTransaction();
 		}
+
 		private void OnRemindCollaboratorButtonClick(object sender, TransactionEventModel e)
 		{
 			//code for remind

@@ -101,7 +101,7 @@ namespace MoneySplitter.Win10.ViewModels
         #region Constructor
         public RegisterViewModel(
             INavigationManager navigationManager,
-            IMembershipService membershipService, 
+            IMembershipService membershipService,
             IFilePickerService filePickerService,
             ILocalizationService localizationService)
         {
@@ -153,7 +153,7 @@ namespace MoneySplitter.Win10.ViewModels
         private void InitializeField()
         {
             _laberlForAvatarImage = _localizationService.GetString(Texts.AVATAR_IMAGE_TEXTBLOCK_TEXT);
-            _labelForBackgroundIamge = _localizationService.GetString(Texts.REGISTER_ERROR_DESCRIPTION);
+            _labelForBackgroundIamge = _localizationService.GetString(Texts.BACKGROUND_IMAGE_TEXTBLOCK_TEXT);
         }
 
         public async Task BrowseAvatarImageAsync()
