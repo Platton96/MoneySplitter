@@ -14,6 +14,7 @@
 
         public static class Api
         {
+            public const string APPLICATION_JASON = "application/json";
             public const string WEB_API_URL = "http://moneytransfer.azurewebsites.net";
             public static class Session
             {

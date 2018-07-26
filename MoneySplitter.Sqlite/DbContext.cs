@@ -16,6 +16,8 @@ namespace MoneySplitter.Sqlite
         public async Task InitializeAsyns()
         {
             await CreateUsersTableAsync();
+            await CreateFriendsTableAsync();
+            await CreateTransactionsTableAsync();
         }
 
         public async Task CreateUsersTableAsync()
@@ -55,20 +57,23 @@ namespace MoneySplitter.Sqlite
 
         public async Task CreateTransactionsTableAsync()
         {
-            SqliteCommand createFriendsCommand = new SqliteCommand(@"
-				CREATE TABLE Friends (
-				Id int PRIMARY KEY,
-				Name nvarchar(255),
-				Surname nvarchar(255),
-				Email nvarchar(255),
-				PhoneNumber bigint,
-				CreditCardNumber bigint,
-				Token nvarchar(255),
-				ImageUrl nvarchar(255),
-				BackgroundImageUrl nvarchar(255));",
+            SqliteCommand createTransactionsCommand = new SqliteCommand(@"
+				CREATE TABLE Transactions(
+				Id int,
+				DeadlineDate nvarchar(255),
+				Title nvarchar(255),
+				Description nvarchar(1024),
+				CreationDate nvarchar(255),
+				OwnerId int,
+				CollaboratorsIds nvarchar(1024),
+				InProgressIds nvarchar(1024),
+				FinishedIds nvarchar(1024),
+				Cost decimal,
+                SingleCost decimal,
+				OngoingDate nvarchar(255));",
                 DbConection);
 
-            await CreateTableAsync(Defines.SQlilte.TableNammes.TRANSACTIONS, createFriendsCommand);
+            await CreateTableAsync(Defines.SQlilte.TableNammes.TRANSACTIONS, createTransactionsCommand);
         }
 
         public async Task CreateTableAsync(string nameTable, SqliteCommand createTableCommand)
